@@ -1,0 +1,171 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.clesson .tops{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.096);
+}
+.time{
+    color: rgba(128, 128, 128, 0.564);
+    font-weight: bold;
+}
+.time span{
+    color:black;
+    font-size:20px;
+}
+.bottomcl{
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    padding: 15px;
+}
+.bottomcl .cll{
+    width: 60%;
+    height: 100%;
+}
+.bottomcl .cll iframe{
+width: 100%;
+}
+.bottomcl .cll img{
+    width: 100%;
+}
+.bottomcl .clr{
+    width: 39%;
+}
+.bottomcl .card{
+    height:100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+    width:100%;
+    margin-top:10px;
+    border-radius:2px;
+    border:none;
+}
+.bottomcl .cll .ii img{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+}
+.bottomcl .ii .card .tocless{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.bottomcl .ii .card .tocless .tl{
+    display: flex;
+}
+.bottomcl .ii .card .tocless .tl .infcl{
+  margin-left:10px;
+}
+.bottomcl .ii .card .tocless .tr{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.bottomcl .ii .card .tocless .tr span{
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+}
+.bottomcl .ii .card .tocless .tr .f{
+background-color:blue;
+}
+.bottomcl .ii .card .tocless .tr .t{
+    background-color:rgb(23, 131, 239);
+}
+.bottomcl .ii .card .tocless .tr .L{
+    background-color:rgb(0, 0, 0);
+}
+.bottomcl .clr .topclr .card{
+    padding:0;
+}
+.bottomcl .clr .topclr .card  .tocless {
+    background-color:rgba(128, 128, 128, 0.136);
+    padding: 10px;
+}
+.bottomcl .clr .topclr .card .tocless h2{
+    padding: 0;
+    font-size: 20px;
+}
+.bottomcl .clr .bottomclr{
+    display: flex;
+    flex-direction: column;
+} 
+.bottomcltt{
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 0;
+}
+.bottomcltt .malomat{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    color:gray;
+    border-bottom:1px solid rgba(128, 128, 128, 0.149);
+    margin-bottom: 10px;
+}
+.bottomcltt .malomat .ganb .number{
+    margin-right: 10px;
+}
+.bottomcltt .malomat .ganb .name{
+    color:var(--maincolor);
+    cursor: pointer;
+    padding-bottom: 0;
+    font-size: 20px;
+}
+.bottomcltt .malomat .ganb .name:hover{
+    border-bottom: 2px solid var(--maincolor);
+}
+.bottomcltt .malomat .pro{
+    color:#eec335;
+    background-color:#fdfaed;
+    padding:0 5px;
+border-radius:3px;
+margin-left: 10px;
+}
+.bottomcltt .malomat .free{
+background-color:#e7f7ee;
+color:#149a50;
+padding:0 5px;
+border-radius:3px;
+margin-left: 10px;
+}
+.bottomcltt .malomat .quiz{
+    color: #1169b2;
+    background-color: rgba(19, 119, 201, .1);
+    padding:0 5px;
+border-radius:3px;
+margin-left: 10px;
+}
+.bottomcl{
+    margin-top: 0;
+}
+@media(max-width:1200px){
+}
+@media(max-width:992px){
+    .clesson .bottomcl{
+        flex-direction: column;
+        align-items:center;
+    }
+    .clesson .bottomcl .cll,
+    .clesson .bottomcl .clr{
+        width: 100%;
+    }
+}
+      
+@media(max-width:768px){
+ 
+}
+@media(max-width:576px){
+  
+}
+

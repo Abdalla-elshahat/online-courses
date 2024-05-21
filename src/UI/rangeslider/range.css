@@ -1,0 +1,92 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.editacountpp{
+    margin-top: -1%;
+    margin-bottom: 1rem;
+    margin-left: 0.5%;
+    color: gray;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.214);
+    padding-bottom: 2%;
+    font-size: 20px;
+}
+.samep{
+    margin-top: -1%;
+    margin-bottom: 1rem;
+    margin-left: 0.5%;
+}
+.right{
+    padding: 20px;
+}
+ .basicinfo .corr{
+    width:100%;
+    border-radius: 10px;
+    background-color:rgba(128, 128, 128, 0.334);
+    height:10px;
+    display: block;
+    position: relative;
+}
+.basicinfo .corr::before{
+   content: "0";
+   position: absolute;
+   background-color:white;
+   color:black;
+   padding: 2px;
+ width:auto;
+ height:auto;
+top: -350%;
+border-radius:5px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.basicinfo .corr::after{
+    content: "100";
+    position: absolute;
+    background-color:white;
+    color:black;
+    padding: 2px;
+ width:auto;
+ height:auto;
+ left: 97%;
+ top: -350%;
+ border-radius:5px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ }
+
+.basicinfo .corr span{
+    width:40%;
+    border-radius: 10px 0 0 10px ;
+    background-color:var(--maincolor);
+    height:10px;
+    display: block;
+    border-right: 1px solid var(--maincolor);
+}
+.basicinfo .corr span::after{
+    content: "530";
+    position: absolute;
+    background-color:var(--maincolor);
+    color:white;
+    padding: 2px;
+ width:auto;
+ height:auto;
+ left: 37%;
+ top: -350%;
+ border-radius:5px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.right .word{
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+@media (max-width: 576px) {
+    .edit {
+        margin: 0;
+        width: 100%;
+    }
+}

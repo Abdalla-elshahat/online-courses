@@ -1,0 +1,184 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.courses .Goto{
+background-color:rgb(10, 200, 10);
+color: white;
+padding: 5px;
+font-size: 20px;
+width: auto;
+border-radius: 5px;
+cursor: pointer;
+font-weight: bold;
+}
+.courses .inputall{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 30px;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(128, 128, 128, 0.096);
+    padding-top: 50px;
+}
+.courses .inputall .input1{
+    background-color:white;
+    border: 1px solid rgba(197, 197, 197, 0.49);
+    outline: none;
+    padding:5px;
+    border-radius:5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:gray;
+    max-width: 50%;
+}
+ .input1 input:focus + .inputall .input1{
+ border-color: var(--maincolor);
+}
+.courses .inputall .input1 input{
+    border:none;
+    outline: none;
+    background-color:transparent;
+}
+.courses .inputall .inputs{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width:auto;
+    color:gray;
+    max-width: 50%;
+}
+.courses .inputall .inputs .input3{
+    margin-left: 10px;
+}
+.courses .inputall .inputs #input2,#input3{
+    border-radius:3px;
+    outline: none;
+    border: 1px solid rgba(197, 197, 197, 0.49);
+    margin-left: 10px;
+}
+.labla{
+    font-size: 20px;
+    font-weight: bold;
+}
+.cardcors{
+    padding: 0;
+}
+.topcors{
+    background-color:rgb(0, 9, 21);
+    width: 100%;
+    text-align:center;
+    padding-top:20px;
+}
+.cardcors .topcors .corsh{
+    color:white;
+}
+.cardcors .topcors .corsh:hover{
+    color:white;
+    text-decoration: none;
+    border:none;
+}
+.topcors img{
+        width:100px;
+        height: auto;
+}
+.bottomcors{
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 10px;
+}
+.taqem{
+    font-size: 20px;
+    font-weight: bold;
+    color:rgb(201, 201, 0);
+}
+.taqem span{
+    margin-left: 10px;
+    color:black;
+}
+.bottomcors span{
+    color:rgba(128, 128, 128, 0.589);
+    margin: 10px 0;
+}
+.bottomcors .buy{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    color:black;
+    font-size: 25px;
+    font-weight: bold;
+}
+.bottomcors .buy span{
+    color:black;
+}
+.bottomcors .buy  .buycors{
+    width:auto;
+    padding: 5px 10px;
+    outline: none;
+    border:none;
+    color:white;
+    border-radius:3px;
+    background-color:var(--maincolor);
+    cursor:pointer;
+    transition-duration: 0.5s;
+}
+.bottomcors .buy  .buycors:hover{
+   background-color:rgb(12, 47, 112) ;
+}
+.botcorses{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    border-top:1px solid rgba(128, 128, 128, 0.096);
+    padding-top: 20px;
+    margin: 0 10px;
+    font-size: 20px;
+    color:gray;
+}
+.botcorses .l{
+    display: flex;
+    justify-content: center;
+}
+.botcorses .l label{
+    color:black;
+}
+.botcorses #view{
+    border-radius:3px;
+    outline: none;
+    border:1px solid var(--maincolor);
+    margin-left: 20px;
+width:100px;
+}
+
+@media(max-width:1200px){
+    .inputall{
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    .inputall .input1{
+        width: 100%;
+    }
+    .inputall .inputs{
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+@media(max-width:992px){
+   
+
+}
+      
+@media(max-width:768px){
+   
+}
+@media(max-width:576px){
+}
+

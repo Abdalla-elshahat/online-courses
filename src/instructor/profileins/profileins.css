@@ -1,0 +1,29 @@
+.courses .fok{
+    background-color: rgb(0, 5, 8);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    padding:  50px 0;
+    color: white;
+}
+.courses .fok img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit:cover;
+    margin-right: 20px;
+}
+.courses .fok .name{
+    font-size:50px;
+    font-weight: bold;
+}
+.courses .fok span a{
+  margin-right: 10px;
+}
+.profileinsh2{
+    font-size: 30px !important;
+    margin-left: 10px;
+}
+.fok a{
+    color:white;
+}

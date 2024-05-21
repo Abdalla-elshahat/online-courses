@@ -1,0 +1,135 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.dashins .feature .topc .card{
+    width:30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 15px;
+}
+.bottomc .leftbottomc {
+    width: 30%;
+}
+.dashins .feature .topc .card .infodains .in{
+font-size: 20px;
+color: gray;
+}
+.dashins .feature .topc .card .infodains .bigins{
+    font-size: 25px;
+}
+.dashins .feature .topc .card .infodains .srate{
+color:green;
+}
+.dashins .bottomc{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 5px;
+}
+.dashins .rightinsdashbottom{
+    width: 65%;
+}
+.dashins .bottomc .leftbottomc{
+    width: 30%;
+    height: fit-content;
+}
+.dashins .block .left{
+    width: 70%;
+}
+.dashins .rightinsdashbottom .card{
+    height:100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width:97%;
+    margin-top:20px;
+    border-radius:2px;
+    border:none;
+}
+.dashins .rightinsdashbottom .card .topdashins{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom:1px solid rgba(128, 128, 128, 0.215);
+}
+.dashins .rightinsdashbottom .card .dateins{
+    background-color: rgba(75, 121, 207, 0.047);
+    border-bottom: 1px dotted black;
+    color:var(--maincolor);
+    font-size: 15px;
+}
+.dashins .rightinsdashbottom .card .bottomdashins{
+    display: flex;
+    padding: 10px;
+}
+.dashins .rightinsdashbottom .card .bottomdashins .mony{
+    width: 10%;
+    font-size: 15px;
+    color:rgba(128, 128, 128, 0.611);
+    font-weight: bold;
+display: flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+.dashins .rightinsdashbottom .card .bottomdashins .mony span{
+    margin-bottom: 100%;
+}
+.dashins .rightinsdashbottom .card .bottomdashins .pres span{
+    margin-right:5%;
+}
+.dashins .rightinsdashbottom .card .bottomdashins .pres{
+    width:100%;
+    font-size: 15px;
+    color:rgba(128, 128, 128, 0.611);
+    font-weight: bold;
+display: flex;
+justify-content:space-between;
+align-items:end;
+position: relative;
+overflow: hidden;
+}
+.dashins .rightinsdashbottom .card .bottomdashins .pres span::before{
+    content: '';
+    position: absolute;
+    width: 2%;
+    height: 60%;
+    top: 27%;
+    margin-left: 5px;
+    background-color: blue;
+    border-radius:10px 10px 0 0;
+}
+@media(max-width:992px){
+ .dashins .bottomc{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .dashins .bottomc .leftbottomc,
+    .dashins .rightinsdashbottom{
+        width: 100%;
+        margin-left: 0;
+    }
+    .dashins .feature .topc .card {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .dash {
+        margin-left: 29%;
+    }
+}
+@media (max-width: 576px) {
+    .dash {
+        width: auto;
+        margin-left: 38%;
+    }
+}

@@ -1,0 +1,110 @@
+.takequiz .tops{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.104);
+}
+.quizloc p{
+color: gray;
+}
+.upgradequiz{
+    margin: 10px 15px;
+    color: #3687e4;
+    background-color: rgba(54, 135, 228, .05);
+    border-color: #c7ddf7;
+}
+.upgradequiz .upgradeh2{
+    color:black;
+}
+.upgradequiz .upgradeh2 span{
+    color:#3687e4;
+}
+.upgradequiz .left{
+    justify-content: left;
+}
+.upgradequiz .left .icon{
+    background-color:#3687e4;
+    border-color:#3687e4;
+    color:white;
+    margin-right: 10px;
+}
+.safl{
+    display: flex;
+    justify-content:center;
+    width: 100%;
+}
+.safl .card{
+    height: 100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0 10px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+}
+.safl .card .t{
+    font-size: 25px;
+    font-weight: bold;
+    background-color:rgba(128, 128, 128, 0.103);
+    padding:0 10px;
+}
+.safl .card p span{
+   color:#3687e4;
+   margin-right: 10px;
+}
+.safl .card .m .blo input{
+margin-left: 10px;
+font-size: 20px;
+border: 1px solid gray;
+margin: 10px;
+}
+.safl .card .b{
+display: flex;
+justify-content: space-between;
+align-items:center;
+padding: 10px;
+background-color:rgba(128, 128, 128, 0.103);
+}
+.safl .card .b .skip{
+    color: #212529;
+    background-color: #fff;
+    border-color: #efefef;
+    cursor: pointer;
+    padding:5px 10px;
+    border-radius:5px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 20%;
+    text-align: center;
+}
+.safl .card .bloktr{
+    padding: 10px;
+    color:#3687e4;
+    border-bottom:1px solid rgba(128, 128, 128, 0.162);
+    padding-top: 20px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+.safl .card .bloktr:hover{
+   background-color:#3687e4;
+   color:white;
+}
+.safl .card .bloktr p span{
+    color:black;
+    background-color:white;
+    padding: 5px;
+    border:1px solid rgba(128, 128, 128, 0.263);
+    border-radius:5px;
+    font-weight: bold;
+}
+.safl .card .bloktr p span:hover{
+    background-color:rgba(128, 128, 128, 0.438);
+}
+@media(max-width:992px){
+    .takequiz{
+        margin-left: 0;
+    }
+    .safl{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,18 @@
+.editlesson .upload label{
+    margin-left: 0;
+}
+.editcorses .bottomc .cardleft .totlesson {
+   margin-right: 5%;
+}
+@media(max-width:992px){
+    .editcorses .bottomc .cardleft ,
+    .editcorses .bottomc .card{
+        width: 98%;
+    }  
+ }
+ @media (max-width: 768px) {
+    .dash .content {
+        width: 92%;
+        margin-left: 0;
+    }
+}

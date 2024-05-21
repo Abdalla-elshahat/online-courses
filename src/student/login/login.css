@@ -1,0 +1,154 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.loginn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top:80px;
+    height: 100%;
+    margin-bottom: 50px;
+}
+.loginn .card{
+    height: 100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    margin: 10px;
+    border-radius: 2px;
+    border: none;
+    transition-duration: 1s;
+}
+.loginn .card .assepts{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color: rgba(18, 176, 18, 0.052);
+    border:1px solid green;
+    border-radius:5px;
+    padding: 10px;
+}
+.loginn .card .assepts span{
+    background-color:green;
+    color: white;
+    margin-right: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginn .conectgoogle{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    border: 1px solid #80808070;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    align-items:center;
+    transition-duration:0.5s;
+}
+.loginn .conectgoogle span{
+    font-size: 20px;
+margin-right: 10px;
+cursor: pointer;
+margin-bottom: 5px;
+}
+.loginn .conectgoogle:hover{
+   background-color:rgba(128, 128, 128, 0.295);
+}
+.loginn input[type="email"],
+.loginn input[type="password"]{
+    width: 100%;
+}
+.or{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.or::after{
+    content: '';
+    width: -webkit-fill-available;
+    background-color: #80808036;
+    height: 1px;
+    position: absolute;
+    margin-top: 11px;
+    width: 85%;
+}
+.loginn .bllogin .cooo{
+border:1px solid rgba(128, 128, 128, 0.429);
+border-radius:5px;
+display: flex;
+align-items:center;
+padding:5px;
+margin: 10px 0
+}
+.loginn .cooo :focus + .cooo span{
+    color:var(--maincolor);
+}
+.loginn .bllogin .cooo input{
+    border:none;
+    outline: none;
+}
+.loginn .bllogin .cooo span{
+    margin-right: 5px;
+    font-size: 20px;
+}
+.loginn .bllogin label{
+    font-weight: bold;
+    font-size: 15px;
+}
+.loginn .loginbtn{
+    width: 100%;
+    background-color: var(--maincolor);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.loginn .checkee{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.loginn .checkee #ck{
+   margin-right: 10px;
+}
+.ta7t{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+.ta7t .forget,
+.ta7t .signup span{
+    color:var(--maincolor);
+    padding-bottom: 0;
+}
+.ta7t .forget:hover,
+.ta7t .signup span:hover{
+    border-bottom: 2px solid var(--maincolor);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+

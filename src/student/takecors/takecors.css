@@ -1,0 +1,219 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.takecors{
+    padding-top:80px;
+    height: 100%;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.takecors .tobtakecors{
+   display: flex;
+   justify-content: space-between;
+   align-items:center;
+   width: 100%;
+   margin-bottom: 0;
+}
+.rrrate{
+    padding: 10px;
+    color:rgba(128, 128, 128, 0.575);
+}
+.takecors .cardtakecors{
+    height: 315px;
+    margin-top: -25px;
+    overflow: auto;
+    width: 100%;
+
+}
+.clrtake,.clltake{
+    margin: 10px;
+}
+.ltake{
+    width: 60%;
+}
+.rtake{
+    width: 30%;
+}
+.rrrate .fo{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.rrrate .fo h2{
+   font-size: 20px;
+   margin-top: 2px;
+   color:black;
+   font-weight: bold;
+}
+.rrrate .ta{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.rrrate .ta h2{
+   color:rgb(202, 202, 10);
+   margin-right: 10px;
+}
+.frah{
+padding: 30px;
+}
+.takecors .bottomtakecors{
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+}
+.takecors .ltake,
+.takecors .rtake{
+    width: 49%;
+    height: 100%;
+    flex-direction: column;
+}
+.takecors .bottomtakecors .ltake .hames ul{
+background-color:rgba(128, 128, 128, 0.186);
+display: flex;
+justify-content: space-around;
+align-items:center;
+list-style: none;
+padding: 0;
+font-size: 20px;
+cursor: pointer;
+transition-duration: 0.5s;
+padding-bottom: 2px;
+color:gray;
+}
+.takecors .bottomtakecors .ltake .hames li:hover{
+   border-bottom: 2px solid var(--maincolor);
+   color:black;
+    }
+    .takecors .bottomtakecors .ltake .cons {
+      margin: 10px 0;
+    }
+    .takecors .bottomtakecors .ltake .cons span{
+        margin: 5px 0;
+    }
+.takecors .bottomtakecors .ltake .cons .arr{
+    display: flex;
+    color:var(--maincolor);
+    font-size:20px;
+    align-items:center;
+    margin: 0;
+}
+.takecors .gg .ltake .cons .arr span{
+color:rgb(113, 113, 113);
+margin-left: 10px;
+font-size: 15px;
+}
+.rtake .card{
+    height:auto;
+}
+.rtake .cardnopadding{
+    padding: 0;
+}
+.rtake .card .ff{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  background-color:rgba(128, 128, 128, 0.134);
+  padding:0 10px;
+  color:gray;
+}
+.rtake .card .ff .proooo h2{
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.rtake .card .ff span{
+    width: auto;
+    padding: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.389);
+    border-radius: 3px;
+    background-color:white;
+    cursor: pointer;
+    transition-duration: 1s;
+}
+.rtake .card .ff span:hover{
+    background-color:black;
+    color:white;
+}
+.rtake .card .bb{
+    padding: 10px;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+}
+.rtake .card .bb .kbr{
+    background-color: rgba(128, 128, 128, 0.349);
+    border-radius: 5px;
+    width: 80%;
+    height: 10px;
+}
+.rtake .card .bb .kbr span{
+    background-color: var(--maincolor);
+    border-radius: 5px;
+    width: 35%;
+    height: inherit;
+    position: absolute;
+}
+.rtake .card .bb span:last-child{
+    font-size: 20px;
+    color: var(--maincolor);
+}
+.rtake .card .achivmentt{
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.349);
+}
+ .ii .card img{
+width: 50px;
+height: 50px;
+border-radius:50%;
+}
+.ii .cardtake{
+    width: 105%;
+    margin-left: -10px;
+}
+@media(max-width:1200px){
+}
+@media(max-width:992px){
+    .takecors{
+        margin: -5px;
+    }
+    .tobtakecors,
+    .bottomtakecors
+    {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items:center;
+    }
+    .bottomcl .clrtake,
+    .clltake
+     {
+        width: 100%;
+    }
+.takecors .ltake,.takecors .rtake
+     {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+      
+@media(max-width:768px){
+ .ss{
+    width: 0;
+ }
+ .allc{
+    width: 100%;
+ }
+}
+@media(max-width:576px){
+  
+}

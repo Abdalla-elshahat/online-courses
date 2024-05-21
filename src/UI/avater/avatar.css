@@ -1,0 +1,61 @@
+.avatar .botb{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.avatar .botb .card img{
+    border-radius: 50%;
+    object-fit: cover;
+    height: auto;
+    margin: 10px;
+}
+.avatar .botb .card .i{
+   width: 130px;
+}
+.avatar .botb .card .ii{
+   width: 100px;
+}
+.avatar .botb .card .iii{
+  width: 75px;
+}
+.avatar .botb .card .iiii{
+   width: 55px;
+}
+.avatar .botb .card .iiiii{
+width:35px;
+}
+.yo{
+    display: flex;
+    
+}
+.yo .le{
+    margin-right:5px ;
+    width: 81%;
+}
+.yo .ri{
+    margin-left:5px ;
+}
+.squir{
+border-radius:5px !important;
+}
+.avatar .nn{
+    display:flex;
+}
+.avatar .nn .blo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.avatar .nn .blo img{
+ margin:0 -2%;
+}
+@media(max-width:992px){
+    .avatar .yo{
+        display: flex;
+        flex-direction: column;
+    }
+    .card,.ri,.le{
+       width: 100% !important;
+    }
+  }

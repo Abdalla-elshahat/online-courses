@@ -1,0 +1,45 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.inputallicons{
+    width: 100% !important;
+}
+.input1icons{
+    width: 100% !important;
+}
+.input1icons input{
+    width: 100% !important;
+}
+.boticons .card .topicons{
+   background-color:rgba(128, 128, 128, 0.097);
+   display:flex;
+   align-items:center;
+   width: 100%;
+}
+ .boticons .card .topicons ul{
+    list-style: none;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    width: 100%;
+}
+.boticons .card .topicons li{
+   cursor: pointer;
+   font-size:20px;
+   color: gray;
+}
+.boticons .card .topicons li:hover{
+   border-bottom: 2px solid var(--maincolor);
+   border-radius: 1px;
+   color:black;
+ }
+ .icons .bottomicons span svg{
+font-size: 100px;
+cursor: pointer;
+ }
+ .nor{
+    border-bottom: 2px solid var(--maincolor);
+    border-radius: 1px;
+    color:black;
+ }

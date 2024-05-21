@@ -1,0 +1,373 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.nav{
+    width: 100%;
+    margin: 0;
+    padding:0;
+    position:fixed;
+    color:var(--mainwhit);
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 100;
+}
+.sidbarsmall{
+    font-size:50px;
+    cursor: pointer;
+    display: none;
+}
+.contener{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:var(--maincolor);
+    height: 70px;
+    padding:5px;
+}
+.darkn{
+    background-color:white;
+    color:var(--maincolor);
+}
+.left,.right{
+    display:flex;
+    align-items:center;
+    width: 50%;
+    justify-content:space-between;
+}
+.nav .right{  
+      width: 100%;
+    }
+.nav .left{
+    margin-right:30%;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
+}
+.swith,.gethelp{
+display: flex;
+align-items: center;
+color:rgba(255, 255, 255, 0.533);
+cursor: pointer;
+font-size: 20px;
+transition-duration: 0.5s;
+}
+
+.swith:hover,
+.gethelp:hover,
+.alarm:hover{
+    color:var(--mainwhit);
+   cursor: pointer;
+}
+.swithtext{
+font-size: 20px;
+}
+.swith .swithlogo{
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.opt{
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    height: auto;
+    background-color:white;
+    border-radius:5px;
+    position: absolute;
+    top: 73px;
+    left: 250px;
+    width: 10%;
+    display: none;
+}
+.t{
+    display: block;
+}
+.opt p{
+    font-size:18px;
+    color:black;
+    padding-left: 10px;
+}
+.opt p a{
+   text-decoration: none;
+}
+.opt p:hover{
+    color:var(--maincolor);
+    cursor: pointer;
+}
+.search{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+ padding:5px;
+ border-radius: 4px;
+ height: 40px;
+ width:40%; 
+ background-color:#0e5b99;
+}
+.search .form-control{
+    border: none;
+    outline: none;
+    color:white;
+    width: 100%;
+    background-color:transparent;
+}
+.search .form-control::placeholder{
+    color: rgba(255, 255, 255, 0.515);
+}
+.iconss{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-size:30px;
+    position: relative;
+}
+.iconss::after{
+    content: '';
+    position: absolute;
+    width: 0.3px;
+    top: -3;
+    left: 100%;
+    margin-left: 10px;
+    height:200%;
+    background: var(--mainwhit);
+}
+.alarm{
+    color:rgba(255, 255, 255, 0.533);
+    margin-right: 15px;
+    transition-duration: 0.5s;
+}
+.alarmsetting{
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: -125%;
+    color:black;
+    width: 300px;
+    display: none;
+}
+.tt{
+    display: block;
+}
+.alarmsetting .top{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color:rgba(128, 128, 128, 0.179);
+    padding: 5px;
+}
+.alarmsetting .top .notf{
+font-size: 20px;
+font-weight: bold;
+}
+.alarmsetting .top .clearall{
+color:gray;
+font-size:15px;
+}
+.alarmsetting .bottom{
+    padding:0 10px;
+}
+.alarmsetting .blog .notfname{
+font-size: 15px;
+color:var(--maincolor);
+cursor: pointer;
+margin-left: 10px;
+}
+.alarmsetting .blog .notfname span{
+    color:black;
+}
+.alarmsetting .blog img{
+    width: 30px;
+    height: 30px;
+    border-radius:50%;
+    object-fit: cover;
+}
+.calender{
+    cursor: pointer;
+}
+.profile{
+    display: flex;
+   justify-content: center;
+    align-items:center;
+    cursor: pointer;
+}
+
+.profile img{
+    border-radius:50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+@media(max-width:1200px){
+    .swith,.gethelp{
+        display: none;
+    }
+
+}
+@media(max-width:992px){
+    .iconss::after,
+    .iconss{
+        display: none;
+    }
+    .search{
+        width:100%;
+        margin-left: 0 !important;
+        position: relative;
+        left: -20%;
+    }
+}
+@media(max-width:768px){
+.search{
+    display: none;
+}
+.sidbarsmall{
+    display: block;
+}
+}
+
+
+.settingi{
+    position: fixed;
+right: 5%;
+bottom:10%;
+z-index: 100;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
+}
+
+.settingi .settingicon{
+ background-color:var(--maincolor);
+ color:white;
+ padding:15px;
+ width:auto;
+ height:auto;
+ border-radius:50%;
+font-size: 30px;
+display: flex;
+justify-content: center;
+align-items:center;
+transition-duration: 0.5s;
+position: fixed;
+right: 3%;
+bottom:1%;
+z-index: 100;
+}
+.settingi .settingicon:hover{
+   transform: rotate(90deg);
+   }
+   .settingi .bordsetting{
+    width:120%;
+    height:auto;
+border-radius:5px;
+background-color:white;
+margin-bottom: 10px;
+display: none;
+}
+.act{
+    display:block !important;
+}
+.bordsetting .layout,
+.bordsetting .maindrower,
+.bordsetting .Mainnavbar{
+    border-radius:2px;
+
+}
+.bordsetting .layout .to,
+.bordsetting .maindrower .to,
+.bordsetting .maindnav .to{
+   text-align: left;
+   background-color:rgb(0, 0, 0);
+   color:white;
+   padding: 5px;
+font-weight: bold;
+margin: 0;
+}
+.bordsetting .layout .bott,
+.bordsetting .maindrower .bott,
+.bordsetting .maindnav .bott{
+  padding: 5px;
+  font-size: 18px;
+  background-color:rgba(128, 128, 128, 0.082);
+  transition-duration: 0.5s;
+  display: none;
+}
+.bordsetting .layout .bott{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 10px;
+    margin: 0;
+}
+.bordsetting  .bott .blok{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    margin: 10px 0;
+}
+.bordsetting  .bott .title{
+   font-size: 15px;
+   font-weight: bold;
+}
+
+.profileedit{
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    height: auto;
+    background-color:white;
+    border-radius:5px;
+    position: absolute;
+    top: 73px;
+    right:0;
+    width: 15%;
+    display:none;
+    color:black;
+}
+
+.profileedit .to{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    background-color:rgba(128, 128, 128, 0.155);
+    padding: 10px;
+}
+.profileedit .to .inf{
+   text-align: center;
+ }
+ .profileedit .to .inf h3:hover{
+   color:var(--maincolor);
+  }
+.profileedit .to .inf p{
+   font-size:15px;
+   color: gray;
+   margin-top: 0;
+   padding: 0;
+}
+.profileedit .bot{
+ display: flex;
+ flex-direction: column;
+ text-align: left;
+ padding: 10px;
+ color:black !important;
+ }
+ .profileedit .bot a{
+   color:black;
+   text-decoration: none;
+   transition-duration: 0.5s;
+   cursor: pointer;
+    }
+    .profileedit .bot a:hover{
+        color:var(--maincolor);
+         }
+   
+ .profileedit .bot span:hover{
+  color:var(--maincolor);
+    }
+.lock{
+    display:block;
+    text-decoration: 0.5s;
+}

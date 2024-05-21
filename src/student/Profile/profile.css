@@ -1,0 +1,364 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.profilee{
+    padding:90px 20px;
+    height: 100%;
+    
+}
+.profileacount{
+    font-size: 50px;
+}
+.profilee .LEMA{
+    font-size: 15px;
+    color:rgba(102, 102, 102, 0.49);
+    font-weight: bold;
+}
+.profilee .pros .left{
+    width: 30%;
+    height: 100%;
+}
+.profilee .pros .left .card{
+    height:100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width:100%;
+    margin-top:20px;
+    border-radius:2px;
+    border:none;    
+    text-align: center;
+    padding:10px 0;
+}
+.informa img{
+    width: 100px;
+    height:100px;
+    border-radius:50%;
+    margin-bottom: 10px;
+}
+.informa .ander{
+    color:rgba(128, 128, 128, 0.738);
+}
+.informa .icos{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.informa .icos span{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    border-radius:50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin:10px;
+}
+.informa .icos .f{
+background-color:blue;
+}
+.informa .icos .t{
+   background-color: rgb(14, 137, 231);
+
+}.informa .icos .i{
+background-color:rgb(244, 12, 143);
+}
+.achive,.skills{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 25px;
+    background-color:rgba(128, 128, 128, 0.121);
+    padding:5px 0;
+    color:gray;
+}
+.colors{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    color:white;
+    margin: 10px 0;
+}
+.one,.two,.three,.four,.five{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    padding:2px;
+}
+.colors .one{
+background-color:yellow;
+}
+.colors .two{
+    background-color:rgb(5, 208, 5)
+}
+.colors .three{
+    background-color:red;
+}
+.colors .four{
+    background-color:blue
+}
+.colors .five{
+    background-color:rgb(144, 0, 255)
+}
+.colors .oneb{
+    width: 100px;
+    height:auto;
+    background-color:black;
+    color:white;
+    border-radius:5px;
+   position: absolute;
+   top: 55%;
+   left: -7%;
+   display: none;
+}
+.colors .twob{
+    width: 100px;
+    height:auto;
+    background-color:black;
+    color:white;
+    border-radius:5px;
+   position: absolute;
+   top: 55%;
+   left: 10%;
+   display: none;
+}
+.colors .threeb{
+    width: 100px;
+    height:auto;
+    background-color:black;
+    color:white;
+    border-radius:5px;
+   position: absolute;
+   top: 55%;
+   left: 36%;
+   display: none;
+}
+.colors .fourb{
+    width: 100px;
+    height:auto;
+    background-color:black;
+    color:white;
+    border-radius:5px;
+   position: absolute;
+   top: 55%;
+   left: 54%;
+   display: none;
+}
+.colors .fiveb{
+    width: 100px;
+    height:auto;
+    background-color:black;
+    color:white;
+    border-radius:5px;
+   position: absolute;
+   top: 55%;
+   left: -7%;
+   display: none;
+}
+    .colors .two{
+        background-color:rgb(5, 208, 5)
+    }
+    .colors .three{
+        background-color:red;
+    }
+    .colors .four{
+        background-color:blue
+    }
+    .colors .five{
+        background-color:rgb(144, 0, 255)
+    }
+.jsp,.nop,.vaup,.anagelrp{
+width: 40px !important;
+height:40px !important;
+}
+
+.blokpr{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    width: 100% !important;
+}
+
+.pros{
+    display: flex;
+}
+.profilee .pros .rightpro{
+ width:70%;
+    height: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction:column;
+}
+.profilee .pros .rightpro .toppro{
+   display: flex;
+   width: 100% ;
+   }
+   .profilee .pros .rightpro .toppro .card{
+    margin: 0 10px;
+    padding:10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    width:600px;
+    border: none;
+    background-color:white;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+   }
+   .profilee .pros .rightpro .toppro .card .cardp{
+    font-size: 20px;
+    margin-left:5px ;
+    margin-bottom: 0;
+   }
+   .profilee .pros .rightpro .toppro .card .cardp:hover{
+    cursor: pointer;
+    color:black;
+    border-bottom:1px solid black;
+   }
+   .profilee .pros .rightpro .toppro .card .cardh2{
+    font-size: 30px;
+   }
+
+   .profilee .pros .rightpro .toppro .card .clop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+   }
+    .meddilpro .card,
+    .bottompro .card{
+        margin: 10px;
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 97%;
+        border: none;
+        background-color: white;
+        box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+   }
+    .meddilpro .card img,
+    .bottompro .card img{
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    object-fit: cover;
+    margin-right: 10px;
+   }
+   .meddilpro .card .sherr
+   .bottompro .card .sherr{
+    font-size: 20px;
+    font-weight: bold;
+    margin:2px 0;
+   }
+   .meddilpro .card .sherr span{
+    color:rgba(128, 128, 128, 0.4);
+    font-size: 15px;
+   }
+   .meddilpro .card  a
+   .bottompro .card a{
+    margin-bottom: 10px;
+   }
+.meddilpro .react
+.bottompro .react{
+    margin: 20px;
+}
+.like{
+    margin-right: 5px;
+}
+.love{
+    margin-left: 5px;
+}
+.lk{
+    font-size: 20px;
+    color:rgb(40, 40, 226);
+    cursor: pointer;
+}
+.lo{
+    font-size: 20px;
+    color:rgb(255, 0, 0);
+    cursor: pointer;
+}
+.bottompro .card{
+    padding-left:0 !important;
+
+}
+.bottompro .cardin{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding:10px;
+    display: flex;
+    flex-direction:column;
+    text-align: left;
+    width:100%;
+    border: none;
+    background-color:white;
+    border-radius:5px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+}
+.bottompro .cardin h2{
+    font-size: 20px;
+}
+.bottompro .cardin img{
+    width: 100%;
+    height: 200px;
+    border-radius:0;
+    margin-bottom: 5px;
+}
+.bottompro .cardin .link{
+    color:black;
+    font-size: 25px;
+}
+.bottompro .react{
+    margin-right: 10px;
+}
+
+@media(max-width:1200px){
+
+}
+@media(max-width:992px){
+ .pros{
+    display: flex;
+    flex-direction: column;
+    width:300%;
+    margin-left: 5%;
+ }
+ .profilee .pros .rightpro{
+    margin-left: -9px;
+    width: 31%;
+ }
+}
+@media(max-width:768px){
+.pros{
+   width: 300%;
+}
+}
+@media(max-width:576px){
+    .profilee .pros .left {
+        width: 24%;
+        height: 100%;
+        margin-left: 3%;
+    }
+    .profilee .pros .rightpro {
+        margin-left: 47px;
+        width: 25%;
+    }
+}
+
+
+
+
+
+
+
+
+
+

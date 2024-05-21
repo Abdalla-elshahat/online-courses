@@ -1,0 +1,185 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.serice{
+    height: 100%;
+    padding:80px 0;
+}
+.serice .tops{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: 10px 20px;
+}
+.serice .tops .serich{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.serice .tops .sortdev{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color:rgba(128, 128, 128, 0.401);
+}
+.serice .tops .sortdev span{
+   font-size: 25px;
+   color:black;
+   font-weight: bold;
+}
+
+.serice #sort{
+    border-radius:5px;
+    margin-left: 10px;
+    border:1px solid rgba(128, 128, 128, 0.692);
+}
+.sericelist{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    background-color:rgba(210, 210, 210, 0.077);
+}
+.sericelist li{
+    list-style: none;
+    color:rgba(128, 128, 128, 0.479);
+}
+.sericelist .activee{
+   color:black;
+}
+.sericelist li:hover{
+   border-bottom:2px solid var(--maincolor);
+   cursor: pointer;
+   color:black;
+}
+.middels{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.middels .card{
+    height:100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align:center;
+    justify-content: center;
+    align-items:center;
+    padding: 10px;
+    width: 30%;
+    margin:10px;
+    border-radius:2px;
+    border:none;
+    cursor: pointer;
+    transition-duration: 1s;
+}
+    .back {
+        position: absolute;
+        width: 320px;
+        height: 180px;
+        left: 3%;
+        top: 3%;
+        background-color: #00000036;
+        display: none;
+        color:var(--maincolor);
+        transition-duration: 1s;
+    }
+    .back .span{
+        font-size: 50px;
+        background-color:white;
+        width:auto;
+        height:auto;
+        border-radius:50%;
+    }
+
+    .middels .card:hover .back{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition-duration: 0.5s;
+    }
+.middels .card .sericimg{
+    width: 100%;
+}
+.middels .card h2{
+    font-size: 20px;
+    margin:5px 0;
+    color:rgba(0, 0, 0, 0.666);
+}
+.middels .card h2:hover{
+    color:var(--maincolor);
+    border-bottom:1px solid var(--maincolor);
+    cursor: pointer;
+    padding-bottom: 0;
+}
+.middels .card p{
+    color:rgba(128, 128, 128, 0.525);
+    font-size:15px;
+}
+.middels .card .price{
+    color: var(--maincolor);
+    font-size: 25px;
+}
+.serice .bots{
+    width: 100%;
+    margin:20px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    text-align: center;
+background-color:#e2ecf4;
+color:white;
+border-radius:5px;
+}
+.serice .bots h2{
+    color:var(--maincolor);
+    font-size: 25px;
+    padding: 10px 0;
+}
+.serice .bots .purs{
+    background-color:var(--maincolor);
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+border:none;
+border-radius:5px;
+width:auto;
+padding: 5px 10px;
+transition-duration: 0.5s;
+}
+.serice .bots .purs:hover{
+    background-color:rgb(25, 51, 101) ;
+}
+@media(max-width:1200px){
+
+}
+@media(max-width:992px){
+    
+}
+@media(max-width:768px){
+    .serice{
+        margin-left: -35%;
+    }
+    .middels .card{
+        width:45%;
+     }
+     .back{
+        display: none;
+     }
+}
+@media(max-width:576px){
+ .middels .card{
+    width: 100%;
+ }
+ .back{
+    width: 370px;
+    height: 210px;
+ }
+}

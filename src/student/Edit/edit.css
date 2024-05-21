@@ -1,0 +1,337 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.edit{
+    padding:80px 10px;
+    height: 100%;
+    
+}
+.editacount{
+    font-size: 50px;
+    padding:10px 30px;
+}
+.basicinfo{
+    height: 50%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    margin-top: 20px;
+    border: none;
+    display: flex;
+}
+.basicinfo .left{
+    width:40%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.basicinfo .right{
+    width:60%;
+    flex-direction: column;
+   padding: 20px 0;
+    background-color:rgba(128, 128, 128, 0.148);
+}
+.basicinfo .right .f{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    margin: 30px;
+}
+.basicinfo .right .f .blok{
+    display: flex;
+    flex-direction: column;
+    margin-left:30px;
+}
+.basicinfo .right .f .blok label,
+.basicinfo .right .s .blok label{
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.basicinfo .right .f .blok input{
+    padding-left: 5px;
+    width: 250px !important;
+    border-radius:3px;
+    border:none;
+  outline: none;
+  height: 40px;
+  box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+}
+.basicinfo .right .f .blok input:focus,
+.basicinfo .right .s .blok textarea:focus,
+.basicinfo .right .th #country:focus{
+    outline:1px solid var(--maincolor);
+}
+.basicinfo .right .f .blok input::placeholder{
+    color:rgba(128, 128, 128, 0.264);
+}
+.basicinfo .s .blok{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+}
+.basicinfo .s .blok #bio{
+width:500px;
+padding: 5px;
+border-radius:3px;
+margin-bottom: 20px;
+border:none;
+outline: none;
+margin-top: 5px;
+box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+}
+.basicinfo .right .s .blok #bio:focus{
+outline: 1px solid var(--maincolor);
+}
+.basicinfo .right .s .blok #bio::placeholder{
+    color:rgba(128, 128, 128, 0.264);
+}
+.thcountry{
+text-align:left ;
+margin-left:-210px !important;
+}
+.basicinfo .right .th label{
+font-size: 20px;
+display:block;
+}
+.basicinfo .right .th #country{
+border: none;
+margin: 10px 0;
+border: 2px solid #0d93af;
+    border-radius: 20px;
+    text-align: center;
+    width: 110px;
+}
+#opass,
+#npass,
+#copass{
+    height: 30px;
+}
+.basicinfo .right .th .avalibale{
+    color:rgba(128, 128, 128, 0.511);
+}
+.sub{
+    margin-top: 10px;
+}
+.subh{
+    font-size:15px;
+}
+.basicinfo .right .f2{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items:center;
+    margin-left: -250px;
+    margin-right: 0;
+}
+.f2 input{
+    margin-bottom: 20px;
+}
+.f3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-left: -250px !important;
+}
+.Avatar{
+font-size: 20px;
+text-transform: capitalize;
+margin-bottom: 0 !important;
+}
+.upload{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width:100%;
+}
+.upload label{
+    font-size: 50px;
+    cursor:pointer;
+    color: var(--maincolor);
+    padding: 0;
+    margin-left:-13% ;
+}
+.upload button{
+    cursor: pointer;
+    width: 150px ;
+    background-color:rgb(175, 175, 175);
+    color:black;
+    font-size: 20px;
+    height:auto;
+    padding: 5px;
+    text-align: center;
+    border-radius:5px;
+    border:none;
+    outline: none;
+    margin-top: 15px;
+    transition-duration: 0.5s;
+}
+.upload button:hover{
+    background-color:var(--maincolor);
+    color:white;
+}
+.th .social{
+margin: 20px 0;
+height: 12%;
+}
+.th .social span{
+   border:1px solid rgba(0, 0, 0, 0.325);
+   border-radius:5px;
+   padding: 10px 5px;
+   margin: 10px -34px;
+   width: 100%;
+   height: 20%;
+    }
+    .th .social span .bb{
+   border:none;
+   outline: none;
+   background-color:transparent;
+   margin-top:20px;
+   padding-left: 10px;
+   height: 16px;
+    }
+.face,.twi,.insta{
+font-size: 20px;
+background-color:white;
+}
+.face{
+    color:blue;
+}
+.twi{
+    color:rgb(0, 168, 240)
+}
+.insta{
+    color:rgb(235, 5, 105)
+}
+.eye{
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid white;
+    width: 28px;
+    height: auto;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    margin-left: -33px;
+    cursor: pointer;
+}
+.on{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+#check22{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 62%;
+}
+.Save{
+    cursor: pointer;
+    background-color:rgb(0, 0, 0);
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    width: 10%;
+    padding: auto;
+    border: none;
+    outline: none;
+    border-radius:5px;
+text-align: center;
+margin-left:1000px;
+margin-top: 10px;
+transition-duration:0.5s ;
+}
+.Save:hover{
+    background-color:rgb(17, 203, 17);
+}
+.pinn{
+    font-size: 1rem;
+        margin-top: 35px;
+        margin-left: -29px;
+}
+.on label{
+    margin-right: 74px;
+    color:gray;
+}
+@media (max-width: 576px) { 
+    .edit {
+        margin: 0 10px;
+        width: 115%;
+        margin-left: -19%;
+    }
+    .edit .basicinfo{
+       display: flex;
+       flex-direction: column;
+       margin-left:-10%;
+       text-align: center;
+    }
+    .edit .basicinfo .left{
+        width: 100%;
+    }
+    .edit .basicinfo .right{
+        width:100%;
+    }
+    #check22 {
+        left: 10%;
+    }
+    .basicinfo .right .f .blok input {
+        width: 130px !important;
+        margin-left: -20px;
+    }
+    .basicinfo .right .f2 {
+    margin-left: -90%;
+    }
+    .basicinfo .s .blok #bio {
+        width:auto;
+    }
+.thcountry{
+    text-align: center;
+    margin-left: 0 !important;
+}
+    .basicinfo .right .f2 .blok {
+        display: flex;
+        flex-direction: column;
+        margin-left: 166%;
+        width: 100%;
+}
+.f3{
+    margin-left: 0 !important;
+}
+.basicinfo .right .f {
+    flex-direction: column;
+}
+#check22 {
+    left: 7%;
+}
+}
+@media (max-width: 768px) { 
+    #check22 {
+        left: 20%;
+    }
+    .sidebar{
+        display: none;
+    }
+ }
+@media (max-width: 992px) {
+    .basicinfo .right .f .blok input {
+        width: 300px !important;
+        margin-left: 0;
+    }
+    .basicinfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .basicinfo .right {
+        width: 100%;
+    }
+    .basicinfo .s .blok #bio {
+        width: auto;
+        margin-left: 27px;
+    }
+ }
+@media (min-width: 1200px) {
+    
+ }

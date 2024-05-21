@@ -1,0 +1,124 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.billing .Goto{
+background-color:var(--maincolor);
+}
+
+.upgradebilling{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+    background-color:#f1d26d15;
+    width: 99%;
+}
+.upgradebilling .left{
+width: auto;
+}
+.upgradebilling .upgradebtn{
+width: auto;
+padding: 5px;
+margin-left: auto;
+    }
+.upgradebilling .upgradeh2 .cod{
+    color:var(--maincolor);
+}
+.upgradebilling .upgradeh2 .cost{
+    color:rgb(161, 0, 0);
+}
+.upgradebilling .left .icon{
+    margin-right: 10px;
+    }
+    .basicinfo{
+        height: auto;
+    }
+    .basicinfo .rightbill{
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+        padding: 10px;
+        width: 60%;
+    }
+    .basicinfo .rightbill .ll {
+        display: flex;
+        justify-content:space-around;
+        align-items:center;
+    }
+    .basicinfo .rightbill .ll img{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .basicinfo .rightbill .ll p{
+       margin-top: auto;
+       font-size:14px;
+       font-weight: bold;
+    }
+    .basicinfo .rightbill .rr span{
+        color:white;
+        border:none;
+        border-radius:5px;
+        margin: 5px;
+        padding: 5px;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        font-weight: bold;
+    }
+    .basicinfo .rightbill .rr .remove{
+        background-color:rgb(161, 0, 0);
+    }
+    .basicinfo .rightbill .rr .remove:hover{
+        background-color:rgb(91, 0, 0);
+    }
+    .basicinfo .rightbill .rr .change{
+        color:var(--maincolor);
+        border:1px solid var(--maincolor);
+    }
+    .basicinfo .rightbill .rr .change:hover{
+        color:white;
+        background-color:var(--maincolor);
+    }
+    table{
+        width: 100%;
+        text-align: center;
+    }
+    th{
+        color:gray;
+font-weight: bold;
+border-bottom: 1px solid rgba(128, 128, 128, 0.181);
+padding-bottom: 10px;
+    }
+    td{
+        font-weight: bold;
+        padding: 5px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.181);
+    }
+    .invoice{
+        color:var(--maincolor);
+        cursor: pointer;
+    }
+    .invoice:hover{
+       border-bottom:1px solid var(--maincolor);
+    }
+    .status{
+    font-size: 15px;
+    padding: 0;
+    color:orange;
+    background-color:rgba(255, 191, 73, 0.297);
+    }
+    .dates{
+        color:rgba(128, 128, 128, 0.773);
+        display: flex;
+        align-items:center;
+        justify-content: center;;
+    }
+    @media (max-width: 768px) {
+        .billing {
+            margin-left: 0;
+        }
+        .billing .basicinfo .left{
+            width: 100%;
+        }
+    }

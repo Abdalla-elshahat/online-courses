@@ -1,0 +1,250 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.forms input::placeholder{
+    color:rgba(128, 128, 128, 0.203);
+}
+.forms .basicinfo form{
+    display: flex;
+width: 100%;
+}
+.forms .basicinfo form .left{
+    padding: 20px;
+    text-align: left;
+}
+
+.forms .basicinfo form .left p{
+    font-size: 15px;
+    color: gray;
+}
+.forms .basicinfo form .right .fform{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   justify-content:start;
+}
+.forms .basicinfo form .right .fform .block{
+    width: 100%;
+    }
+.forms .basicinfo form .right .fform input{
+ width: 100% !important;
+ }
+ .forms .basicinfo form .right #submit{
+font-size: 20px;
+background-color:var(--maincolor);
+color:white;
+border-radius: 5px;
+padding: 5px;
+width: auto;
+border:1px solid transparent;
+outline: none;
+width: 20% !important;
+margin: 10px 0 0 0;
+transition-duration: 0.5s;
+    }
+    .forms .basicinfo form .right #submit:hover{
+       border:1px solid var(--maincolor);
+       color:var(--maincolor);
+       background-color:transparent;
+            }
+
+
+            .forms .firstname{
+                width:auto;
+                border-radius: 3px;
+                border: none;
+                outline: none;
+                background-color:white !important;
+                height:auto;
+            }
+            #firstname,#lastname,#city,#state{
+               border:none;
+               margin-right:5px;
+            }
+
+.forms #check{
+    margin-right: 10px;
+}
+
+.forms .check{
+   float: left;
+}
+.forms .basicinfo .right .fi {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+}
+.forms .basicinfo .right .fi .le{
+  margin-right: 5px;
+}
+.forms .basicinfo .right .fi .re{
+    margin-left: 5px;
+  }
+.forms .uuuo .right {
+padding: 10px;
+}
+.forms .basicinfo .right .blok .nx{
+width: 100%;
+padding:2px 5px ;
+border-radius:3px;
+display: flex;
+align-items:center;
+background-color:white;
+}
+.forms .basicinfo .right .blok .nx:focus-within {
+    border: 1px solid var(--maincolor);
+}
+.forms .basicinfo .right .blok .flash{
+    background-color:transparent;
+     }
+     .forms .basicinfo .right .blok .flash:focus-within{
+         border: none;
+          }
+          .forms .basicinfo .right .blok .round{
+            border-radius:20px;
+             }
+.forms .basicinfo .right .blok{
+  width: 100%;
+  margin: 10px 0;
+    }
+.forms .uuuo input{
+    border:none;
+    outline: none;
+    margin:2px;
+    background-color:transparent;
+    width: 100% !important;
+}
+.forms label{
+    display: block;
+}
+.forms .basicinfo .nfy{
+    margin:0 5px;
+    font-size: 20px;
+}
+.forms .basicinfo .green{
+color:rgb(3, 187, 3);
+border:1px solid rgb(3, 187, 3);
+}
+.forms .basicinfo .red{
+    color:rgb(202, 0, 0);
+    border:1px solid rgb(200, 0, 0);
+    }
+
+    .forms label{
+    margin: 10px;
+    }
+    .forms .jjj{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .forms .fileforms{
+        display: block ;
+    }
+
+input[type="file"]{
+    display: none;
+}
+.forms .carto .link{
+    font-size: 25px;
+    cursor: pointer;
+}
+    .cardform{
+width:90%;
+    }
+    .forms .card .carto{
+display:flex;
+justify-content: space-between;
+max-width: 50%;
+align-items:center;
+    }
+    .forms .cardform .carto select{
+       border:none;
+       outline: none;
+       cursor: pointer;
+       width: 100%;
+       border-radius:0;
+        }
+        .forms  #head h1{
+           font-size: 30px;
+             }
+             .forms  #head h2{
+                font-size:25px;
+                  }
+                  .forms  #head h3{
+                    font-size: 20px;
+                      }
+    .forms .card .carto span{
+        cursor: pointer;
+        font-size: 20px;
+        transition-duration: 0.5s;
+        }
+        .forms .card .carto span:hover{
+           color:var(--maincolor)
+            }
+    .forms .card .carbottom{
+      width: 100%;
+      border-top: 1px solid rgba(168, 168, 168, 0.223);
+        }
+        .forms .card .carbottom textarea{
+            width: 100%;
+            border:none;
+            outline: none;
+            padding:5px;
+              }
+
+              .forms .taml{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                width: 100%;
+                padding: 10px 20px;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.485);
+              }
+              .forms .taml .l{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+              }
+              .forms .taml .inrf{
+                margin-left: 10px;
+                display: flex;
+                flex-direction: column;
+              }
+
+              .forms .taml .r{
+               cursor: pointer;
+               background-color:white;
+               color:red;
+               width:30px;
+               height:30px;
+               font-size: 20px;
+               padding: 5px;
+               border-radius:50%;
+               display: flex;
+               justify-content: center;
+               align-items:center;
+               transition-duration: 0.5s;
+              }
+              .forms .taml .r:hover{
+               background-color:red;
+               color:white;
+               }
+               .forms #fileforms{
+                display: none;
+               }
+               .forms .fileforms{
+                font-size:25px;
+                display: flex;
+                justify-content: center;
+                align-items:center;
+                background-color:rgba(75, 121, 207, 0.163);
+                border:1px dotted var(--maincolor);
+                width: 50%;
+                height: auto;
+                padding: 10px;
+                cursor: pointer;
+                border-radius:3px;
+               }

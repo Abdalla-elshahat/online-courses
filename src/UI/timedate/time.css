@@ -1,0 +1,45 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.buttons .b {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.115);
+}
+.buttons .btw {
+    font-size: 30px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-bottom:1px solid rgba(128, 128, 128, 0.43);
+    padding-top: 20px;
+}
+.buttons .btw p{
+    font-size: 20px;
+    color: rgba(128, 128, 128, 0.326);
+}
+.times .botb{
+    flex-wrap: wrap;
+}
+.times .card{
+    width: 30%;
+}
+.times .card .bottom{
+    display: flex;
+    flex-direction: column;
+}
+.times .card .bottom label{
+   margin-bottom: 10px;
+}
+.times .card .bottom input{
+   border: 1px solid rgba(128, 128, 128, 0.268);
+   padding: 5px;
+   border-radius: 5px;
+}
+.times .card .bottom .an{
+display: flex;
+justify-content: space-between;
+align-items: center;
+color:var(--maincolor);
+ }
+ .times .card .bottom .quis{
+   color:gray;
+     }

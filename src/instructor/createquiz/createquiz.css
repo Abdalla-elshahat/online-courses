@@ -1,0 +1,115 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.quiz .card{
+    height:auto;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 97%;
+    margin-top: 20px;
+    border-radius: 2px;
+    border: none;
+    margin: 15px 5px;
+    padding: 10px;
+}
+.quiz .card .toto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(128, 128, 128, 0.171);
+    padding: 10px;
+}
+.quiz .card .toto .tograp{
+   display: flex;
+   align-items:center;
+   align-items:center;
+   font-size: 25px;
+}
+.quiz .card .toto .tograp span{
+    background-color:black;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    padding: 5px;
+    border-radius:5px;
+    margin-right: 10px;
+ }
+ .quiz .card .toto .tograp p{
+   margin-top: 10px;
+ }
+ .quiz .card .toto .delet{
+    background-color:rgb(197, 5, 5);
+    color:white;
+    font-size: 20px;
+    padding:5px 10px;
+    border-radius:5px;
+    cursor: pointer;
+ }
+.quiz .cardquiz {
+    background-color:rgba(128, 128, 128, 0.107);
+}
+.quiz .cardquiz label{
+   font-size: 15px;
+   color:gray;
+   margin-bottom: 5px;
+}
+.quiz .cardquiz input{
+    margin-bottom: 10px;
+    border:1px solid rgba(128, 128, 128, 0.116);
+    outline: none;
+    padding: 5px;
+    border-radius:2px;
+ }
+ .quiz .cardquiz input:focus{
+   border-color:var(--maincolor);
+ }
+ .quiz .cardquiz span{
+    background-color:var(--maincolor);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: max-content;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    border:1px solid var(--maincolor)
+ }
+ .quiz .cardquiz span:hover{
+    background-color:white;
+    color:var(--maincolor);
+ }
+
+.quiz .card .boto .correct p{
+text-align:end;
+margin-bottom: 10px;
+}
+.quiz .card .boto .blocc{
+   display: flex;
+   justify-content: space-between;
+   align-items:center;
+   flex-direction: row;
+   border: 1px solid rgba(128, 128, 128, 0.148);
+   border-radius:3px;
+   padding: 10px;
+    }
+    .quiz .card .boto .blocc label span{
+    margin-right: 10px;
+    color:rgba(128, 128, 128, 0.549);
+    font-size:20px;
+         }
+         .quiz .card .newanswer {
+            background-color: rgb(3, 182, 3);
+            color: white;
+            font-size: 20px;
+            width: max-content;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 3px;
+            margin-top: 10px;
+            cursor: pointer;
+        }

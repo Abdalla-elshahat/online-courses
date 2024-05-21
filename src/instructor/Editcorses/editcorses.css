@@ -1,0 +1,140 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.editcorses {
+    margin-left: 10px;
+}
+.editcorses .bottomc{
+    display: flex;
+    justify-content: space-between;
+}
+.editcorses .bottomc .card{
+    height: 100%;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 97%;
+    margin-top: 20px;
+    border-radius: 2px;
+    border: none;
+    margin:15px 5px;
+    position: relative;
+    width: 38%;
+}
+.editcorses .bottomc .cardleft{
+    width: 60%;
+
+}
+.editcorses .bottomc .cardleft,
+.editcorses .bottomc .cardleft .blok{
+text-align: left;
+display: flex;
+flex-direction: column;
+}
+
+.editcorses .bottomc .cardleft input,
+.editcorses .bottomc .cardleft textarea{
+    width: 100%;
+    border:1px solid rgba(128, 128, 128, 0.159);
+    border-radius: 3px;
+    padding: 5px;
+    height:20%;
+    outline: none;
+    margin-bottom:10px;
+}
+.editcorses .bottomc .cardleft label{
+   font-size: 15px;
+   font-weight: bold;
+   margin-bottom:5px;
+}
+.editcorses .bottomc .cardleft input:focus,
+.editcorses .bottomc .cardleft textarea:focus{
+    border-color: var(--maincolor);
+}
+.editcorses .bottomc .cardleft input::placeholder,
+.editcorses .bottomc .cardleft textarea::placeholder{
+    color:rgba(128, 128, 128, 0.5);
+    font-size:15px;
+}
+.editcorses .bottomc .cardleft .sele{
+    display: flex;
+    flex-direction: column;
+}
+.editcorses .bottomc .cardleft .sele #sele{
+    width: 30%;
+    border:1px solid rgba(128, 128, 128, 0.411);
+    border-radius: 3px;
+    padding: 5px;
+    height:20%;
+    outline: none;
+    margin-bottom:10px;
+}
+.editcorses .bottomc .cardleft .sele #sele:focus{
+    border-color: var(--maincolor);
+}
+.editcorses .bottomc .cardleft .f3 .avatar{
+    font-size: 25px;
+font-weight: bold;
+margin-left: -16%;
+}
+.editcorses .bottomc .cardleft .f3 .upload{
+    width: auto;
+    margin-left: 10%;
+}
+.editcorses .bottomc .cardleft .tot {
+    font-size:50px;
+}
+.editcorses .bottomc .cardleft .bake {
+    background-color:rgba(128, 128, 128, 0.123);
+    padding: 10px;
+}
+.editcorses .bottomc .cardleft .save{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+.editcorses .bottomc .cardleft input[type="submit"]{
+    background-color: rgb(10, 200, 10);
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+    width:auto;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border:none;
+    height: auto;
+}
+.editcorses .bottomc .card .toeditcors{
+display: flex;
+justify-content: space-between;
+align-items:center;
+padding:5px 10px;
+background-color:rgba(128, 128, 128, 0.152);
+}
+.editcorses .bottomc .card .toeditcors h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.editcorses .bottomc .card .toeditcors p{
+   color:rgba(128, 128, 128, 0.59);
+}
+.editcorses .bottomc .card .toeditcors .new{
+    color:white;
+    background-color: var(--maincolor);
+    font-size:20px;
+    border-radius:3px;
+    height: auto;
+    padding:5px 10px;
+    cursor: pointer;
+ }
+ @media(max-width:992px){
+    .editcorses .bottomc{
+        display:flex;
+        flex-direction: column;
+    }
+ }

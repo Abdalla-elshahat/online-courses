@@ -1,0 +1,70 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.pay .tops .serich{
+    font-size:50px !important;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.251);
+    padding-bottom: 20px;
+    width: 100%;
+}
+.pay{
+    margin: 0 10px;
+}
+.pay input{
+width: 100%;
+}
+.pay  .rightpay{
+    background-color: rgba(128, 128, 128, 0.148);
+    width: 60% !important;
+    padding: 3%;
+}
+.pay  .rightpay img{
+   width: 100px;
+   object-fit: cover;
+}
+.pay  .rightpay .change{
+    width: auto;
+    padding: 5px;
+    color: white;
+    background-color:rgb(5, 191, 5);
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.pay .marfsh{
+    display: flex;
+    place-self: flex-start;
+    flex-direction: column;
+    padding-left: 5%;
+}
+.pay .cont{
+    display: flex;
+    transition-duration: 0.5s;
+}
+.pay .cont span{
+padding: 10px;
+color: black;
+background-color:white;
+cursor: pointer;
+}
+.pay .marfsh .cont .active{
+    background-color:var(--maincolor);
+    border-radius:5px;
+    color: white;
+}
+.pay .up{
+    background-color:var(--maincolor);
+    cursor: pointer;
+    color:white;
+    padding:3px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius:  3px;
+    transition-duration: 0.8s;
+}
+.pay .up:hover{
+border: 1px solid var(--maincolor);
+color:var(--maincolor) ;
+background-color:transparent   
+}

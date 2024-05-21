@@ -1,0 +1,259 @@
+:root{
+    --maincolor:rgb(75, 121, 207) ;
+    --mainwhit:white;
+}
+.buttons{
+    padding-top:80px;
+    height: 100%;
+    margin:0 10px ;
+    margin-bottom: 50px;
+    transition-duration: 0.5s;
+}
+.buttons .b{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+border-bottom:1px solid rgba(128, 128, 128, 0.284);
+padding-bottom: 20px;
+}
+.buttons .botb{
+    display: flex;
+    justify-content: space-between;
+}
+.buttons .botb .le,
+.buttons .botb .ri{
+    width:49%;
+}
+.card{
+    height:auto;
+    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 2px;
+    border: none;
+}
+.buttons .botb .card .top{
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.252);
+    padding: 10px;
+}
+.buttons .botb .card .bottom{
+    padding: 10px;
+}
+.buttons .botb .card .bottom .tops{
+    font-weight:400;
+}
+.buttons .botb .card .bottom .tops span{
+    color:rgb(234, 47, 84);
+}
+.buttons .botb .card .bottom .buttonss{
+    display:flex;
+    flex-wrap: wrap;
+}
+.buttons button{
+    transition-duration: 0.5s;
+}
+.buttons .botb .card .bottom .buttonss button{
+   border:none;
+   outline: none;
+   border-radius:3px;
+   width: auto;
+   padding:5px 10px;
+   color:white;
+   font-weight:400;
+   margin: 10px;
+font-size: 18px;
+background-color:white;
+}
+.buttons .botb .card .bottom .buttonss .primary{
+    background-color:var(--maincolor);
+}
+.buttons .botb .card .bottom .buttonss .secondry{
+    background-color:black;
+}
+.buttons .botb .card .bottom .buttonss .success{
+    background-color:rgb(8, 155, 8);
+}
+.buttons .botb .card .bottom .buttonss .danger{
+    background-color:rgb(154, 0, 0);
+}
+.buttons .botb .card .bottom .buttonss .warning{
+    background-color:rgb(183, 119, 0);
+    color:white;
+}
+.buttons .botb .card .bottom .buttonss .info{
+    background-color:rgb(0, 203, 203);
+}
+.buttons .botb .card .bottom .buttonss .lighte{
+    background-color:white;
+    color:black !important;
+    border:0.5px solid rgba(128, 128, 128, 0.427) !important;
+}
+.buttons .botb .card .bottom .buttonss .dark{
+    background-color:black;
+    color:white;
+}
+.buttons .botb .card .bottom .buttonss .linke{
+    border:none;
+    color:var(--maincolor) !important;
+    background-color:white;
+}
+
+.buttons .botb .card .bottom .buttonstwo .primary{
+    color:var(--maincolor);
+    border: 1px solid var(--maincolor);
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .secondry{
+ color:black;
+    border: 1px solid black;
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .success{
+    color:rgb(8, 155, 8);
+    border: 1px solid rgb(8, 155, 8);
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .danger{
+ color:rgb(154, 0, 0);
+ border: 1px solid rgb(154, 0, 0);
+ background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .warning{
+    color:rgb(183, 119, 0);
+    border: 1px solid rgb(183, 119, 0);
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .info{
+    color:rgb(0, 203, 203);
+    border: 1px solid rgb(0, 203, 203);
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .lighte{
+    background-color:white;
+    color:black !important;
+    border:0.5px solid rgba(128, 128, 128, 0.427) !important;
+}
+.buttons .botb .card .bottom .buttonstwo .dark{
+    background-color:black;
+    color:white;
+}
+.buttons .botb .card .bottom .buttonstwo .linke{
+    border:none;
+    color:var(--maincolor) !important;
+    background-color:white;
+}
+.buttons .botb .card .bottom .buttonsthree button{
+    border-radius:25px;
+}
+.buttons .botb .card .bottom .buttonsedit  button{
+    background-color:white;
+}
+.buttons .botb .card .bottom .sam .larg{
+color:white;
+background-color:var(--maincolor);
+}
+.buttons .botb .card .bottom .sam .normal{
+    color:white;
+background-color:aqua;
+}
+.buttons .botb .card .bottom .sam .small{
+    color:white;
+background-color:rgb(0, 177, 0);
+}
+
+.buttons .botb .card .bottom .oo button{
+    padding: 5px 20px;
+}
+.buttons .botb .card .bottom .oo .x{
+    background-color:rgb(153, 0, 0);
+    color:white;
+}
+.buttons .botb .card .bottom .oo .music{
+    color:white;
+    background-color:black;
+}
+.buttons .botb .card .bottom .oo .star{
+    background-color:var(--maincolor);
+    color:white;
+}
+.buttons .botb .card .bottom .oo .like{
+    background-color:rgb(4, 187, 4);
+    color:white;
+}
+.buttons .botb .card .bottom .oo .setting{
+    color:black;
+    background-color:rgb(214, 139, 0);
+}
+.buttons .botb .card .bottom .oo .favor{
+    color:black;
+    background-color:white;
+    border:1px solid rgba(128, 128, 128, 0.504);
+}
+.buttons .botb .card .bottom .oo .launch{
+    color:black;
+    background-color:rgb(214, 139, 0);
+}
+.buttons .botb .card .bottom .oo .cloudhosting{
+ color:white;
+ background-color:rgb(0, 220, 220);   
+}
+
+.buttons .botb .card .bottom .llll{
+    display:flex;
+    flex-direction: column;
+}
+.buttons .botb .card .bottom .llll button{
+   color:white;
+   font-size: 20px;
+   border:none;
+   border-radius:5px;
+   outline: none;
+   width: 100%;
+   margin:10px 0;
+   font-weight: bold;
+   padding: 5px 0;
+}
+ button:hover{
+    opacity: 0.8;
+ }
+.buttons .botb .card .bottom .llll .blok1{
+   background-color:var(--maincolor)
+ }
+ .buttons .botb .card .bottom .llll .blok2{
+    background-color:rgb(2, 161, 2);
+  }
+  .buttons .botb .card .bottom .llll .blok3{
+    background-color:rgb(0, 166, 166);
+  }
+  .buttons .diff .comp{
+    margin: 10px 0;
+  }
+  .buttons .diff .comp button{
+    outline: none;
+    border:1px solid rgb(218, 218, 218);
+    padding:3px 10px;
+    background-color:white;
+    cursor:pointer;
+    font-size: 20px;
+  }
+  .buttons .diff .comp button:not(.twwo):hover{
+    background-color:rgba(128, 128, 128, 0.321);
+  }
+  .buttons .diff .comp .twwo{
+    background-color:var(--maincolor);
+    border-color:var(--maincolor);
+  }
+  @media(max-width:992px){
+    .buttons .botb{
+        display: flex;
+        flex-direction: column;
+    }
+    .card,.ri,.le{
+       width: 100% !important;
+    }
+  }

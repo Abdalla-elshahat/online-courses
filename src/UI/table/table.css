@@ -1,0 +1,95 @@
+.table .editacount{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+    padding-bottom:2%;
+}
+
+.table .basicinfo .right table{
+background-color: transparent;
+ }
+.table .basicinfo .right table tr{
+   display: flex;
+   align-items: center;
+   justify-content:space-between;
+   border-bottom:1px solid rgba(128, 128, 128, 0.23);
+   transition-duration: 0.5s;
+}
+.table .basicinfo .right table tr .letabl{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 35%;
+ }
+ .table .basicinfo .right table tr .ritabl{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 50%;
+ }
+.table .basicinfo .right table tr th{
+font-size: 15px;
+font-weight: bold;
+ }
+.table .basicinfo img{
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   object-fit: cover;
+ }
+ .table .basicinfo .right table tr th,td{
+    border: none;
+ }
+ .table .basicinfo .right table .us{
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(74, 74, 74);
+ }
+ .table .basicinfo .right table .salary{
+  font-weight: bold;
+  font-size: 20px;
+ }
+ .table .basicinfo .right table  .adm{
+    background-color:rgb(0, 102, 255);
+    border-radius:3px;
+    padding: 5px;
+ }
+ .table .basicinfo .right .search{
+display: flex;
+justify-content: space-between;
+align-items:center;
+width:100%;
+border:1px solid rgba(128, 128, 128, 0.184);
+margin-bottom: 20px;
+ }
+ .table .basicinfo .right .search input{
+  border:none;
+  outline: none;
+  width:100%;
+     }
+.table .basicinfo .right .blokk{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    border-bottom:1px solid rgba(128, 128, 128, 0.153);
+    background-color:transparent;
+}
+.table .basicinfo .right .blokk .lett{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.table .basicinfo .right .blokk .lett span{
+    margin-left: 10px;
+    margin-top: 10px;
+ }
+.table .basicinfo .right .blokk .lett h2{
+   font-size: 20px;
+   margin: 0;
+   padding: 0;
+}
+
+@media (max-width:992px){
+    .table .basicinfo .right .search {
+        margin-right: -40%;
+    }
+}
