@@ -1,6 +1,5 @@
-
- import './App.css';
- import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './input/input';
 import Add from './Add/Add';
 import Navbar from './Navbar/Navbar';
@@ -38,6 +37,14 @@ import Table from './UI/table/table';
 import Taps from './UI/taps/taps';
 import Icons from './UI/icons/icons';
 import Vector from './UI/vectormap/vector';
+import Updatpass from './student/updatepass/updatepass';
+import AddCourse from './student/Addcourses/addcourses';
+import ViewCourse from './instructor/view/view';
+import Addfriends from './student/addfriends/addfriends';
+import FollowersList from './student/Profile/followers/followers';
+import Profilefollower from './student/Profile/followerpage/followerpage';
+import Score from './student/takequiz/score/score';
+import Myquiz from './instructor/myquiz/myquiz';
 
 function App() {
   return (
@@ -57,16 +64,19 @@ function App() {
     <Route path='/cours' element={ <Cours/>}/>
     <Route path='/clesson' element={ <Clesson/>}/>
     <Route path='/takecors' element={ <Takecors/>}/>
-    <Route path='/takequiz' element={ <Takequiz/>}/>
+    <Route path='/takequiz/:quizid' element={ <Takequiz/>}/>
     <Route path='/billing' element={ <Billing/>}/>
     <Route path='/login' element={ <Login/>}/>
     <Route path='/sinup' element={ <Sinup/>}/>
+    <Route path='/updatepass' element={ <Updatpass/>}/>
+    <Route path='/score/:quizid' element={ <Score/>}/>
     {/* instrctor */}
     <Route path='/dashbord' element={ <Dashboard/>}/>
     <Route path='/mycorses' element={ <Mycorses/>}/>
+    <Route path='/myquiz' element={ <Myquiz/>}/>
     <Route path='/editcorses' element={ <Editcorses/>}/>
     <Route path='/editlesson' element={ <Editelesson/>}/>
-    <Route path='/createquiz' element={ <Createquiz/>}/>
+    <Route path='/createquiz/:courseId' element={ <Createquiz/>}/>
     <Route path='/erning' element={ <Erning/>}/>
     <Route path='/profileins' element={ <Profileins/>}/>
     <Route path='/pay' element={ <Pay/>}/>
@@ -82,6 +92,13 @@ function App() {
     <Route path='/taps' element={ <Taps/>}/>
     <Route path='/icons' element={ <Icons/>}/>
     <Route path='/vector' element={ <Vector/>}/>
+    
+    <Route path='/followers' element={<FollowersList/>} />
+    <Route path='/addcourss' element={ <AddCourse/>}/>
+    <Route path='/editcorses/:courseid' element={<Editcorses />} />
+    <Route path='/view/:courseId' element={<ViewCourse/>} />
+    <Route path='/Addfriends' element={<Addfriends/>} />
+    <Route path='/profilefollow/:userid' element={<Profilefollower/>} />
       </Routes>
       </div>
     </div>

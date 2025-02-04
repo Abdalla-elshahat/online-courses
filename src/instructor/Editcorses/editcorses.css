@@ -35,7 +35,8 @@ flex-direction: column;
 }
 
 .editcorses .bottomc .cardleft input,
-.editcorses .bottomc .cardleft textarea{
+.editcorses .bottomc .cardleft textarea,
+.editcorses .bottomc .cardleft select{
     width: 100%;
     border:1px solid rgba(128, 128, 128, 0.159);
     border-radius: 3px;
@@ -50,7 +51,8 @@ flex-direction: column;
    margin-bottom:5px;
 }
 .editcorses .bottomc .cardleft input:focus,
-.editcorses .bottomc .cardleft textarea:focus{
+.editcorses .bottomc .cardleft textarea:focus,
+.editcorses .bottomc .cardleft select:focus{
     border-color: var(--maincolor);
 }
 .editcorses .bottomc .cardleft input::placeholder,

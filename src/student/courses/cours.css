@@ -2,6 +2,10 @@
     --maincolor:rgb(75, 121, 207) ;
     --mainwhit:white;
 }
+a{
+    text-decoration: none;
+    color:white;
+}
 .courses .Goto{
 background-color:rgb(10, 200, 10);
 color: white;
@@ -69,7 +73,6 @@ font-weight: bold;
     background-color:rgb(0, 9, 21);
     width: 100%;
     text-align:center;
-    padding-top:20px;
 }
 .cardcors .topcors .corsh{
     color:white;
@@ -80,8 +83,9 @@ font-weight: bold;
     border:none;
 }
 .topcors img{
-        width:100px;
-        height: auto;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 .bottomcors{
     display: flex;
@@ -91,18 +95,37 @@ font-weight: bold;
     width: 100%;
     padding: 5px 10px;
 }
-.taqem{
+.taqem {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.taqem .top{
     font-size: 20px;
     font-weight: bold;
     color:rgb(201, 201, 0);
 }
-.taqem span{
+.taqem .top span{
     margin-left: 10px;
     color:black;
 }
 .bottomcors span{
     color:rgba(128, 128, 128, 0.589);
     margin: 10px 0;
+}
+.bottomcors .author span{
+    color:rgba(0, 0, 0, 0.589);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.bottomcors .hplus{
+    color:var(--maincolor);
+    font-size: 50px;
+}
+.bottomcors .hdone{
+    color:rgb(0, 255, 17);
+    font-size: 50px;
 }
 .bottomcors .buy{
     display: flex;
@@ -153,6 +176,56 @@ font-weight: bold;
     margin-left: 20px;
 width:100px;
 }
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.pagination-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-arrow:hover {
+    background-color: #e0e0e0;
+    color:var(--maincolor);
+}
+
+.pagination-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination-arrow svg {
+    font-size: 20px;
+}
+
+span {
+    font-weight: bold;
+}
+
+
+
+
+
+
+
 
 @media(max-width:1200px){
     .inputall{

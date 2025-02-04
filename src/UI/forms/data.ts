@@ -136,3 +136,51 @@ export interface ColourOption {
     },
   ];
   
+  export interface SkillOption {
+    readonly value: string;
+    readonly label: string;
+    readonly image:String;
+  }
+  export const programmingSkills: readonly SkillOption[] = [
+    { value: 'JS', label: 'JavaScript', image: 'https://img.icons8.com/color/48/javascript.png' },
+    { value: 'TS', label: 'TypeScript', image: 'https://img.icons8.com/color/48/typescript.png' },
+    { value: 'PY', label: 'Python', image: 'https://img.icons8.com/color/48/python.png' },
+    { value: 'RB', label: 'Ruby', image: 'https://img.icons8.com/color/48/ruby-programming-language.png' },
+    { value: 'JAVA', label: 'Java', image: 'https://img.icons8.com/color/48/java-coffee-cup-logo.png' },
+    { value: 'C', label: 'C', image: 'https://img.icons8.com/color/48/c-programming.png' },
+    { value: 'CPP', label: 'C++', image: 'https://img.icons8.com/color/48/c-plus-plus-logo.png' },
+    { value: 'PHP', label: 'PHP', image: 'https://img.icons8.com/officel/48/php-logo.png' },
+    { value: 'R', label: 'R', image: 'https://img.icons8.com/color/48/r-project.png' },
+    { value: 'GO', label: 'Go', image: 'https://img.icons8.com/color/48/golang.png' },
+    { value: 'SWIFT', label: 'Swift', image: 'https://img.icons8.com/color/48/swift.png' },
+    { value: 'KOTLIN', label: 'Kotlin', image: 'https://img.icons8.com/color/48/kotlin.png' },
+    { value: 'C_SHARP', label: 'C#', image: 'https://img.icons8.com/color/48/c-sharp-logo.png' },
+    { value: 'HTML', label: 'HTML', image: 'https://img.icons8.com/color/48/html-5.png' },
+    { value: 'CSS', label: 'CSS', image: 'https://img.icons8.com/color/48/css3.png' },
+    { value: 'NODE', label: 'Node.js', image: 'https://img.icons8.com/color/48/nodejs.png' },
+    { value: 'REACT', label: 'React.js', image: 'https://img.icons8.com/color/48/react-native.png' },
+    { value: 'ANGULAR', label: 'Angular', image: 'https://img.icons8.com/color/48/angularjs.png' },
+    { value: 'VUE', label: 'Vue.js', image: 'https://img.icons8.com/color/48/vue-js.png' },
+    { value: 'NEXT', label: 'Next.js', image: 'https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-next-js-a-javascript-framework-for-building-react-applications-logo-color-tal-revivo.png' },
+    { value: 'SASS', label: 'SASS', image: 'https://img.icons8.com/color/48/sass.png' },
+    { value: 'BOOTSTRAP', label: 'Bootstrap', image: 'https://img.icons8.com/color/48/bootstrap.png' },
+    { value: 'MYSQL', label: 'MySQL', image: 'https://img.icons8.com/color/48/mysql-logo.png' },
+    { value: 'POSTGRESQL', label: 'PostgreSQL', image: 'https://img.icons8.com/color/48/postgreesql.png' },
+    { value: 'MONGO', label: 'MongoDB', image: 'https://img.icons8.com/color/48/mongodb.png' },
+    { value: 'DOCKER', label: 'Docker', image: 'https://img.icons8.com/color/48/docker.png' },
+    { value: 'KUBERNETES', label: 'Kubernetes', image: 'https://img.icons8.com/color/48/kubernetes.png' },
+    { value: 'AWS', label: 'AWS', image: 'https://img.icons8.com/color/48/amazon-web-services.png' },
+    { value: 'AZURE', label: 'Azure', image: 'https://img.icons8.com/color/48/azure-1.png' },
+    { value: 'GCP', label: 'Google Cloud', image: 'https://img.icons8.com/color/48/google-cloud.png' },
+    { value: 'FLASK', label: 'Flask', image: 'https://img.icons8.com/ios/48/flask.png' },
+    { value: 'LARAVEL', label: 'Laravel', image: 'https://img.icons8.com/color/48/laravel.png' },
+    { value: 'GRAPHQL', label: 'GraphQL', image: 'https://img.icons8.com/color/48/graphql.png' },
+    { value: 'TENSORFLOW', label: 'TensorFlow', image: 'https://img.icons8.com/color/48/tensorflow.png' },
+    { value: 'JENKINS', label: 'Jenkins', image: 'https://img.icons8.com/color/48/jenkins.png' },
+    { value: 'VAGRANT', label: 'Vagrant', image: 'https://img.icons8.com/color/48/vagrant.png' },
+    { value: 'UNITY', label: 'Unity', image: 'https://img.icons8.com/ios-filled/48/unity.png' },
+    { value: 'ANDROID', label: 'Android', image: 'https://img.icons8.com/color/48/android-os.png' },
+    { value: 'IOS', label: 'iOS', image: 'https://img.icons8.com/color/48/ios-logo.png' },
+  ];
+  
+  

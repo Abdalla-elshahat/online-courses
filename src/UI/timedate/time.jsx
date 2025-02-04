@@ -7,7 +7,7 @@ function Time(){
             <h2 className="b">Time & Date</h2>
             <h2 className="b btw">Flatpickr
             <p>A simple yet powerful datepicker powered by Flatpickr. Please read the official plugin documentation for a full list of options.</p></h2>
-        <div className="botb">
+        <div className="botb botbs">
                 <div className="card">
                 <div className="top"><p>Date Picker</p></div>
                  <div className="bottom">

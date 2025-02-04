@@ -13,7 +13,6 @@ import { PiTextItalicBold } from "react-icons/pi";
 import { FaBold } from "react-icons/fa";
 import { useState } from 'react';
 import React from 'react';
-
 import Select from 'react-select';
 import { colourOptions } from './data.ts';
 function Formui(){

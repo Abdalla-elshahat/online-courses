@@ -1,8 +1,18 @@
 .takequiz .tops{
     border-bottom: 1px solid rgba(128, 128, 128, 0.104);
 }
+.quizloc span{
+    display: flex;
+    justify-content: space-around;
+    }
+    .quizloc span p{
+        display: flex;
+        justify-content: space-around;
+        align-items:center;
+        }
 .quizloc p{
-color: gray;
+color: rgb(98, 98, 98);
+font-size: 25px;
 }
 .upgradequiz{
     margin: 10px 15px;

@@ -1,0 +1,109 @@
+.notifications {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+  }
+  
+  .notf {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .clearall {
+    font-size: 14px;
+    color: #ff5c5c;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .clearall:hover {
+    color: #ff3030;
+  }
+  
+  .bottom {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .blog {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .blog:hover {
+    transform: translateY(-2px);
+  }
+  
+  .blog img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .blog .notfname {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .actions {
+    margin-top: 8px;
+  }
+  
+  .accept-btn,
+  .reject-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accept-btn {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .accept-btn:hover {
+    background-color: #43a047;
+  }
+  
+  .reject-btn {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .reject-btn:hover {
+    background-color: #e53935;
+  }
+  
+  .bottom p {
+    text-align: center;
+    color: #757575;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  

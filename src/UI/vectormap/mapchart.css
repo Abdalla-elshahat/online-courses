@@ -19,3 +19,13 @@
     width: 80%;
   }
   
+  .avatars{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .buttons .botb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

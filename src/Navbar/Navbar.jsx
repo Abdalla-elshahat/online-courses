@@ -9,10 +9,63 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { CiLogin } from "react-icons/ci";
 import { IoMenuOutline } from "react-icons/io5";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Notifactions from './notifcations/notfications';
+import Cookies from "js-cookie"; 
 function Navbar(){
+      const domain = "http://localhost:4000";
+      const token = Cookies.get("token");
     const[dark,setdark]=useState(false);
     const[darkn,setdarkn]=useState(false);
+    const[data,setdata]=useState([]);
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${domain}/api/users/logout`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            if (response.ok) {
+                alert('Logout successful!');
+            } else {
+                const errorData = await response.json();
+                console.error('Error during login:', errorData);
+                alert('Login failed! Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again.');
+        } finally {
+        }
+    };
+    const handlegetdata=async()=>{
+        try {
+            const response = await fetch(`${domain}/api/users/alldata`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setdata(data)
+            } else {
+                const errorData = await response.json();
+                console.error('Error during login:', errorData);
+                alert('Login failed! Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again.');
+        } finally {
+        }
+    }
+    useEffect(()=>{
+        handlegetdata();
+    },[data])
     function change(ele){
         if(ele.style.display==="none"){
             ele.style.display="block" 
@@ -74,47 +127,39 @@ side.classList.remove("darkn");
         <input class="form-control "  type="search" placeholder="Search" aria-label="Search"/>
         <IoMdSearch/>
       </div>
-      <div className="iconss">
+      {token?(<>
+        <div className="iconss">
       <BsAlarm className='alarm' onClick={()=>{document.querySelector(".alarmsetting").classList.toggle("tt")}}/>
       <div className="alarmsetting">
-   <div className="top">
-    <p className='notf'>notifications_menu</p>
-    <p className='clearall'>clear all</p>
-   </div>
-   <div className="bottom">
-    <div className="blog">
-    <img src="https://lema.frontted.com/assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="" />
-    <span className='notfname'>peter parker <span>left a comment on</span></span>
-    </div>
-    <div className="blog">
-    <img src="https://lema.frontted.com/assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="" />
-    <span className='notfname'>peter parker <span>left a comment on</span></span>
-    </div>
-    <div className="blog">
-    <img src="https://lema.frontted.com/assets/images/256_daniel-gaffey-1060698-unsplash.jpg" alt="" />
-    <span className='notfname'>peter parker <span>left a comment on</span></span>
-    </div>
-   </div>
+        <Notifactions/>
 </div>
 <SlCalender className='calender'/>
       </div>
-      <div className="profile" onClick={()=>{document.querySelector(".profileedit").classList.toggle("lock")}}>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6tu5dzNZpapb4I6IYxDncLrXkR3U051AHDjQ6bQCmjQ&s" alt=""  width={"40px"} height={"40px"}/>
-      <span className="proname">Adrian</span>
-      <MdArrowDropDown/>
+      <div className="profile"  onClick={()=>{document.querySelector(".profileedit").classList.toggle("lock")}}>
+        <img src={`${domain}/uplouds/${data.avatar}`} alt=""  width={"40px"} height={"40px"}/>
+      <span className="proname">{data.username}</span>
+      <MdArrowDropDown />
       </div>
+      </>):(
+        <div className="buttons buttonsnav">
+ <Link to={"/login"} className='logins'>Login</Link>
+<Link to={"/sinup"}className='signup'>Signup</Link>
+        </div>
+      )
+      
+    }
       <div className="profileedit">
         <div className="to">
             <span><img src="https://lema.frontted.com/assets/images/frontted-logo-blue.svg" alt="" /></span>
             <span className='inf'>
-                <h3>Adrian D.</h3>
-                <p>Student</p>
+                <h3>{data.username}</h3>
+                <p>{data.role==="user"?"Student":"Manger"}</p>
                 </span>
         </div>
         <div className="bot">
             <span><Link to={"/edit"}><CgProfile/> EditeAcount</Link></span>
             <span><IoSettingsOutline/> Setting</span>
-            <span><Link to={"login"}><CiLogin/> Logout</Link></span>
+            <span onClick={()=>handleLogout}><CiLogin/> Logout</span>
         </div>
       </div>
                 </div>
@@ -127,7 +172,7 @@ side.classList.remove("darkn");
             <div className="to">Layout</div>
                 <div className="bott">
                     <span>TEXT DIRECTION</span>
-                    <span><label class="switch"><input type="checkbox" class="vv" onChange={(e)=>{dir(e)}}/><span class="slider round"></span></label></span>
+                    <span><label className="switch"><input type="checkbox" className="vv" onChange={(e)=>{dir(e)}}/><span class="slider round"></span></label></span>
                 </div>
             </div>
             <div className="maindrower">
@@ -168,13 +213,13 @@ side.classList.remove("darkn");
             }}><IoSettingsOutline/></span>
         </div>
 
-        {/* {    document.body.addEventListener("click", (e) => {
+        {    document.body.addEventListener("click", (e) => {
         let profileedit = document.querySelector(".profileedit");
         let profile= document.querySelector(".profile");
         if (e.target!==profile) {
             profileedit.classList.remove("lock");
         }
-    })} */}
+    })}
         </>
     )
 }

@@ -16,8 +16,9 @@
     font-size: 20px;
     color: rgba(128, 128, 128, 0.326);
 }
-.times .botb{
+.times .botbs{
     flex-wrap: wrap;
+    flex-direction: row;
 }
 .times .card{
     width: 30%;

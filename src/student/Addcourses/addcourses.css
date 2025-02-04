@@ -1,0 +1,83 @@
+.add-course-container {
+  width: 60%; /* زودت العرض قليلاً */
+  margin: 30px auto; /* إضافة مسافة من الأعلى */
+  margin-top: 80px;
+  padding: 25px; /* زيادة التباعد الداخلي */
+  border: 1px solid #ddd;
+  border-radius: 12px; /* جعل الزوايا أكثر نعومة */
+  background-color: #ffffff; /* لون خلفية أكثر وضوحًا */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* تحسين الظل */
+}
+
+.add-course-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px; /* تكبير الخط */
+  color: #222; /* لون غامق أكثر للوضوح */
+  font-weight: bold; /* جعل النص عريضًا */
+}
+
+.add-course-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* زيادة المسافة بين العناصر */
+}
+
+.add-course-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px; /* تكبير الخط */
+  color: #444; /* لون أكثر وضوحًا */
+  font-weight: 600; /* تحسين سمك النص */
+}
+
+.add-course-form input,
+.add-course-form textarea,
+.add-course-form select,
+.add-course-form button {
+  padding: 12px; /* زيادة التباعد الداخلي */
+  font-size: 18px; /* تكبير الخط */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* جعل الزوايا أكثر نعومة */
+}
+
+.add-course-form input:focus,
+.add-course-form textarea:focus,
+.add-course-form select:focus {
+  border-color: #007bff; /* تغيير لون الحدود عند التركيز */
+  outline: none; /* إزالة الإطار الافتراضي */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* تأثير ظل عند التركيز */
+}
+
+.add-course-form textarea {
+  resize: none;
+  min-height: 120px; /* زيادة الارتفاع الافتراضي */
+}
+
+.add-course-form button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px; /* زوايا مستديرة */
+  transition: background-color 0.3s, transform 0.2s; /* تأثيرات عند التحويم */
+  font-weight: bold;
+}
+
+.add-course-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* رفع الزر قليلاً عند التحويم */
+}
+
+.add-course-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.add-course-container p {
+  text-align: center;
+  font-size: 16px; /* تكبير الخط */
+  color: red;
+  margin-top: 10px;
+  font-weight: bold; /* جعل النص عريضًا */
+}

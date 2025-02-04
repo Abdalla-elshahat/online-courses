@@ -46,22 +46,11 @@
     display: flex;
     justify-content: center;
     margin: 10px 0;
-    border: 1px solid #80808070;
-    border-radius: 5px;
     padding: 5px;
     font-size: 15px;
     font-weight: bold;
     align-items:center;
     transition-duration:0.5s;
-}
-.loginn .conectgoogle span{
-    font-size: 20px;
-margin-right: 10px;
-cursor: pointer;
-margin-bottom: 5px;
-}
-.loginn .conectgoogle:hover{
-   background-color:rgba(128, 128, 128, 0.295);
 }
 .loginn input[type="email"],
 .loginn input[type="password"]{

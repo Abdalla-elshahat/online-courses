@@ -57,14 +57,16 @@
    color:gray;
    margin-bottom: 5px;
 }
-.quiz .cardquiz input{
+.quiz input,
+.quiz  select{
     margin-bottom: 10px;
     border:1px solid rgba(128, 128, 128, 0.116);
     outline: none;
     padding: 5px;
     border-radius:2px;
  }
- .quiz .cardquiz input:focus{
+ .quiz  input:focus,
+ .quiz  select:focus{
    border-color:var(--maincolor);
  }
  .quiz .cardquiz span{
@@ -113,3 +115,33 @@ margin-bottom: 10px;
             margin-top: 10px;
             cursor: pointer;
         }
+        .saveQuizButton{
+         cursor: pointer;
+         background-color:rgb(0, 0, 0);
+         color:white;
+         font-size: 20px;
+         font-weight: bold;
+         width:auto;
+         padding:5px;
+         border: none;
+         outline: none;
+         border-radius:5px;
+         margin-right: 25px;
+     text-align: center;
+     transition-duration:0.5s ;
+     }
+     .saveQuizButton:hover{
+         background-color:rgb(17, 203, 17);
+     }
+     .endquiz{
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+     }
+     #time{
+        font-size: 20px;
+        font-weight: bold;
+        border-radius:20px;
+        margin-left: 10px;
+       max-width: 50%; 
+     }

@@ -1,0 +1,45 @@
+/* score.css */
+.score-container{
+    padding-top:80px;
+    height: 100%;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.score {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .score h2 {
+    color: #4caf50;
+    margin-bottom: 10px;
+  }
+  
+  .score p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin-top: 50px;
+  }
+  
+  .loading {
+    color: #ff9800;
+  }
+  
+  .error {
+    color: #f44336;
+  }
+  

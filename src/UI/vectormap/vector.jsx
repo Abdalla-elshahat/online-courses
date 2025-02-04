@@ -3,7 +3,7 @@ import MapComponent from "./mapchart";
 function Vector(){
     return(
     <>
-    <div className="buttons avatar">
+    <div className="buttons avatars">
             <h2 className="b">Vector map</h2>
         <div className="botb">
                 <div className="card">

@@ -569,6 +569,7 @@ margin-right: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:end;
     width:100%;
  } 
  .feature .bottomc .leftbottomc,
@@ -599,11 +600,11 @@ margin-right: 10px;
     .feature .bottomc .rightbottomc{
        display: flex;
        flex-direction: column;
-       width:70%;
+       width: 100% !important;;
        margin-left: 80px;
     }
     .dash .content{
-        width: 120%;
+        width: 85%;
         margin-left: -155px;
     }
     .upgrade .upgradebtn{

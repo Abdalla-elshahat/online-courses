@@ -1,27 +1,48 @@
 import './profileins.css'
-import { IoSearchSharp } from "react-icons/io5";
 import { IoMdStar } from "react-icons/io";
 import { IoStarHalfSharp } from "react-icons/io5";
-import { FaArrowRight } from "react-icons/fa";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import Cookies from "js-cookie"; 
 function Profileins(){
+       const domain = "http://localhost:4000";
+          const token = Cookies.get("token");
+    const [userData, setUserData] = useState(null);
+      const fetchUserData = async () => {
+            if (token) {
+              try {
+                const response = await fetch(`${domain}/api/users/alldata`, {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                  },
+                });
+                const data = await response.json();
+                setUserData(data);
+              } catch (error) {
+                console.error("Failed to fetch user data:", error);
+              }
+            }
+          };
+                useEffect(() => {
+                  fetchUserData();
+                }, []);
     return(
         <>
-           <div className="serice courses">
+         {
+            userData && (
+                <div className="serice courses">
                 <div className="fok">
-                    <img src="https://lema.frontted.com/assets/images/256_jeremy-banks-798787-unsplash.jpg" alt="" />
+                    <img src={`${domain}/uplouds/${userData.avatar}`}  alt="" />
                     <div className="in">
-                        <h2 className='name'>Adrian Demian</h2>
-                        <p>Adrian Demian works for frontted developing Bootstrap 4 Admin Templates.</p>
-                        <span>
-                            <a href="#">https://www.frontted.com</a>
-                        <FaTwitter/>
-                        </span>
+                        <h2 className='name'>{userData.username}</h2>
+                        <p>{userData.description}</p>
                     </div>
                 </div>
                 <div className="tops">
-                <h2 className="serich profileinsh2">Adrian's Courses</h2>
+                <h2 className="serich profileinsh2">{userData.username}</h2>
                     </div>
                  <div className="middels">
                     <div className="card cardcors">
@@ -128,6 +149,8 @@ function Profileins(){
                         </div>       
                     </div>
         </div>
+            )
+         }  
         </>
     )
 }

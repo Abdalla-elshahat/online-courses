@@ -38,9 +38,7 @@
 .nav .right{  
       width: 100%;
     }
-.nav .left{
-    margin-right:30%;
-}
+
 .logo{
     display: flex;
     justify-content: center;
@@ -208,16 +206,19 @@ margin-left: 10px;
 
 }
 @media(max-width:992px){
-    .iconss::after,
-    .iconss{
-        display: none;
-    }
+
     .search{
         width:100%;
         margin-left: 0 !important;
         position: relative;
         left: -20%;
     }
+    .profileedit{
+        width: 30%;
+      }
+}
+.buttonsnav{
+    flex-direction: row;
 }
 @media(max-width:768px){
 .search{
@@ -226,6 +227,9 @@ margin-left: 10px;
 .sidbarsmall{
     display: block;
 }
+.profileedit{
+    width: 35% !important;
+  }
 }
 
 
@@ -370,4 +374,53 @@ margin: 0;
 .lock{
     display:block;
     text-decoration: 0.5s;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px; /* Adds space between the buttons */
+    justify-content: center; /* Center-aligns the buttons */
+  }
+  
+  .buttons a {
+    text-decoration: none; /* Removes underline from the links */
+    color: white; /* Sets the text color inside the buttons */
+    padding:5px 10px; /* Adds padding inside the button */
+    font-size: 25px; /* Sets the font size */
+    border: 1px solid var(--maincolor); /* Removes the default border */
+    border-radius: 10px; /* Adds rounded corners */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    transition-duration:0.5s; /* Smooth hover effect */
+    margin-bottom: 20px;
+  }
+  
+  .buttons .logins {
+    color: var(--maincolor);
+    background-color:white;
+    border-color: var(--maincolor);
+  }
+  
+  .buttons .logins:hover {
+    color:white;
+    transform: scale(1.02); /* Slightly enlarges the button on hover */
+    background-color:var(--maincolor);
+    border-color: var(--mainwhit);
+  }
+  
+  .buttons .signup {
+color:white; /* Sets the background color for signup button */
+background-color:var(--maincolor);
+border-color: var(--mainwhit);
+  }
+  
+  .buttons .signup:hover {
+   color: var(--maincolor); /* Darkens the button on hover */
+    transform: scale(1.02); /* Slightly enlarges the button on hover */
+    border-color: var(--maincolor);
+    background-color:var(--mainwhit)
+  }
+@media(max-width:550px){
+    .profileedit{
+        width: 40%;
+      }
 }
