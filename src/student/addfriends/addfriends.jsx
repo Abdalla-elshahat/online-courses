@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 import "./addfriends.css";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import Cookies from "js-cookie"; 
+import { domain } from "../../utels/constents/const";
 function AddFriends() {
-  const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");

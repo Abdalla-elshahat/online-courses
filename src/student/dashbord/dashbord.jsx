@@ -12,16 +12,9 @@ import { FaAcquisitionsIncorporated } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const';
 function Dash() {
-     const domain = "http://localhost:4000";
-        const token = Cookies.get("token");
-    function change(e) {
-    let x = document.querySelectorAll("li");
-    x.forEach((ee) => {
-      ee.classList.remove("active");
-    });
-    e.target.className = "active";
-  }
+  const token = Cookies.get("token");
   const [data,setdata]=useState([])
   const [loading,setloading]=useState([]);
   const [state, setstate] = useState([{ name: "all" },{ name: "purshes" },{ name: "emails" },{ name: "quate" },]);
@@ -42,6 +35,13 @@ const [originalData, setOriginalData] = useState([
     {Type: "emails",title: "mrgfce",date: "4 ago",icon: <FaAcquisitionsIncorporated />},
     { Type: "quate", title: "marfr", date: "4 ago", icon: <FaDiscord /> },
   ]);
+  function change(e) {
+    let x = document.querySelectorAll("li");
+    x.forEach((ee) => {
+      ee.classList.remove("active");
+    });
+    e.target.className = "active";
+  }
   useEffect(() => {
     if (filteredKey === "all") {
       setobj(originalData);

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./score.css";
 import Cookies from "js-cookie";
+import { domain } from "../../../utels/constents/const";
 function Score() {
-  const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const { quizid } = useParams();
   const [scoreData, setScoreData] = useState(null);

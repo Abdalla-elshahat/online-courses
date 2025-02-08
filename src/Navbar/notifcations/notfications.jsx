@@ -1,9 +1,9 @@
 import Cookies from "js-cookie"; 
 import "./notify.css"
 import React, { useState, useEffect } from "react";
+import { domain } from "../../utels/constents/const";
 function Notifications() {
-     const domain = "http://localhost:4000";
-        const token = Cookies.get("token");
+  const token = Cookies.get("token");
   const [notifications, setNotifications] = useState([]);
   const fetchNotifications = async () => {
     try {

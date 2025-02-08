@@ -6,8 +6,8 @@ import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie"; 
+import { domain } from "../../../utels/constents/const";
 function FollowersList  ()  {
-    const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const [followers, setFollowers] = useState([]);
   const [error, setError] = useState("");

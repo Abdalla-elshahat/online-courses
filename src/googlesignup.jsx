@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { domain } from "./utels/constents/const";
 function GoogleSignUp() {
-  const domain = "http://localhost:4000";
   const nav = useNavigate();
   const [name, setname] = useState({});
   const [email, setEmail] = useState("");

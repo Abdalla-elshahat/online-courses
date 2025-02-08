@@ -4,8 +4,8 @@ import { FaImage } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"; 
+import { domain } from "../../utels/constents/const";
 const AddCourse = () => {
-  const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const nav=useNavigate();
   const [error, setError] = useState("");

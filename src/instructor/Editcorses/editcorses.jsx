@@ -5,8 +5,8 @@ import { ImParagraphLeft } from "react-icons/im";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Cookies from "js-cookie"; 
+import { domain } from "../../utels/constents/const";
 function Editcorses() {
-    const domain = "http://localhost:4000";
     const token = Cookies.get("token");
   const { courseid } = useParams();
    const [preview, setPreview] = useState(null); // عرض الصورة

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { domain } from "./utels/constents/const";
 function GoogleSignIn() {
-   const domain = "http://localhost:4000";
    const nav=useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("temporarypassword");

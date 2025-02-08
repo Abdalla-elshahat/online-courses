@@ -6,9 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const';
 function Mycorses() {
-    const domain = "http://localhost:4000";
-    const token = Cookies.get("token");
+  const token = Cookies.get("token");
   const [courseData, setCourseData] = useState([]);
   const [activeMenu, setActiveMenu] = useState(null); // القائمة النشطة
   const [order, setorder] = useState("asc");

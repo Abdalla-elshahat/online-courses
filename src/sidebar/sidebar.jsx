@@ -36,8 +36,8 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
+import { domain } from '../utels/constents/const';
 function Sidebar(){
-      const domain = "http://localhost:4000";
       const token = Cookies.get("token");
         const nav = useNavigate();
         const[data,setdata]=useState([]);

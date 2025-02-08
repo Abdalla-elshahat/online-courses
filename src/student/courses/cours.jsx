@@ -7,9 +7,9 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const';
 function Cours() {
-       const domain = "http://localhost:4000";
-          const token = Cookies.get("token");
+    const token = Cookies.get("token");
     const nav=useNavigate();
     const [courses, setCourses] = useState([]); 
     const [currentPage, setCurrentPage] = useState(1); 

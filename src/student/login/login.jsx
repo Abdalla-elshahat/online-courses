@@ -7,9 +7,9 @@ import LoadingIcons from 'react-loading-icons';
 import GoogleSignIn from '../../googlesign';
 import Cookies from "js-cookie"; 
 import { toast, ToastContainer } from 'react-toastify';
+import { domain } from '../../utels/constents/const';
 function Login() {
     const nav=useNavigate();
-    const domain = "http://localhost:4000";
     const token = Cookies.get("token");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

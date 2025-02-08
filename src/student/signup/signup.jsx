@@ -8,10 +8,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoadingIcons from 'react-loading-icons'
 import GoogleSignUp from '../../googlesignup';
 import { toast } from 'react-toastify';
+import { domain } from '../../utels/constents/const';
 
 function Sinup(){
-const domain = "http://localhost:4000";
-const token = Cookies.get("token");
+    const token = Cookies.get("token");
     const nav=useNavigate();
     const [name,setname]=useState("");
     const [email,setemail]=useState("");

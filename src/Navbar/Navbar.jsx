@@ -12,9 +12,9 @@ import { IoMenuOutline } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import Notifactions from './notifcations/notfications';
 import Cookies from "js-cookie"; 
+import { domain } from '../utels/constents/const';
 function Navbar(){
-      const domain = "http://localhost:4000";
-      const token = Cookies.get("token");
+    const token = Cookies.get("token");
     const[dark,setdark]=useState(false);
     const[darkn,setdarkn]=useState(false);
     const[data,setdata]=useState([]);

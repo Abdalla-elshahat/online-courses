@@ -6,10 +6,10 @@ import { IoMdTime } from "react-icons/io";
 import "./takequiz.css";
 import { toast, ToastContainer } from "react-toastify";
 import Cookies from "js-cookie";
+import { domain } from "../../utels/constents/const";
 function Takequiz() {
   const { quizid } = useParams();
   const nav=useNavigate();
-  const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(true);

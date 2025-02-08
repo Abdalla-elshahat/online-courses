@@ -9,8 +9,8 @@ import { MdOutlineDone } from "react-icons/md";
 import Select from 'react-select';
 import {programmingSkills} from "../../UI/forms/data.ts"
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const.jsx';
 function Edit() {
-  const domain = "http://localhost:4000";
   const token = Cookies.get("token");
   const nav = useNavigate();
   const [name, setName] = useState([]);

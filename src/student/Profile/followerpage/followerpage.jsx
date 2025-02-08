@@ -14,9 +14,9 @@ import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router-dom';
 import Cookies from "js-cookie"; 
+import { domain } from "../../../utels/constents/const";
 function Profilefollower(){
-  const {userid}=useParams();
-    const domain = "http://localhost:4000";
+    const {userid}=useParams();
     const token = Cookies.get("token");
     const [userData, setUserData] = useState(null);
     const [favData, setfavData] = useState([]);

@@ -5,8 +5,8 @@ import { FaCheckCircle, FaExclamationCircle, FaEye, FaEyeSlash } from "react-ico
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
+import { domain } from "../../utels/constents/const";
 function Updatpass() {
-    const domain = "http://localhost:4000";
     const token = Cookies.get("token");
     const nav = useNavigate();
     const [oldpass, setoldpass] = useState("");

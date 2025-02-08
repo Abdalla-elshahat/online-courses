@@ -5,9 +5,9 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import "./view.css";
 import Cookies from "js-cookie"; 
+import { domain } from "../../utels/constents/const";
 const ViewCourse = () => {
-      const domain = "http://localhost:4000";
-            const token = Cookies.get("token");
+  const token = Cookies.get("token");
   const { courseId } = useParams();
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);

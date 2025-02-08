@@ -14,8 +14,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const';
 function Profile(){
-    const domain = "http://localhost:4000";
     const token = Cookies.get("token");
     const nav=useNavigate();
     const [userData, setUserData] = useState(null);

@@ -5,11 +5,11 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import Cookies from "js-cookie"; 
+import { domain } from '../../utels/constents/const';
 function Profileins(){
-       const domain = "http://localhost:4000";
-          const token = Cookies.get("token");
+    const token = Cookies.get("token");
     const [userData, setUserData] = useState(null);
-      const fetchUserData = async () => {
+    const fetchUserData = async () => {
             if (token) {
               try {
                 const response = await fetch(`${domain}/api/users/alldata`, {
