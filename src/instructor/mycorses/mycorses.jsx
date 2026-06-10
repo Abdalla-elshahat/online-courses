@@ -34,7 +34,6 @@ function Mycorses() {
         
         const data = await response.json();
         setCourseData(data.data.courses);
-        console.log("courses data:", data.data.courses);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -64,7 +63,6 @@ function Mycorses() {
           prevData.filter((course) => course._id !== courseId)
         );
         setActiveMenu(null); // إغلاق القائمة المنسدلة
-        console.log("Course deleted successfully", data);
       } catch (error) {
         console.error(`Error deleting course with ID: ${courseId}`, error);
       }
@@ -84,7 +82,6 @@ function Mycorses() {
                   throw new Error(`HTTP error! status: ${response.status}`);
               }
               const data = await response.json();
-              console.log(data)
               setquiz(data);
           } catch (error) {
               console.error("Error fetching courses:", error);

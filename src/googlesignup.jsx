@@ -24,7 +24,6 @@ function GoogleSignUp() {
 
       if (response.ok) {
         const data = await response.json(); // Handle successful signup
-        console.log("Signup successful:", data);
         Cookies.set("token", data.token, { expires: 7 }); // Store token securely
         nav("/");
       } else {
@@ -77,13 +76,11 @@ function GoogleSignUp() {
 
   const signupCallback = async (response) => {
     const decoded = await jwtDecode(response.credential);
-    console.log(decoded);
     setname(decoded.name);
     setEmail(decoded.email);
     setPassword("temporarypassword");
     await handleSignup();
     Cookies.set("token", response.credential, { expires: 7 });
-    console.log("Token saved in cookies:", Cookies.get("token")); // عرض التوكين المخزن
   };
 
   return (

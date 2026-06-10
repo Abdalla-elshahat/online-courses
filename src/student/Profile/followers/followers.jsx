@@ -31,7 +31,6 @@ function FollowersList  ()  {
 
       const data = await response.json();
       setFollowers(data);
-      console.log(data)
     } catch (err) {
       setError(err.message);
     }

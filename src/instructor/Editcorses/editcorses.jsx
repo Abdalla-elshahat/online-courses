@@ -46,7 +46,6 @@ function Editcorses() {
       });
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         toast.success("Course updated successfully!", {
         icon: <FaCheckCircle color="green" />,
         });

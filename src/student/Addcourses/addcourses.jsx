@@ -68,7 +68,6 @@ const AddCourse = () => {
         },
         body: data,
       });
-      console.log('Form Data:', formData);
       if (response.ok) {
         const result = await response.json();
         nav("/mycorses")

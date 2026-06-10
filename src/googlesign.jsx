@@ -22,7 +22,6 @@ function GoogleSignIn() {
   
         if (response.ok) {
           const data = await response.json(); // Handle successful signup
-          console.log("login successful:", data);
         } else {
           const errorData = await response.json();
           console.error("Error during login:", errorData);
@@ -73,7 +72,6 @@ function GoogleSignIn() {
 
   const loginCallback = async(response) => {
     const decoded = await jwtDecode(response.credential);
-    console.log(decoded);
     setEmail(decoded.email);
     setPassword("temporarypassword");
     handlelogin({

@@ -65,7 +65,6 @@ answers: [
             ...prev,
             questions: [...prev.questions, newQuestion],
         }));
-        console.log(quizData)
         setNewQuestion({
             text: "",
             difficulty: "easy",
@@ -126,7 +125,6 @@ answers: [
             console.error("Error creating quiz:", error);
             alert("Failed to create quiz");
         }
-        console.log(quizData)
     };
     useEffect(() => {
         fetchCourseById(courseId);

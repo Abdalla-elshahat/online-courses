@@ -15,7 +15,7 @@ function Billing(){
                     <p className="upgradeh2">You have an invoice <span className="cod">#21387 </span> due for <span className="cost">$49.00</span></p>
                     </div>
                     <div className="right">
-                    <buton className="upgradebtn">Pay Now !</buton>
+                    <button className="upgradebtn">Pay Now !</button>
                     </div>
                 </div>
                 <div className="basicinfo">

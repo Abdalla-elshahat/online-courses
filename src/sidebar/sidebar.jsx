@@ -68,7 +68,6 @@ function Sidebar() {
             return;
         }
         try {
-            console.log("Logout successful");
             Cookies.remove("token");
             nav("/login");
         } catch (error) {

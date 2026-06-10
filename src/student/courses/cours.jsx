@@ -97,7 +97,6 @@ function Cours() {
             }
             const data = await response.json();
             setCourses(data.data.courses);
-            console.log(data)
         } catch (error) {
             console.error("Error fetching courses:", error);
         } finally {
@@ -139,14 +138,11 @@ function Cours() {
     };
     const handleView = (courseId) => {
         nav(`/view/${courseId}`);
-        console.log("View course:", courseId);
       };
       useEffect(() => {
         fetchCourses();
     }, [currentPage, category, status,limit]); 
-    useEffect(() => {
-       toggleFavorite();
-    }, [favCourses]);
+
     return (
         <>
             <div className="serice courses">
