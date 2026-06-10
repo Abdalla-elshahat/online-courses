@@ -28,19 +28,18 @@ function Navbar(){
                 }
             });
             if (response.ok) {
-                alert('Logout successful!');
+                Cookies.remove('token');
+                window.location.href = '/login';
             } else {
                 const errorData = await response.json();
-                console.error('Error during login:', errorData);
-                alert('Login failed! Please try again.');
+                console.error('Logout error:', errorData);
             }
         } catch (error) {
-            console.error('Error during login:', error);
-            alert('An error occurred. Please try again.');
-        } finally {
+            console.error('Logout error:', error);
         }
     };
-    const handlegetdata=async()=>{
+    const handlegetdata = async () => {
+        if (!token) return;
         try {
             const response = await fetch(`${domain}/api/users/alldata`, {
                 method: 'GET',
@@ -51,21 +50,18 @@ function Navbar(){
             });
             if (response.ok) {
                 const data = await response.json();
-                setdata(data)
+                setdata(data);
             } else {
-                const errorData = await response.json();
-                console.error('Error during login:', errorData);
-                alert('Login failed! Please try again.');
+                console.error('Failed to fetch user data:', response.status);
             }
         } catch (error) {
-            console.error('Error during login:', error);
-            alert('An error occurred. Please try again.');
-        } finally {
+            console.error('Failed to fetch user data:', error);
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         handlegetdata();
-    },[data])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     function change(ele){
         if(ele.style.display==="none"){
             ele.style.display="block" 
