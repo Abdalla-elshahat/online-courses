@@ -236,9 +236,9 @@ for (let i = 0; i < files.length; i++) {
         <div className="blok jjj">
         <p>Yes</p>
         <span>
-<label class="switch">
+<label className="switch">
   <input type="checkbox" className='vv'/>
-  <span class="slider round"></span>
+  <span className="slider round"></span>
 </label></span>
         </div>
       
@@ -413,7 +413,7 @@ for (let i = 0; i < files.length; i++) {
         </div>
         <div className="blok">
             <label htmlFor="select03"></label>
-        <select id="select03" data-toggle="select" multiple="" class="nx">
+        <select id="select03" data-toggle="select" multiple="" className="nx">
                                             <option selected="">CSS</option>
                                             <option selected="">HTML</option>
                                             <option>JavaScript</option>
@@ -421,7 +421,7 @@ for (let i = 0; i < files.length; i++) {
                                         </select>
         </div>
         <div className="blok">
-        <select id="select04" data-toggle="select" multiple="" class="form-control form-control-lg nx">
+        <select id="select04" data-toggle="select" multiple="" className="form-control form-control-lg nx">
                                             <option>CSS</option>
                                             <option>HTML</option>
                                             <option selected="">JavaScript</option>
@@ -430,7 +430,7 @@ for (let i = 0; i < files.length; i++) {
         </div>
         <div className="blok">
             <label htmlFor="select05">Small</label>
-            <select class="form-select" multiple aria-label="Multiple select example">
+            <select className="form-select" multiple aria-label="Multiple select example">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>

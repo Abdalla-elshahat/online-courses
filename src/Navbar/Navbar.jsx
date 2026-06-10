@@ -124,7 +124,7 @@ side.classList.remove("darkn");
                     <span className='gettext'>Get Help</span>
                     </div>
                     <div className='search'>
-        <input class="form-control "  type="search" placeholder="Search" aria-label="Search"/>
+        <input className="form-control "  type="search" placeholder="Search" aria-label="Search"/>
         <IoMdSearch/>
       </div>
       {token?(<>
@@ -172,7 +172,7 @@ side.classList.remove("darkn");
             <div className="to">Layout</div>
                 <div className="bott">
                     <span>TEXT DIRECTION</span>
-                    <span><label className="switch"><input type="checkbox" className="vv" onChange={(e)=>{dir(e)}}/><span class="slider round"></span></label></span>
+                    <span><label className="switch"><input type="checkbox" className="vv" onChange={(e)=>{dir(e)}}/><span className="slider round"></span></label></span>
                 </div>
             </div>
             <div className="maindrower">
