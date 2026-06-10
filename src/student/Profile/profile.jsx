@@ -34,7 +34,6 @@ function Profile(){
             });
             const data = await response.json();
             setUserData(data);
-            console.log(data)
           } catch (error) {
             console.error("Failed to fetch user data:", error);
           }
@@ -68,7 +67,8 @@ function Profile(){
       const parsedSkills = userData?.skills?.[0] ? JSON.parse(userData.skills[0]) : [];
       useEffect(()=>{
         fetchfavouritcourse();
-      },[favData])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[])
     
       if (!userData) {
         return <div>Loading...</div>;

@@ -41,6 +41,7 @@ function Sidebar() {
     const nav = useNavigate();
     const [data, setdata] = useState([]);
     const handlegetdata = async () => {
+        if (!token) return;
         try {
             const response = await fetch(`${domain}/api/users/alldata`, {
                 method: 'GET',
@@ -51,14 +52,12 @@ function Sidebar() {
             });
             if (response.ok) {
                 const data = await response.json();
-                setdata(data)
+                setdata(data);
             } else {
-                const errorData = await response.json();
-                console.error('Error during login:', errorData);
+                console.error('Failed to fetch user data:', response.status);
             }
         } catch (error) {
-            console.error('Error during login:', error);
-            alert('An error occurred. Please try again.');
+            console.error('Failed to fetch user data:', error);
         }
     }
     async function Logout() {
@@ -69,7 +68,6 @@ function Sidebar() {
             return;
         }
         try {
-            console.log("Logout successful");
             Cookies.remove("token");
             nav("/login");
         } catch (error) {
@@ -112,7 +110,8 @@ function Sidebar() {
     //   };
     useEffect(() => {
         handlegetdata();
-    }, [data])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     return (
         <>
             <div className="sidebar">

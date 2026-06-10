@@ -19,7 +19,6 @@ document.getElementById("ne").value='';
 document.getElementById("ar").value='';
 document.getElementById("p").value='';
 document.getElementById("img").value='';
-console.log(arr)
     }
     return(
         <>

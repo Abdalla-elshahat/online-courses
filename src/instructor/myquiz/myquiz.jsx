@@ -29,7 +29,6 @@ function Myquiz() {
         
         const data = await response.json();
         setquiz(data.data.quiz);
-        console.log("quiz data:", data.data.quiz);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -59,7 +58,6 @@ function Myquiz() {
           prevData.filter((quiz) => quiz._id !== quizId)
         );
         setActiveMenu(null); // إغلاق القائمة المنسدلة
-        console.log("Course deleted successfully", data);
       } catch (error) {
         console.error(`Error deleting course with ID: ${quizId}`, error);
       }

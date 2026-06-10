@@ -59,8 +59,7 @@ const ViewCourse = () => {
         });
         if (!response.ok) throw new Error("Failed to fetch course");
         const data = await response.json();
-        console.log(data.data)
-      setquiz(data.data)
+        setquiz(data.data)
         setLoading(false);
       } catch (error) {
         console.error(error);

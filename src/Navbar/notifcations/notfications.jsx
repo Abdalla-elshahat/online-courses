@@ -16,7 +16,6 @@ function Notifications() {
       });
       const data = await response.json();
       setNotifications(data.requests);
-      console.log(data.requests)
     } catch (error) {
       console.error("Error fetching notifications:", error);
     }
@@ -38,7 +37,6 @@ function Notifications() {
         setNotifications((prev) =>
           prev.filter((notif) => notif._id !== requesterId)
         );
-        console.log(`Follow request ${action}ed successfully`);
       } else {
         console.error("Failed to handle follow request");
       }
@@ -60,7 +58,6 @@ function Notifications() {
       });
 
       if (response.ok) {
-        console.log("Unfollowed successfully");
         fetchNotifications(); // تحديث الإشعارات بعد الإزالة
       } else {
         console.error("Failed to remove follow");
@@ -73,7 +70,6 @@ function Notifications() {
   // مسح جميع الإشعارات
   const clearAllNotifications = () => {
     setNotifications([]);
-    console.log("All notifications cleared");
   };
 
   useEffect(() => {

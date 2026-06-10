@@ -34,7 +34,6 @@ function Profilefollower(){
             });
             const data = await response.json();
             setUserData(data);
-            console.log(data)
           } catch (error) {
             console.error("Failed to fetch user data:", error);
           }

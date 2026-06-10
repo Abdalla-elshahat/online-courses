@@ -48,7 +48,6 @@ const [originalData, setOriginalData] = useState([
     } else {
       setobj(originalData.filter((it) => it.Type === filteredKey));
     }
-    console.log(process.env.Domain)
   }, [filteredKey, originalData]);
   const fetchData = async () => {
     try {
@@ -59,7 +58,7 @@ const [originalData, setOriginalData] = useState([
       const result = await response.json();
       setdata(result.data.courses);
       setloading(false);
-      // console.log(result.data.courses)
+
     } catch (error) {
       console.error('Error fetching data:', error);
       setloading(false);
@@ -105,7 +104,7 @@ const [originalData, setOriginalData] = useState([
               </p>
             </div>
             <div className="right">
-              <buton className="upgradebtn">Upgrade</buton>
+              <button className="upgradebtn">Upgrade</button>
             </div>
           </div>
           <div className="feature">
