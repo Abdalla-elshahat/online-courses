@@ -29,12 +29,12 @@ function Chart() {
                             </span>
                         </div>
                         <div className="botme">
-                            <figure class="chart-three animate">
+                            <figure className="chart-three animate">
                                 <svg role="img" xmlns="http://www.w3.org/2000/svg">
                                     <title>[title here]</title>
                                     <desc>[long description here]</desc>
-                                    <circle class="circle-background" />
-                                    <circle class="circle-foreground" />
+                                    <circle className="circle-background" />
+                                    <circle className="circle-foreground" />
                                 </svg>
                                 <figcaption>75% of all males like donuts.</figcaption>
                             </figure>
@@ -78,7 +78,7 @@ function Chart() {
                                 <p>Easily toggle an additional set of data with a simple interface based on the data attributes.</p>
                             </span>
                             <span><p>Show affiliate</p>
-                                <label class="switch">
+                                <label className="switch">
                                     <input type="checkbox" className='vv' onClick={(e) => {
                                         let x = document.querySelectorAll(".g");
                                         if (e.target.checked) {
@@ -92,7 +92,7 @@ function Chart() {
                                             })
                                         }
                                     }} />
-                                    <span class="slider round"></span>
+                                    <span className="slider round"></span>
                                 </label></span>
                         </div>
                         <div className="bottomdashins">
