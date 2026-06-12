@@ -12,6 +12,8 @@ export const logoutUser = async () => {
     if (!response.ok) {
         throw new Error("Logout failed");
     }
+    // clear token on client
+    Cookies.remove("token");
 
     return response.json();
 };

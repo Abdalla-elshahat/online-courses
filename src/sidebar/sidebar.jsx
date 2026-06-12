@@ -27,6 +27,7 @@ import { logoutUser, getUserData } from "../api/userApi";
 function Sidebar() {
     const token = Cookies.get("token");
     const [user, setUser] = useState({});
+    const nav = useNavigate();
 
     const getUserData = async () => {
         if (!token) return;
@@ -45,7 +46,8 @@ function Sidebar() {
     }, []);
 
     const logout = async () => {
-        await logoutUser()
+        await Cookies.remove("token");
+        nav("/login");
     };
 
     const role = user?.role?.toLowerCase();
