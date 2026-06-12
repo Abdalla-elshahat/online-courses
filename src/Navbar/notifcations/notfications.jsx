@@ -1,121 +1,98 @@
-import Cookies from "js-cookie"; 
-import "./notify.css"
-import React, { useState, useEffect } from "react";
+import "./notify.css";
+import { useEffect, useState } from "react";
 import { domain } from "../../utels/constents/const";
+
+import {
+  getNotifications,
+  handleFollowRequestApi,
+} from "../../api/notificationApi";
+
 function Notifications() {
-  const token = Cookies.get("token");
   const [notifications, setNotifications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const fetchNotifications = async () => {
     try {
-      const response = await fetch(`${domain}/api/users/received-notifications`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      setNotifications(data.requests);
+      const { data } = await getNotifications();
+
+      setNotifications(data.requests || []);
     } catch (error) {
-      console.error("Error fetching notifications:", error);
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // قبول أو رفض طلب متابعة
   const handleFollowRequest = async (requesterId, action) => {
     try {
-      const response = await fetch(`${domain}/api/users/handlefollowrequest`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ requester_id: requesterId, action }),
-      });
+      await handleFollowRequestApi(requesterId, action);
 
-      if (response.ok) {
-        setNotifications((prev) =>
-          prev.filter((notif) => notif._id !== requesterId)
-        );
-      } else {
-        console.error("Failed to handle follow request");
-      }
+      setNotifications((prev) =>
+        prev.filter((item) => item._id !== requesterId)
+      );
     } catch (error) {
-      console.error("Error handling follow request:", error);
+      console.error(error);
     }
-  };
-
-  // إزالة متابعة
-  const removeFollow = async (followId) => {
-    try {
-      const response = await fetch(`${domain}/api/users/removefollow`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ follow_id: followId }),
-      });
-
-      if (response.ok) {
-        fetchNotifications(); // تحديث الإشعارات بعد الإزالة
-      } else {
-        console.error("Failed to remove follow");
-      }
-    } catch (error) {
-      console.error("Error removing follow:", error);
-    }
-  };
-
-  // مسح جميع الإشعارات
-  const clearAllNotifications = () => {
-    setNotifications([]);
   };
 
   useEffect(() => {
-    if(token){
-      fetchNotifications();
-    }
+    fetchNotifications();
   }, []);
 
   return (
     <div className="notifications">
       <div className="top">
-        <p className="notf">Notifications</p>
-        <p className="clearall" onClick={clearAllNotifications}>
-          Clear All
-        </p>
+        <h3>Notifications</h3>
+
+        {notifications.length > 0 && (
+          <button
+            className="clear-btn"
+            onClick={() => setNotifications([])}
+          >
+            Clear All
+          </button>
+        )}
       </div>
+
       <div className="bottom">
-        {notifications&&notifications.map((notif) => (
-          <div className="blog" key={notif.id}>
-            <img src={`${domain}/uplouds/${notif.avatar}`} alt="User Avatar" />
-            <div>
-              <span className="notfname">
-                {notif.username}{" "}
-              </span>
-              <div className="actions">
-                {notif&& (
-                  <>
-                    <button
-                      className="accept-btn"
-                      onClick={() => handleFollowRequest(notif._id, "accept")}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="reject-btn"
-                      onClick={() => handleFollowRequest(notif._id, "reject")}
-                    >
-                      Reject
-                    </button>
-                  </>
-                )}
+        {loading ? (
+          <p>Loading...</p>
+        ) : notifications.length === 0 ? (
+          <p>No notifications available</p>
+        ) : (
+          notifications.map((notif) => (
+            <div className="notification-card" key={notif._id}>
+              <img
+                src={`${domain}/uplouds/${notif.avatar}`}
+                alt={notif.username}
+              />
+
+              <div className="notification-content">
+                <h4>{notif.username}</h4>
+
+                <div className="actions">
+                  <button
+                    className="accept-btn"
+                    onClick={() =>
+                      handleFollowRequest(notif._id, "accept")
+                    }
+                  >
+                    Accept
+                  </button>
+
+                  <button
+                    className="reject-btn"
+                    onClick={() =>
+                      handleFollowRequest(notif._id, "reject")
+                    }
+                  >
+                    Reject
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        {!notifications&& <p>No notifications available</p>}
+          ))
+        )}
       </div>
     </div>
   );
