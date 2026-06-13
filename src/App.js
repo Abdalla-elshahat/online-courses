@@ -1,7 +1,5 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Input from './input/input';
-import Add from './Add/Add';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './sidebar/sidebar';
 import { Route, Routes } from 'react-router-dom';
@@ -18,7 +16,7 @@ import Dash from './student/dashbord/dashbord';
 import Billing from './student/billing/billing';
 import Login from './student/login/login';
 
-import  Dashboard  from './instructor/dashbordins/dashbordins';
+import Dashboard from './instructor/dashbordins/dashbordins';
 import Mycorses from './instructor/mycorses/mycorses';
 import Editcorses from './instructor/Editcorses/editcorses';
 import Editelesson from './instructor/editlesson/editelesson';
@@ -49,59 +47,59 @@ import Myquiz from './instructor/myquiz/myquiz';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-    <div className='row'>
-      <div className='col-3 ss'>
-      <Sidebar/>
+      <Navbar />
+      <div className='row'>
+        <div className='col-3 ss'>
+          <Sidebar />
+        </div>
+        <div className='col-9 allc'>
+          <Routes>
+            <Route path='/' element={<Dash />} />
+            <Route path='/edit' element={<Edit />} />
+            <Route path='/serice' element={<Serice />} />
+            <Route path='/Admin' element={<Admin />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/cours' element={<Cours />} />
+            <Route path='/clesson' element={<Clesson />} />
+            <Route path='/takecors' element={<Takecors />} />
+            <Route path='/takequiz/:quizid' element={<Takequiz />} />
+            <Route path='/billing' element={<Billing />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/sinup' element={<Sinup />} />
+            <Route path='/updatepass' element={<Updatpass />} />
+            <Route path='/score/:quizid' element={<Score />} />
+            {/* instrctor */}
+            <Route path='/dashbord' element={<Dashboard />} />
+            <Route path='/mycorses' element={<Mycorses />} />
+            <Route path='/myquiz' element={<Myquiz />} />
+            <Route path='/editcorses' element={<Editcorses />} />
+            <Route path='/editlesson' element={<Editelesson />} />
+            <Route path='/createquiz/:courseId' element={<Createquiz />} />
+            <Route path='/erning' element={<Erning />} />
+            <Route path='/profileins' element={<Profileins />} />
+            <Route path='/pay' element={<Pay />} />
+            {/* ui */}
+            <Route path='/button' element={<Button />} />
+            <Route path='/model' element={<Model />} />
+            <Route path='/avatar' element={<Avatar />} />
+            <Route path='/chart' element={<Chart />} />
+            <Route path='/formui' element={<Formui />} />
+            <Route path='/range' element={<Range />} />
+            <Route path='/time' element={<Time />} />
+            <Route path='/table' element={<Table />} />
+            <Route path='/taps' element={<Taps />} />
+            <Route path='/icons' element={<Icons />} />
+            <Route path='/vector' element={<Vector />} />
+
+            <Route path='/followers' element={<FollowersList />} />
+            <Route path='/addcourss' element={<AddCourse />} />
+            <Route path='/editcorses/:courseid' element={<Editcorses />} />
+            <Route path='/view/:courseId' element={<ViewCourse />} />
+            <Route path='/Addfriends' element={<Addfriends />} />
+            <Route path='/profilefollow/:userid' element={<Profilefollower />} />
+          </Routes>
+        </div>
       </div>
-      <div className='col-9 allc'>
-      <Routes>
-    <Route path='/' element={ <Dash/>}/>
-    <Route path='/edit' element={ <Edit/>}/>
-    <Route path='/serice' element={ <Serice/>}/>
-    <Route path='/Admin' element={ <Admin/>}/>
-    <Route path='/profile' element={ <Profile/>}/>
-    <Route path='/cours' element={ <Cours/>}/>
-    <Route path='/clesson' element={ <Clesson/>}/>
-    <Route path='/takecors' element={ <Takecors/>}/>
-    <Route path='/takequiz/:quizid' element={ <Takequiz/>}/>
-    <Route path='/billing' element={ <Billing/>}/>
-    <Route path='/login' element={ <Login/>}/>
-    <Route path='/sinup' element={ <Sinup/>}/>
-    <Route path='/updatepass' element={ <Updatpass/>}/>
-    <Route path='/score/:quizid' element={ <Score/>}/>
-    {/* instrctor */}
-    <Route path='/dashbord' element={ <Dashboard/>}/>
-    <Route path='/mycorses' element={ <Mycorses/>}/>
-    <Route path='/myquiz' element={ <Myquiz/>}/>
-    <Route path='/editcorses' element={ <Editcorses/>}/>
-    <Route path='/editlesson' element={ <Editelesson/>}/>
-    <Route path='/createquiz/:courseId' element={ <Createquiz/>}/>
-    <Route path='/erning' element={ <Erning/>}/>
-    <Route path='/profileins' element={ <Profileins/>}/>
-    <Route path='/pay' element={ <Pay/>}/>
-    {/* ui */}
-    <Route path='/button' element={ <Button/>}/>
-    <Route path='/model' element={ <Model/>}/>
-    <Route path='/avatar' element={ <Avatar/>}/>
-    <Route path='/chart' element={ <Chart/>}/>
-    <Route path='/formui' element={ <Formui/>}/>
-    <Route path='/range' element={ <Range/>}/>
-    <Route path='/time' element={ <Time/>}/>
-    <Route path='/table' element={ <Table/>}/>
-    <Route path='/taps' element={ <Taps/>}/>
-    <Route path='/icons' element={ <Icons/>}/>
-    <Route path='/vector' element={ <Vector/>}/>
-    
-    <Route path='/followers' element={<FollowersList/>} />
-    <Route path='/addcourss' element={ <AddCourse/>}/>
-    <Route path='/editcorses/:courseid' element={<Editcorses />} />
-    <Route path='/view/:courseId' element={<ViewCourse/>} />
-    <Route path='/Addfriends' element={<Addfriends/>} />
-    <Route path='/profilefollow/:userid' element={<Profilefollower/>} />
-      </Routes>
-      </div>
-    </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import './login.css';
 import { MdOutlineLocalPostOffice } from "react-icons/md";
 import { FaKey, FaEye, FaEyeSlash, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingIcons from 'react-loading-icons';
 import GoogleSignIn from '../../googlesign';
@@ -15,11 +15,15 @@ function Login() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    if(token){
-        setTimeout(()=>{
-            nav("/profile")
-        },1000)
-    }
+    
+    useEffect(() => {
+        if (token) {
+            const timer = setTimeout(() => {
+                nav("/profile");
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [token, nav]);
     const handleLogin = async (e) => {
         e.preventDefault();
         try {

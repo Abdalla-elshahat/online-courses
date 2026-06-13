@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { MdOutlineLocalPostOffice } from "react-icons/md";
 import { FaCheckCircle, FaExclamationCircle, FaEye, FaEyeSlash, FaKey } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingIcons from 'react-loading-icons'
 import GoogleSignUp from '../../googlesignup';
@@ -18,11 +18,12 @@ function Sinup(){
     const [password,setpassword]=useState("");
     const [loading,setloading]=useState(false)
     const [showPassword, setShowPassword] = useState(false);
-        if(token){
-            setTimeout(()=>{
-                nav("/profile")
-            },0)
+    
+    useEffect(() => {
+        if (token) {
+            nav("/profile");
         }
+    }, [token, nav]);
     const handleSignup = async (e) => {
         e.preventDefault();
         try {

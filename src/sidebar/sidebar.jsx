@@ -22,18 +22,18 @@ import { FaMouse, FaWpforms, FaChartPie, FaIcons } from "react-icons/fa";
 import { BsFillFileEarmarkPersonFill, BsCalendar2Range, BsCalendar2DateFill } from "react-icons/bs";
 import { FaTable } from "react-icons/fa";
 import { CgTapSingle } from "react-icons/cg";
-import { logoutUser, getUserData } from "../api/userApi";
+import { getUserData } from "../api/userApi";
 
 function Sidebar() {
     const token = Cookies.get("token");
     const [user, setUser] = useState({});
     const nav = useNavigate();
 
-    const getUserData = async () => {
+    const fetchSidebarUserData = async () => {
         if (!token) return;
 
         try {
-            const data = await getUserData(token);
+            const data = await getUserData();
             setUser(data);
         } catch (err) {
             console.error(err);
@@ -41,7 +41,7 @@ function Sidebar() {
     };
 
     useEffect(() => {
-        getUserData();
+        fetchSidebarUserData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
