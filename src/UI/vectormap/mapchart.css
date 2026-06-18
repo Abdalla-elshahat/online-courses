@@ -1,31 +1,32 @@
 /* src/App.css */
 .App {
-    text-align: center;
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    padding: 20px;
-    color: white;
-  }
-  
-  .maps {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .map {
-    width: 80%;
-  }
-  
-  .avatars{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .buttons .botb {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.maps {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.map {
+  width: 80%;
+}
+
+.avatars {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttons .botb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
