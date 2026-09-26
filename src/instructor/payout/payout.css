@@ -1,70 +1,276 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Instructor: Payout — root: .serice.courses.billing.pay ===== */
+.serice.pay {
+    margin: 0 !important;
 }
-.pay .tops .serich{
-    font-size:50px !important;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.251);
+.serice.pay .tops {
     padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+.serice.pay .tops .serich {
     width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: clamp(22px, 3vw, 30px) !important;
+    font-weight: 700;
 }
-.pay{
-    margin: 0 10px;
+
+/* Section card: description left, content right */
+.serice.pay .basicinfo {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
 }
-.pay input{
-width: 100%;
-}
-.pay  .rightpay{
-    background-color: rgba(128, 128, 128, 0.148);
-    width: 60% !important;
-    padding: 3%;
-}
-.pay  .rightpay img{
-   width: 100px;
-   object-fit: cover;
-}
-.pay  .rightpay .change{
+.serice.pay .basicinfo > .left {
     width: auto;
-    padding: 5px;
-    color: white;
-    background-color:rgb(5, 191, 5);
-    border-radius: 3px;
-    font-size: 20px;
-    cursor: pointer;
+    padding: 28px 24px;
+    border-right: 1px solid var(--border);
+    background: var(--surface-2);
+    text-align: left;
 }
-.pay .marfsh{
+.serice.pay .basicinfo > .left .pin {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+}
+.serice.pay .basicinfo > .left p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+.serice.pay .basicinfo > .right,
+.serice.pay .basicinfo > .rightpay {
+    width: auto !important;
+    min-width: 0;
+    margin: 0;
+    padding: 28px;
     display: flex;
-    place-self: flex-start;
     flex-direction: column;
-    padding-left: 5%;
+    gap: 20px;
+    background: transparent;
+    text-align: left;
 }
-.pay .cont{
-    display: flex;
-    transition-duration: 0.5s;
+
+/* PayPal account row */
+.serice.pay .basicinfo > .rightpay {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
 }
-.pay .cont span{
-padding: 10px;
-color: black;
-background-color:white;
-cursor: pointer;
+.serice.pay .rightpay img {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
 }
-.pay .marfsh .cont .active{
-    background-color:var(--maincolor);
-    border-radius:5px;
-    color: white;
+.serice.pay .rightpay .contact {
+    flex: 1 1 180px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-all;
 }
-.pay .up{
-    background-color:var(--maincolor);
+.serice.pay .rightpay .change {
+    width: auto;
+    padding: 9px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text-2);
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    color:white;
-    padding:3px 5px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius:  3px;
-    transition-duration: 0.8s;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
-.pay .up:hover{
-border: 1px solid var(--maincolor);
-color:var(--maincolor) ;
-background-color:transparent   
+.serice.pay .rightpay .change:hover {
+    background: var(--primary-soft);
+    border-color: transparent;
+    color: var(--primary);
+}
+
+/* Account type segmented control */
+.serice.pay .marfsh {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    place-self: auto;
+}
+.serice.pay .marfsh > p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--muted);
+}
+.serice.pay .cont {
+    display: inline-flex;
+    width: max-content;
+    max-width: 100%;
+    padding: 4px;
+    gap: 4px;
+    border-radius: 12px;
+    background: var(--surface-2);
+}
+.serice.pay .cont span {
+    padding: 8px 18px;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.serice.pay .marfsh .cont .active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+}
+
+/* Fields */
+.serice.pay .f {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: auto;
+    margin: 0;
+}
+.serice.pay .s {
+    width: auto;
+    margin: 0;
+}
+.serice.pay .blok {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: auto;
+    margin: 0;
+}
+.serice.pay .blok label,
+.serice.pay .th label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--text-2);
+}
+.serice.pay .blok input,
+.serice.pay .blok textarea,
+.serice.pay .th #country {
+    width: 100%;
+    margin: 0;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.serice.pay .blok textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.serice.pay .blok input:focus,
+.serice.pay .blok textarea:focus,
+.serice.pay .th #country:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+.serice.pay .blok input::placeholder,
+.serice.pay .blok textarea::placeholder {
+    color: var(--muted);
+    opacity: .7;
+}
+.serice.pay .th {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: auto;
+    margin: 0;
+}
+.serice.pay .th #country {
+    max-width: 320px;
+}
+.serice.pay .th .avalibale {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.serice.pay .sub {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.serice.pay .up {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px -6px rgba(79, 70, 229, .55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.serice.pay .up:hover {
+    color: #fff;
+    border: none;
+    background: var(--gradient);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .6);
+}
+
+@media (max-width: 992px) {
+    .serice.pay .basicinfo {
+        grid-template-columns: 1fr;
+    }
+    .serice.pay .basicinfo > .left {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+    }
+}
+@media (max-width: 576px) {
+    .serice.pay .basicinfo > .left,
+    .serice.pay .basicinfo > .right,
+    .serice.pay .basicinfo > .rightpay {
+        padding: 16px;
+    }
+    .serice.pay .th #country {
+        max-width: none;
+    }
+    .serice.pay .up {
+        width: 100%;
+        justify-content: center;
+    }
+    .serice.pay .cont {
+        width: 100%;
+    }
+    .serice.pay .cont span {
+        flex: 1;
+        text-align: center;
+    }
 }

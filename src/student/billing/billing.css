@@ -1,124 +1,267 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
-.billing .Goto{
-background-color:var(--maincolor);
+/* ===== Billing page (.serice.courses.billing) — payout (.billing.pay) has its own sheet ===== */
+.billing:not(.pay) .tops{
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
 }
 
-.upgradebilling{
+/* Invoice due banner */
+.billing .upgradebilling{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-left: 0;
-    background-color:#f1d26d15;
-    width: 99%;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
 }
-.upgradebilling .left{
-width: auto;
+.billing .upgradebilling .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    flex: 1 1 260px;
+    min-width: 0;
 }
-.upgradebilling .upgradebtn{
-width: auto;
-padding: 5px;
-margin-left: auto;
-    }
-.upgradebilling .upgradeh2 .cod{
-    color:var(--maincolor);
+.billing .upgradebilling .left .icon{
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    padding: 4px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f59e0b;
+    color: #fff;
 }
-.upgradebilling .upgradeh2 .cost{
-    color:rgb(161, 0, 0);
+.billing .upgradebilling .upgradeh2{
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-transform: none;
 }
-.upgradebilling .left .icon{
-    margin-right: 10px;
-    }
-    .basicinfo{
-        height: auto;
-    }
-    .basicinfo .rightbill{
-        display: flex;
-        justify-content:space-between;
-        align-items:center;
-        padding: 10px;
-        width: 60%;
-    }
-    .basicinfo .rightbill .ll {
-        display: flex;
-        justify-content:space-around;
-        align-items:center;
-    }
-    .basicinfo .rightbill .ll img{
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-    }
-    .basicinfo .rightbill .ll p{
-       margin-top: auto;
-       font-size:14px;
-       font-weight: bold;
-    }
-    .basicinfo .rightbill .rr span{
-        color:white;
-        border:none;
-        border-radius:5px;
-        margin: 5px;
-        padding: 5px;
-        cursor: pointer;
-        transition-duration: 0.5s;
-        font-weight: bold;
-    }
-    .basicinfo .rightbill .rr .remove{
-        background-color:rgb(161, 0, 0);
-    }
-    .basicinfo .rightbill .rr .remove:hover{
-        background-color:rgb(91, 0, 0);
-    }
-    .basicinfo .rightbill .rr .change{
-        color:var(--maincolor);
-        border:1px solid var(--maincolor);
-    }
-    .basicinfo .rightbill .rr .change:hover{
-        color:white;
-        background-color:var(--maincolor);
-    }
-    table{
-        width: 100%;
-        text-align: center;
-    }
-    th{
-        color:gray;
-font-weight: bold;
-border-bottom: 1px solid rgba(128, 128, 128, 0.181);
-padding-bottom: 10px;
-    }
-    td{
-        font-weight: bold;
-        padding: 5px;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.181);
-    }
-    .invoice{
-        color:var(--maincolor);
-        cursor: pointer;
-    }
-    .invoice:hover{
-       border-bottom:1px solid var(--maincolor);
-    }
-    .status{
-    font-size: 15px;
+.billing .upgradebilling .upgradeh2 .cod{
+    color: var(--primary);
+    font-weight: 700;
+}
+.billing .upgradebilling .upgradeh2 .cost{
+    color: var(--danger);
+    font-weight: 700;
+}
+.billing .upgradebilling .right{
+    width: auto;
+}
+.billing .upgradebilling .upgradebtn{
+    width: auto;
+    margin: 0;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+}
+.billing .upgradebilling .upgradebtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
+}
+
+/* Section cards */
+.billing:not(.pay) .basicinfo{
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+    height: auto;
+    margin: 0;
     padding: 0;
-    color:orange;
-    background-color:rgba(255, 191, 73, 0.297);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.billing:not(.pay) .basicinfo > .left{
+    width: auto;
+    height: auto !important;
+    padding: 24px;
+    text-align: left;
+    background-color: var(--surface-2);
+    border-right: 1px solid var(--border);
+}
+.billing:not(.pay) .basicinfo > .left .pin{
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.billing:not(.pay) .basicinfo > .left p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.billing:not(.pay) .basicinfo > .right{
+    width: auto;
+    padding: 16px 24px;
+    background-color: transparent;
+    min-width: 0;
+}
+
+/* Card on file */
+.billing .basicinfo .rightbill{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: auto;
+    padding: 24px;
+}
+.billing .basicinfo .rightbill .ll{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+.billing .basicinfo .rightbill .ll img{
+    width: 56px;
+    height: 38px;
+    margin: 0;
+    padding: 6px;
+    object-fit: contain;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+}
+.billing .basicinfo .rightbill .ll p{
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.billing .basicinfo .rightbill .rr{
+    display: flex;
+    gap: 8px;
+}
+.billing .basicinfo .rightbill .rr span{
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+}
+.billing .basicinfo .rightbill .rr .remove{
+    color: var(--danger);
+    background-color: transparent;
+    border: 1px solid var(--border);
+}
+.billing .basicinfo .rightbill .rr .remove:hover{
+    color: #fff;
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+.billing .basicinfo .rightbill .rr .change{
+    color: var(--primary);
+    background-color: var(--primary-soft);
+    border: 1px solid transparent;
+}
+.billing .basicinfo .rightbill .rr .change:hover{
+    color: #fff;
+    background: var(--gradient);
+}
+
+/* Invoices table */
+.billing .basicinfo .tab{
+    overflow-x: auto;
+}
+.billing .basicinfo table{
+    width: 100%;
+    min-width: 440px;
+    border-collapse: collapse;
+    text-align: left;
+}
+.billing .basicinfo th{
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    border-bottom: 1px solid var(--border);
+}
+.billing .basicinfo td{
+    padding: 14px 12px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+.billing .basicinfo tr:last-child td{
+    border-bottom: none;
+}
+.billing .basicinfo tr:hover td{
+    background-color: var(--surface-2);
+}
+.billing .basicinfo .invoice{
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+}
+.billing .basicinfo .invoice:hover{
+    text-decoration: underline;
+}
+.billing .basicinfo .amount{
+    font-weight: 700;
+}
+.billing .basicinfo td.status{
+    color: #b45309;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+}
+.billing .basicinfo .dates{
+    color: var(--muted);
+    white-space: nowrap;
+}
+.billing .basicinfo .dates svg{
+    margin-right: 6px;
+    vertical-align: -2px;
+}
+
+@media (max-width: 992px){
+    .billing:not(.pay) .basicinfo{
+        grid-template-columns: 1fr;
     }
-    .dates{
-        color:rgba(128, 128, 128, 0.773);
-        display: flex;
-        align-items:center;
-        justify-content: center;;
+    .billing:not(.pay) .basicinfo > .left{
+        border-right: none;
+        border-bottom: 1px solid var(--border);
     }
-    @media (max-width: 768px) {
-        .billing {
-            margin-left: 0;
-        }
-        .billing .basicinfo .left{
-            width: 100%;
-        }
+}
+@media (max-width: 576px){
+    .billing:not(.pay) .basicinfo > .left,
+    .billing .basicinfo .rightbill{
+        padding: 16px;
     }
+    .billing:not(.pay) .basicinfo > .right{
+        padding: 8px 12px;
+    }
+    .billing .basicinfo .rightbill .rr{
+        width: 100%;
+    }
+    .billing .basicinfo .rightbill .rr span{
+        flex: 1;
+        justify-content: center;
+    }
+    .billing .upgradebilling .right,
+    .billing .upgradebilling .upgradebtn{
+        width: 100%;
+    }
+}

@@ -14,7 +14,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router-dom';
 import Cookies from "js-cookie"; 
+import "../profile.css";
+import "./followerpage.css";
 import { domain } from "../../../utels/constents/const";
+import { safeParse } from "../../../utels/safeJson";
 function Profilefollower(){
     const {userid}=useParams();
     const token = Cookies.get("token");
@@ -42,7 +45,7 @@ function Profilefollower(){
       useEffect(() => {
         fetchUserData();
       }, []);
-      const parsedSkills = userData?.skills?.[0] ? JSON.parse(userData.skills[0]) : [];
+      const parsedSkills = [].concat(safeParse(userData?.skills?.[0], [])).filter(Boolean);
       if (!userData) {
         return <div>Loading...</div>;
       }
@@ -72,54 +75,54 @@ function Profilefollower(){
 <p className='country'>from:<span>{userData.country}</span></p>
 <p className='country'>Role:<span>{userData.role}</span></p>
     <div className="icos">
-  {JSON.parse(userData.socialmedia).facebook && (
+  {safeParse(userData.socialmedia, {}).facebook && (
     <a 
-      href={JSON.parse(userData.socialmedia).facebook} 
+      href={safeParse(userData.socialmedia, {}).facebook} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaFacebook className="icon f" /> {JSON.parse(userData.socialmedia).facebook}
+      <FaFacebook className="icon f" /> {safeParse(userData.socialmedia, {}).facebook}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).twitter && (
+  {safeParse(userData.socialmedia, {}).twitter && (
     <a 
-      href={JSON.parse(userData.socialmedia).twitter} 
+      href={safeParse(userData.socialmedia, {}).twitter} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaTwitter className="icon t" /> {JSON.parse(userData.socialmedia).twitter}
+      <FaTwitter className="icon t" /> {safeParse(userData.socialmedia, {}).twitter}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).instagram && (
+  {safeParse(userData.socialmedia, {}).instagram && (
     <a 
-      href={JSON.parse(userData.socialmedia).instagram} 
+      href={safeParse(userData.socialmedia, {}).instagram} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaInstagram className="icon i" /> {JSON.parse(userData.socialmedia).instagram}
+      <FaInstagram className="icon i" /> {safeParse(userData.socialmedia, {}).instagram}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).Github && (
+  {safeParse(userData.socialmedia, {}).Github && (
     <a 
-      href={JSON.parse(userData.socialmedia).Github} 
+      href={safeParse(userData.socialmedia, {}).Github} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaGithub className="icon g" /> {JSON.parse(userData.socialmedia).Github}
+      <FaGithub className="icon g" /> {safeParse(userData.socialmedia, {}).Github}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).Linkedin && (
+  {safeParse(userData.socialmedia, {}).Linkedin && (
     <a 
-      href={JSON.parse(userData.socialmedia).Linkedin} 
+      href={safeParse(userData.socialmedia, {}).Linkedin} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaLinkedin className="icon l" /> {JSON.parse(userData.socialmedia).Linkedin}
+      <FaLinkedin className="icon l" /> {safeParse(userData.socialmedia, {}).Linkedin}
     </a>
   )}
        </div>
@@ -151,7 +154,7 @@ function Profilefollower(){
             <div className="bob">
               <p>{skill.label}</p>
               <span className="con">
-                <span className={`progress-bar progress-${index + 1}`}></span>
+                <span className={`progress-bar progress-${index + 1}`} style={{ width: `${parseFloat(skill.progress) || 0}%` }}></span>
               </span>
             </div>
             <span className="presnt">{skill.progress}</span>

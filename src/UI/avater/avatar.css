@@ -1,61 +1,84 @@
-.avatar .botb{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.avatar .botb {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
 }
-.avatar .botb .card img{
-    border-radius: 50%;
-    object-fit: cover;
-    height: auto;
-    margin: 10px;
+
+.avatar .card .bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
 }
-.avatar .botb .card .i{
-   width: 130px;
+
+.avatar .card .bottom .tops {
+  flex: 0 0 100%;
+  margin-bottom: 4px;
 }
-.avatar .botb .card .ii{
-   width: 100px;
+
+.avatar .card img {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 0;
+  border: 3px solid var(--surface);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  max-width: 100%;
 }
-.avatar .botb .card .iii{
-  width: 75px;
+
+.avatar .card .i { width: 112px; }
+.avatar .card .ii { width: 88px; }
+.avatar .card .iii { width: 64px; }
+.avatar .card .iiii { width: 48px; }
+.avatar .card .iiiii { width: 34px; }
+
+.avatar .card img.squir {
+  border-radius: 12px;
 }
-.avatar .botb .card .iiii{
-   width: 55px;
+
+.avatar .yo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
-.avatar .botb .card .iiiii{
-width:35px;
+
+.avatar .yo .le,
+.avatar .yo .ri {
+  display: flex;
+  min-width: 0;
 }
-.yo{
-    display: flex;
-    
+
+.avatar .yo .card {
+  height: 100%;
 }
-.yo .le{
-    margin-right:5px ;
-    width: 81%;
+
+/* Groups (overlapping stack) */
+.avatar .nn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
 }
-.yo .ri{
-    margin-left:5px ;
+
+.avatar .nn .blo {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
 }
-.squir{
-border-radius:5px !important;
+
+.avatar .nn .blo img {
+  margin: 0 0 0 -12px;
+  border-width: 2px;
 }
-.avatar .nn{
-    display:flex;
-}
-.avatar .nn .blo{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-}
-.avatar .nn .blo img{
- margin:0 -2%;
-}
-@media(max-width:992px){
-    .avatar .yo{
-        display: flex;
-        flex-direction: column;
-    }
-    .card,.ri,.le{
-       width: 100% !important;
-    }
+
+@media (max-width: 576px) {
+  .avatar .yo {
+    grid-template-columns: 1fr;
   }
+  .avatar .card .i { width: 84px; }
+  .avatar .card .ii { width: 68px; }
+  .avatar .card .iii { width: 52px; }
+  .avatar .card .bottom { gap: 10px; }
+}

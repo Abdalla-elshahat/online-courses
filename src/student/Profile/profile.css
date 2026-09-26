@@ -1,563 +1,524 @@
-:root {
-    --maincolor: rgb(75, 121, 207);
-    --mainwhit: white;
-}
-
+/* ===== Student Profile ===== */
 .profilee {
-    padding: 90px 20px;
-    height: 100%;
-
+  width: 100%;
+  color: var(--text);
 }
-
-.profileacount {
-    font-size: 50px;
+.profilee .profileacount {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-
 .profilee .LEMA {
-    font-size: 15px;
-    color: rgba(102, 102, 102, 0.49);
-    font-weight: bold;
+  margin: 4px 0 24px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
 }
 
+.profilee .pros {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* Shared card look */
+.profilee .pros .left .card,
+.profilee .toppro .card,
+.profilee .meddilpro .card,
+.profilee .bottompro .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Left column */
 .profilee .pros .left {
-    width: 30%;
-    height: 100%;
+  min-width: 0;
 }
-
-
 .profilee .pros .left .card {
-    height: 100%;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 2px;
-    border: none;
-    text-align: center;
-    padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 0 12px;
+}
+.profilee .informa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 16px;
+  text-align: center;
+}
+.profilee .informa .profile-avatar {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 4px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--primary-soft), var(--shadow);
+  margin-bottom: 12px;
+}
+.profilee .datauser {
+  width: 100%;
+  text-align: left;
+  text-transform: capitalize;
+}
+.profilee .datauser h1 {
+  margin: 0 0 14px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-align: center;
+}
+.profilee .informa .ander,
+.profilee .informa .country {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.profilee .informa .ander span,
+.profilee .informa .country span {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-align: right;
+  word-break: break-word;
+}
+.profilee .informa .icos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+.profilee .informa .icos a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text-2);
+  font-size: 0.82rem;
+  text-decoration: none;
+  text-transform: none;
+  word-break: break-all;
+  transition: background 0.15s ease;
+}
+.profilee .informa .icos a:hover {
+  background: var(--surface-2);
+}
+.profilee .informa .icos .icon {
+  flex-shrink: 0;
+  font-size: 18px;
+}
+.profilee .informa .icos .f { color: #1877f2; }
+.profilee .informa .icos .t { color: #1da1f2; }
+.profilee .informa .icos .i { color: #e1306c; }
+.profilee .informa .icos .g { color: var(--text); }
+.profilee .informa .icos .l { color: #0a66c2; }
+
+.profilee .achive,
+.profilee .skills {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.profilee .achive h2,
+.profilee .skills h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.informa img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    cursor: pointer;
-    object-fit: cover;
+.profilee .colors {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+}
+.profilee .colors .one,
+.profilee .colors .two,
+.profilee .colors .three,
+.profilee .colors .four,
+.profilee .colors .five {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 50%;
+  color: #fff;
+}
+.profilee .colors .one { background: #f59e0b; }
+.profilee .colors .two { background: var(--success); }
+.profilee .colors .three { background: var(--danger); }
+.profilee .colors .four { background: var(--primary); }
+.profilee .colors .five { background: var(--primary-2); }
+.profilee .colors .oneb,
+.profilee .colors .twob,
+.profilee .colors .threeb,
+.profilee .colors .fourb,
+.profilee .colors .fiveb {
+  display: none;
 }
 
-.datauser {
-    font-size: 20px;
-    text-align: left;
-    margin-left: 10px;
-    padding: 10px;
-    text-transform: capitalize;
-    padding-right: 10px;
+/* Skills */
+.profilee .progressbottom {
+  padding: 4px 20px;
+}
+.profilee .progressbottom > p {
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.profilee .block {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.profilee .block:last-child {
+  border-bottom: none;
+}
+.profilee .blokpr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.profilee .blokpr img {
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 0 !important;
+  border-radius: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.profilee .blokpr .bob {
+  flex: 1;
+  min-width: 0;
+}
+.profilee .blokpr .bob p {
+  margin: 0 0 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+.profilee .blokpr .con {
+  display: block;
+  width: 100%;
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.profilee .blokpr .con .progress-bar {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--gradient);
+}
+.profilee .blokpr .presnt {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.profilee .jsp, .profilee .nop, .profilee .vaup, .profilee .anagelrp {
+  width: 40px !important;
+  height: 40px !important;
 }
 
-.informa .ander,
-.informa .country {
-    color: rgba(128, 128, 128, 0.738);
-    display: flex;
-    align-items: center;
-}
-
-.informa .ander span,
-.informa .country span {
-    color: rgba(0, 0, 0, 0.738);
-    font-weight: bold;
-    font-size: 20px;
-    text-transform: capitalize;
-}
-
-.informa .icos {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-direction: column;
-    font-size: 25px;
-    gap: 20px;
-}
-.informa .icos a{
-    text-decoration: none;
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-}
-.social-link{
-    font-size: 10px;
-}
-.informa .icos .f {
-color: blue;
-}
-
-.informa .icos .t {
-color:rgb(0, 168, 240);
-
-}
-
-.informa .icos .i {
-color:rgb(235, 5, 105)
-}
-
-.informa .icos .g {
- color:black;
-}
-
-.informa .icos .l {
-color: rgb(0, 59, 141);
-}
-
-.achive, .skills {
-    text-align: center;
-    text-transform: capitalize;
-    font-size: 25px;
-    background-color: rgba(128, 128, 128, 0.121);
-    padding: 5px 0;
-    color: gray;
-}
-
-.colors {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    margin: 10px 0;
-}
-
-.one, .two, .three, .four, .five {
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    padding: 2px;
-}
-
-.colors .one {
-    background-color: yellow;
-}
-
-.colors .two {
-    background-color: rgb(5, 208, 5)
-}
-
-.colors .three {
-    background-color: red;
-}
-
-.colors .four {
-    background-color: blue
-}
-
-.colors .five {
-    background-color: rgb(144, 0, 255)
-}
-
-.colors .oneb {
-    width: 100px;
-    height: auto;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 55%;
-    left: -7%;
-    display: none;
-}
-
-.colors .twob {
-    width: 100px;
-    height: auto;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 55%;
-    left: 10%;
-    display: none;
-}
-
-.colors .threeb {
-    width: 100px;
-    height: auto;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 55%;
-    left: 36%;
-    display: none;
-}
-
-.colors .fourb {
-    width: 100px;
-    height: auto;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 55%;
-    left: 54%;
-    display: none;
-}
-
-.colors .fiveb {
-    width: 100px;
-    height: auto;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 55%;
-    left: -7%;
-    display: none;
-}
-
-.colors .two {
-    background-color: rgb(5, 208, 5)
-}
-
-.colors .three {
-    background-color: red;
-}
-
-.colors .four {
-    background-color: blue
-}
-
-.colors .five {
-    background-color: rgb(144, 0, 255)
-}
-
-.jsp, .nop, .vaup, .anagelrp {
-    width: 40px !important;
-    height: 40px !important;
-}
-
-.blokpr {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100% !important;
-}
-.pros {
-    display: flex;
-}
-
+/* Right column */
 .profilee .pros .rightpro {
-    width: 70%;
-    height: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.profilee .rightpro .toppro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.profilee .toppro .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.profilee .toppro .card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.profilee .toppro .bakico {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.profilee .toppro .b1 { background: var(--primary-soft); color: var(--primary); }
+.profilee .toppro .b2 { background: #fef3c7; color: #d97706; }
+.profilee .toppro .b3 { background: #dcfce7; color: #16a34a; }
+.profilee .toppro .clop {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.profilee .toppro .cardp {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.profilee .toppro a.cardp:hover {
+  color: var(--primary);
+}
+.profilee .toppro .cardh2 {
+  margin: 2px 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
-.profilee .pros .rightpro .toppro {
-    display: flex;
-    width: 100%;
+.profilee .meddilpro .card,
+.profilee .bottompro .card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+}
+.profilee .meddilpro .card > img,
+.profilee .bottompro .card > img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.profilee .contenet {
+  flex: 1;
+  min-width: 0;
+}
+.profilee .contenet p {
+  color: var(--text-2);
+  margin: 0 0 8px;
+  word-break: break-word;
+}
+.profilee .contenet a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+.profilee .sherr {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.profilee .sherr span {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.profilee .react {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.profilee .like,
+.profilee .love {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+.profilee .lk { font-size: 18px; color: var(--primary); cursor: pointer; }
+.profilee .lo { font-size: 18px; color: var(--danger); cursor: pointer; }
+
+.profilee .bottompro .cardin {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  padding: 0 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+.profilee .bottompro .cardin:hover {
+  box-shadow: var(--shadow);
+}
+.profilee .bottompro .cardin > * {
+  padding: 0 14px;
+}
+.profilee .bottompro .cardin img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  padding: 0;
+  margin-bottom: 8px;
+}
+.profilee .bottompro .cardin h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.profilee .bottompro .cardin .link {
+  color: var(--primary);
+  font-size: 20px;
 }
 
-.profilee .pros .rightpro .toppro .card {
-    margin: 0 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px;
-    border: none;
-    background-color: white;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+/* Favorite courses */
+.profilee .favorite-courses {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.profilee .favorite-courses .section-title {
+  margin: 0 0 18px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.profilee .course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.profilee .course-card {
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.profilee .course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.profilee .course-title {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.profilee .course-author,
+.profilee .course-description,
+.profilee .course-price,
+.profilee .course-status {
+  margin: 0 0 6px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.profilee .course-price {
+  color: var(--primary);
+  font-weight: 600;
+}
+.profilee .course-status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.profilee .course-status.active { background: #dcfce7; color: #15803d; }
+.profilee .course-status.inactive { background: #fee2e2; color: #b91c1c; }
+.profilee .no-courses {
+  margin: 0;
+  color: var(--muted);
 }
 
-.profilee .pros .rightpro .toppro .card .cardp {
-    font-size: 20px;
-    margin-left: 5px;
-    margin-bottom: 0;
+/* Avatar popup */
+.profilee .popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 2000;
+}
+.profilee .popup-content {
+  position: relative;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.profilee .popup .popup-image {
+  display: block;
+  width: min(500px, 85vw) !important;
+  height: min(500px, 85vw) !important;
+  max-height: 80vh;
+  border-radius: 12px;
+  object-fit: cover;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+.profilee .close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.profilee .close-btn:hover {
+  filter: brightness(0.9);
 }
 
-.profilee .pros .rightpro .toppro .card .cardp:hover {
-    cursor: pointer;
-    color: black;
-    border-bottom: 1px solid black;
-}
-
-.profilee .pros .rightpro .toppro .card .cardh2 {
-    font-size: 30px;
-}
-
-.profilee .pros .rightpro .toppro .card .clop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.meddilpro .card,
-.bottompro .card {
-    margin: 10px;
-    padding: 18px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 97%;
-    border: none;
-    background-color: white;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
-}
-
-.meddilpro .card img,
-.bottompro .card img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-.meddilpro .card .sherr .bottompro .card .sherr {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 2px 0;
-}
-
-.meddilpro .card .sherr span {
-    color: rgba(128, 128, 128, 0.4);
-    font-size: 15px;
-}
-
-.meddilpro .card a .bottompro .card a {
-    margin-bottom: 10px;
-}
-
-.meddilpro .react .bottompro .react {
-    margin: 20px;
-}
-
-.like {
-    margin-right: 5px;
-}
-
-.love {
-    margin-left: 5px;
-}
-
-.lk {
-    font-size: 20px;
-    color: rgb(40, 40, 226);
-    cursor: pointer;
-}
-
-.lo {
-    font-size: 20px;
-    color: rgb(255, 0, 0);
-    cursor: pointer;
-}
-
-.bottompro .card {
-    padding-left: 0 !important;
-
-}
-
-.bottompro .cardin {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
-    border: none;
-    background-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
-}
-
-.bottompro .cardin h2 {
-    font-size: 20px;
-}
-
-.bottompro .cardin img {
-    width: 100%;
-    height: 200px;
-    border-radius: 0;
-    margin-bottom: 5px;
-}
-
-.bottompro .cardin .link {
-    color: black;
-    font-size: 25px;
-}
-
-.bottompro .react {
-    margin-right: 10px;
-}
-
-
-.favorite-courses {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Responsive */
+@media (max-width: 992px) {
+  .profilee .pros {
+    grid-template-columns: 1fr;
   }
-  
-  .favorite-courses .section-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .course-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .course-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    width: calc(33.33% - 20px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .course-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #007bff;
-  }
-  
-  .course-author,
-  .course-description,
-  .course-price,
-  .course-status {
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .course-status.active {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .course-status.inactive {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .no-courses {
-    font-size: 16px;
-    color: #888;
-  }
-  
-
-  /* Popup Style */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .popup-content {
-    position: relative;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .popup-image {
-    width:500px !important;
-    height:500px !important;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius:50%;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .close-btn:hover {
-    background: darkred;
-  }
-  .contenet{
-    width: 100%;
-  }
-@media(max-width:1200px) {}
-
-@media(max-width:992px) {
-    .pros {
-        display: flex;
-        flex-direction: column;
-        width: 300%;
-        margin-left: 5%;
-    }
-.profilee{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
-    .profilee .pros .rightpro {
-        margin-left: -9px;
-        width: 31%;
-    }
-    .profilee .pros .rightpro .toppro {
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
-    .course-card{
-        min-width: 100%;
-    }
-}
-
-
-@media(max-width:768px) {
-    .pros {
-        width: 300%;
-    }
-}
-
-@media(max-width:576px) {
-    .profilee .pros .left {
-        width: 24%;
-        height: 100%;
-        margin-left: 3%;
-    }
-
-    .profilee .pros .rightpro {
-        margin-left: 47px;
-        width: 25%;
-    }
+@media (max-width: 576px) {
+  .profilee .LEMA { margin-bottom: 16px; }
+  .profilee .rightpro .toppro { grid-template-columns: 1fr; }
+  .profilee .meddilpro .card,
+  .profilee .bottompro .card { padding: 16px; gap: 12px; }
+  .profilee .bottompro .cardin img { height: 150px; }
+  .profilee .favorite-courses { padding: 16px; }
+  .profilee .course-list { grid-template-columns: 1fr; }
+  .profilee .close-btn { top: 4px; right: 4px; }
 }

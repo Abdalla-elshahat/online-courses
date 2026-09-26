@@ -1,147 +1,250 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Instructor: Create Quiz — root: .serice.courses.quiz ===== */
+.serice.quiz .tops {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
 }
-.quiz .card{
-    height:auto;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+.courses.quiz .Goto {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text-2);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.courses.quiz .Goto:hover {
+    background: var(--primary-soft);
+    border-color: transparent;
+    color: var(--primary);
+}
+
+.serice.quiz .card {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 24px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     text-align: left;
-    width: 97%;
-    margin-top: 20px;
-    border-radius: 2px;
-    border: none;
-    margin: 15px 5px;
-    padding: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
-.quiz .card .toto{
+.serice.quiz .card:empty {
+    display: none;
+}
+
+/* New question form */
+.serice.quiz .cardquiz label {
+    margin: 6px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+}
+.serice.quiz input,
+.serice.quiz select {
+    width: 100%;
+    margin: 0 0 6px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.serice.quiz input:focus,
+.serice.quiz select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+.serice.quiz .cardquiz .answers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 6px 0;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--surface-2);
+}
+.serice.quiz .cardquiz .answer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.serice.quiz .cardquiz .answer label {
+    margin: 0;
+}
+.serice.quiz .cardquiz .answer input {
+    margin: 0;
+}
+.serice.quiz .cardquiz .correctanswer {
+    display: flex;
+    flex-direction: column;
+}
+.serice.quiz .cardquiz > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px -6px rgba(79, 70, 229, .55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.serice.quiz .cardquiz > span:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .6);
+}
+
+/* Question list */
+.serice.quiz .card .toto {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:rgba(128, 128, 128, 0.171);
-    padding: 10px;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    transition: background .15s ease;
 }
-.quiz .card .toto .tograp{
-   display: flex;
-   align-items:center;
-   align-items:center;
-   font-size: 25px;
+.serice.quiz .card .toto:hover {
+    background: var(--surface-2);
 }
-.quiz .card .toto .tograp span{
-    background-color:black;
-    color:white;
+.serice.quiz .card .toto .tograp {
     display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    font-size: 15px;
+}
+.serice.quiz .card .toto .tograp span {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items:center;
-    padding: 5px;
-    border-radius:5px;
-    margin-right: 10px;
- }
- .quiz .card .toto .tograp p{
-   margin-top: 10px;
- }
- .quiz .card .toto .delet{
-    background-color:rgb(197, 5, 5);
-    color:white;
-    font-size: 20px;
-    padding:5px 10px;
-    border-radius:5px;
-    cursor: pointer;
- }
-.quiz .cardquiz {
-    background-color:rgba(128, 128, 128, 0.107);
+    border-radius: 10px;
+    background: var(--primary-soft);
+    color: var(--primary);
 }
-.quiz .cardquiz label{
-   font-size: 15px;
-   color:gray;
-   margin-bottom: 5px;
+.serice.quiz .card .toto .tograp p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-word;
 }
-.quiz input,
-.quiz  select{
-    margin-bottom: 10px;
-    border:1px solid rgba(128, 128, 128, 0.116);
-    outline: none;
-    padding: 5px;
-    border-radius:2px;
- }
- .quiz  input:focus,
- .quiz  select:focus{
-   border-color:var(--maincolor);
- }
- .quiz .cardquiz span{
-    background-color:var(--maincolor);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    width: max-content;
-    font-weight: bold;
-    text-transform: capitalize;
-    transition-duration: 0.5s;
+.serice.quiz .card .toto .delet {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, .1);
+    color: var(--danger);
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    border:1px solid var(--maincolor)
- }
- .quiz .cardquiz span:hover{
-    background-color:white;
-    color:var(--maincolor);
- }
+    transition: background .2s ease, color .2s ease;
+}
+.serice.quiz .card .toto .delet:hover {
+    background: var(--danger);
+    color: #fff;
+}
 
-.quiz .card .boto .correct p{
-text-align:end;
-margin-bottom: 10px;
+/* Footer: time + save */
+.serice.quiz .endquiz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
 }
-.quiz .card .boto .blocc{
-   display: flex;
-   justify-content: space-between;
-   align-items:center;
-   flex-direction: row;
-   border: 1px solid rgba(128, 128, 128, 0.148);
-   border-radius:3px;
-   padding: 10px;
+.serice.quiz .endquiz > span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.serice.quiz .endquiz label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+    white-space: nowrap;
+}
+.serice.quiz #time {
+    width: 110px;
+    max-width: 100%;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.serice.quiz .saveQuizButton {
+    width: auto;
+    margin: 0;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px -6px rgba(79, 70, 229, .55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.serice.quiz .saveQuizButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .6);
+}
+
+@media (max-width: 576px) {
+    .serice.quiz .card {
+        padding: 16px;
     }
-    .quiz .card .boto .blocc label span{
-    margin-right: 10px;
-    color:rgba(128, 128, 128, 0.549);
-    font-size:20px;
-         }
-         .quiz .card .newanswer {
-            background-color: rgb(3, 182, 3);
-            color: white;
-            font-size: 20px;
-            width: max-content;
-            font-weight: bold;
-            padding: 5px;
-            border-radius: 3px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        .saveQuizButton{
-         cursor: pointer;
-         background-color:rgb(0, 0, 0);
-         color:white;
-         font-size: 20px;
-         font-weight: bold;
-         width:auto;
-         padding:5px;
-         border: none;
-         outline: none;
-         border-radius:5px;
-         margin-right: 25px;
-     text-align: center;
-     transition-duration:0.5s ;
-     }
-     .saveQuizButton:hover{
-         background-color:rgb(17, 203, 17);
-     }
-     .endquiz{
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-     }
-     #time{
-        font-size: 20px;
-        font-weight: bold;
-        border-radius:20px;
-        margin-left: 10px;
-       max-width: 50%; 
-     }
+    .serice.quiz .cardquiz .answers {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+    .serice.quiz .cardquiz > span,
+    .serice.quiz .saveQuizButton {
+        width: 100%;
+        justify-content: center;
+    }
+    .serice.quiz .endquiz > span {
+        width: 100%;
+    }
+    .serice.quiz #time {
+        flex: 1;
+        width: auto;
+    }
+    .serice.quiz .card .toto {
+        flex-wrap: wrap;
+    }
+}

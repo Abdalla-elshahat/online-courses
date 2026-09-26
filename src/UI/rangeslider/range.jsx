@@ -7,7 +7,7 @@ import { FaImage } from "react-icons/fa";
 function Range(){
     return(
         <>
-        <div className="edit">
+        <div className="edit rangepage">
             <h2 className='editacount ranges'>Range Sliders</h2>
             <p className='editacountpp'>Easy to use range sliders.</p>
             <span className='samep'>Easy to use, flexible and responsive range slider with skin support. Please read the <a href="#"> official plugin documentation </a>for a full list of options.</span>

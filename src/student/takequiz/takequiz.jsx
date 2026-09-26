@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaArrowRight, FaCheckCircle, FaGraduationCap } from "react-icons/fa";
 import { TbExclamationMark } from "react-icons/tb";
@@ -16,28 +16,35 @@ function Takequiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answersState, setAnswersState] = useState({});
   const [timeLeft, setTimeLeft] = useState(0);
-  useEffect(() => {
-    const fetchQuiz = async () => {
-    if (quiz) {
-     await setTimeLeft(quiz.timeLimit * 60); // تحويل الدقائق إلى ثوانٍ
-    }
-  }
-  fetchQuiz ();
-  }, [quiz]);
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
+  const submittedRef = useRef(false);
+  const timerStartedRef = useRef(false);
 
-      return () => clearInterval(timer);
-    } else if (timeLeft === 0&&quiz) {
+  // تحويل الدقائق إلى ثوانٍ
+  useEffect(() => {
+    if (quiz && Number(quiz.timeLimit) > 0) {
+      setTimeLeft(Number(quiz.timeLimit) * 60);
+      timerStartedRef.current = true;
+    }
+  }, [quiz]);
+
+  useEffect(() => {
+    if (submittedRef.current) return;
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+    // auto-submit only when a started countdown reaches zero
+    if (timeLeft === 0 && quiz && timerStartedRef.current) {
       submitAnswers();
     }
-  }, [timeLeft]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeLeft, quiz]);
 
   const fetchQuizByquizid = async () => {
-    if (token) {
+    if (!token) {
+      setLoading(false);
+      return;
+    }
       try {
         const response = await fetch(`${domain}/api/quiz/quizzes/${quizid}`, {
           method: "GET",
@@ -54,16 +61,17 @@ function Takequiz() {
       } finally {
         setLoading(false);
       }
-    }
   };
   // ✅ جلب بيانات الكويز
   useEffect(() => {
     fetchQuizByquizid();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quizid]);
 
   // ✅ إرسال الإجابات عند آخر سؤال
   const submitAnswers = async () => {
-    if (token) {
+    if (token && !submittedRef.current) {
+      submittedRef.current = true;
       try {
         const response = await fetch(`${domain}/api/quiz/quizzes/${quizid}/answers`, {
           method: "POST",
@@ -81,7 +89,7 @@ function Takequiz() {
 
         if (!response.ok) throw new Error("Failed to submit answers");
        else{
- toast.success("Course updated successfully!", {
+ toast.success("Answers submitted successfully!", {
         icon: <FaCheckCircle color="green" />,
         });
         setTimeout(()=>{
@@ -89,7 +97,9 @@ function Takequiz() {
         },1000)
        }
       } catch (error) {
+        submittedRef.current = false;
         console.error("Submission Error:", error);
+        toast.error("Failed to submit answers, please try again.");
       }
     }
   };
@@ -100,7 +110,7 @@ function Takequiz() {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (!quiz) return <p>No quiz found.</p>;
+  if (!quiz || !quiz.questions?.length) return <p>No quiz found.</p>;
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;

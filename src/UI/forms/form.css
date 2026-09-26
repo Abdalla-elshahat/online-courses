@@ -1,250 +1,569 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
-.forms input::placeholder{
-    color:rgba(128, 128, 128, 0.203);
-}
-.forms .basicinfo form{
-    display: flex;
-width: 100%;
-}
-.forms .basicinfo form .left{
-    padding: 20px;
-    text-align: left;
+/* NOTE: kept global on purpose - other pages rely on hidden native file inputs */
+input[type="file"] {
+  display: none;
 }
 
-.forms .basicinfo form .left p{
-    font-size: 15px;
-    color: gray;
-}
-.forms .basicinfo form .right .fform{
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-   justify-content:start;
-}
-.forms .basicinfo form .right .fform .block{
-    width: 100%;
-    }
-.forms .basicinfo form .right .fform input{
- width: 100% !important;
- }
- .forms .basicinfo form .right #submit{
-font-size: 20px;
-background-color:var(--maincolor);
-color:white;
-border-radius: 5px;
-padding: 5px;
-width: auto;
-border:1px solid transparent;
-outline: none;
-width: 20% !important;
-margin: 10px 0 0 0;
-transition-duration: 0.5s;
-    }
-    .forms .basicinfo form .right #submit:hover{
-       border:1px solid var(--maincolor);
-       color:var(--maincolor);
-       background-color:transparent;
-            }
-
-
-            .forms .firstname{
-                width:auto;
-                border-radius: 3px;
-                border: none;
-                outline: none;
-                background-color:white !important;
-                height:auto;
-            }
-            #firstname,#lastname,#city,#state{
-               border:none;
-               margin-right:5px;
-            }
-
-.forms #check{
-    margin-right: 10px;
-}
-
-.forms .check{
-   float: left;
-}
-.forms .basicinfo .right .fi {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    width: 100%;
-}
-.forms .basicinfo .right .fi .le{
-  margin-right: 5px;
-}
-.forms .basicinfo .right .fi .re{
-    margin-left: 5px;
-  }
-.forms .uuuo .right {
-padding: 10px;
-}
-.forms .basicinfo .right .blok .nx{
-width: 100%;
-padding:2px 5px ;
-border-radius:3px;
-display: flex;
-align-items:center;
-background-color:white;
-}
-.forms .basicinfo .right .blok .nx:focus-within {
-    border: 1px solid var(--maincolor);
-}
-.forms .basicinfo .right .blok .flash{
-    background-color:transparent;
-     }
-     .forms .basicinfo .right .blok .flash:focus-within{
-         border: none;
-          }
-          .forms .basicinfo .right .blok .round{
-            border-radius:20px;
-             }
-.forms .basicinfo .right .blok{
+/* ===== Forms UI page (root: .edit.forms) ===== */
+.forms {
   width: 100%;
-  margin: 10px 0;
-    }
-.forms .uuuo input{
-    border:none;
-    outline: none;
-    margin:2px;
-    background-color:transparent;
-    width: 100% !important;
+  color: var(--text);
 }
-.forms label{
-    display: block;
-}
-.forms .basicinfo .nfy{
-    margin:0 5px;
-    font-size: 20px;
-}
-.forms .basicinfo .green{
-color:rgb(3, 187, 3);
-border:1px solid rgb(3, 187, 3);
-}
-.forms .basicinfo .red{
-    color:rgb(202, 0, 0);
-    border:1px solid rgb(200, 0, 0);
-    }
 
-    .forms label{
-    margin: 10px;
-    }
-    .forms .jjj{
-        display: flex;
-        justify-content: center;
-        align-items:center;
-    }
-    .forms .fileforms{
-        display: block ;
-    }
-
-input[type="file"]{
-    display: none;
+.forms .editacount {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
-.forms .carto .link{
-    font-size: 25px;
-    cursor: pointer;
+
+.forms .basicinfo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0 0 24px;
+  overflow: hidden;
 }
-    .cardform{
-width:90%;
-    }
-    .forms .card .carto{
-display:flex;
-justify-content: space-between;
-max-width: 50%;
-align-items:center;
-    }
-    .forms .cardform .carto select{
-       border:none;
-       outline: none;
-       cursor: pointer;
-       width: 100%;
-       border-radius:0;
-        }
-        .forms  #head h1{
-           font-size: 30px;
-             }
-             .forms  #head h2{
-                font-size:25px;
-                  }
-                  .forms  #head h3{
-                    font-size: 20px;
-                      }
-    .forms .card .carto span{
-        cursor: pointer;
-        font-size: 20px;
-        transition-duration: 0.5s;
-        }
-        .forms .card .carto span:hover{
-           color:var(--maincolor)
-            }
-    .forms .card .carbottom{
-      width: 100%;
-      border-top: 1px solid rgba(168, 168, 168, 0.223);
-        }
-        .forms .card .carbottom textarea{
-            width: 100%;
-            border:none;
-            outline: none;
-            padding:5px;
-              }
 
-              .forms .taml{
-                display: flex;
-                justify-content: space-between;
-                align-items:center;
-                width: 100%;
-                padding: 10px 20px;
-                border-bottom: 1px solid rgba(128, 128, 128, 0.485);
-              }
-              .forms .taml .l{
-                display: flex;
-                justify-content: space-between;
-                align-items:center;
-              }
-              .forms .taml .inrf{
-                margin-left: 10px;
-                display: flex;
-                flex-direction: column;
-              }
+.forms .basicinfo form {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  width: 100%;
+  margin: 0;
+}
 
-              .forms .taml .r{
-               cursor: pointer;
-               background-color:white;
-               color:red;
-               width:30px;
-               height:30px;
-               font-size: 20px;
-               padding: 5px;
-               border-radius:50%;
-               display: flex;
-               justify-content: center;
-               align-items:center;
-               transition-duration: 0.5s;
-              }
-              .forms .taml .r:hover{
-               background-color:red;
-               color:white;
-               }
-               .forms #fileforms{
-                display: none;
-               }
-               .forms .fileforms{
-                font-size:25px;
-                display: flex;
-                justify-content: center;
-                align-items:center;
-                background-color:rgba(75, 121, 207, 0.163);
-                border:1px dotted var(--maincolor);
-                width: 50%;
-                height: auto;
-                padding: 10px;
-                cursor: pointer;
-                border-radius:3px;
-               }
+.forms .basicinfo form .left {
+  padding: 24px;
+  text-align: left;
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+}
+
+.forms .basicinfo form .left .pin {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.forms .basicinfo form .left p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+.forms .basicinfo form .left a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.forms .basicinfo form .left span {
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+.forms .basicinfo form .right {
+  padding: 24px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.forms .basicinfo form .right > p {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* Rows */
+.forms .basicinfo .right .f {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.forms .basicinfo form .right .fform {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.forms .basicinfo .right .fi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+.forms .basicinfo .right .fi .le,
+.forms .basicinfo .right .fi .re {
+  margin: 0;
+}
+
+.forms .basicinfo .right .blok {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.forms label {
+  display: block;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* Inputs */
+.forms input::placeholder,
+.forms textarea::placeholder {
+  color: #94a3b8;
+}
+
+.forms .basicinfo .right .blok > input,
+.forms .basicinfo .right .blok > select,
+.forms .basicinfo .right .blok > select.nx {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.forms .basicinfo .right .blok > input:focus,
+.forms .basicinfo .right .blok > select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+/* Input with icon wrapper */
+.forms .firstname,
+.forms .basicinfo .right .blok .nx {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.forms .firstname:focus-within,
+.forms .basicinfo .right .blok .nx:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.forms .firstname input,
+.forms .basicinfo .right .blok .nx input {
+  flex: 1;
+  min-width: 0;
+  width: 100% !important;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 10px 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+}
+
+.forms .basicinfo .nfy {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.forms .basicinfo .right .blok .larg input {
+  padding: 14px 0;
+  font-size: 1.05rem;
+}
+
+.forms .basicinfo .right .blok .flash {
+  background: transparent;
+  border-color: transparent;
+}
+
+.forms .basicinfo .right .blok .flash:focus-within {
+  background: var(--surface-2);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.forms .basicinfo .right .blok .round {
+  border-radius: 999px;
+  padding: 0 16px;
+}
+
+.forms .basicinfo .right .blok .flush {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0;
+}
+
+.forms .basicinfo .right .blok .flush:focus-within {
+  box-shadow: none;
+  border-bottom-color: var(--primary);
+}
+
+.forms .basicinfo .green {
+  border-color: var(--success) !important;
+}
+
+.forms .basicinfo .green .nfy {
+  color: var(--success);
+}
+
+.forms .basicinfo .red {
+  border-color: var(--danger) !important;
+}
+
+.forms .basicinfo .red .nfy {
+  color: var(--danger);
+}
+
+/* Checkbox */
+.forms .check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forms .check label {
+  font-weight: 500;
+}
+
+.forms #check {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Submit */
+.forms .basicinfo form .right #submit {
+  align-self: flex-start;
+  width: auto;
+  min-width: 140px;
+  margin: 4px 0 0;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.forms .basicinfo form .right #submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.32);
+}
+
+/* Toggle */
+.forms .jjj {
+  flex-direction: row !important;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px !important;
+}
+
+.forms .jjj p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.forms .switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  margin: 0;
+}
+
+.forms .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.forms .slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.25s;
+}
+
+.forms .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+  transition: 0.25s;
+}
+
+.forms .switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.forms .switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.forms .slider.round {
+  border-radius: 999px;
+}
+
+.forms .slider.round:before {
+  border-radius: 50%;
+}
+
+/* Rich text editor */
+.forms .cardform {
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.forms .card .carto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  max-width: 100%;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.forms .card .carto > span,
+.forms .carto .link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  margin: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-2);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.forms .card .carto > span:hover,
+.forms .carto .link:hover {
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.forms .cardform .carto select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.forms #head h1 { font-size: 30px; }
+.forms #head h2 { font-size: 25px; }
+.forms #head h3 { font-size: 20px; }
+
+.forms .card .carbottom {
+  width: 100%;
+}
+
+.forms .card .carbottom textarea {
+  display: block;
+  width: 100%;
+  min-height: 140px;
+  border: none;
+  outline: none;
+  padding: 14px;
+  resize: vertical;
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+}
+
+/* File upload */
+.forms #fileforms {
+  display: none;
+}
+
+.forms .fileforms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 28px 16px;
+  margin: 0;
+  font-size: 32px;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 2px dashed var(--primary);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.forms .fileforms:hover {
+  background: rgba(79, 70, 229, 0.16);
+}
+
+.forms .fileforms p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.forms .taml {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.forms .taml .l {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.forms .taml .l img {
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.forms .taml .inrf {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.forms .taml .inrf .name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.forms .taml .inrf .size {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.forms .taml .r {
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.forms .taml .r:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* react-select */
+.forms .basic-multi-select .select__control {
+  border-radius: 10px;
+  border-color: var(--border);
+  min-height: 42px;
+}
+
+.forms .basic-multi-select .select__control--is-focused {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.forms .basic-multi-select .select__multi-value {
+  border-radius: 999px;
+  padding: 0 4px;
+}
+
+@media (max-width: 992px) {
+  .forms .basicinfo form {
+    grid-template-columns: 1fr;
+  }
+  .forms .basicinfo form .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+  .forms .basicinfo form .right {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .forms .basicinfo {
+    margin-bottom: 16px;
+  }
+  .forms .basicinfo form .left,
+  .forms .basicinfo form .right {
+    padding: 16px;
+  }
+  .forms .basicinfo .right .f,
+  .forms .basicinfo .right .fi {
+    grid-template-columns: 1fr;
+  }
+  .forms .basicinfo form .right #submit {
+    width: 100%;
+  }
+}

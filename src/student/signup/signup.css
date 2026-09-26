@@ -1,140 +1,240 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
+/* Mirrors login.css — both pages use .loginn. Edit both together. */
+/* ===== Auth pages (login + signup share .loginn; keep login.css and signup.css in sync) ===== */
 .loginn{
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding-top:80px;
-    height: 100%;
-    margin-bottom: 50px;
-}
-form{
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
     width: 100%;
-    display: contents;
+    min-height: calc(100vh - 160px);
+    margin: 0;
+    padding: 24px 0;
+}
+.loginn > .image{
+    width: 56px;
+    height: 56px;
+    padding: 8px;
+    object-fit: contain;
+    border-radius: 16px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+.loginn form{
+    display: block;
+    width: 100%;
+    max-width: 440px;
 }
 .loginn .card{
-    height: 100%;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    position: relative;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    width: 50%;
-    margin: 10px;
-    border-radius: 2px;
-    border: none;
-    transition-duration: 1s;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    margin: 0 auto;
+    padding: 36px 32px 28px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
 }
-.loginn .card .assepts{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    background-color: rgba(18, 176, 18, 0.052);
-    border:1px solid green;
-    border-radius:5px;
-    padding: 10px;
+.loginn .card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient);
 }
-.loginn .card .assepts span{
-    background-color:green;
-    color: white;
-    margin-right: 10px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+/* Google button */
 .loginn .conectgoogle{
     display: flex;
     justify-content: center;
-    margin: 10px 0;
-    border:none;
-    padding: 5px;
-    font-size: 15px;
-    font-weight: bold;
-    align-items:center;
-    transition-duration:0.5s;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
-.loginn input[type="email"],
-.loginn input[type="password"]{
-    width: 100%;
-}
-.or{
+
+/* OR divider */
+.loginn .or{
     display: flex;
-    justify-content: center;
-    margin: 10px 0;
-    font-weight: bold;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0 6px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
 }
-.or::after{
-    content: '';
-    width: -webkit-fill-available;
-    background-color: #80808036;
+.loginn .or::before,
+.loginn .or::after{
+    content: "";
+    position: static;
+    flex: 1;
+    width: auto;
     height: 1px;
-    position: absolute;
-    margin-top: 11px;
-    width: 85%;
+    margin: 0;
+    background-color: var(--border);
 }
-.loginn .bllogin .cooo{
-border:1px solid rgba(128, 128, 128, 0.429);
-border-radius:5px;
-display: flex;
-align-items:center;
-padding:5px;
-margin: 10px 0
-}
-.loginn .cooo :focus + .cooo span{
-    color:var(--maincolor);
-}
-.loginn .bllogin .cooo input{
-    border:none;
-    outline: none;
-}
-.loginn .bllogin .cooo span{
-    margin-right: 5px;
-    font-size: 20px;
-}
-.loginn .bllogin label{
-    font-weight: bold;
-    font-size: 15px;
-}
-.loginn .loginbtn{
-    width: 100%;
-    background-color: var(--maincolor);
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-    cursor: pointer;
-}
-.loginn .checkee{
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-.loginn .checkee #ck{
-   margin-right: 10px;
-}
-.ta7t{
+
+/* Fields */
+.loginn .bllogin{
     display: flex;
-    justify-content: center;
-    align-items:center;
     flex-direction: column;
 }
-.ta7t .forget,
-.ta7t .signup span{
-    color:var(--maincolor);
-    padding-bottom: 0;
+.loginn .bllogin label{
+    margin: 14px 0 6px;
+    color: var(--text-2, var(--muted));
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
 }
-.ta7t .forget:hover,
-.ta7t .signup span:hover{
-    border-bottom: 2px solid var(--maincolor);
+.loginn .bllogin .cooo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 46px;
+    margin: 0;
+    padding: 0 14px;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.loginn .bllogin .cooo:focus-within{
+    border-color: var(--primary);
+    background-color: var(--surface);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+    color: var(--primary);
+}
+.loginn .bllogin .cooo span{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 16px;
+}
+.loginn .bllogin .cooo input{
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+.loginn .bllogin .cooo input::placeholder{
+    color: #94a3b8;
+}
+
+/* Remember / terms */
+.loginn .checkee{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-2, var(--muted));
+}
+.loginn .checkee #ck{
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--primary);
     cursor: pointer;
 }
-input[type="text"]{
+.loginn .checkee .rem span{
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Submit */
+.loginn .loginbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.28);
+    transition: transform .2s, box-shadow .2s;
+}
+.loginn .loginbtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(79, 70, 229, 0.34);
+}
+.loginn .loginbtn svg{
+    height: 22px;
+    fill: #fff;
+}
+
+/* Links */
+.loginn .ta7t{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+.loginn .ta7t .forget,
+.loginn .ta7t .signup span,
+.loginn .ta7t .signup a{
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+}
+.loginn .ta7t .forget:hover,
+.loginn .ta7t .signup a:hover{
+    text-decoration: underline;
+}
+
+/* Legacy success box */
+.loginn .card .assepts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background-color: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 10px;
+}
+.loginn .card .assepts span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--success);
+    color: #fff;
+    border-radius: 50%;
+}
+
+@media (max-width: 576px){
+    .loginn{
+        min-height: auto;
+        padding: 8px 0;
+    }
+    .loginn .card{
+        padding: 28px 18px 22px;
+    }
 }

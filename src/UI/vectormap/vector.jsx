@@ -1,3 +1,4 @@
+import "./vector.css";
 import MapComponent from "./mapchart";
 
 function Vector(){

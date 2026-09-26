@@ -1,257 +1,348 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
+/* ===== Courses page (also shared by pages using .serice.courses / .cardcors) ===== */
 a{
     text-decoration: none;
-    color:white;
 }
+
+/* Primary "Goto" button / badge, shared by .courses pages */
 .courses .Goto{
-background-color:rgb(10, 200, 10);
-color: white;
-padding: 5px;
-font-size: 20px;
-width: auto;
-border-radius: 5px;
-cursor: pointer;
-font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+    transition: transform .2s, box-shadow .2s;
 }
+.courses .Goto:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(79, 70, 229, 0.3);
+}
+.courses .Goto a,
+.courses .Goto a:hover{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+}
+
+/* Filters bar */
 .courses .inputall{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin:0 30px;
-    margin-bottom: 10px;
-    border-top: 1px solid rgba(128, 128, 128, 0.096);
-    padding-top: 50px;
+    gap: 16px;
+    margin: 0;
+    padding: 16px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 .courses .inputall .input1{
-    background-color:white;
-    border: 1px solid rgba(197, 197, 197, 0.49);
-    outline: none;
-    padding:5px;
-    border-radius:5px;
+    flex: 1 1 260px;
+    max-width: 420px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    color:gray;
-    max-width: 50%;
+    gap: 8px;
+    height: 44px;
+    padding: 0 14px;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
 }
- .input1 input:focus + .inputall .input1{
- border-color: var(--maincolor);
+.courses .inputall .input1:focus-within{
+    border-color: var(--primary);
+    background-color: var(--surface);
+    box-shadow: 0 0 0 4px var(--primary-soft);
 }
 .courses .inputall .input1 input{
-    border:none;
+    flex: 1;
+    min-width: 0;
+    border: none;
     outline: none;
-    background-color:transparent;
+    background-color: transparent;
+    color: var(--text);
+    font-size: 0.95rem;
 }
 .courses .inputall .inputs{
     display: flex;
-    justify-content: space-around;
-    align-items:center;
-    width:auto;
-    color:gray;
-    max-width: 50%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    color: var(--muted);
 }
+.courses .inputall .inputs .input2,
 .courses .inputall .inputs .input3{
-    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
 }
-.courses .inputall .inputs #input2,#input3{
-    border-radius:3px;
+.courses .inputall #input2,
+.courses .inputall #input3{
+    height: 40px;
+    padding: 0 12px;
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--surface);
+    color: var(--text);
     outline: none;
-    border: 1px solid rgba(197, 197, 197, 0.49);
-    margin-left: 10px;
+    transition: border-color .2s, box-shadow .2s;
 }
-.labla{
-    font-size: 20px;
-    font-weight: bold;
+.courses .inputall #input2:focus,
+.courses .inputall #input3:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
 }
-.cardcors{
-    padding: 0;
-}
-.topcors{
-    background-color:rgb(0, 9, 21);
-    width: 100%;
-    text-align:center;
-}
-.cardcors .topcors .corsh{
-    color:white;
-}
-.cardcors .topcors .corsh:hover{
-    color:white;
-    text-decoration: none;
-    border:none;
-}
-.topcors img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-.bottomcors{
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 10px;
-}
-.taqem {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-}
-.taqem .top{
-    font-size: 20px;
-    font-weight: bold;
-    color:rgb(201, 201, 0);
-}
-.taqem .top span{
-    margin-left: 10px;
-    color:black;
-}
-.bottomcors span{
-    color:rgba(128, 128, 128, 0.589);
-    margin: 10px 0;
-}
-.bottomcors .author span{
-    color:rgba(0, 0, 0, 0.589);
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-.bottomcors .hplus{
-    color:var(--maincolor);
-    font-size: 50px;
-}
-.bottomcors .hdone{
-    color:rgb(0, 255, 17);
-    font-size: 50px;
-}
-.bottomcors .buy{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    color:black;
-    font-size: 25px;
-    font-weight: bold;
-}
-.bottomcors .buy span{
-    color:black;
-}
-.bottomcors .buy  .buycors{
-    width:auto;
-    padding: 5px 10px;
-    outline: none;
-    border:none;
-    color:white;
-    border-radius:3px;
-    background-color:var(--maincolor);
-    cursor:pointer;
-    transition-duration: 0.5s;
-}
-.bottomcors .buy  .buycors:hover{
-   background-color:rgb(12, 47, 112) ;
-}
-.botcorses{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    border-top:1px solid rgba(128, 128, 128, 0.096);
-    padding-top: 20px;
-    margin: 0 10px;
-    font-size: 20px;
-    color:gray;
-}
-.botcorses .l{
-    display: flex;
-    justify-content: center;
-}
-.botcorses .l label{
-    color:black;
-}
-.botcorses #view{
-    border-radius:3px;
-    outline: none;
-    border:1px solid var(--maincolor);
-    margin-left: 20px;
-width:100px;
+.courses .labla{
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-2, var(--muted));
 }
 
-.pagination {
+/* Course card */
+.middels .cardcors{
+    padding: 0;
+    gap: 0;
+}
+.cardcors .topcors{
+    position: relative;
+    width: 100%;
+    background-color: var(--surface-2);
+    text-align: center;
+}
+.cardcors .topcors img{
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.middels .cardcors .topcors p{
+    display: block;
+    margin: 0;
+    padding: 12px 16px 0;
+    text-align: left;
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.cardcors .bottomcors{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 16px 16px;
+    text-align: left;
+}
+.cardcors .taqem{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+.cardcors .corsh{
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    line-height: 1.35;
+}
+.cardcors .corsh:hover{
+    color: var(--primary);
+}
+.cardcors .taqem .top{
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f59e0b;
+}
+.cardcors .taqem .top span{
+    margin-left: 6px;
+    color: var(--text);
+}
+.cardcors .bottomcors span{
+    margin: 0;
+    color: var(--muted);
+}
+.cardcors .bottomcors .author{
+    font-size: 0.875rem;
+}
+.cardcors .bottomcors .author span{
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.cardcors .bottomcors .hplus,
+.cardcors .bottomcors .hdone{
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+.cardcors .bottomcors .hplus{ color: var(--primary); }
+.cardcors .bottomcors .hdone{ color: var(--success); }
+.cardcors .bottomcors .hplus:hover,
+.cardcors .bottomcors .hdone:hover{ transform: scale(1.12); }
+.cardcors .bottomcors .buy{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.cardcors .bottomcors .buy span{
+    color: var(--text);
+    font-weight: 700;
+}
+.cardcors .bottomcors .buy .buycors{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    outline: none;
+    transition: transform .2s, box-shadow .2s;
+}
+.cardcors .bottomcors .buy .buycors:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
+}
+
+/* Footer: per-page + pagination */
+.courses .botcorses{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+.courses .botcorses .l{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.courses .botcorses .l label{
+    color: var(--text);
+    font-weight: 600;
+}
+.courses .botcorses #view{
+    width: 100px;
+    height: 38px;
+    margin: 0;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--surface);
+    outline: none;
+}
+.courses .botcorses #view:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.pagination{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin: 20px 0;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-2, var(--muted));
 }
-
-.pagination-arrow {
+.pagination-arrow{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #555;
-    border-radius: 50%;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text-2, var(--muted));
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all .2s ease;
 }
-
-.pagination-arrow:hover {
-    background-color: #e0e0e0;
-    color:var(--maincolor);
+.pagination-arrow:hover:not(:disabled){
+    background-color: var(--primary-soft);
+    border-color: var(--primary);
+    color: var(--primary);
 }
-
-.pagination-arrow:disabled {
+.pagination-arrow:disabled{
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.45;
+}
+.pagination-arrow svg{
+    font-size: 18px;
 }
 
-.pagination-arrow svg {
-    font-size: 20px;
+@media (max-width: 992px){
+    .courses .inputall .input1{
+        max-width: none;
+    }
 }
-
-span {
-    font-weight: bold;
-}
-
-
-
-
-
-
-
-
-@media(max-width:1200px){
-    .inputall{
-        display:flex;
+@media (max-width: 576px){
+    .courses .inputall{
         flex-direction: column;
-        justify-content:center;
+        align-items: stretch;
+        padding: 14px;
+    }
+    .courses .inputall .input1{
+        flex: none;
+        width: 100%;
+    }
+    .courses .inputall .inputs{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .courses .inputall .inputs .input2,
+    .courses .inputall .inputs .input3{
+        justify-content: space-between;
+    }
+    .courses .inputall #input2,
+    .courses .inputall #input3{
+        flex: 1;
+        max-width: 65%;
+    }
+    .courses .botcorses{
+        flex-direction: column;
+        align-items: stretch;
         text-align: center;
-        padding: 0;
-        margin: 0;
     }
-    .inputall .input1{
-        width: 100%;
-    }
-    .inputall .inputs{
-        width: 100%;
-        margin: 10px 0;
+    .courses .botcorses .l{
+        justify-content: center;
     }
 }
-@media(max-width:992px){
-   
-
-}
-      
-@media(max-width:768px){
-   
-}
-@media(max-width:576px){
-}
-

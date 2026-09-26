@@ -1,113 +1,303 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Instructor: My Courses / My Quizzes (root: .serice.courses.mycorses) ===== */
+.mycorses {
+    margin: 0 !important;
 }
-.card a{
-  color:var(--maincolor);
+.mycorses .tops {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
 }
-.mycorses .middels .card{
+.courses.mycorses .Goto {
+    padding: 0;
+    background: none;
+    width: auto;
+}
+.courses.mycorses .Goto a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 16px -6px rgba(79, 70, 229, .55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.courses.mycorses .Goto a:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .6);
+}
+
+/* Filters */
+.courses.mycorses .inputall {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+.courses.mycorses .inputall .input1 {
+    flex: 1 1 260px;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--muted);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.courses.mycorses .inputall .input1:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+.courses.mycorses .inputall .input1 input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+}
+.courses.mycorses .inputall .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    max-width: none;
+}
+.courses.mycorses .inputall .inputs .input2,
+.courses.mycorses .inputall .inputs .input3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+.courses.mycorses .labla {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+}
+.courses.mycorses .inputall .inputs select {
+    height: 42px;
+    margin: 0;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.courses.mycorses .inputall .inputs select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+/* Course cards */
+.mycorses .middels {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+.mycorses .middels .card {
+    position: relative;
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 48%;
-}
-.mycorses .middels .card{
+    gap: 16px;
+    width: auto;
+    padding: 18px 44px 18px 18px;
     text-align: left;
+    overflow: visible;
+    cursor: default;
 }
-.mycorses .middels .card .bob .fof h2{
-    color:var(--maincolor);
-    font-size: 25px;
+.mycorses .middels .card > img {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--surface-2);
 }
-.mycorses .middels .card .bob .bot .to{
-   display: flex;
-   justify-content: space-between;
-   align-items:center;
-   border-bottom: 1px solid rgba(128, 128, 128, 0.195);
+.mycorses .middels .card .bob {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
-.mycorses .middels .card .bob .bot .bo{
+.mycorses .middels .card .bob .fof h2 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    word-break: break-word;
+}
+.mycorses .middels .card .bob .fof h2 a {
+    color: var(--text);
+    text-decoration: none;
+}
+.mycorses .middels .card .bob .fof h2 a:hover {
+    color: var(--primary);
+}
+.mycorses .middels .card .bob .fof p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.mycorses .middels .card .bob .bot .to {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.mycorses .middels .card .bob .bot .to h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+}
+.mycorses .middels .card .bob .bot .to p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--muted);
+}
+.mycorses .middels .card .bob .bot .bo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
     margin-top: 10px;
 }
-.mycorses .middels .card .bob .bot .bo span{
-    color: black;
-    background-color:rgba(128, 128, 128, 0.247);
-padding: 5px;
-font-size: 15px;
-border-radius:5px;
+.mycorses .middels .card .bob .bot .bo span {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text-2);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
-.mycorses .middels .card .bob .bot .bo .colvue{
-background-color: rgb(5, 173, 89);
-color: white;
- }
- .mycorses .middels .card .bob .bot .bo .colnode{
-    background-color: rgb(0, 150, 20);
-    color: white;
- }
- .mycorses .middels .card .bob .bot .bo .colfire{
-    background-color:rgb(209, 87, 0);
-    color: white;
- }
- .mycorses .middels .card .bob .bot .bo .colang{
-background-color:rgb(159, 0, 0);
-color: white;
- }
- .colang,.colfire,.colnode,.colvue{
-    padding: 3px;
-border-radius: 5px;
-font-size: 15px;
-margin-right: 10px;
- }
-.mycorses img{
-    width: 50px;
-    height: 50px;
+.mycorses .middels .card .bob .bot .bo span:first-child {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+.mycorses .middels .card .bob .bot .bo .colvue,
+.mycorses .middels .card .bob .bot .bo .colnode {
+    background: rgba(16, 185, 129, .12);
+    color: var(--success);
+}
+.mycorses .middels .card .bob .bot .bo .colfire {
+    background: rgba(249, 115, 22, .12);
+    color: #ea580c;
+}
+.mycorses .middels .card .bob .bot .bo .colang {
+    background: rgba(239, 68, 68, .1);
+    color: var(--danger);
 }
 
+/* Kebab + dropdown */
+.mycorses .colonicons {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+.mycorses .colonicons:hover {
+    background: var(--surface-2);
+    color: var(--text);
+}
+.mycorses .middels .card:has(.menu) {
+    z-index: 5;
+}
 
+/* Dropdown menu. Kept unscoped on purpose: followers.jsx also renders
+   .menu without its own stylesheet and relied on this file. */
 .menu {
     position: absolute;
-    top: 40px;
-    right: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    top: 48px;
+    right: 10px;
+    min-width: 160px;
+    padding: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
     z-index: 100;
-  }
-  
-  .menu p {
-    margin: 0;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .menu .update{
-    color: #4CAF50 !important;
-  }
-  .menu .delete{
-    color: #f44336!important;
-  }
-  .menu .view{
-    color: #2196F3!important;
-  }
-  .menu .quiz{
-    color: #f700ff!important;
-  }
-  .menu p:hover {
-    background: #f5f5f5;
-    color: #000;
-  }
-  
-@media (max-width: 768px) {
-    .serice {
-        margin-left: auto;
-    }
 }
-@media (max-width: 554px) {
-    .serice {
-        margin-left: auto;
+.menu p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: background .15s ease;
+}
+.menu p:hover {
+    background: var(--surface-2);
+}
+.menu .update { color: var(--success) !important; }
+.menu .delete { color: var(--danger) !important; }
+.menu .view   { color: var(--primary) !important; }
+.menu .quiz   { color: var(--primary-2) !important; }
+
+@media (max-width: 576px) {
+    .mycorses .middels {
+        grid-template-columns: 1fr;
     }
-    .mycorses .middels .card {
+    .courses.mycorses .inputall .input1 {
+        max-width: none;
+        flex-basis: 100%;
+    }
+    .courses.mycorses .inputall .inputs {
         width: 100%;
+    }
+    .courses.mycorses .inputall .inputs .input2,
+    .courses.mycorses .inputall .inputs .input3 {
+        flex: 1 1 140px;
+    }
+    .courses.mycorses .inputall .inputs select {
+        flex: 1;
+        min-width: 0;
+    }
+    .mycorses .middels .card > img {
+        width: 52px;
+        height: 52px;
     }
 }

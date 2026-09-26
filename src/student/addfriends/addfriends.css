@@ -1,129 +1,155 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
-.add-friends {
-    padding: 20px;
-    margin-top: 100px;
-  }
-  
-  .users {
+/* ===== Add friends page ===== */
+.add-friends{
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .user-card {
-    width:300px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+.add-friends > h2{
+    margin: 0;
+    font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.add-friends .search-bar{
+    width: 100%;
+    max-width: 420px;
+    height: 44px;
+    margin: 0;
+    padding: 0 16px;
+    font-size: 0.95rem;
+    color: var(--text);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    box-shadow: var(--shadow);
+    transition: border-color .2s, box-shadow .2s;
+}
+.add-friends .search-bar:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.add-friends .users{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+.add-friends .user-card{
     position: relative;
-  }
-  
-  .user-avatar {
-    width: 100px;
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 28px 20px 22px;
+    text-align: center;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.add-friends .user-card:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+.add-friends .user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.add-friends .user-avatar{
+    width: 88px;
+    height: 88px;
+    margin-bottom: 6px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 3px var(--primary-soft);
     cursor: pointer;
-  }
-  
-  .user-info p {
-    margin: 10px 0;
-    font-weight: bold;
+}
+.add-friends .user-info p{
+    margin: 0;
+    font-weight: 700;
     text-transform: capitalize;
-    font-size: 30px;
-  } 
-  .user-info .user-description {
-    color: gray;
+    font-size: 1.1rem;
+    color: var(--text);
+    word-break: break-word;
+}
+.add-friends .user-info .user-description{
+    min-height: 1.4em;
+    margin-bottom: 10px;
+    color: var(--muted);
     font-weight: 400;
-    font-size: 20px;
-  }
-  .actions button {
-    margin: 5px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .follow-btn {
-    background-color: #0073b1; /* LinkedIn blue */
-    color: white;
-    border: 1px solid #0073b1;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 20px; /* Rounded edges */
-    cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease;
-  }
-  
-  .follow-btn:hover {
-    background-color: #006097; /* Darker LinkedIn blue on hover */
-    border-color: #006097;
-  }
-  
-  .follow-btn:focus {
-    outline: none;
-  }
-  
-  .follow-btn:active {
-    background-color: #004d73; /* Even darker on click */
-  }
+    font-size: 0.875rem;
+    text-transform: none;
+}
 
-
-  .removee-btn{
-    background-color: white;
-    color:black;
-    border: 1px solid #000000;
-    padding: 8px 16px;
+.add-friends .follow-btn,
+.add-friends .removee-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: auto;
-    font-size: 14px;
+    min-width: 120px;
+    padding: 9px 18px;
+    font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 20px; /* Rounded edges */
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease;
     outline: none;
-  }
-  .removee-btn:hover{
-    background-color: #6666664b; /* LinkedIn blue */
-    color:black;
-    border: 2px solid #000000;
-  }
-
-  .actions button:hover {
-    opacity: 0.8;
-  }
-  
-  .remove-from-list-btn {
-    background-color: var(--maincolor);
-    color: white;
-    padding: 5px 10px;
+    transition: transform .2s, box-shadow .2s, background-color .2s, color .2s;
+}
+.add-friends .follow-btn{
+    color: #fff;
+    background: var(--gradient);
     border: none;
-    border-radius: 20px;
-    position:absolute;
-    right: 0;
-    top: 0;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+}
+.add-friends .follow-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(79, 70, 229, 0.3);
+}
+.add-friends .removee-btn{
+    color: var(--text-2, var(--muted));
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+}
+.add-friends .removee-btn:hover{
+    color: var(--danger);
+    border-color: var(--danger);
+    background-color: rgba(239, 68, 68, 0.06);
+}
+
+.add-friends .remove-from-list-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    color: var(--muted);
+    background-color: var(--surface-2);
+    border: none;
+    border-radius: 999px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .remove-from-list-btn:hover{
-    background-color:#f44336;
-  }
-  .search-bar{
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 20px;
-    margin: 10px 0;
-    outline: none;
-  }
-  .search-bar:focus{
-   border-color:var(--maincolor);
-  }
-  .user-info .user-description{
-    font-size: 15px;
-  }
+    transition: background-color .2s, color .2s;
+}
+.add-friends .remove-from-list-btn:hover{
+    color: #fff;
+    background-color: var(--danger);
+}
+
+@media (max-width: 576px){
+    .add-friends{ gap: 16px; }
+    .add-friends .search-bar{ max-width: none; }
+    .add-friends .users{ grid-template-columns: 1fr; gap: 14px; }
+}

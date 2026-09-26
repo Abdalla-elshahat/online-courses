@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { safeParse } from "../../utels/safeJson";
 function Profile(){
     const token = Cookies.get("token");
     const nav=useNavigate();
@@ -64,7 +65,7 @@ function Profile(){
       useEffect(() => {
         fetchUserData();
       }, []);
-      const parsedSkills = userData?.skills?.[0] ? JSON.parse(userData.skills[0]) : [];
+      const parsedSkills = [].concat(safeParse(userData?.skills?.[0], [])).filter(Boolean);
       useEffect(()=>{
         fetchfavouritcourse();
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -101,54 +102,54 @@ function Profile(){
 <p className='country'>from:<span>{userData.country}</span></p>
 <p className='country'>Role:<span>{userData.role}</span></p>
     <div className="icos">
-  {JSON.parse(userData.socialmedia).facebook && (
+  {safeParse(userData.socialmedia, {}).facebook && (
     <a 
-      href={JSON.parse(userData.socialmedia).facebook} 
+      href={safeParse(userData.socialmedia, {}).facebook} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaFacebook className="icon f" /> {JSON.parse(userData.socialmedia).facebook}
+      <FaFacebook className="icon f" /> {safeParse(userData.socialmedia, {}).facebook}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).twitter && (
+  {safeParse(userData.socialmedia, {}).twitter && (
     <a 
-      href={JSON.parse(userData.socialmedia).twitter} 
+      href={safeParse(userData.socialmedia, {}).twitter} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaTwitter className="icon t" /> {JSON.parse(userData.socialmedia).twitter}
+      <FaTwitter className="icon t" /> {safeParse(userData.socialmedia, {}).twitter}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).instagram && (
+  {safeParse(userData.socialmedia, {}).instagram && (
     <a 
-      href={JSON.parse(userData.socialmedia).instagram} 
+      href={safeParse(userData.socialmedia, {}).instagram} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaInstagram className="icon i" /> {JSON.parse(userData.socialmedia).instagram}
+      <FaInstagram className="icon i" /> {safeParse(userData.socialmedia, {}).instagram}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).Github && (
+  {safeParse(userData.socialmedia, {}).Github && (
     <a 
-      href={JSON.parse(userData.socialmedia).Github} 
+      href={safeParse(userData.socialmedia, {}).Github} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaGithub className="icon g" /> {JSON.parse(userData.socialmedia).Github}
+      <FaGithub className="icon g" /> {safeParse(userData.socialmedia, {}).Github}
     </a>
   )}
-  {JSON.parse(userData.socialmedia).Linkedin && (
+  {safeParse(userData.socialmedia, {}).Linkedin && (
     <a 
-      href={JSON.parse(userData.socialmedia).Linkedin} 
+      href={safeParse(userData.socialmedia, {}).Linkedin} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="social-link"
     >
-      <FaLinkedin className="icon l" /> {JSON.parse(userData.socialmedia).Linkedin}
+      <FaLinkedin className="icon l" /> {safeParse(userData.socialmedia, {}).Linkedin}
     </a>
   )}
        </div>
@@ -180,7 +181,7 @@ function Profile(){
             <div className="bob">
               <p>{skill.label}</p>
               <span className="con">
-                <span className={`progress-bar progress-${index + 1}`}></span>
+                <span className={`progress-bar progress-${index + 1}`} style={{ width: `${parseFloat(skill.progress) || 0}%` }}></span>
               </span>
             </div>
             <span className="presnt">{skill.progress}</span>
@@ -199,15 +200,15 @@ function Profile(){
                         <div className="card">
                             <div className="bakico b1"><SlCalender/></div>
                             <div className="clop">
-                            <p className='cardp'>{(userData.role==="manger"||"admin")?"Courses Added":"Courses Taken"}</p>
-                            <h2 className="cardh2">{(userData.posts).length}</h2>
+                            <p className='cardp'>{["manger","admin"].includes(userData.role?.toLowerCase())?"Courses Added":"Courses Taken"}</p>
+                            <h2 className="cardh2">{userData.posts?.length ?? 0}</h2>
                             </div>
                         </div>
                         <div className="card">
                         <div className="bakico b2"><IoMdLaptop/></div>
                             <div className="clop">
-                            <p className='cardp'>{(userData.role==="manger"||"admin")?"Quiz Added":"Quiz Taken"}</p> 
-                            <h2 className="cardh2">{(userData.role==="manger"||"admin")?(userData.quiz).length:(userData.quiztaken).length}</h2>
+                            <p className='cardp'>{["manger","admin"].includes(userData.role?.toLowerCase())?"Quiz Added":"Quiz Taken"}</p> 
+                            <h2 className="cardh2">{["manger","admin"].includes(userData.role?.toLowerCase())?(userData.quiz?.length ?? 0):(userData.quiztaken?.length ?? 0)}</h2>
                             </div>
                         </div>
                         <div className="card">

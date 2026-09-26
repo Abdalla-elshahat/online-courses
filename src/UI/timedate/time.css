@@ -1,46 +1,74 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+.times .btw {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--border);
 }
-.buttons .b {
-    border-bottom: 1px solid rgba(128, 128, 128, 0.115);
+
+.times .btw p {
+  margin: 6px 0 0;
+  font-size: 0.93rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
 }
-.buttons .btw {
-    font-size: 30px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    border-bottom:1px solid rgba(128, 128, 128, 0.43);
-    padding-top: 20px;
+
+.times .botb.botbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  align-items: stretch;
 }
-.buttons .btw p{
-    font-size: 20px;
-    color: rgba(128, 128, 128, 0.326);
+
+.times .card {
+  width: auto;
 }
-.times .botbs{
-    flex-wrap: wrap;
-    flex-direction: row;
+
+.times .card .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.times .card{
-    width: 30%;
+
+.times .card .bottom label {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-2);
 }
-.times .card .bottom{
-    display: flex;
-    flex-direction: column;
+
+.times .card .bottom input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  outline: none;
+  font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.times .card .bottom label{
-   margin-bottom: 10px;
+
+.times .card .bottom input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
 }
-.times .card .bottom input{
-   border: 1px solid rgba(128, 128, 128, 0.268);
-   padding: 5px;
-   border-radius: 5px;
+
+.times .card .bottom .an {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
 }
-.times .card .bottom .an{
-display: flex;
-justify-content: space-between;
-align-items: center;
-color:var(--maincolor);
- }
- .times .card .bottom .quis{
-   color:gray;
-     }
+
+.times .card .bottom .quis {
+  color: var(--muted);
+  flex-shrink: 0;
+}

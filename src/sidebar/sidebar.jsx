@@ -1,6 +1,6 @@
 import "./sidebar.css";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { domain } from "../utels/constents/const";
 
@@ -28,6 +28,12 @@ function Sidebar() {
     const token = Cookies.get("token");
     const [user, setUser] = useState({});
     const nav = useNavigate();
+    const location = useLocation();
+
+    // close the mobile drawer whenever the route changes
+    useEffect(() => {
+        document.body.classList.remove("sidebar-open");
+    }, [location.pathname]);
 
     const fetchSidebarUserData = async () => {
         if (!token) return;
@@ -45,8 +51,8 @@ function Sidebar() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const logout = async () => {
-        await Cookies.remove("token");
+    const logout = () => {
+        Cookies.remove("token");
         nav("/login");
     };
 
@@ -54,7 +60,7 @@ function Sidebar() {
     const isAdmin = role === "admin" || role === "manger";
 
     return (
-        <div className="sidebar">
+        <aside className="sidebar">
             {token && (
                 <div className="acount">
                     <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
@@ -66,51 +72,51 @@ function Sidebar() {
                 </div>
             )}
 
-            <div className="body">
-                <span className="student">STUDENT</span>
+            <div className="sb-body">
+                <span className="sb-section">STUDENT</span>
 
-                <Item icon={<MdAssignment />} label="Dashbord" to="/" />
+                <Item icon={<MdAssignment />} label="Dashboard" to="/" />
 
                 {token ? (
                     <>
-                        <Item icon={<MdOutlineVideoSettings />} label="Serice" to="/serice" />
+                        <Item icon={<MdOutlineVideoSettings />} label="Services" to="/serice" />
                         <Item icon={<BsPersonCircle />} label="Profile" to="/profile" />
-                        <Item icon={<FaExpeditedssl />} label="Edite Account" to="/edit" />
-                        <Item icon={<IoMdPersonAdd />} label="Addfriends" to="/Addfriends" />
+                        <Item icon={<FaExpeditedssl />} label="Edit Account" to="/edit" />
+                        <Item icon={<IoMdPersonAdd />} label="Add Friends" to="/Addfriends" />
                         <Item icon={<LuAirplay />} label="Course" to="/cours" />
-                        <Item icon={<LuFileCode2 />} label="courses lesson" to="/clesson" />
-                        <Item icon={<FaRegFolderOpen />} label="Takecours" to="/takecors" />
+                        <Item icon={<LuFileCode2 />} label="Course Lessons" to="/clesson" />
+                        <Item icon={<FaRegFolderOpen />} label="Take Course" to="/takecors" />
                         <Item icon={<FaSackDollar />} label="Billing" to="/billing" />
 
-                        <div className="box" onClick={logout}>
-                            <CiLogout className="icon" />
-                            <span>Logout</span>
-                        </div>
+                        <button className="box" onClick={logout}>
+                            <span className="icon"><CiLogout /></span>
+                            <span className="label">Logout</span>
+                        </button>
                     </>
                 ) : (
                     <>
                         <Item icon={<CiLogin />} label="Login" to="/login" />
-                        <Item icon={<IoMdPersonAdd />} label="Sinup" to="/sinup" />
+                        <Item icon={<IoMdPersonAdd />} label="Sign up" to="/sinup" />
                     </>
                 )}
 
                 {isAdmin && (
                     <>
-                        <span className="instructour">Instructor</span>
+                        <span className="sb-section">Instructor</span>
 
                         <Item icon={<RiGlassesFill />} label="Dashboard" to="/dashbord" />
-                        <Item icon={<IoLibrary />} label="Mycorses" to="/mycorses" />
-                        <Item icon={<PiExamFill />} label="my Quiz" to="/myquiz" />
-                        <Item icon={<FaEdit />} label="Edite Courses" to="#" />
-                        <Item label="Edite Lesson" to="/editlesson" />
-                        <Item icon={<MdAssignment />} label="Create Quize" />
+                        <Item icon={<IoLibrary />} label="My Courses" to="/mycorses" />
+                        <Item icon={<PiExamFill />} label="My Quizzes" to="/myquiz" />
+                        <Item icon={<FaEdit />} label="Edit Courses" to="/mycorses" />
+                        <Item icon={<FaEdit />} label="Edit Lesson" to="/editlesson" />
+                        <Item icon={<MdAssignment />} label="Create Quiz" to="/mycorses" />
                         <Item icon={<FaCalculator />} label="Earnings" to="/erning" />
                         <Item icon={<FaUserGraduate />} label="Profile" to="/profileins" />
                         <Item icon={<FaPaypal />} label="Payout" to="/pay" />
                     </>
                 )}
 
-                <span className="ui">UI componenet</span>
+                <span className="sb-section">UI Components</span>
 
                 <Item icon={<FaMouse />} label="Button" to="/button" />
                 <Item icon={<RxBoxModel />} label="Model" to="/model" />
@@ -120,21 +126,19 @@ function Sidebar() {
                 <Item icon={<BsCalendar2Range />} label="Range slider" to="/range" />
                 <Item icon={<BsCalendar2DateFill />} label="Time & Date" to="/time" />
                 <Item icon={<FaTable />} label="Table" to="/table" />
-                <Item icon={<CgTapSingle />} label="Taps" to="/taps" />
+                <Item icon={<CgTapSingle />} label="Tabs" to="/taps" />
                 <Item icon={<FaIcons />} label="Icons" to="/icons" />
                 <Item icon={<FaMapLocationDot />} label="Vector" to="/vector" />
             </div>
 
             <div className="footr">
-                <div className="top">
-                    <p className="progress">PROGRESS</p>
-                    <span className="pre">60%</span>
+                <div className="sb-progress-top">
+                    <span>PROGRESS</span>
+                    <strong>60%</strong>
                 </div>
-                <span className="bigcolor">
-                    <span></span>
-                </span>
+                <div className="sb-progress"><span style={{ width: "60%" }}></span></div>
             </div>
-        </div>
+        </aside>
     );
 }
 
@@ -143,12 +147,10 @@ export default Sidebar;
 /* reusable component */
 function Item({ icon, label, to = "#", badge }) {
     return (
-        <div className="box">
+        <NavLink to={to} end={to === "/"} className="box">
             <span className="icon">{icon}</span>
-            <span>
-                <Link to={to}>{label}</Link>
-            </span>
+            <span className="label">{label}</span>
             {badge && <span className={badge === "NEW" ? "new" : "pro"}>{badge}</span>}
-        </div>
+        </NavLink>
     );
 }

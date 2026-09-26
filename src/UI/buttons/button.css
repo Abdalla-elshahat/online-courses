@@ -1,259 +1,304 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Shared UI-kit demo page shell (.buttons) =====
+   Used by: buttons, models, avatar, time & date, vector map pages */
+.buttons {
+  width: 100%;
+  max-width: 100%;
+  color: var(--text);
 }
-.buttons{
-    padding-top:80px;
-    height: 100%;
-    margin:0 10px ;
-    margin-bottom: 50px;
-    transition-duration: 0.5s;
+
+.buttons .b {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
-.buttons .b{
-    font-size: 50px;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-border-bottom:1px solid rgba(128, 128, 128, 0.284);
-padding-bottom: 20px;
+
+.buttons .botb {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
 }
-.buttons .botb{
-    display: flex;
-    justify-content: space-between;
-}
+
 .buttons .botb .le,
-.buttons .botb .ri{
-    width:49%;
+.buttons .botb .ri {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.card{
-    height:auto;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
-    display: flex;
+
+.buttons .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buttons .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.buttons .card .top {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.buttons .card .top p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.buttons .card .bottom {
+  padding: 20px;
+}
+
+.buttons .card .bottom .tops {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.buttons .card .bottom .tops span {
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+
+/* ----- Button sets ----- */
+.buttons .card .bottom .buttonss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buttons .card .bottom .buttonss button {
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+  background-color: var(--surface-2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: capitalize;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.buttons .card .bottom .buttonss button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+}
+
+.buttons .card .bottom .buttonss button:focus-visible {
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.buttons .card .bottom .buttonss .primary { background-color: var(--primary); }
+.buttons .card .bottom .buttonss .secondry { background-color: #475569; }
+.buttons .card .bottom .buttonss .success { background-color: var(--success); }
+.buttons .card .bottom .buttonss .danger { background-color: var(--danger); }
+.buttons .card .bottom .buttonss .warning { background-color: #f59e0b; }
+.buttons .card .bottom .buttonss .info { background-color: #0ea5e9; }
+.buttons .card .bottom .buttonss .lighte,
+.buttons .card .bottom .buttonss .light {
+  background-color: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
+}
+.buttons .card .bottom .buttonss .dark { background-color: var(--text); }
+.buttons .card .bottom .buttonss .linke,
+.buttons .card .bottom .buttonss .link {
+  background-color: transparent;
+  color: var(--primary);
+}
+.buttons .card .bottom .buttonss .linke:hover,
+.buttons .card .bottom .buttonss .link:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+/* Outlined */
+.buttons .card .bottom .buttonstwo button,
+.buttons .card .bottom .buttonsedit button {
+  background-color: var(--surface);
+}
+.buttons .card .bottom .buttonstwo .primary,
+.buttons .card .bottom .buttonsedit .primary { color: var(--primary); border-color: var(--primary); }
+.buttons .card .bottom .buttonstwo .secondry,
+.buttons .card .bottom .buttonsedit .secondry { color: #475569; border-color: #475569; }
+.buttons .card .bottom .buttonstwo .success,
+.buttons .card .bottom .buttonsedit .success { color: var(--success); border-color: var(--success); }
+.buttons .card .bottom .buttonstwo .danger,
+.buttons .card .bottom .buttonsedit .danger { color: var(--danger); border-color: var(--danger); }
+.buttons .card .bottom .buttonstwo .warning,
+.buttons .card .bottom .buttonsedit .warning { color: #d97706; border-color: #f59e0b; }
+.buttons .card .bottom .buttonstwo .info,
+.buttons .card .bottom .buttonsedit .info { color: #0284c7; border-color: #0ea5e9; }
+.buttons .card .bottom .buttonstwo .lighte,
+.buttons .card .bottom .buttonsedit .light { color: var(--text-2); border-color: var(--border); }
+.buttons .card .bottom .buttonstwo .dark,
+.buttons .card .bottom .buttonsedit .dark { color: var(--text); border-color: var(--text); }
+.buttons .card .bottom .buttonsedit .link { border-color: transparent; color: var(--primary); }
+
+/* Rounded */
+.buttons .card .bottom .buttonsthree button {
+  border-radius: 999px;
+}
+
+/* Sizes */
+.buttons .card .bottom .sam {
+  align-items: center;
+}
+.buttons .card .bottom .sam .larg {
+  background-color: var(--primary);
+  padding: 12px 24px;
+  font-size: 1.05rem;
+}
+.buttons .card .bottom .sam .normal { background-color: #0ea5e9; }
+.buttons .card .bottom .sam .small {
+  background-color: var(--success);
+  padding: 5px 10px;
+  font-size: 0.78rem;
+}
+
+/* Icon buttons */
+.buttons .card .bottom .oo button {
+  padding: 9px 14px;
+  font-size: 0.95rem;
+}
+.buttons .card .bottom .oo .lovee {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+}
+.buttons .card .bottom .oo .x { background-color: var(--danger); }
+.buttons .card .bottom .oo .music { background-color: var(--text); }
+.buttons .card .bottom .oo .star { background-color: var(--primary); }
+.buttons .card .bottom .oo .like { background-color: var(--success); }
+.buttons .card .bottom .oo .setting,
+.buttons .card .bottom .oo .launch { background-color: #f59e0b; color: #1f2937; }
+.buttons .card .bottom .oo .favor {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+.buttons .card .bottom .oo .favor svg { color: var(--danger); }
+.buttons .card .bottom .oo .cloudhosting { background-color: #0ea5e9; }
+
+/* Block buttons */
+.buttons .card .bottom .llll {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.buttons .card .bottom .llll button {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 11px 0;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.buttons .card .bottom .llll button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+.buttons .card .bottom .llll .blok1 { background: var(--gradient); }
+.buttons .card .bottom .llll .blok2 { background-color: var(--success); }
+.buttons .card .bottom .llll .blok3 { background-color: #0ea5e9; }
+
+/* Button groups */
+.buttons .diff {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.buttons .diff .comp {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.buttons .diff .comp button {
+  outline: none;
+  border: none;
+  border-right: 1px solid var(--border);
+  padding: 8px 14px;
+  background-color: var(--surface);
+  color: var(--text-2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.buttons .diff .comp button:last-child {
+  border-right: none;
+}
+.buttons .diff .comp button:not(.twwo):hover {
+  background-color: var(--surface-2);
+  color: var(--text);
+}
+.buttons .diff .comp .twwo {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .buttons .botb {
     flex-direction: column;
-    text-align: left;
+    gap: 20px;
+  }
+  .buttons .botb .le,
+  .buttons .botb .ri {
     width: 100%;
-    margin-top: 20px;
-    border-radius: 2px;
-    border: none;
-}
-.buttons .botb .card .top{
-    font-size: 25px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.252);
-    padding: 10px;
-}
-.buttons .botb .card .bottom{
-    padding: 10px;
-}
-.buttons .botb .card .bottom .tops{
-    font-weight:400;
-}
-.buttons .botb .card .bottom .tops span{
-    color:rgb(234, 47, 84);
-}
-.buttons .botb .card .bottom .buttonss{
-    display:flex;
-    flex-wrap: wrap;
-}
-.buttons button{
-    transition-duration: 0.5s;
-}
-.buttons .botb .card .bottom .buttonss button{
-   border:none;
-   outline: none;
-   border-radius:3px;
-   width: auto;
-   padding:5px 10px;
-   color:white;
-   font-weight:400;
-   margin: 10px;
-font-size: 18px;
-background-color:white;
-}
-.buttons .botb .card .bottom .buttonss .primary{
-    background-color:var(--maincolor);
-}
-.buttons .botb .card .bottom .buttonss .secondry{
-    background-color:black;
-}
-.buttons .botb .card .bottom .buttonss .success{
-    background-color:rgb(8, 155, 8);
-}
-.buttons .botb .card .bottom .buttonss .danger{
-    background-color:rgb(154, 0, 0);
-}
-.buttons .botb .card .bottom .buttonss .warning{
-    background-color:rgb(183, 119, 0);
-    color:white;
-}
-.buttons .botb .card .bottom .buttonss .info{
-    background-color:rgb(0, 203, 203);
-}
-.buttons .botb .card .bottom .buttonss .lighte{
-    background-color:white;
-    color:black !important;
-    border:0.5px solid rgba(128, 128, 128, 0.427) !important;
-}
-.buttons .botb .card .bottom .buttonss .dark{
-    background-color:black;
-    color:white;
-}
-.buttons .botb .card .bottom .buttonss .linke{
-    border:none;
-    color:var(--maincolor) !important;
-    background-color:white;
+    gap: 20px;
+  }
 }
 
-.buttons .botb .card .bottom .buttonstwo .primary{
-    color:var(--maincolor);
-    border: 1px solid var(--maincolor);
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .secondry{
- color:black;
-    border: 1px solid black;
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .success{
-    color:rgb(8, 155, 8);
-    border: 1px solid rgb(8, 155, 8);
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .danger{
- color:rgb(154, 0, 0);
- border: 1px solid rgb(154, 0, 0);
- background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .warning{
-    color:rgb(183, 119, 0);
-    border: 1px solid rgb(183, 119, 0);
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .info{
-    color:rgb(0, 203, 203);
-    border: 1px solid rgb(0, 203, 203);
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .lighte{
-    background-color:white;
-    color:black !important;
-    border:0.5px solid rgba(128, 128, 128, 0.427) !important;
-}
-.buttons .botb .card .bottom .buttonstwo .dark{
-    background-color:black;
-    color:white;
-}
-.buttons .botb .card .bottom .buttonstwo .linke{
-    border:none;
-    color:var(--maincolor) !important;
-    background-color:white;
-}
-.buttons .botb .card .bottom .buttonsthree button{
-    border-radius:25px;
-}
-.buttons .botb .card .bottom .buttonsedit  button{
-    background-color:white;
-}
-.buttons .botb .card .bottom .sam .larg{
-color:white;
-background-color:var(--maincolor);
-}
-.buttons .botb .card .bottom .sam .normal{
-    color:white;
-background-color:aqua;
-}
-.buttons .botb .card .bottom .sam .small{
-    color:white;
-background-color:rgb(0, 177, 0);
-}
-
-.buttons .botb .card .bottom .oo button{
-    padding: 5px 20px;
-}
-.buttons .botb .card .bottom .oo .x{
-    background-color:rgb(153, 0, 0);
-    color:white;
-}
-.buttons .botb .card .bottom .oo .music{
-    color:white;
-    background-color:black;
-}
-.buttons .botb .card .bottom .oo .star{
-    background-color:var(--maincolor);
-    color:white;
-}
-.buttons .botb .card .bottom .oo .like{
-    background-color:rgb(4, 187, 4);
-    color:white;
-}
-.buttons .botb .card .bottom .oo .setting{
-    color:black;
-    background-color:rgb(214, 139, 0);
-}
-.buttons .botb .card .bottom .oo .favor{
-    color:black;
-    background-color:white;
-    border:1px solid rgba(128, 128, 128, 0.504);
-}
-.buttons .botb .card .bottom .oo .launch{
-    color:black;
-    background-color:rgb(214, 139, 0);
-}
-.buttons .botb .card .bottom .oo .cloudhosting{
- color:white;
- background-color:rgb(0, 220, 220);   
-}
-
-.buttons .botb .card .bottom .llll{
-    display:flex;
-    flex-direction: column;
-}
-.buttons .botb .card .bottom .llll button{
-   color:white;
-   font-size: 20px;
-   border:none;
-   border-radius:5px;
-   outline: none;
-   width: 100%;
-   margin:10px 0;
-   font-weight: bold;
-   padding: 5px 0;
-}
- button:hover{
-    opacity: 0.8;
- }
-.buttons .botb .card .bottom .llll .blok1{
-   background-color:var(--maincolor)
- }
- .buttons .botb .card .bottom .llll .blok2{
-    background-color:rgb(2, 161, 2);
+@media (max-width: 576px) {
+  .buttons .card .top {
+    padding: 14px 16px;
   }
-  .buttons .botb .card .bottom .llll .blok3{
-    background-color:rgb(0, 166, 166);
+  .buttons .card .bottom {
+    padding: 16px;
   }
-  .buttons .diff .comp{
-    margin: 10px 0;
+  .buttons .card .bottom .buttonss {
+    gap: 8px;
   }
-  .buttons .diff .comp button{
-    outline: none;
-    border:1px solid rgb(218, 218, 218);
-    padding:3px 10px;
-    background-color:white;
-    cursor:pointer;
-    font-size: 20px;
+  .buttons .card .bottom .buttonss button {
+    padding: 7px 12px;
+    font-size: 0.85rem;
   }
-  .buttons .diff .comp button:not(.twwo):hover{
-    background-color:rgba(128, 128, 128, 0.321);
-  }
-  .buttons .diff .comp .twwo{
-    background-color:var(--maincolor);
-    border-color:var(--maincolor);
-  }
-  @media(max-width:992px){
-    .buttons .botb{
-        display: flex;
-        flex-direction: column;
-    }
-    .card,.ri,.le{
-       width: 100% !important;
-    }
-  }
+}

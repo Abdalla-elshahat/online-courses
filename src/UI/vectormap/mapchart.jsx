@@ -33,7 +33,7 @@ const MapComponent = () => {
     <div>
       <div style={{ position: 'relative' }}>
         <button onClick={handleZoomIn} style={zoomButtonStyle}>+</button>
-        <button onClick={handleZoomOut} style={zoomButtonStyle}>-</button>
+        <button onClick={handleZoomOut} style={{ ...zoomButtonStyle, right: 52 }}>-</button>
       </div>
       <ComposableMap>
         <ZoomableGroup zoom={zoom}>
@@ -73,9 +73,9 @@ const zoomButtonStyle = {
   right: 10,
   zIndex: 1,
   background: '#fff',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-  padding: '5px 10px',
+  border: '1px solid #e5e7eb',
+  borderRadius: '10px',
+  padding: '4px 12px',
   cursor: 'pointer',
 };
 

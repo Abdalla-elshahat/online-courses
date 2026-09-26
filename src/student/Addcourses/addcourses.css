@@ -1,83 +1,166 @@
-.add-course-container {
-  width: 60%; /* زودت العرض قليلاً */
-  margin: 30px auto; /* إضافة مسافة من الأعلى */
-  margin-top: 80px;
-  padding: 25px; /* زيادة التباعد الداخلي */
-  border: 1px solid #ddd;
-  border-radius: 12px; /* جعل الزوايا أكثر نعومة */
-  background-color: #ffffff; /* لون خلفية أكثر وضوحًا */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* تحسين الظل */
+/* ===== Add course page ===== */
+.add-course-container{
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
-
-.add-course-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 28px; /* تكبير الخط */
-  color: #222; /* لون غامق أكثر للوضوح */
-  font-weight: bold; /* جعل النص عريضًا */
+.add-course-container h2{
+    margin: 0 0 24px;
+    text-align: left;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
 }
-
-.add-course-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* زيادة المسافة بين العناصر */
+.add-course-form{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 20px;
 }
-
-.add-course-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px; /* تكبير الخط */
-  color: #444; /* لون أكثر وضوحًا */
-  font-weight: 600; /* تحسين سمك النص */
+.add-course-form > label{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-2, var(--muted));
 }
-
+.add-course-form > label:first-child,
+.add-course-form > label:has(textarea),
+.add-course-form > .upload-container,
+.add-course-form > button{
+    grid-column: 1 / -1;
+}
 .add-course-form input,
 .add-course-form textarea,
-.add-course-form select,
-.add-course-form button {
-  padding: 12px; /* زيادة التباعد الداخلي */
-  font-size: 18px; /* تكبير الخط */
-  border: 1px solid #ccc;
-  border-radius: 6px; /* جعل الزوايا أكثر نعومة */
+.add-course-form select{
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
 }
-
 .add-course-form input:focus,
 .add-course-form textarea:focus,
-.add-course-form select:focus {
-  border-color: #007bff; /* تغيير لون الحدود عند التركيز */
-  outline: none; /* إزالة الإطار الافتراضي */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* تأثير ظل عند التركيز */
+.add-course-form select:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+.add-course-form textarea{
+    resize: vertical;
+    min-height: 120px;
 }
 
-.add-course-form textarea {
-  resize: none;
-  min-height: 120px; /* زيادة الارتفاع الافتراضي */
+/* Image upload */
+.add-course-form .upload-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    background-color: var(--surface-2);
+}
+.add-course-form .upload-container .upload{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 240px;
+    min-width: 0;
+}
+.add-course-form .upload-container .upload label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.add-course-form .upload-container .avatar-img{
+    font-size: 40px;
+    color: var(--primary);
+}
+.add-course-form .upload-container input[type="file"]{
+    padding: 8px;
+    border-style: dashed;
+    background-color: var(--surface);
+}
+.add-course-form .preview-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.add-course-form .avatar-preview{
+    width: 96px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
 }
 
-.add-course-form button {
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px; /* زوايا مستديرة */
-  transition: background-color 0.3s, transform 0.2s; /* تأثيرات عند التحويم */
-  font-weight: bold;
+/* Buttons */
+.add-course-form button{
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--gradient);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+    transition: transform .2s, box-shadow .2s;
+}
+.add-course-form button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(79, 70, 229, 0.3);
+}
+.add-course-form button:disabled{
+    background: var(--border);
+    color: var(--muted);
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+}
+.add-course-form .remove-btn{
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+.add-course-form .remove-btn:hover{
+    background: var(--danger);
+    color: #fff;
+    border-color: var(--danger);
+    box-shadow: none;
 }
 
-.add-course-form button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* رفع الزر قليلاً عند التحويم */
+.add-course-container .error-message{
+    margin: 16px 0 0;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--danger);
+    background-color: rgba(239, 68, 68, 0.08);
+    border-radius: 10px;
 }
 
-.add-course-form button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+@media (max-width: 992px){
+    .add-course-container{ padding: 24px; }
 }
-
-.add-course-container p {
-  text-align: center;
-  font-size: 16px; /* تكبير الخط */
-  color: red;
-  margin-top: 10px;
-  font-weight: bold; /* جعل النص عريضًا */
+@media (max-width: 576px){
+    .add-course-container{ padding: 18px; }
+    .add-course-container h2{ font-size: 1.35rem; margin-bottom: 18px; }
+    .add-course-form{ grid-template-columns: 1fr; gap: 14px; }
 }

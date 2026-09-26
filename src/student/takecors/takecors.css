@@ -1,219 +1,320 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
+/* ===== Take course page (.bottomcl.takecors) — card base comes from clesson.css (.bottomcl .card) ===== */
 .takecors{
-    padding-top:80px;
-    height: 100%;
-    margin: 0 10px;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
 }
+
+/* Top: lessons list + video */
 .takecors .tobtakecors{
-   display: flex;
-   justify-content: space-between;
-   align-items:center;
-   width: 100%;
-   margin-bottom: 0;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 1.65fr);
+    gap: 20px;
+    width: 100%;
+    margin: 0;
+    align-items: stretch;
 }
-.rrrate{
-    padding: 10px;
-    color:rgba(128, 128, 128, 0.575);
+.takecors .clrtake,
+.takecors .clltake{
+    width: auto;
+    min-width: 0;
+    margin: 0;
+}
+.takecors .clrtake{
+    position: relative;
+}
+.takecors .clrtake .topclr{
+    position: absolute;
+    inset: 0;
 }
 .takecors .cardtakecors{
-    height: 315px;
-    margin-top: -25px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
     overflow: auto;
     width: 100%;
-
 }
-.clrtake,.clltake{
-    margin: 10px;
+.takecors .frah{
+    display: none;
 }
-.ltake{
-    width: 60%;
-}
-.rtake{
-    width: 30%;
-}
-.rrrate .fo{
-    padding: 10px;
+.takecors .rrrate{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 20px;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+.takecors .rrrate .fo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
     justify-content: space-between;
+    gap: 8px;
+    padding: 0;
 }
-.rrrate .fo h2{
-   font-size: 20px;
-   margin-top: 2px;
-   color:black;
-   font-weight: bold;
+.takecors .rrrate .fo h2{
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
 }
-.rrrate .ta{
-    padding: 10px;
+.takecors .rrrate .ta{
     display: flex;
     align-items: center;
+    gap: 8px;
+    padding: 0;
 }
-.rrrate .ta h2{
-   color:rgb(202, 202, 10);
-   margin-right: 10px;
-}
-.frah{
-padding: 30px;
-}
-.takecors .bottomtakecors{
+.takecors .rrrate .ta h2{
     display: flex;
-    justify-content:space-between;
+    margin: 0;
+    font-size: 1rem;
+    color: #f59e0b;
+}
+
+/* Bottom: overview + side column */
+.takecors .bottomtakecors{
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+    gap: 20px;
     width: 100%;
+    align-items: start;
 }
 .takecors .ltake,
 .takecors .rtake{
-    width: 49%;
-    height: 100%;
+    display: flex;
     flex-direction: column;
+    gap: 20px;
+    width: auto;
+    height: auto;
+    min-width: 0;
+}
+.takecors .ltake .card h2{
+    margin-top: 10px;
 }
 .takecors .bottomtakecors .ltake .hames ul{
-background-color:rgba(128, 128, 128, 0.186);
-display: flex;
-justify-content: space-around;
-align-items:center;
-list-style: none;
-padding: 0;
-font-size: 20px;
-cursor: pointer;
-transition-duration: 0.5s;
-padding-bottom: 2px;
-color:gray;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 6px;
+    padding: 5px;
+    list-style: none;
+    background-color: var(--surface-2);
+    border-radius: 12px;
 }
-.takecors .bottomtakecors .ltake .hames li:hover{
-   border-bottom: 2px solid var(--maincolor);
-   color:black;
-    }
-    .takecors .bottomtakecors .ltake .cons {
-      margin: 10px 0;
-    }
-    .takecors .bottomtakecors .ltake .cons span{
-        margin: 5px 0;
-    }
+.takecors .bottomtakecors .ltake .hames li{
+    flex: 1;
+    padding: 8px 14px;
+    text-align: center;
+    border-radius: 9px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: background-color .2s, color .2s, box-shadow .2s;
+}
+.takecors .bottomtakecors .ltake .hames li:hover,
+.takecors .bottomtakecors .ltake .hames li:first-child{
+    background-color: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+.takecors .bottomtakecors .ltake .cons{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px 16px;
+    margin: 4px 0;
+}
 .takecors .bottomtakecors .ltake .cons .arr{
     display: flex;
-    color:var(--maincolor);
-    font-size:20px;
-    align-items:center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: var(--primary);
+    font-size: 1rem;
+}
+.takecors .bottomtakecors .ltake .cons .arr svg{
+    flex-shrink: 0;
+}
+.takecors .bottomtakecors .ltake .cons .arr span{
+    margin: 0;
+    color: var(--text-2, var(--muted));
+    font-size: 0.92rem;
+}
+
+/* Progress card */
+.takecors .rtake .cardnopadding{
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+}
+.takecors .rtake .card .ff{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+}
+.takecors .rtake .card .ff .proooo h2{
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.takecors .rtake .card .ff .proooo p{
+    font-size: 0.85rem;
+}
+.takecors .rtake .card .ff > span{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--surface);
+    color: var(--success);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all .2s;
+}
+.takecors .rtake .card .ff > span:hover{
+    background-color: var(--success);
+    border-color: var(--success);
+    color: #fff;
+}
+.takecors .rtake .card .bb{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+}
+.takecors .rtake .card .bb .kbr{
+    position: relative;
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background-color: var(--surface-2);
+    overflow: hidden;
+}
+.takecors .rtake .card .bb .kbr span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 35%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--gradient);
+}
+.takecors .rtake .card .bb > span:last-child{
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Achievements card */
+.takecors .rtake .card .achivmentt{
+    margin: -20px -20px 0;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: left;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.takecors .colors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 0 0;
+}
+.takecors .colors .one,
+.takecors .colors .two,
+.takecors .colors .three,
+.takecors .colors .four,
+.takecors .colors .five{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 50%;
+    color: #fff;
+}
+.takecors .colors .one{ background: #f59e0b; }
+.takecors .colors .two{ background: var(--success); }
+.takecors .colors .three{ background: var(--danger); }
+.takecors .colors .four{ background: var(--primary); }
+.takecors .colors .five{ background: var(--primary-2); }
+.takecors .colors .oneb,
+.takecors .colors .twob,
+.takecors .colors .threeb,
+.takecors .colors .fourb,
+.takecors .colors .fiveb{
+    display: none;
+}
+
+/* Nested instructor card */
+.takecors .rtake .bottomcl{
+    display: block;
+    width: 100%;
+    padding: 0;
     margin: 0;
 }
-.takecors .gg .ltake .cons .arr span{
-color:rgb(113, 113, 113);
-margin-left: 10px;
-font-size: 15px;
-}
-.rtake .card{
-    height:auto;
-}
-.rtake .cardnopadding{
-    padding: 0;
-}
-.rtake .card .ff{
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  background-color:rgba(128, 128, 128, 0.134);
-  padding:0 10px;
-  color:gray;
-}
-.rtake .card .ff .proooo h2{
-    font-size: 20px;
-    font-weight: bold;
-    color:black;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.rtake .card .ff span{
-    width: auto;
-    padding: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.389);
-    border-radius: 3px;
-    background-color:white;
-    cursor: pointer;
-    transition-duration: 1s;
-}
-.rtake .card .ff span:hover{
-    background-color:black;
-    color:white;
-}
-.rtake .card .bb{
-    padding: 10px;
-    display: flex;
-    justify-content:space-around;
-    align-items:center;
-}
-.rtake .card .bb .kbr{
-    background-color: rgba(128, 128, 128, 0.349);
-    border-radius: 5px;
-    width: 80%;
-    height: 10px;
-}
-.rtake .card .bb .kbr span{
-    background-color: var(--maincolor);
-    border-radius: 5px;
-    width: 35%;
-    height: inherit;
-    position: absolute;
-}
-.rtake .card .bb span:last-child{
-    font-size: 20px;
-    color: var(--maincolor);
-}
-.rtake .card .achivmentt{
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    background-color: rgba(128, 128, 128, 0.349);
-}
- .ii .card img{
-width: 50px;
-height: 50px;
-border-radius:50%;
-}
-.ii .cardtake{
-    width: 105%;
-    margin-left: -10px;
-}
-@media(max-width:1200px){
-}
-@media(max-width:992px){
-    .takecors{
-        margin: -5px;
-    }
-    .tobtakecors,
-    .bottomtakecors
-    {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items:center;
-    }
-    .bottomcl .clrtake,
-    .clltake
-     {
-        width: 100%;
-    }
-.takecors .ltake,.takecors .rtake
-     {
-        width: 100%;
-        margin-top: 20px;
-    }
-}
-      
-@media(max-width:768px){
- .ss{
-    width: 0;
- }
- .allc{
+.takecors .ii .cardtake{
     width: 100%;
- }
+    margin: 0;
 }
-@media(max-width:576px){
-  
+
+@media (max-width: 992px){
+    .takecors .tobtakecors,
+    .takecors .bottomtakecors{
+        grid-template-columns: 1fr;
+    }
+    .takecors .clltake{
+        order: -1;
+    }
+    .takecors .clrtake .topclr{
+        position: static;
+    }
+    .takecors .cardtakecors{
+        height: auto;
+        max-height: 420px;
+    }
+}
+@media (max-width: 576px){
+    .takecors,
+    .takecors .tobtakecors,
+    .takecors .bottomtakecors,
+    .takecors .ltake,
+    .takecors .rtake{
+        gap: 16px;
+    }
+    .takecors .rrrate,
+    .takecors .rtake .card .ff,
+    .takecors .rtake .card .bb{
+        padding: 14px 16px;
+    }
+    .takecors .rtake .card .achivmentt{
+        margin: -16px -16px 0;
+        padding: 12px 16px;
+    }
+    .takecors .bottomtakecors .ltake .cons{
+        grid-template-columns: 1fr;
+    }
 }
