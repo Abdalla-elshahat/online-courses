@@ -7,12 +7,12 @@ function Table() {
         tr.forEach((e) => {
             if (x.id === "i1" && x.checked) {
                 tr.forEach((t) => {
-                    t.style.backgroundColor = "rgb(75, 121, 207)";
+                    t.style.backgroundColor = "rgba(79, 70, 229, 0.12)";
                 })
             }
             else {
                 if (e.className === x.id && x.checked) {
-                    e.style.backgroundColor = "rgb(75, 121, 207)";
+                    e.style.backgroundColor = "rgba(79, 70, 229, 0.12)";
                 }
                 else {
                     e.style.backgroundColor = "transparent";
@@ -22,7 +22,7 @@ function Table() {
     }
     return (
         <>
-            <div className="edit table">
+            <div className="edit uitable">
                 <h2 className='editacount'>Table</h2>
                 <div className="basicinfo">
                     <div className="left">

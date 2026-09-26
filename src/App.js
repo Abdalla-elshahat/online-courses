@@ -1,5 +1,5 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './sidebar/sidebar';
 import { Route, Routes } from 'react-router-dom';
@@ -48,11 +48,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className='row'>
-        <div className='col-3 ss'>
-          <Sidebar />
-        </div>
-        <div className='col-9 allc'>
+      <div className='app-shell'>
+        <Sidebar />
+        <main className='app-main'>
           <Routes>
             <Route path='/' element={<Dash />} />
             <Route path='/edit' element={<Edit />} />
@@ -98,7 +96,7 @@ function App() {
             <Route path='/Addfriends' element={<Addfriends />} />
             <Route path='/profilefollow/:userid' element={<Profilefollower />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </div>
   );

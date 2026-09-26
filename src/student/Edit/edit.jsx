@@ -10,6 +10,7 @@ import Select from 'react-select';
 import {programmingSkills} from "../../UI/forms/data.ts"
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const.jsx';
+import { safeParse } from "../../utels/safeJson";
 function Edit() {
   const token = Cookies.get("token");
   const nav = useNavigate();
@@ -143,7 +144,7 @@ function Edit() {
       let socialMediaData = {};
       if (name.socialmedia && typeof name.socialmedia === "string" && name.socialmedia.trim()) {
         try {
-          socialMediaData = JSON.parse(name.socialmedia||"");
+          socialMediaData = safeParse(name.socialmedia, {});
         } catch (error) {
           console.error("Error parsing social media data:", error);
         }
@@ -158,7 +159,8 @@ function Edit() {
       if (name.skills) {
         try {
           if (true) {
-            const parsedSkills = JSON.parse(name.skills).map((skill) => ({
+            const rawSkills = safeParse(Array.isArray(name.skills) ? name.skills[0] : name.skills, []);
+            const parsedSkills = (Array.isArray(rawSkills) ? rawSkills : []).map((skill) => ({
               value: skill.value || "",
               label: skill.label || "",
               image: skill.image || "",
@@ -179,7 +181,7 @@ function Edit() {
   }, [name]);
   return (
     <>
-      <div className="edit">
+      <div className="edit edit-page">
         <ToastContainer
           position="top-right"
           autoClose={3000}

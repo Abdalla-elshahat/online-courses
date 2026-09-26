@@ -1,142 +1,340 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
+/* ===== Instructor: Edit Course (also base for Edit Lesson) — root: .dash.editcorses ===== */
 .editcorses {
-    margin-left: 10px;
+    margin: 0 !important;
+    width: 100% !important;
+    color: var(--text);
 }
-.editcorses .bottomc{
+.editcorses .content {
+    width: 100% !important;
+    margin: 0 !important;
+}
+.editcorses .studentdashbord {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    height: auto;
+    padding: 0 0 20px;
+    border-bottom: 1px solid var(--border);
 }
-.editcorses .bottomc .card{
-    height: 100%;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+.editcorses .studentdashbord p {
+    margin: 0;
+    font-family: inherit;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+/* Two-column layout */
+.editcorses .bottomc {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 20px;
+    align-items: start;
+    margin-top: 24px;
+}
+.editcorses .bottomc .card,
+.editcorses .bottomc .cardleft {
+    position: relative;
+    width: auto !important;
+    height: auto;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 97%;
-    margin-top: 20px;
-    border-radius: 2px;
-    border: none;
-    margin:15px 5px;
-    position: relative;
-    width: 38%;
-}
-.editcorses .bottomc .cardleft{
-    width: 60%;
-
-}
-.editcorses .bottomc .cardleft,
-.editcorses .bottomc .cardleft .blok{
-text-align: left;
-display: flex;
-flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    min-width: 0;
 }
 
-.editcorses .bottomc .cardleft input,
+/* Form */
+.editcorses .bottomc .cardleft .bake {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+    background: transparent;
+}
+.editcorses .bottomc .cardleft .blok,
+.editcorses .bottomc .cardleft .sele {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+.editcorses .bottomc .cardleft label {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--text-2);
+}
+.editcorses .bottomc .cardleft input:not([type="submit"]):not([type="file"]),
 .editcorses .bottomc .cardleft textarea,
-.editcorses .bottomc .cardleft select{
+.editcorses .bottomc .cardleft select,
+.editcorses .bottomc .cardleft .sele #sele {
     width: 100%;
-    border:1px solid rgba(128, 128, 128, 0.159);
-    border-radius: 3px;
-    padding: 5px;
-    height:20%;
+    height: auto;
+    margin: 0;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
     outline: none;
-    margin-bottom:10px;
+    transition: border-color .2s ease, box-shadow .2s ease;
 }
-.editcorses .bottomc .cardleft label{
-   font-size: 15px;
-   font-weight: bold;
-   margin-bottom:5px;
+.editcorses .bottomc .cardleft textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 .editcorses .bottomc .cardleft input:focus,
 .editcorses .bottomc .cardleft textarea:focus,
-.editcorses .bottomc .cardleft select:focus{
-    border-color: var(--maincolor);
+.editcorses .bottomc .cardleft select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
 }
 .editcorses .bottomc .cardleft input::placeholder,
-.editcorses .bottomc .cardleft textarea::placeholder{
-    color:rgba(128, 128, 128, 0.5);
-    font-size:15px;
+.editcorses .bottomc .cardleft textarea::placeholder {
+    color: var(--muted);
+    opacity: .7;
+    font-size: 14px;
 }
-.editcorses .bottomc .cardleft .sele{
+
+/* Image upload */
+.editcorses .upload-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+}
+.editcorses .upload-container .upload {
+    width: auto;
+    margin: 0;
+}
+.editcorses .upload-container .upload label {
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border);
+    border-radius: 14px;
+    background: var(--surface-2);
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.editcorses .upload-container .upload label:hover {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+.editcorses .upload-container .avatar-img {
+    font-size: 30px;
+    width: auto;
+    height: auto;
+}
+.editcorses .preview-container {
+    position: relative;
+    display: inline-block;
+}
+.editcorses .avatar-preview {
+    width: 120px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+.editcorses .remove-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--surface);
+    border-radius: 50%;
+    background: var(--danger);
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Save bar */
+.editcorses .bottomc .cardleft .save {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+}
+.editcorses .bottomc .cardleft input[type="submit"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px -6px rgba(79, 70, 229, .55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.editcorses .bottomc .cardleft input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .6);
+}
+
+/* Lessons card */
+.editcorses .bottomc .card .toeditcors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 20px;
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+}
+.editcorses .bottomc .card .toeditcors h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+.editcorses .bottomc .card .toeditcors p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.editcorses .bottomc .card .toeditcors .new {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: auto;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.editcorses .bottomcltt {
     display: flex;
     flex-direction: column;
-}
-.editcorses .bottomc .cardleft .sele #sele{
-    width: 30%;
-    border:1px solid rgba(128, 128, 128, 0.411);
-    border-radius: 3px;
-    padding: 5px;
-    height:20%;
-    outline: none;
-    margin-bottom:10px;
-}
-.editcorses .bottomc .cardleft .sele #sele:focus{
-    border-color: var(--maincolor);
-}
-.editcorses .bottomc .cardleft .f3 .avatar{
-    font-size: 25px;
-font-weight: bold;
-margin-left: -16%;
-}
-.editcorses .bottomc .cardleft .f3 .upload{
+    padding: 6px 0;
+    margin: 0;
     width: auto;
-    margin-left: 10%;
+    border: none;
 }
-.editcorses .bottomc .cardleft .tot {
-    font-size:50px;
-}
-.editcorses .bottomc .cardleft .bake {
-    background-color:rgba(128, 128, 128, 0.123);
-    padding: 10px;
-}
-.editcorses .bottomc .cardleft .save{
-    background-color: white;
+.editcorses .bottomcltt .malomat {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    gap: 10px;
+    margin: 0;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s ease;
 }
-.editcorses .bottomc .cardleft input[type="submit"]{
-    background-color: rgb(10, 200, 10);
-    color: white;
-    padding: 5px;
-    font-size: 20px;
-    width:auto;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    border:none;
-    height: auto;
+.editcorses .bottomcltt .malomat:last-child {
+    border-bottom: none;
 }
-.editcorses .bottomc .card .toeditcors{
-display: flex;
-justify-content: space-between;
-align-items:center;
-padding:5px 10px;
-background-color:rgba(128, 128, 128, 0.152);
+.editcorses .bottomcltt .malomat:hover {
+    background: var(--surface-2);
 }
-.editcorses .bottomc .card .toeditcors h2{
-    font-size: 20px;
-    font-weight: bold;
+.editcorses .bottomcltt .malomat .ganb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
 }
-.editcorses .bottomc .card .toeditcors p{
-   color:rgba(128, 128, 128, 0.59);
+.editcorses .bottomcltt .malomat .ganb .number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    margin: 0;
 }
-.editcorses .bottomc .card .toeditcors .new{
-    color:white;
-    background-color: var(--maincolor);
-    font-size:20px;
-    border-radius:3px;
-    height: auto;
-    padding:5px 10px;
-    cursor: pointer;
- }
- @media(max-width:992px){
-    .editcorses .bottomc{
-        display:flex;
-        flex-direction: column;
+.editcorses .bottomcltt .malomat .ganb .name {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+.editcorses .bottomcltt .malomat .minute {
+    flex-shrink: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.editcorses .bottomcltt .malomat .free,
+.editcorses .bottomcltt .malomat .pro,
+.editcorses .bottomcltt .malomat .quiz {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+.editcorses .bottomcltt .malomat .free {
+    background: rgba(16, 185, 129, .12);
+    color: var(--success);
+}
+.editcorses .bottomcltt .malomat .pro {
+    background: rgba(245, 158, 11, .15);
+    color: #b45309;
+}
+.editcorses .bottomcltt .malomat .quiz {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+@media (max-width: 992px) {
+    .editcorses .bottomc {
+        grid-template-columns: 1fr;
     }
- }
+}
+@media (max-width: 576px) {
+    .editcorses .bottomc .cardleft .bake {
+        padding: 16px;
+    }
+    .editcorses .bottomc .cardleft .save {
+        padding: 14px 16px;
+    }
+    .editcorses .bottomc .cardleft input[type="submit"] {
+        width: 100%;
+    }
+    .editcorses .bottomcltt .malomat {
+        padding: 12px 16px;
+    }
+}

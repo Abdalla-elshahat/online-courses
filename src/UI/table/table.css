@@ -1,95 +1,277 @@
-.table .editacount{
-    border-bottom: 1px solid rgba(128, 128, 128, 0.301);
-    padding-bottom:2%;
+/* ===== Table page (root: .edit.uitable) ===== */
+.uitable {
+  width: 100%;
+  color: var(--text);
 }
 
-.table .basicinfo .right table{
-background-color: transparent;
- }
-.table .basicinfo .right table tr{
-   display: flex;
-   align-items: center;
-   justify-content:space-between;
-   border-bottom:1px solid rgba(128, 128, 128, 0.23);
-   transition-duration: 0.5s;
+.uitable .editacount {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
-.table .basicinfo .right table tr .letabl{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    width: 35%;
- }
- .table .basicinfo .right table tr .ritabl{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    width: 50%;
- }
-.table .basicinfo .right table tr th{
-font-size: 15px;
-font-weight: bold;
- }
-.table .basicinfo img{
-   width: 50px;
-   height: 50px;
-   border-radius: 50%;
-   object-fit: cover;
- }
- .table .basicinfo .right table tr th,td{
-    border: none;
- }
- .table .basicinfo .right table .us{
-    cursor: pointer;
-    font-size: 20px;
-    color: rgb(74, 74, 74);
- }
- .table .basicinfo .right table .salary{
-  font-weight: bold;
-  font-size: 20px;
- }
- .table .basicinfo .right table  .adm{
-    background-color:rgb(0, 102, 255);
-    border-radius:3px;
-    padding: 5px;
- }
- .table .basicinfo .right .search{
-display: flex;
-justify-content: space-between;
-align-items:center;
-width:100%;
-border:1px solid rgba(128, 128, 128, 0.184);
-margin-bottom: 20px;
- }
- .table .basicinfo .right .search input{
-  border:none;
+
+.uitable .basicinfo {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2.4fr;
+  margin: 0 0 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.uitable .basicinfo .left {
+  padding: 24px;
+  text-align: left;
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+}
+
+.uitable .basicinfo .left .pin {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.uitable .basicinfo .left p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.uitable .basicinfo .left a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.uitable .basicinfo .right {
+  padding: 20px 24px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+/* Rows (markup uses div groups inside tr, laid out with flex) */
+.uitable .basicinfo .right table {
+  width: 100%;
+  min-width: 560px;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.uitable .basicinfo .right table tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.uitable .basicinfo .right table tr:last-child {
+  border-bottom: none;
+}
+
+.uitable .basicinfo .right table tr:not(:first-child):hover {
+  background-color: var(--surface-2);
+}
+
+.uitable .basicinfo .right table tr:first-child {
+  background: var(--surface-2);
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+.uitable .basicinfo .right table tr .letabl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 38%;
+  min-width: 0;
+}
+
+.uitable .basicinfo .right table tr .ritabl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.uitable .basicinfo .right table th,
+.uitable .basicinfo .right table td {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.uitable .basicinfo .right table th {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.uitable .basicinfo .right table td {
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+.uitable .basicinfo .right table td span {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.uitable .basicinfo .right table input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.uitable .basicinfo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.uitable .basicinfo .right table .us {
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.uitable .basicinfo .right table .salary {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.uitable .basicinfo .right table .adm {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: var(--primary-soft);
+  color: var(--primary) !important;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Search */
+.uitable .basicinfo .right .search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 0 12px;
+  margin: 0 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.uitable .basicinfo .right .search:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.uitable .basicinfo .right .search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
   outline: none;
-  width:100%;
-     }
-.table .basicinfo .right .blokk{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    width: 100%;
-    border-bottom:1px solid rgba(128, 128, 128, 0.153);
-    background-color:transparent;
-}
-.table .basicinfo .right .blokk .lett{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.table .basicinfo .right .blokk .lett span{
-    margin-left: 10px;
-    margin-top: 10px;
- }
-.table .basicinfo .right .blokk .lett h2{
-   font-size: 20px;
-   margin: 0;
-   padding: 0;
+  padding: 10px 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
 }
 
-@media (max-width:992px){
-    .table .basicinfo .right .search {
-        margin-right: -40%;
-    }
+/* List rows */
+.uitable .basicinfo .right .blokk {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+  background-color: transparent;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.uitable .basicinfo .right .blokk:last-child {
+  border-bottom: none;
+}
+
+.uitable .basicinfo .right .blokk:hover {
+  background-color: var(--surface-2);
+}
+
+.uitable .basicinfo .right .blokk .lett {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.uitable .basicinfo .right .blokk .lett span {
+  margin: 0;
+  min-width: 0;
+}
+
+.uitable .basicinfo .right .blokk .lett h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.uitable .basicinfo .right .blokk .lett p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.uitable .basicinfo .right .blokk .rii {
+  color: var(--muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+  .uitable .basicinfo {
+    grid-template-columns: 1fr;
+  }
+  .uitable .basicinfo .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .uitable .basicinfo {
+    margin-bottom: 16px;
+  }
+  .uitable .basicinfo .left,
+  .uitable .basicinfo .right {
+    padding: 16px;
+  }
 }

@@ -1,0 +1,188 @@
+.updatepass {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 0;
+}
+
+.updatepass .up-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 36px 32px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.updatepass .up-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: var(--gradient);
+}
+
+.updatepass .up-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.updatepass h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+}
+
+.updatepass .up-sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: .92rem;
+    margin: 0 0 24px;
+}
+
+.updatepass .up-field {
+    margin-bottom: 16px;
+}
+
+.updatepass .up-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--text-2);
+}
+
+.updatepass .up-input {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 6px 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.updatepass .up-input:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.updatepass .up-input.invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, .12);
+}
+
+.updatepass .up-input input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: .95rem;
+    box-shadow: none !important;
+}
+
+.updatepass .eye {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    margin: 0;
+}
+
+.updatepass .eye:hover {
+    background: var(--surface-2);
+    color: var(--primary);
+}
+
+.updatepass .up-strength {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -6px 0 16px;
+}
+
+.updatepass .up-strength .bars {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.updatepass .up-strength .bars span {
+    height: 5px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    transition: background .2s;
+}
+
+.updatepass .up-strength small {
+    min-width: 60px;
+    text-align: end;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.updatepass .s1 .bars span:nth-child(-n+1) { background: #ef4444; }
+.updatepass .s2 .bars span:nth-child(-n+2) { background: #f59e0b; }
+.updatepass .s3 .bars span:nth-child(-n+3) { background: #3b82f6; }
+.updatepass .s4 .bars span { background: var(--success); }
+
+.updatepass .up-error {
+    display: block;
+    margin: -8px 0 14px;
+    color: var(--danger);
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.updatepass .up-btn {
+    width: 100%;
+    height: 48px;
+    margin: 8px 0 0;
+    border: 0;
+    border-radius: 12px;
+    background: var(--gradient);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 10px 22px -8px rgba(79, 70, 229, .55);
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.updatepass .up-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px -8px rgba(79, 70, 229, .6);
+}
+
+.updatepass .up-btn:active {
+    transform: scale(.98);
+}
+
+@media (max-width: 576px) {
+    .updatepass { padding: 8px 0; }
+    .updatepass .up-card { padding: 28px 20px 24px; border-radius: 16px; }
+    .updatepass h2 { font-size: 1.3rem; }
+}

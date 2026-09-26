@@ -33,7 +33,7 @@ function Profileins(){
         <>
          {
             userData && (
-                <div className="serice courses">
+                <div className="serice courses profileins">
                 <div className="fok">
                     <img src={`${domain}/uplouds/${userData.avatar}`}  alt="" />
                     <div className="in">

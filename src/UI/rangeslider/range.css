@@ -1,92 +1,180 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Range sliders page (root: .edit.rangepage) ===== */
+.rangepage {
+  width: 100%;
+  color: var(--text);
 }
-.editacountpp{
-    margin-top: -1%;
-    margin-bottom: 1rem;
-    margin-left: 0.5%;
-    color: gray;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.214);
-    padding-bottom: 2%;
-    font-size: 20px;
-}
-.samep{
-    margin-top: -1%;
-    margin-bottom: 1rem;
-    margin-left: 0.5%;
-}
-.right{
-    padding: 20px;
-}
- .basicinfo .corr{
-    width:100%;
-    border-radius: 10px;
-    background-color:rgba(128, 128, 128, 0.334);
-    height:10px;
-    display: block;
-    position: relative;
-}
-.basicinfo .corr::before{
-   content: "0";
-   position: absolute;
-   background-color:white;
-   color:black;
-   padding: 2px;
- width:auto;
- height:auto;
-top: -350%;
-border-radius:5px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.basicinfo .corr::after{
-    content: "100";
-    position: absolute;
-    background-color:white;
-    color:black;
-    padding: 2px;
- width:auto;
- height:auto;
- left: 97%;
- top: -350%;
- border-radius:5px;
- display: flex;
- justify-content: center;
- align-items: center;
- }
 
-.basicinfo .corr span{
-    width:40%;
-    border-radius: 10px 0 0 10px ;
-    background-color:var(--maincolor);
-    height:10px;
-    display: block;
-    border-right: 1px solid var(--maincolor);
+.rangepage .editacount {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
 }
-.basicinfo .corr span::after{
-    content: "530";
-    position: absolute;
-    background-color:var(--maincolor);
-    color:white;
-    padding: 2px;
- width:auto;
- height:auto;
- left: 37%;
- top: -350%;
- border-radius:5px;
- display: flex;
- justify-content: center;
- align-items: center;
+
+.rangepage .editacountpp {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 1rem;
 }
-.right .word{
-    margin-bottom: 10%;
-    font-size: 20px;
+
+.rangepage .samep {
+  display: block;
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.93rem;
+  line-height: 1.6;
 }
+
+.rangepage .samep a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.rangepage .basicinfo {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  margin: 0 0 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.rangepage .basicinfo .left {
+  padding: 24px;
+  text-align: left;
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+}
+
+.rangepage .basicinfo .left .pin {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.rangepage .basicinfo .left p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.rangepage .basicinfo .right {
+  padding: 24px 32px 28px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rangepage .right .word {
+  margin: 0 0 44px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Track */
+.rangepage .basicinfo .corr {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background-color: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.rangepage .basicinfo .corr::before,
+.rangepage .basicinfo .corr::after {
+  position: absolute;
+  top: -34px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.rangepage .basicinfo .corr::before {
+  content: "0";
+  left: 0;
+}
+
+.rangepage .basicinfo .corr::after {
+  content: "100";
+  right: 0;
+}
+
+/* Fill + thumb + value bubble */
+.rangepage .basicinfo .corr span {
+  display: block;
+  position: relative;
+  width: 40%;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--gradient);
+}
+
+.rangepage .basicinfo .corr span::before {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--primary);
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+.rangepage .basicinfo .corr span::after {
+  content: "530";
+  position: absolute;
+  right: 0;
+  top: -38px;
+  transform: translateX(50%);
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+@media (max-width: 992px) {
+  .rangepage .basicinfo {
+    grid-template-columns: 1fr;
+  }
+  .rangepage .basicinfo .left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+  .rangepage .basicinfo .right {
+    padding: 20px 24px 24px;
+  }
+}
+
 @media (max-width: 576px) {
-    .edit {
-        margin: 0;
-        width: 100%;
-    }
+  .rangepage .basicinfo {
+    margin-bottom: 16px;
+  }
+  .rangepage .basicinfo .left {
+    padding: 16px;
+  }
+  .rangepage .basicinfo .right {
+    padding: 16px 20px 22px;
+  }
 }

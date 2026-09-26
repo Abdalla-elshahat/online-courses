@@ -1,29 +1,176 @@
-.courses .fok{
-    background-color: rgb(0, 5, 8);
+/* ===== Instructor public profile — root: .serice.courses.profileins ===== */
+.profileins .fok {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items:center;
-    padding:  50px 0;
-    color: white;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    padding: 36px 32px;
+    border-radius: var(--radius);
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
 }
-.courses .fok img{
-    width: 150px;
-    height: 150px;
+.profileins .fok::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    object-fit:cover;
-    margin-right: 20px;
+    background: rgba(255, 255, 255, .08);
+    pointer-events: none;
 }
-.courses .fok .name{
-    font-size:50px;
-    font-weight: bold;
+.profileins .fok img {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    margin: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, .85);
+    background: rgba(255, 255, 255, .2);
 }
-.courses .fok span a{
-  margin-right: 10px;
+.profileins .fok .in {
+    flex: 1 1 240px;
+    min-width: 0;
+    text-align: left;
 }
-.profileinsh2{
-    font-size: 30px !important;
-    margin-left: 10px;
+.profileins .fok .name {
+    margin: 0 0 6px;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    text-transform: capitalize;
+    word-break: break-word;
 }
-.fok a{
-    color:white;
+.profileins .fok p {
+    margin: 0;
+    max-width: 640px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .85);
+}
+.profileins .fok a {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.profileins .tops .serich.profileinsh2 {
+    margin: 0;
+    font-size: 20px !important;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Course cards */
+.profileins .middels {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.profileins .middels .cardcors {
+    padding: 0;
+    gap: 0;
+}
+.profileins .cardcors .topcors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 24px 16px 18px;
+    text-align: center;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+}
+.profileins .cardcors .topcors img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+.profileins .cardcors .topcors .corsh {
+    margin: 6px 0 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+}
+.profileins .cardcors .topcors p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.profileins .cardcors .bottomcors {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px 16px;
+    text-align: left;
+}
+.profileins .cardcors .taqem {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #f59e0b;
+    font-size: 16px;
+}
+.profileins .cardcors .taqem span {
+    margin: 0 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+}
+.profileins .cardcors .bottomcors > span {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+.profileins .cardcors .buy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+.profileins .cardcors .buy > span {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+.profileins .cardcors .buy .buycors {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+.profileins .cardcors .buy .buycors:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .profileins .fok {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 18px;
+    }
+    .profileins .fok .in {
+        text-align: center;
+    }
+    .profileins .fok img {
+        width: 96px;
+        height: 96px;
+    }
+    .profileins .middels {
+        grid-template-columns: 1fr;
+    }
 }

@@ -2,18 +2,17 @@ import './Navbar.css';
 import { TfiLayoutMediaOverlay } from "react-icons/tfi";
 import { BsAlarm } from "react-icons/bs";
 import { IoMdSearch } from "react-icons/io";
-import { SlCalender } from "react-icons/sl";
 import { MdArrowDropDown } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline, IoMenuOutline, IoClose } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { CiLogin } from "react-icons/ci";
-import { IoMenuOutline } from "react-icons/io5";
 import { useEffect, useState } from 'react';
 import Notifactions from './notifcations/notfications';
 import Cookies from "js-cookie";
 import { domain } from '../utels/constents/const';
 import { logoutUser, getUserData } from '../api/userApi';
+
 function Navbar() {
     const token = Cookies.get("token");
     const [user, setUser] = useState({});
@@ -21,253 +20,156 @@ function Navbar() {
     const [showNotifications, setShowNotifications] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [rtl, setRtl] = useState(false);
     const [sidebarDark, setSidebarDark] = useState(false);
     const [navbarDark, setNavbarDark] = useState(false);
+
     const handleLogout = async (e) => {
         e.preventDefault();
-
         try {
             await logoutUser();
+        } catch (error) {
+            console.error(error);
+        }
+        Cookies.remove("token");
+        window.location.href = "/login";
+    };
 
-            Cookies.remove("token");
-            window.location.href = "/login";
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    const handlegetdata = async () => {
-        try {
-            const userData = await getUserData();
-            setUser(userData);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    useEffect(() => {
+        if (!token) return;
+        getUserData().then(setUser).catch(console.error);
+    }, [token]);
+
+    // close dropdowns when clicking outside
     useEffect(() => {
         const handleClickOutside = (e) => {
-            if (!e.target.closest(".profile-wrapper")) {
-                setShowProfile(false);
-            }
+            if (!e.target.closest(".profile-wrapper")) setShowProfile(false);
+            if (!e.target.closest(".notif-wrapper")) setShowNotifications(false);
+            if (!e.target.closest(".layout-wrapper")) setShowLayout(false);
         };
-
         document.addEventListener("click", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
+        return () => document.removeEventListener("click", handleClickOutside);
     }, []);
-    useEffect(() => {
-        handlegetdata();
-    }, [])
-    function change(ele) {
-        if (ele.style.display === "none") {
-            ele.style.display = "block"
-        }
-        else {
-            ele.style.display = "none";
-        }
-    }
-    function dir(e) {
-        if (e.target.checked) {
-            document.body.style.direction = "rtl";
-        }
-        else {
-            document.body.style.direction = "ltr";
-        }
-    }
-    function colo() {
-        let side = document.querySelector(".sidebar");
 
-        if (sidebarDark) {
-            side.classList.add("darks");
-        } else {
-            side.classList.remove("darks");
-        }
-    }
-    function colos() {
-        let side = document.querySelector(".nav .contener");
-        if (navbarDark) {
-            side.classList.add("darkn");
-        }
-        else {
-            side.classList.remove("darkn");
-        }
-    }
+    useEffect(() => { document.body.dir = rtl ? "rtl" : "ltr"; }, [rtl]);
+    useEffect(() => { document.body.classList.toggle("sidebar-dark", sidebarDark); }, [sidebarDark]);
+    useEffect(() => { document.body.classList.toggle("navbar-dark", navbarDark); }, [navbarDark]);
+
+    const toggleSidebar = () => document.body.classList.toggle("sidebar-open");
+
     return (
         <>
-            <div className="nav">
+            <header className="nav">
                 <div className="contener">
                     <div className="left">
-                        <div className="logo">
-                            <img src="https://png.pngtree.com/png-clipart/20230201/original/pngtree-blue-white-logo-design-png-image_8940380.png" alt="" className='image' width={"50px"} height={"50px"} />
+                        <button className='sidbarsmall' onClick={toggleSidebar} aria-label="Toggle menu">
+                            <IoMenuOutline />
+                        </button>
+                        <Link to="/" className="logo">
+                            <img src="https://png.pngtree.com/png-clipart/20230201/original/pngtree-blue-white-logo-design-png-image_8940380.png" alt="LEMA" className='image' />
                             <span className="textlogo">LEMA</span>
-                        </div>
-                        <div className="swith" onClick={() => { document.querySelector(".opt").classList.toggle("t") }}>
-                            <TfiLayoutMediaOverlay className='swithlogo' />
-                            <span className="swithtext">Switch Layout</span>
-                        </div>
-                        <div className="opt">
-                            <p><Link to={"/Admin"}>Admin</Link></p>
-                            <p>fullwidth</p>
-                            <p>fixed</p>
-                        </div>
-                    </div>
-                    <div className="right">
-                        <div className="gethelp">
-                            <span className='gettext'>Get Help</span>
-                        </div>
-                        <div className='search'>
-                            <input className="form-control " type="search" placeholder="Search" aria-label="Search" />
-                            <IoMdSearch />
-                        </div>
-                        {token ? (<>
-                            <div className="iconss">
-                                <BsAlarm
-                                    className="alarm"
-                                    onClick={() => setShowNotifications(!showNotifications)}
-                                />
-
-                                {showNotifications && (
-                                    <div className="alarmsetting">
-                                        <Notifactions />
-                                    </div>
-                                )}
-                                {/* <SlCalender className='calender' /> */}
-                            </div>
-                            <div className="profile-wrapper">
-                                <div
-                                    className="profile"
-                                    onClick={() => setShowProfile(!showProfile)}
-                                >
-                                    <img
-                                        src={`${domain}/uplouds/${user?.avatar}`}
-                                        alt={user?.username}
-                                        width="40"
-                                        height="40"
-                                    />
-
-                                    <span className="proname">
-                                        {user?.username}
-                                    </span>
-
-                                    <MdArrowDropDown />
+                        </Link>
+                        <div className="layout-wrapper">
+                            <button className="swith" onClick={() => setShowLayout(!showLayout)}>
+                                <TfiLayoutMediaOverlay />
+                                <span>Switch Layout</span>
+                            </button>
+                            {showLayout && (
+                                <div className="dropdown-card opt">
+                                    <Link to="/Admin" onClick={() => setShowLayout(false)}>Admin</Link>
+                                    <span>Fullwidth</span>
+                                    <span>Fixed</span>
                                 </div>
-
-                                {showProfile && (
-                                    <div className="profileedit">
-                                        <div className="to">
-                                            <span>
-                                                <img
-                                                    src="https://lema.frontted.com/assets/images/frontted-logo-blue.svg"
-                                                    alt=""
-                                                />
-                                            </span>
-
-                                            <span className="inf">
-                                                <h3>{user?.username}</h3>
-                                                <p>
-                                                    {user?.role === "user"
-                                                        ? "Student"
-                                                        : "Manager"}
-                                                </p>
-                                            </span>
-                                        </div>
-
-                                        <div className="bot">
-                                            <span>
-                                                <Link to="/edit">
-                                                    <CgProfile />
-                                                    Edit Account
-                                                </Link>
-                                            </span>
-
-                                            <span>
-                                                <IoSettingsOutline />
-                                                Setting
-                                            </span>
-
-                                            <span onClick={handleLogout}>
-                                                <CiLogin />
-                                                Logout
-                                            </span>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </>) : (
-                            <div className="buttons buttonsnav">
-                                <Link to={"/login"} className='logins'>Login</Link>
-                                <Link to={"/sinup"} className='signup'>Signup</Link>
-                            </div>
-                        )
-
-                        }
-                        <div className="profileedit">
-                            <div className="to">
-                                <span><img src="https://lema.frontted.com/assets/images/frontted-logo-blue.svg" alt="" /></span>
-                                <span className='inf'>
-                                    <h3>{user.username}</h3>
-                                    <p>{user.role === "user" ? "Student" : "Manger"}</p>
-                                </span>
-                            </div>
-                            <div className="bot">
-                                <span><Link to={"/edit"}><CgProfile /> EditeAcount</Link></span>
-                                <span><IoSettingsOutline /> Setting</span>
-                                <span onClick={handleLogout}><CiLogin /> Logout</span>
-                            </div>
+                            )}
                         </div>
                     </div>
-                    <span className='sidbarsmall' onClick={(() => { document.querySelector(".sidebar").classList.toggle("thar") })}><IoMenuOutline /></span>
+
+                    <div className="right">
+                        <div className='search'>
+                            <IoMdSearch />
+                            <input type="search" placeholder="Search courses..." aria-label="Search" />
+                        </div>
+                        {token ? (
+                            <>
+                                <div className="notif-wrapper">
+                                    <button className="icon-btn" onClick={() => setShowNotifications(!showNotifications)} aria-label="Notifications">
+                                        <BsAlarm />
+                                    </button>
+                                    {showNotifications && (
+                                        <div className="dropdown-card alarmsetting">
+                                            <Notifactions />
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="profile-wrapper">
+                                    <button className="profile" onClick={() => setShowProfile(!showProfile)}>
+                                        <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
+                                        <span className="proname">{user?.username}</span>
+                                        <MdArrowDropDown />
+                                    </button>
+                                    {showProfile && (
+                                        <div className="dropdown-card profileedit">
+                                            <div className="pe-head">
+                                                <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
+                                                <div>
+                                                    <h3>{user?.username}</h3>
+                                                    <p>{user?.role === "user" ? "Student" : "Manager"}</p>
+                                                </div>
+                                            </div>
+                                            <Link to="/edit" onClick={() => setShowProfile(false)}><CgProfile /> Edit Account</Link>
+                                            <button onClick={() => { setShowSettings(true); setShowProfile(false); }}><IoSettingsOutline /> Settings</button>
+                                            <button className="danger" onClick={handleLogout}><CiLogin /> Logout</button>
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        ) : (
+                            <div className="buttonsnav">
+                                <Link to="/login" className='logins'>Login</Link>
+                                <Link to="/sinup" className='signup'>Sign up</Link>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
+            </header>
+
+            <div className="sidebar-backdrop" onClick={toggleSidebar} />
+
             <div className="settingi">
-                <div className="bordsetting">
-                    <div className="layout">
-                        <div className="to">Layout</div>
-                        <div className="bott">
-                            <span>TEXT DIRECTION</span>
-                            <span><label className="switch"><input type="checkbox" className="vv" onChange={(e) => { dir(e) }} /><span className="slider round"></span></label></span>
+                {showSettings && (
+                    <div className="bordsetting">
+                        <div className="bs-head">
+                            <strong>Customize</strong>
+                            <button className="icon-btn" onClick={() => setShowSettings(false)} aria-label="Close"><IoClose /></button>
+                        </div>
+                        <div className="bs-row">
+                            <span>RTL direction</span>
+                            <label className="switch">
+                                <input type="checkbox" checked={rtl} onChange={(e) => setRtl(e.target.checked)} />
+                                <span className="slider"></span>
+                            </label>
+                        </div>
+                        <div className="bs-row">
+                            <span>Dark sidebar</span>
+                            <label className="switch">
+                                <input type="checkbox" checked={sidebarDark} onChange={(e) => setSidebarDark(e.target.checked)} />
+                                <span className="slider"></span>
+                            </label>
+                        </div>
+                        <div className="bs-row">
+                            <span>Dark navbar</span>
+                            <label className="switch">
+                                <input type="checkbox" checked={navbarDark} onChange={(e) => setNavbarDark(e.target.checked)} />
+                                <span className="slider"></span>
+                            </label>
                         </div>
                     </div>
-                    <div className="maindrower">
-                        <p className="to" onClick={(e) => { let ele = document.querySelector(".bottdrow"); change(ele); }}>Main Drower</p>
-                        <div className="bott bottdrow">
-                            <span className='title'>SIDEBAR SKIN</span>
-                            <div className="blok">
-                                <span className='blo'>
-                                    <input type="radio" name='mode' id='light' value={"light"} onChange={(e) => { setSidebarDark(true); colo() }} />
-                                    <label htmlFor="light">Light</label>
-                                </span>
-                                <span className='blo'>
-                                    <input type="radio" name='mode' id='dark' value={"dark"} onChange={(e) => { setSidebarDark(false); colo() }} />
-                                    <label htmlFor="dark">Dark</label>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="maindnav">
-                        <p className="to" onClick={() => { let ele = document.querySelector(".bottnav"); change(ele); }}>Main Navbar</p>
-                        <div className="bott bottnav">
-                            <span className='title'>Main Navbar</span>
-                            <div className="blok">
-                                <span className='blo' >
-                                    <input type="radio" name='alignd' id='lightt' value={"light"} onChange={(e) => { setNavbarDark(false); colos() }} />
-                                    <label htmlFor="lightt">Light</label>
-                                </span>
-                                <span className='blo' >
-                                    <input type="radio" name='alignd' id='darkt' value={"Dark"} onChange={(e) => { setNavbarDark(true); colos() }} />
-                                    <label htmlFor="darkt">Dark</label>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span className="settingicon" onClick={(e) => {
-                    document.querySelector(".bordsetting").classList.toggle("act");
-                }}><IoSettingsOutline /></span>
+                )}
+                <button className="settingicon" onClick={() => setShowSettings(!showSettings)} aria-label="Settings">
+                    <IoSettingsOutline />
+                </button>
             </div>
-
         </>
-    )
+    );
 }
 export default Navbar;

@@ -1,120 +1,190 @@
+/* ===== Take quiz page (.serice.courses.takequiz) ===== */
 .takequiz .tops{
-    border-bottom: 1px solid rgba(128, 128, 128, 0.104);
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
 }
-.quizloc span{
-    display: flex;
-    justify-content: space-around;
-    }
-    .quizloc span p{
-        display: flex;
-        justify-content: space-around;
-        align-items:center;
-        }
-.quizloc p{
-color: rgb(98, 98, 98);
-font-size: 25px;
-}
-.upgradequiz{
-    margin: 10px 15px;
-    color: #3687e4;
-    background-color: rgba(54, 135, 228, .05);
-    border-color: #c7ddf7;
-}
-.upgradequiz .upgradeh2{
-    color:black;
-}
-.upgradequiz .upgradeh2 span{
-    color:#3687e4;
-}
-.upgradequiz .left{
-    justify-content: left;
-}
-.upgradequiz .left .icon{
-    background-color:#3687e4;
-    border-color:#3687e4;
-    color:white;
-    margin-right: 10px;
-}
-.safl{
-    display: flex;
-    justify-content:center;
-    width: 100%;
-}
-.safl .card{
-    height: 100%;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+.takequiz .quizloc{
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin: 0 10px;
+    gap: 8px;
+    min-width: 0;
+}
+.takequiz .quizloc > span{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.takequiz .quizloc p{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-2, var(--muted));
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.takequiz .quizloc p svg{
+    color: var(--primary);
+}
+
+@keyframes blink{
+    50%{ opacity: 0.35; }
+}
+
+/* Notice banner */
+.takequiz .upgradequiz{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 12px 16px;
     width: 100%;
-    margin-top: 10px;
-    border-radius: 5px;
+    color: var(--primary);
+    background-color: var(--primary-soft);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 12px;
+}
+.takequiz .upgradequiz .left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+.takequiz .upgradequiz .upgradeh2{
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+.takequiz .upgradequiz .upgradeh2 span{
+    color: var(--primary);
+    font-weight: 700;
+}
+.takequiz .upgradequiz .left .icon{
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    padding: 4px;
     border: none;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #fff;
 }
-.safl .card .t{
-    font-size: 25px;
-    font-weight: bold;
-    background-color:rgba(128, 128, 128, 0.103);
-    padding:0 10px;
+
+/* Question card */
+.takequiz .safl{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
-.safl .card p span{
-   color:#3687e4;
-   margin-right: 10px;
+.takequiz .safl .card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 820px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
 }
-.safl .card .m .blo input{
-margin-left: 10px;
-font-size: 20px;
-border: 1px solid gray;
-margin: 10px;
+.takequiz .safl .card .t{
+    padding: 20px 24px;
+    background-color: var(--surface-2);
+    border-bottom: 1px solid var(--border);
 }
-.safl .card .b{
-display: flex;
-justify-content: space-between;
-align-items:center;
-padding: 10px;
-background-color:rgba(128, 128, 128, 0.103);
+.takequiz .safl .card .t p{
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.5;
 }
-.safl .card .b .skip{
-    color: #212529;
-    background-color: #fff;
-    border-color: #efefef;
+.takequiz .safl .card .t p span{
+    display: inline-flex;
+    margin-right: 8px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+.takequiz .safl .card form{
+    display: block;
+    width: 100%;
+}
+.takequiz .safl .card .m{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 24px;
+}
+.takequiz .safl .card .m .blo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--surface);
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+.takequiz .safl .card .m .blo:hover{
+    border-color: var(--primary);
+    background-color: var(--primary-soft);
+}
+.takequiz .safl .card .m .blo:has(input:checked){
+    border-color: var(--primary);
+    background-color: var(--primary-soft);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+.takequiz .safl .card .m .blo input{
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 16px;
+    accent-color: var(--primary);
     cursor: pointer;
-    padding:5px 10px;
-    border-radius:5px;
-    font-size: 20px;
-    font-weight: bold;
-    width: 20%;
-    text-align: center;
 }
-.safl .card .bloktr{
-    padding: 10px;
-    color:#3687e4;
-    border-bottom:1px solid rgba(128, 128, 128, 0.162);
-    padding-top: 20px;
+.takequiz .safl .card .m .blo label{
+    flex: 1;
+    padding: 14px 16px 14px 0;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition-duration: 0.5s;
 }
-.safl .card .bloktr:hover{
-   background-color:#3687e4;
-   color:white;
+.takequiz .safl .card .b{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background-color: var(--surface-2);
+    border-top: 1px solid var(--border);
 }
-.safl .card .bloktr p span{
-    color:black;
-    background-color:white;
-    padding: 5px;
-    border:1px solid rgba(128, 128, 128, 0.263);
-    border-radius:5px;
-    font-weight: bold;
+.takequiz .safl .card .b .Goto:last-child{
+    margin-left: auto;
 }
-.safl .card .bloktr p span:hover{
-    background-color:rgba(128, 128, 128, 0.438);
-}
-@media(max-width:992px){
-    .takequiz{
-        margin-left: 0;
+
+@media (max-width: 576px){
+    .takequiz .safl .card .t,
+    .takequiz .safl .card .m,
+    .takequiz .safl .card .b{
+        padding-left: 16px;
+        padding-right: 16px;
     }
-    .safl{
-        flex-direction: column;
+    .takequiz .safl .card .b .Goto{
+        flex: 1;
     }
 }

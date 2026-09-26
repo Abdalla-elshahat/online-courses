@@ -1,94 +1,142 @@
-:root {
-    --maincolor: rgb(75, 121, 207);
-    --mainwhit: white;
-}
-
 .taps {
-    padding-top: 80px;
-    height: 100%;
-    margin: 20px;
-    margin-bottom: 50px;
+  width: 100%;
+  color: var(--text);
 }
 
 .taps .tapsh {
-    font-size: 40px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.225);
-    padding-bottom: 30px;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
 
 .taps .bob {
-    display: flex;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 24px;
 }
 
 .taps .bob .left,
 .taps .bob .right {
-    width: 100%;
+  min-width: 0;
+  display: flex;
 }
 
 .taps .bob .card {
-    padding: 10px;
-    height: auto;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.taps .bob .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .taps .bob .left .card .tk {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .taps .bob .left .card .tk p {
-    font-size: 20px;
-    color: black;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .taps .bob .left .card .tk span {
-    background-color: rgba(75, 121, 207, 0.107);
-    border-bottom: 1px dotted black;
-    color: var(--maincolor)
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
+/* Segmented tab list */
 .taps .bob .lis {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(128, 128, 128, 0.308);
-    list-style: none;
-    cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  margin: 0 0 16px;
+  list-style: none;
+  background-color: var(--surface-2);
+  border-radius: 12px;
 }
 
+.taps .bob .lis li {
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.taps .bob .lis li:first-child,
+.taps .bob .lis li:hover {
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Underline tabs */
 .taps .card .to {
-    text-decoration: underline;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--border);
 }
 
 .taps .card .to span {
-    width: auto;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.214);
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition-duration: 0.5s;
+  padding: 10px 14px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
+.taps .card .to span:first-child,
 .taps .card .to span:hover {
-    background-color: white;
+  color: var(--primary);
+  border-bottom-color: var(--primary);
 }
 
-@media(max-width:992px) {
-    .taps .bob {
-        display: flex;
-        flex-direction: column;
-    }
+.taps .card .l {
+  color: var(--text-2);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
 
-    .taps .card,
-    .taps .right,
-    .taps .left {
-        width: 100%;
-    }
+@media (max-width: 576px) {
+  .taps .bob {
+    gap: 16px;
+  }
+  .taps .bob .card {
+    padding: 16px;
+  }
+  .taps .card .to span {
+    padding: 8px 10px;
+  }
 }

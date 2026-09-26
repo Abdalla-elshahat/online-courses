@@ -1,18 +1,66 @@
-.editlesson .upload label{
-    margin-left: 0;
+/* ===== Instructor: Edit Lesson — builds on editcorses.css (root: .dash.editcorses.editlesson) ===== */
+.editlesson .bottomcltt {
+    gap: 16px;
+    padding: 20px;
 }
-.editcorses .bottomc .cardleft .totlesson {
-   margin-right: 5%;
+.editlesson .bottomcltt iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+    background: #000;
 }
-@media(max-width:992px){
-    .editcorses .bottomc .cardleft ,
-    .editcorses .bottomc .card{
-        width: 98%;
-    }  
- }
- @media (max-width: 768px) {
-    .dash .content {
-        width: 92%;
-        margin-left: 0;
+.editlesson .aab .upload {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    width: auto;
+    margin: 0;
+    padding: 14px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    background: var(--surface-2);
+}
+.editlesson .aab .upload label {
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 20px;
+}
+.editlesson .aab .upload input[type="file"] {
+    flex: 1 1 160px;
+    min-width: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.editlesson .aab .upload button {
+    margin: 0;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.editlesson .bottomc .cardleft .trs:empty {
+    display: none;
+}
+@media (max-width: 576px) {
+    .editlesson .bottomcltt {
+        padding: 14px;
+    }
+    .editlesson .aab .upload button {
+        width: 100%;
     }
 }

@@ -47,7 +47,7 @@ function Editelesson(){
                                 <iframe width="auto" height="315" src="https://www.youtube.com/embed/hGS_j4J5I60?si=LDjSx8cddVVXc0rP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 <div className="aab">
         <div className="upload">
-        <label htmlFor="file" className='tot .totlesson'><FaImage/></label>
+        <label htmlFor="file" className='tot totlesson'><FaImage/></label>
         <input type="file" id='file'/>
         <button htmlFor="file">Upload file</button>
         </div>

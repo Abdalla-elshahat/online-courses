@@ -1,45 +1,154 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
+/* ===== Icons page (root: .serice.courses.icons) ===== */
+.serice.icons {
+  width: 100%;
+  color: var(--text);
 }
-.inputallicons{
-    width: 100% !important;
+
+.serice.icons .tops {
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
-.input1icons{
-    width: 100% !important;
+
+.serice.icons .serich {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.input1icons input{
-    width: 100% !important;
+
+.serice.icons .inputallicons {
+  width: 100% !important;
+  margin: 0 0 20px;
 }
-.boticons .card .topicons{
-   background-color:rgba(128, 128, 128, 0.097);
-   display:flex;
-   align-items:center;
-   width: 100%;
+
+.serice.icons .input1icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100% !important;
+  max-width: 520px;
+  padding: 0 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
- .boticons .card .topicons ul{
-    list-style: none;
-    display:flex;
-    align-items:center;
-    justify-content: space-around;
-    width: 100%;
+
+.serice.icons .input1icons:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
 }
-.boticons .card .topicons li{
-   cursor: pointer;
-   font-size:20px;
-   color: gray;
+
+.serice.icons .input1icons input {
+  flex: 1;
+  min-width: 0;
+  width: 100% !important;
+  padding: 11px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
 }
-.boticons .card .topicons li:hover{
-   border-bottom: 2px solid var(--maincolor);
-   border-radius: 1px;
-   color:black;
- }
- .icons .bottomicons span svg{
-font-size: 100px;
-cursor: pointer;
- }
- .nor{
-    border-bottom: 2px solid var(--maincolor);
-    border-radius: 1px;
-    color:black;
- }
+
+.serice.icons .boticons .card {
+  width: 100%;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.serice.icons .boticons .card .topicons {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px;
+  background-color: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.serice.icons .boticons .card .topicons ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.serice.icons .boticons .card .topicons li {
+  padding: 14px 16px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.serice.icons .boticons .card .topicons li:hover {
+  color: var(--text);
+}
+
+.serice.icons .boticons .card .topicons li.nor {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.serice.icons .bottomicons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+.serice.icons .bottomicons > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.serice.icons .bottomicons > span:hover {
+  transform: translateY(-2px);
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.serice.icons .bottomicons span svg {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .serice.icons .bottomicons {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 8px;
+    padding: 14px;
+  }
+  .serice.icons .bottomicons span svg {
+    width: 26px;
+    height: 26px;
+  }
+  .serice.icons .boticons .card .topicons li {
+    padding: 12px 10px;
+  }
+}

@@ -1,185 +1,239 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
+/* ===== Shared page shell (.serice is reused by many pages) ===== */
 .serice{
-    height: 100%;
-    padding:80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
 }
 .serice .tops{
     display: flex;
-    justify-content:space-between;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    margin: 10px 20px;
+    gap: 12px 16px;
+    margin: 0;
 }
 .serice .tops .serich{
-    font-size: 50px;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
 .serice .tops .sortdev{
     display: flex;
-    justify-content: center;
-    align-items:center;
-    color:rgba(128, 128, 128, 0.401);
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
 }
 .serice .tops .sortdev span{
-   font-size: 25px;
-   color:black;
-   font-weight: bold;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-2, var(--muted));
+}
+.serice #sort{
+    height: 42px;
+    padding: 0 36px 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+.serice #sort:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-soft);
 }
 
-.serice #sort{
-    border-radius:5px;
-    margin-left: 10px;
-    border:1px solid rgba(128, 128, 128, 0.692);
-}
+/* Category pills */
 .sericelist{
     display: flex;
-    justify-content: space-around;
-    align-items:center;
-    font-size: 20px;
-    font-weight: bold;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
-    background-color:rgba(210, 210, 210, 0.077);
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 .sericelist li{
     list-style: none;
-    color:rgba(128, 128, 128, 0.479);
-}
-.sericelist .activee{
-   color:black;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
 }
 .sericelist li:hover{
-   border-bottom:2px solid var(--maincolor);
-   cursor: pointer;
-   color:black;
+    background-color: var(--primary-soft);
+    color: var(--primary);
 }
+.sericelist .activee,
+.sericelist .activee:hover{
+    background: var(--gradient);
+    color: #fff;
+}
+
+/* Card grid (shared) */
 .middels{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
     width: 100%;
+}
+.middels > p{
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--muted);
 }
 .middels .card{
-    height:100%;
-    box-shadow: 0 10px 25px 0 rgba(50, 50, 93, .07), 0 5px 15px 0 rgba(0, 0, 0, .07);
+    position: relative;
     display: flex;
     flex-direction: column;
-    text-align:center;
-    justify-content: center;
-    align-items:center;
-    padding: 10px;
-    width: 30%;
-    margin:10px;
-    border-radius:2px;
-    border:none;
+    align-items: stretch;
+    text-align: left;
+    gap: 8px;
+    width: auto;
+    height: 100%;
+    margin: 0;
+    padding: 12px 12px 16px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
     cursor: pointer;
-    transition-duration: 1s;
+    transition: transform .25s ease, box-shadow .25s ease;
 }
-    .back {
-        position: absolute;
-        width: 320px;
-        height: 180px;
-        left: 3%;
-        top: 3%;
-        background-color: #00000036;
-        display: none;
-        color:var(--maincolor);
-        transition-duration: 1s;
-    }
-    .back .span{
-        font-size: 50px;
-        background-color:white;
-        width:auto;
-        height:auto;
-        border-radius:50%;
-    }
-
-    .middels .card:hover .back{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition-duration: 0.5s;
-    }
+.middels .card:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
 .middels .card .sericimg{
     width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: var(--surface-2);
 }
-.middels .card h2{
-    font-size: 20px;
-    margin:5px 0;
-    color:rgba(0, 0, 0, 0.666);
-}
-.middels .card h2:hover{
-    color:var(--maincolor);
-    border-bottom:1px solid var(--maincolor);
-    cursor: pointer;
-    padding-bottom: 0;
-}
-.middels .card p{
-    color:rgba(128, 128, 128, 0.525);
-    font-size:15px;
-}
-.middels .card .price{
-    color: var(--maincolor);
-    font-size: 25px;
-}
-.serice .bots{
-    width: 100%;
-    margin:20px 0;
-    padding: 10px;
+.serice .back{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    height: 200px;
     display: flex;
     justify-content: center;
-    align-items:center;
-    flex-direction: column;
-    text-align: center;
-background-color:#e2ecf4;
-color:white;
-border-radius:5px;
+    align-items: center;
+    border-radius: 12px;
+    background-color: rgba(15, 23, 42, 0.35);
+    color: var(--primary);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+.serice .back .span{
+    font-size: 54px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+}
+.middels .card:hover .back{
+    opacity: 1;
+}
+.middels .card h2{
+    margin: 6px 0 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    transition: color .2s;
+}
+.middels .card h2:hover{
+    color: var(--primary);
+}
+.middels .card p{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.middels .card .price{
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* CTA banner */
+.serice .bots{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin: 0;
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
 }
 .serice .bots h2{
-    color:var(--maincolor);
-    font-size: 25px;
-    padding: 10px 0;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 .serice .bots .purs{
-    background-color:var(--maincolor);
-    color:white;
-    font-weight: bold;
-    font-size: 20px;
-border:none;
-border-radius:5px;
-width:auto;
-padding: 5px 10px;
-transition-duration: 0.5s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
 }
 .serice .bots .purs:hover{
-    background-color:rgb(25, 51, 101) ;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
 }
-@media(max-width:1200px){
 
-}
-@media(max-width:992px){
-    
-}
-@media(max-width:768px){
-    .serice{
-        margin-left: -35%;
+@media (max-width: 992px){
+    .middels{
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
     }
-    .middels .card{
-        width:45%;
-     }
-     .back{
-        display: none;
-     }
 }
-@media(max-width:576px){
- .middels .card{
-    width: 100%;
- }
- .back{
-    width: 370px;
-    height: 210px;
- }
+@media (max-width: 576px){
+    .serice{ gap: 16px; }
+    .serice .tops .sortdev{ width: 100%; }
+    .serice .tops .sortdev .select,
+    .serice #sort{ flex: 1; width: 100%; }
+    .sericelist{ flex-wrap: nowrap; overflow-x: auto; }
+    .sericelist li{ white-space: nowrap; }
+    .middels{ grid-template-columns: 1fr; }
+    .serice .bots{ flex-direction: column; text-align: center; padding: 20px; }
 }

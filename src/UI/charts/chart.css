@@ -1,273 +1,346 @@
-:root{
-    --maincolor:rgb(75, 121, 207) ;
-    --mainwhit:white;
-}
-.chart{
-    padding-top:80px;
-    height: 100%;
-    margin:0 10px ;
-    margin-bottom: 50px;
-    transition-duration: 0.5s;
-}
-.chart .earnh{
-    border-bottom:1px solid rgba(128, 128, 128, 0.181);
-padding-bottom:20px;
+.chart {
+  width: 100%;
+  color: var(--text);
 }
 
-.chart .card .botme{
-    display: flex;
-    justify-content: center;
-}
-.chart .cardbar .bottomdashins{
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-    height: 300px;
-}
-.chart .cardbar .bottomdashins .mony{
-display: flex;
-flex-direction: column;
-width: 10%;
-justify-content: space-between;
-margin-bottom: 3%;
-}
-.chart .cardbar .bottomdashins .pres{
-    display: flex;
-    width: 90%;
-    align-items:end;
-    justify-content: space-between;
-    transition-duration: 0.8s;
-    }
-    .chart .cardbar .bottomdashins .pres span::after{
-        content: '';
-    width: 15px;
-    height: 50%;
-    position: absolute;
-    background-color: rgb(0, 0, 192);
-    transform: translateY(-100%);
-    border-radius: 10px 10px 0 0;
-    margin-left: -2%;
-}
-.chart .cardbar .bottomdashins .pres .g{
-    overflow: hidden;
-    width: 15px;
-    height: 50%;
-    position: absolute;
-    background-color: rgb(0, 192, 32);
-    transform: translateY(-100%);
-    border-radius: 10px 10px 0 0;
-    z-index: 1;
-    margin-left: 30px;
-    display: none;
-}
-.cardbar .to{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
+.chart .earnh {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
 
+.chart .tops {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: 24px;
+}
+
+.chart .tops .card {
+  margin: 0;
+  padding: 20px 24px;
+  width: 100%;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart .tops .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.chart .tops .card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  padding: 0;
+  border: none;
+}
+
+.chart .tops .card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.chart .card .to {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.chart .card .to .inf {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.chart .card .to > span:not(.inf) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart .card .to > span:not(.inf) p {
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.chart .card .to > div,
+.chart .card .to > svg {
+  max-width: 100%;
+}
+
+.chart .card .botme {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 4px;
+}
+
+/* ----- Bar charts ----- */
+.chart .cardbar .bottomdashins {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 0;
+  height: 280px;
+}
+
+.chart .bottomdashins .mony {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  padding-bottom: 28px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.chart .bottomdashins .mony:empty {
+  display: none;
+}
+
+.chart .cardbar .bottomdashins .pres {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  background-image: linear-gradient(var(--border) 1px, transparent 1px);
+  background-size: 100% 25%;
+}
+
+.chart .cardbar .bottomdashins .pres > span {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: capitalize;
+  white-space: nowrap;
+  --h: 50%;
+}
+
+.chart .cardbar .bottomdashins .pres > span::before {
+  content: '';
+  width: 12px;
+  max-width: 70%;
+  height: calc(var(--h) - 28px);
+  margin-bottom: 8px;
+  border-radius: 8px 8px 0 0;
+  background: var(--gradient);
+  transition: height 0.6s ease;
+}
+
+.chart .cardbar .bottomdashins .pres > span:nth-child(1) { --h: 45%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(2) { --h: 62%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(3) { --h: 38%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(4) { --h: 74%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(5) { --h: 55%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(6) { --h: 88%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(7) { --h: 66%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(8) { --h: 50%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(9) { --h: 78%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(10) { --h: 60%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(11) { --h: 92%; }
+.chart .cardbar .bottomdashins .pres > span:nth-child(12) { --h: 70%; }
+
+/* Affiliate (green) bars toggled via JS (style.display) */
+.chart .cardbar .bottomdashins .pres .g {
+  display: none;
+  position: absolute;
+  bottom: 28px;
+  left: calc(50% + 4px);
+  width: 10px;
+  height: calc(var(--h) * 0.6);
+  border-radius: 8px 8px 0 0;
+  background-color: var(--success);
+  z-index: 1;
+}
+
+.chart .cardbar .bottomdashins .pres > span:has(.g)::before {
+  transform: translateX(-7px);
+}
+
+/* ----- Switch toggle (scoped: navbar uses .bordsetting .switch) ----- */
+.chart .switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.chart .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.chart .slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.25s;
+}
+
+.chart .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+  transition: 0.25s;
+}
+
+.chart .switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.chart .switch input:focus-visible + .slider {
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.chart .switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.chart .slider.round {
+  border-radius: 999px;
+}
+
+.chart .slider.round:before {
+  border-radius: 50%;
+}
+
+/* ----- Doughnut ----- */
 #line-example-1 {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
 }
+
 #line-example-1 .line {
   --aspect-ratio: 21 / 9;
-  background-color: #f6f6f6;
+  background-color: var(--surface-2);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
-  .chart .tops{
-    display: flex;
-    flex-direction: column;
-  }
-  .chart .tops .card{
-    padding: 10px 20px;
-  }
-  .chart .tops .card h2{
-    font-size: 20px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.147);
-padding-bottom: 10px;  
+.chart figure.chart-three {
+  width: 200px;
+  height: 200px;
+  margin: 1rem;
+  position: relative;
 }
-  .chart .tops .card h2{
-    font-size: 20px;
-  }
 
-  
-  @import url(https://fonts.googleapis.com/css?family=Abel);
-  .chart-three {
-    width: 200px;
-    height: 200px;
-    margin: 0;
-    position: relative;
-  }
-  .chart-three.animate svg .circle-foreground {
-    -webkit-animation: offset 3s ease-in-out forwards;
-            animation: offset 3s ease-in-out forwards;
-    -webkit-animation-delay: 1s;
-            animation-delay: 1s;
-  }
-  .chart-three.animate figcaption:after {
-    -webkit-animation: chart-three-label 3s steps(75) forwards;
-            animation: chart-three-label 3s steps(75) forwards;
-    -webkit-animation-delay: 1s;
-            animation-delay: 1s;
-  }
-  .chart-three svg {
-    width: 100%;
-    height: 100%;
-  }
-  .chart-three svg .circle-background, .chart-three svg .circle-foreground {
-    r: 87.5px;
-    cx: 50%;
-    cy: 50%;
-    fill: none;
-    stroke:gray;;
-    stroke-width: 25px;
-  }
-  .chart-three svg .circle-foreground {
-    stroke:var(--maincolor);
-    stroke-dasharray: 412.125px 549.5px;
-    stroke-dashoffset: 412.125px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-  }
-  .chart-three figcaption {
-    display: inline-block;
-    width: 100%;
-    height: 2.5rem;
-    overflow: hidden;
-    text-align: center;
-    color:var(--maincolor);
-    position: absolute;
-    top: calc(50% - 1.25rem);
-    left: 0;
-    font-size: 0;
-  }
-  .chart-three figcaption:after {
-    display: inline-block;
-    content: "0%\a 1%\a 2%\a 3%\a 4%\a 5%\a 6%\a 7%\a 8%\a 9%\a 10%\a 11%\a 12%\a 13%\a 14%\a 15%\a 16%\a 17%\a 18%\a 19%\a 20%\a 21%\a 22%\a 23%\a 24%\a 25%\a 26%\a 27%\a 28%\a 29%\a 30%\a 31%\a 32%\a 33%\a 34%\a 35%\a 36%\a 37%\a 38%\a 39%\a 40%\a 41%\a 42%\a 43%\a 44%\a 45%\a 46%\a 47%\a 48%\a 49%\a 50%\a 51%\a 52%\a 53%\a 54%\a 55%\a 56%\a 57%\a 58%\a 59%\a 60%\a 61%\a 62%\a 63%\a 64%\a 65%\a 66%\a 67%\a 68%\a 69%\a 70%\a 71%\a 72%\a 73%\a 74%\a 75%\a 76%\a 77%\a 78%\a 79%\a 80%\a 81%\a 82%\a 83%\a 84%\a 85%\a 86%\a 87%\a 88%\a 89%\a 90%\a 91%\a 92%\a 93%\a 94%\a 95%\a 96%\a 97%\a 98%\a 99%\a 100%\a";
-    white-space: pre;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-  }
-  
-  @-webkit-keyframes chart-three-label {
-    100% {
-      transform: translateY(-187.5rem);
-    }
-  }
-  
-  @keyframes chart-three-label {
-    100% {
-      transform: translateY(-187.5rem);
-    }
-  }
-  @-webkit-keyframes offset {
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  @keyframes offset {
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-  /* codepen styling only */
+.chart-three.animate svg .circle-foreground {
+  animation: offset 3s ease-in-out forwards;
+  animation-delay: 1s;
+}
 
-  
-  figure {
-    margin: 1rem !important;
+.chart-three.animate figcaption:after {
+  animation: chart-three-label 3s steps(75) forwards;
+  animation-delay: 1s;
+}
+
+.chart-three svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-three svg .circle-background,
+.chart-three svg .circle-foreground {
+  r: 87.5px;
+  cx: 50%;
+  cy: 50%;
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 22px;
+}
+
+.chart-three svg .circle-foreground {
+  stroke: var(--primary);
+  stroke-dasharray: 412.125px 549.5px;
+  stroke-dashoffset: 412.125px;
+  stroke-linecap: round;
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+}
+
+.chart-three figcaption {
+  display: inline-block;
+  width: 100%;
+  height: 2.5rem;
+  overflow: hidden;
+  text-align: center;
+  color: var(--text);
+  font-weight: 700;
+  position: absolute;
+  top: calc(50% - 1.25rem);
+  left: 0;
+  font-size: 0;
+}
+
+.chart-three figcaption:after {
+  display: inline-block;
+  content: "0%\a 1%\a 2%\a 3%\a 4%\a 5%\a 6%\a 7%\a 8%\a 9%\a 10%\a 11%\a 12%\a 13%\a 14%\a 15%\a 16%\a 17%\a 18%\a 19%\a 20%\a 21%\a 22%\a 23%\a 24%\a 25%\a 26%\a 27%\a 28%\a 29%\a 30%\a 31%\a 32%\a 33%\a 34%\a 35%\a 36%\a 37%\a 38%\a 39%\a 40%\a 41%\a 42%\a 43%\a 44%\a 45%\a 46%\a 47%\a 48%\a 49%\a 50%\a 51%\a 52%\a 53%\a 54%\a 55%\a 56%\a 57%\a 58%\a 59%\a 60%\a 61%\a 62%\a 63%\a 64%\a 65%\a 66%\a 67%\a 68%\a 69%\a 70%\a 71%\a 72%\a 73%\a 74%\a 75%\a 76%\a 77%\a 78%\a 79%\a 80%\a 81%\a 82%\a 83%\a 84%\a 85%\a 86%\a 87%\a 88%\a 89%\a 90%\a 91%\a 92%\a 93%\a 94%\a 95%\a 96%\a 97%\a 98%\a 99%\a 100%\a";
+  white-space: pre;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+@keyframes chart-three-label {
+  100% {
+    transform: translateY(-187.5rem);
   }
-  
-  figcaption {
-    font-family: "Abel", sans-serif;
+}
+
+@keyframes offset {
+  100% {
+    stroke-dashoffset: 0;
   }
+}
+
+@media (max-width: 992px) {
+  .chart .tops {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .chart .tops .card {
+    padding: 16px;
+  }
+  .chart .cardbar .bottomdashins {
+    height: 220px;
+    gap: 8px;
+  }
+  .chart .cardbar .bottomdashins .pres > span {
+    font-size: 0.6rem;
+  }
+  .chart .cardbar .bottomdashins .pres > span::before {
+    width: 8px;
+  }
+  .chart .cardbar .bottomdashins .pres .g {
+    width: 6px;
+    left: calc(50% + 2px);
+  }
+}

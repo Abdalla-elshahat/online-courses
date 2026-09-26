@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../Edit/edit.css";
+import "./updatepass.css";
 import { useNavigate } from "react-router-dom";
-import { FaCheckCircle, FaExclamationCircle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaCheckCircle, FaExclamationCircle, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
@@ -64,95 +64,89 @@ function Updatpass() {
         }
     };
     
+    const strength = passwordStrength(newpass);
+    const mismatch = confirmpass.length > 0 && newpass !== confirmpass;
+
     return (
-        <>
+        <div className="updatepass">
             <ToastContainer />
-            <div className="edit">
-                <div className="basicinfo">
-                    <form onSubmit={Updatpass}>
-                        <div className="left">
-                            <h2 className="pin">Update Your Password</h2>
-                            <p>Change your password.</p>
-                        </div>
-                        <div className="right">
-                            <div className="f f2">
-                                <div className="blok">
-                                    <label htmlFor="opass">OLD PASSWORD</label>
-                                    <span className="pass">
-                                        <input
-                                            type={showoldPassword ? "text" : "password"}
-                                            id="opass"
-                                            placeholder="OLD PASSWORD"
-                                            value={oldpass}
-                                            onChange={(e) => setoldpass(e.target.value)}
-                                        />
-                                        <span
-                                            className="eye"
-                                            onClick={() => setShowoldPassword(!showoldPassword)}
-                                            style={{ cursor: "pointer" }}
-                                        >
-                                            {showoldPassword ? <FaEye /> : <FaEyeSlash />}
-                                        </span>
-                                    </span>
-                                </div>
-                                <div className="blok">
-                                    <label htmlFor="npass">NEW PASSWORD</label>
-                                    <span className="pass">
-                                        <input
-                                            type={shownewPassword ? "text" : "password"}
-                                            id="npass"
-                                            placeholder="NEW PASSWORD"
-                                            minLength={8}
-                                            maxLength={10}
-                                            value={newpass}
-                                            onChange={(e) => setnewpass(e.target.value)}
-                                        />
-                                        <span
-                                            className="eye"
-                                            onClick={() => setShownewPassword(!shownewPassword)}
-                                            style={{ cursor: "pointer" }}
-                                        >
-                                            {shownewPassword ? <FaEye /> : <FaEyeSlash />}
-                                        </span>
-                                    </span>
-                                </div>
-                                <div className="blok">
-                                    <label htmlFor="copass">CONFIRM PASSWORD</label>
-                                    <span className="pass">
-                                        <input
-                                            type={showconfirmPassword ? "text" : "password"}
-                                            id="copass"
-                                            placeholder="CONFIRM PASSWORD"
-                                            minLength={8}
-                                            maxLength={10}
-                                            value={confirmpass}
-                                            onChange={(e) => setconfirmpass(e.target.value)}
-                                        />
-                                        <span
-                                            className="eye"
-                                            onClick={() =>
-                                                setShowconfirmPassword(!showconfirmPassword)
-                                            }
-                                            style={{ cursor: "pointer" }}
-                                        >
-                                            {showconfirmPassword ? <FaEye /> : <FaEyeSlash />}
-                                        </span>
-                                    </span>
-                                </div>
-                                <div className="blok">
-                                    <input
-                                        type="submit"
-                                        value={"Update Pass only"}
-                                        className="Updatpass"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </>
+            <form className="up-card" onSubmit={Updatpass}>
+                <div className="up-icon"><FaLock /></div>
+                <h2>Update your password</h2>
+                <p className="up-sub">Enter your current password, then choose a new one (8–10 characters).</p>
+
+                <PasswordField
+                    id="opass"
+                    label="Current password"
+                    value={oldpass}
+                    onChange={setoldpass}
+                    show={showoldPassword}
+                    toggle={() => setShowoldPassword(!showoldPassword)}
+                    autoComplete="current-password"
+                />
+                <PasswordField
+                    id="npass"
+                    label="New password"
+                    value={newpass}
+                    onChange={setnewpass}
+                    show={shownewPassword}
+                    toggle={() => setShownewPassword(!shownewPassword)}
+                    autoComplete="new-password"
+                />
+                {newpass && (
+                    <div className={`up-strength s${strength.score}`}>
+                        <div className="bars"><span /><span /><span /><span /></div>
+                        <small>{strength.label}</small>
+                    </div>
+                )}
+                <PasswordField
+                    id="copass"
+                    label="Confirm new password"
+                    value={confirmpass}
+                    onChange={setconfirmpass}
+                    show={showconfirmPassword}
+                    toggle={() => setShowconfirmPassword(!showconfirmPassword)}
+                    autoComplete="new-password"
+                    invalid={mismatch}
+                />
+                {mismatch && <small className="up-error">Passwords do not match.</small>}
+
+                <button type="submit" className="up-btn">Update password</button>
+            </form>
+        </div>
     );
+}
+
+function PasswordField({ id, label, value, onChange, show, toggle, autoComplete, invalid }) {
+    return (
+        <div className="up-field">
+            <label htmlFor={id}>{label}</label>
+            <div className={`up-input${invalid ? " invalid" : ""}`}>
+                <input
+                    type={show ? "text" : "password"}
+                    id={id}
+                    placeholder="••••••••"
+                    minLength={8}
+                    maxLength={10}
+                    value={value}
+                    autoComplete={autoComplete}
+                    onChange={(e) => onChange(e.target.value)}
+                />
+                <button type="button" className="eye" onClick={toggle} aria-label={show ? "Hide password" : "Show password"}>
+                    {show ? <FaEye /> : <FaEyeSlash />}
+                </button>
+            </div>
+        </div>
+    );
+}
+
+function passwordStrength(pw) {
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+    if (/\d/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    return { score, label: ["Too weak", "Weak", "Fair", "Good", "Strong"][score] };
 }
 
 export default Updatpass;

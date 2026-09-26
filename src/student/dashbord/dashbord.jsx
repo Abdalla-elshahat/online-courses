@@ -36,11 +36,11 @@ const [originalData, setOriginalData] = useState([
     { Type: "quate", title: "marfr", date: "4 ago", icon: <FaDiscord /> },
   ]);
   function change(e) {
-    let x = document.querySelectorAll("li");
-    x.forEach((ee) => {
+    // only reset the activity filter tabs, not every <li> on the page
+    e.currentTarget.closest(".all").querySelectorAll("li").forEach((ee) => {
       ee.classList.remove("active");
     });
-    e.target.className = "active";
+    e.currentTarget.classList.add("active");
   }
   useEffect(() => {
     if (filteredKey === "all") {
@@ -121,7 +121,7 @@ const [originalData, setOriginalData] = useState([
       <div className="bakico b1">
         <img src={`${domain}/uplouds/${e.imgcourse}`} alt="course" width={"50px"} height={"50px"}/>
       </div>
-      <h2 className="cardh2"><Link to={`/view/${e._id}`} style={{"color":"black"}}>{e.title}</Link></h2>
+      <h2 className="cardh2"><Link to={`/view/${e._id}`}>{e.title}</Link></h2>
       <p className="cardp">{e.description.substring(0,30)+"..."}</p>
       <div className="carbottom">
         <span className="dayleft">{daysLeft} days left</span>
