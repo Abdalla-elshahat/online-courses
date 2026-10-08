@@ -1,19 +1,38 @@
 import './dashbordins.css'
-import { TbExclamationMark } from "react-icons/tb";
-import { MdModeEditOutline } from "react-icons/md";
-import { GoPersonFill } from "react-icons/go";
-import { FaVolleyballBall } from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
-import { SlCalender } from 'react-icons/sl';
-import { FaArrowDown } from "react-icons/fa";
-import { FaArrowUp } from "react-icons/fa";
-import { IoMdLaptop } from "react-icons/io";
-import { GiMonkey } from "react-icons/gi";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaLaptopCode } from "react-icons/fa6";
-import { FaArrowRight } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowRight, FaPlus } from "react-icons/fa";
+import { IoLibrary } from "react-icons/io5";
+import { MdOndemandVideo } from "react-icons/md";
+import { PiExamFill } from "react-icons/pi";
+import { FaUserGraduate, FaChartLine, FaClipboardCheck } from "react-icons/fa6";
+import { getInstructorDashboard } from '../../api/courseApi';
+import { imageUrl, onImageError } from '../../utels/image';
+
+const plural = (count, word) => `${count} ${word}${count === 1 ? "" : "s"}`;
+
 function Dashbord(){
+    const nav = useNavigate();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        getInstructorDashboard().then(setData).catch((err) => setError(err.message));
+    }, []);
+
+    if (error) return <div className="dash dashins"><div className="content"><p className="dash-empty">{error}</p></div></div>;
+    if (!data) return <div className="dash dashins"><div className="content"><p className="dash-empty">Loading...</p></div></div>;
+
+    const { stats, courses, recentAttempts } = data;
+    const cards = [
+        { label: "Courses", value: stats.courses, note: `${stats.publishedCourses} published`, icon: <IoLibrary /> },
+        { label: "Lessons", value: stats.lessons, note: "videos uploaded", icon: <MdOndemandVideo /> },
+        { label: "Quizzes", value: stats.quizzes, note: "across your courses", icon: <PiExamFill /> },
+        { label: "Quiz attempts", value: stats.attempts, note: "submitted by students", icon: <FaClipboardCheck /> },
+        { label: "Students", value: stats.students, note: "took at least one quiz", icon: <FaUserGraduate /> },
+        { label: "Average score", value: `${stats.averageScore}%`, note: "over all attempts", icon: <FaChartLine /> },
+    ];
+
     return(
         <>
          <div className="dash dashins">
@@ -21,127 +40,91 @@ function Dashbord(){
                 <div className="studentdashbord">
                     <p>Instructor Dashboard</p>
                 <div className="buton">
-                    <button className="view">Go To courses <span> <FaArrowRight/></span></button>
+                    <button className="view" onClick={() => nav("/addcourss")}>New Course <span><FaPlus/></span></button>
+                    <button className="view" onClick={() => nav("/mycorses")}>Go To courses <span> <FaArrowRight/></span></button>
                 </div>
                 </div>
                 <div className="feature">
                     <div className="topc">
-                        <div className="card">
-                            <div className="infodains">
-                                <h2 className="in">Current Month</h2>
-                                <h1 className="bigins">$12,920</h1>
-                                <p className="srate">31.5 <FaArrowDown/></p>
+                        {cards.map((card) => (
+                            <div className="card" key={card.label}>
+                                <div className="infodains">
+                                    <h2 className="in">{card.label}</h2>
+                                    <h1 className="bigins">{card.value}</h1>
+                                    <p className="srate neutral">{card.note}</p>
+                                </div>
+                                <div className="bakico b1">{card.icon}</div>
                             </div>
-                            <div className="bakico b1"><SlCalender/></div>
-                        </div>
-                        <div className="card">
-                            <div className="infodains">
-                                <h2 className="in">Current Month</h2>
-                                <h1 className="bigins">$12,920</h1>
-                                <p className="srate">31.5 <FaArrowDown/></p>
-                            </div>
-                            <div className="bakico b1"><SlCalender/></div>
-                        </div>
-                        <div className="card">
-                            <div className="infodains">
-                                <h2 className="in">Current Month</h2>
-                                <h1 className="bigins">$12,920</h1>
-                                <p className="srate">31.5 <FaArrowDown/></p>
-                            </div>
-                            <div className="bakico b1"><SlCalender/></div>
-                        </div>
+                        ))}
                     </div>
                <div className="bottomc">
-                <div className="rightinsdashbottom">
-                  <div className="card">
-                    <div className="topdashins">
-                        <span className="eng">Earnings</span>
-                        <span className="dateins">01/03/2020 to 20/03/2020</span>
-                    </div>
-                    <div className="bottomdashins">
-                        <div className="mony">
-                            <span>$30K</span>
-                            <span>$20K</span>
-                            <span>$20K</span>
-                            <span>$0K</span>
-                        </div>
-                        <div className="pres">
-                            <span>Jan</span>
-                            <span>Feb</span>
-                            <span>Mar</span>
-                            <span>Apr</span>
-                            <span>May</span>
-                            <span>Jun</span>
-                            <span>Jul</span>
-                            <span>Aug</span>
-                            <span>sep</span>
-                            <span>oct</span>
-                            <span>Nov</span>
-                            <span>Des</span>
-                        </div>
-                    </div>
-                    </div>  
-                </div>
                 <div className="leftbottomc">
                     <div className="lefttopbottomc">
-                    <div className="inprogressc">
                         <div className="topprogress">
-                        <div className="topprogressl">
-                        <h1>In Progress</h1>
-                            <p>Recent Courses</p>
-                        </div>
-                        <div className="topprogressr">
-                       <button className='Brows'>Brows All</button>
-                        </div>
+                            <div className="topprogressl">
+                                <h1>Your Courses</h1>
+                                <p>Lessons, quizzes and average quiz score per course</p>
+                            </div>
+                            <div className="topprogressr">
+                                <button className='Brows' onClick={() => nav("/mycorses")}>Browse All</button>
+                            </div>
                         </div>
                         <div className="progressbottom">
-                            <div className="block">
-                                <div className="left">
-                                    <img src="https://lema.frontted.com/assets/images/logos/javascript.svg" alt="" className='js'/>
-                                    <div className="bob">
-                                        <p>ES6 Foundations</p>
-                                        <span className='con'><span className='one'></span></span></div>
-                                        <span className='presnt'>80%</span>
+                            {courses.length === 0 && (
+                                <p className="dash-empty">You have not added a course yet. <span onClick={() => nav("/addcourss")}>Create your first course</span></p>
+                            )}
+                            {courses.map((course) => (
+                                <div className="block" key={course._id}>
+                                    <div className="left" onClick={() => nav(`/view/${course._id}`)}>
+                                        <img src={imageUrl(course.imgcourse)} onError={onImageError} alt="" className="cover" />
+                                        <div className="bob">
+                                            <p>{course.title}</p>
+                                            <span className="meta">
+                                                {plural(course.lessons, "lesson")} · {plural(course.quizzes, "quiz")} · {plural(course.attempts, "attempt")}
+                                                {!course.hasIntroVideo && " · no intro video"}
+                                            </span>
+                                            <span className='con'><span style={{ width: `${course.averageScore}%` }}></span></span>
+                                        </div>
+                                        <span className='presnt'>{course.attempts ? `${course.averageScore}%` : "—"}</span>
+                                    </div>
+                                    <div className="right actions">
+                                        <button className="Brows" onClick={() => nav(`/editcorses/${course._id}`)}>Lessons</button>
+                                        <button className="Brows" onClick={() => nav(`/createquiz/${course._id}`)}>Quiz</button>
+                                    </div>
                                 </div>
-                                <div className="right"><BsThreeDotsVertical/></div>
-                            </div>
-                            <div className="block">
-                                <div className="left">
-                                    <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=clamp&w=35&h=35" alt="" />
-                                    <div className="bob">
-                                        <p>Basics of Social Media</p>
-                                        <span className='con'><span className='two'></span></span></div>
-                                        <span className='presnt'>60%</span>
-                                </div>
-                                <div className="right"><BsThreeDotsVertical/></div>
-                            </div>
-                            <div className="block">
-                                <div className="left">
-                                    <img src="https://lema.frontted.com/assets/images/logos/vuejs.svg" alt="" />
-                                    <div className="bob">
-                                        <p>Learn Vue.js Fundamentals</p>
-                                        <span className='con'><span className='three'></span></span></div>
-                                        <span className='presnt'>25%</span>
-                                </div>
-                                <div className="right"><BsThreeDotsVertical/></div>
-                            </div>
-                            <div className="block">
-                                <div className="left">
-                                    <img src="https://lema.frontted.com/assets/images/logos/angular.svg" alt="" />
-                                    <div className="bob h">
-                                        <p>Angular in Steps</p>
-                                        <span className='con h'><span className='four'></span></span></div>
-                                        <span className='presnt'>100%</span>
-                                </div>
-                                <div className="right"><BsThreeDotsVertical/></div>
-                            </div>
+                            ))}
                         </div>
                     </div>
-                    </div>
+                </div>
+                <div className="rightinsdashbottom">
+                    <div className="lefttopbottomc">
+                        <div className="topprogress">
+                            <div className="topprogressl">
+                                <h1>Recent Quiz Results</h1>
+                                <p>Latest attempts by your students</p>
+                            </div>
+                        </div>
+                        <div className="progressbottom">
+                            {recentAttempts.length === 0 && <p className="dash-empty">No student has taken a quiz yet.</p>}
+                            {recentAttempts.map((attempt) => (
+                                <div className="block" key={attempt._id}>
+                                    <div className="left">
+                                        <img src={imageUrl(attempt.student?.avatar)} onError={onImageError} alt="" className="avatar" />
+                                        <div className="bob">
+                                            <p>{attempt.student?.username || "Deleted user"}</p>
+                                            <span className="meta">{attempt.quiz?.title} · {new Date(attempt.createdAt).toLocaleDateString()}</span>
+                                            <span className='con'><span className={attempt.percent >= 50 ? "pass" : "fail"} style={{ width: `${attempt.percent}%` }}></span></span>
+                                        </div>
+                                        <span className='presnt'>{attempt.score}/{attempt.total}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
                </div>
                 </div>
+            </div>
             </div>
         </>
     )

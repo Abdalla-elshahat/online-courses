@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
 function Mycorses() {
   const token = Cookies.get("token");
   const [courseData, setCourseData] = useState([]);
@@ -15,7 +16,6 @@ function Mycorses() {
   const [sort, setsort] = useState("");
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true); // حالة التحميل
-  const [quiz, setquiz] = useState([]);
   const nav=useNavigate();
   const fetchUserCoursesAdded = async () => {
     if (token) {
@@ -55,7 +55,6 @@ function Mycorses() {
         if (!response.ok) {
           throw new Error(`Failed to delete course with ID: ${courseId}`);
         }
-        const data = await response.json();
          toast.success("Course deleted successfully", {
                 icon: <FaCheckCircle color="green" />,
                 });
@@ -68,30 +67,13 @@ function Mycorses() {
       }
     }
   };
-  const fetchquiz = async () => {
-          setLoading(true);
-          try {
-              const response = await fetch(`${domain}/api/quiz/quizzes`, {
-                  method: 'GET',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      "Authorization": `Bearer ${token}`,
-                  }
-              });
-              if (!response.ok) {
-                  throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              const data = await response.json();
-              setquiz(data);
-          } catch (error) {
-              console.error("Error fetching courses:", error);
-          } finally {
-              setLoading(false);
-          }
-      };
   useEffect(() => {
+    if (!token) {
+      nav("/login"); // session expired or logged out
+      return;
+    }
     fetchUserCoursesAdded();
-    fetchquiz();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order,sort]);
 
   const toggleMenu = (index) => {
@@ -155,7 +137,7 @@ function Mycorses() {
       <div className="middels">
         {filteredcourses.map((course, index) => (
           <div key={course._id} className="card">
-            <img src={`${domain}/uplouds/${course.imgcourse}`} alt={course.title} />
+            <img onError={onImageError} src={imageUrl(course.imgcourse)} alt={course.title} onClick={() => handleView(course._id)} style={{ cursor: "pointer" }} />
             <div className="bob">
               <div className="fof">
               <h2>{course.title || "Untitled Course"}</h2>

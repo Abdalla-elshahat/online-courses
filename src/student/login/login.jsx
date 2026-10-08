@@ -43,7 +43,8 @@ function Login() {
                 Cookies.set('token', data.token);
                    toast.success("Login successfully!", {icon: <FaCheckCircle color="green" />});
                         setTimeout(()=>{
-                            nav("/profile")
+                            // full reload so Navbar/Sidebar (mounted outside <Routes>) pick up the new token
+                            window.location.href = "/profile";
                         },2000)
             } else {
                 const errorData = await response.json();

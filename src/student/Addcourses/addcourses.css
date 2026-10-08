@@ -164,3 +164,43 @@
     .add-course-container h2{ font-size: 1.35rem; margin-bottom: 18px; }
     .add-course-form{ grid-template-columns: 1fr; gap: 14px; }
 }
+
+/* Video upload + progress */
+.add-course-form .upload-hint{
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.add-course-form .video-preview{
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    border-radius: 10px;
+    background: #000;
+}
+.add-course-form .upload-progress{
+    grid-column: 1 / -1;
+    position: relative;
+    height: 28px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+}
+.add-course-form .upload-progress-bar{
+    height: 100%;
+    background-color: var(--primary);
+    transition: width .2s;
+}
+.add-course-form .upload-progress span{
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.add-course-form button[type="submit"]:disabled{
+    opacity: .6;
+    cursor: not-allowed;
+}

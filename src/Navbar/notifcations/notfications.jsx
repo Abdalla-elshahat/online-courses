@@ -1,90 +1,67 @@
 import "./notify.css";
-import { useEffect, useState } from "react";
-import { domain } from "../../utels/constents/const";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { imageUrl, onImageError } from "../../utels/image";
 
-import {
-  getNotifications,
-  handleFollowRequestApi,
-} from "../../api/notificationApi";
-
-function Notifications() {
-  const [notifications, setNotifications] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchNotifications = async () => {
-    try {
-      const { data } = await getNotifications();
-
-      setNotifications(data.requests || []);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+// follow requests sent to the current user; the Navbar loads them (and keeps the bell badge in sync)
+function Notifications({ requests, loading, error, onAction }) {
+  const [busyId, setBusyId] = useState(null);
+  const [actionError, setActionError] = useState("");
 
   const handleFollowRequest = async (requesterId, action) => {
+    setBusyId(requesterId);
+    setActionError("");
     try {
-      await handleFollowRequestApi(requesterId, action);
-
-      setNotifications((prev) =>
-        prev.filter((item) => item._id !== requesterId)
-      );
-    } catch (error) {
-      console.error(error);
+      await onAction(requesterId, action);
+    } catch (err) {
+      setActionError(err.message);
+    } finally {
+      setBusyId(null);
     }
   };
-
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
 
   return (
     <div className="notifications">
       <div className="top">
         <h3>Notifications</h3>
-
-        {notifications.length > 0 && (
-          <button
-            className="clear-btn"
-            onClick={() => setNotifications([])}
-          >
-            Clear All
-          </button>
-        )}
+        {requests.length > 0 && <span className="notif-count">{requests.length} new</span>}
       </div>
 
       <div className="bottom">
-        {loading ? (
+        {actionError && <p className="notif-error">{actionError}</p>}
+        {loading && requests.length === 0 ? (
           <p>Loading...</p>
-        ) : notifications.length === 0 ? (
+        ) : error ? (
+          <p className="notif-error">{error}</p>
+        ) : requests.length === 0 ? (
           <p>No notifications available</p>
         ) : (
-          notifications.map((notif) => (
+          requests.map((notif) => (
             <div className="notification-card" key={notif._id}>
               <img
-                src={`${domain}/uplouds/${notif.avatar}`}
+                onError={onImageError} src={imageUrl(notif.avatar)}
                 alt={notif.username}
               />
 
               <div className="notification-content">
-                <h4>{notif.username}</h4>
+                <h4>
+                  <Link to={`/profilefollow/${notif._id}`}>{notif.username}</Link>
+                </h4>
+                <p className="notif-text">wants to follow you</p>
 
                 <div className="actions">
                   <button
                     className="accept-btn"
-                    onClick={() =>
-                      handleFollowRequest(notif._id, "accept")
-                    }
+                    disabled={busyId === notif._id}
+                    onClick={() => handleFollowRequest(notif._id, "accept")}
                   >
                     Accept
                   </button>
 
                   <button
                     className="reject-btn"
-                    onClick={() =>
-                      handleFollowRequest(notif._id, "reject")
-                    }
+                    disabled={busyId === notif._id}
+                    onClick={() => handleFollowRequest(notif._id, "reject")}
                   >
                     Reject
                   </button>

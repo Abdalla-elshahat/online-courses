@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie"; 
 import { domain } from "../../../utels/constents/const";
+import { imageUrl, onImageError } from "../../../utels/image";
 function FollowersList  ()  {
   const token = Cookies.get("token");
   const [followers, setFollowers] = useState([]);
@@ -121,7 +122,7 @@ function FollowersList  ()  {
           <div className="follower-card" key={follower._id}>
             <div className="info">
               <span>
-              <img src={`${domain}/uplouds/${follower.avatar}`} alt="" className="avatar"  />
+              <img onError={onImageError} src={imageUrl(follower.avatar)} alt="" className="avatar"  />
               </span>
           <span className="info2">
          <Link to={`/profilefollow/${follower._id}`}><h3>{follower.username} { (follower.role==="manger"||follower.role==="admin")&&<sup><IoCheckmarkDoneCircle color="green" /></sup>}</h3></Link>

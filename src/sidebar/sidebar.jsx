@@ -1,8 +1,7 @@
 import "./sidebar.css";
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
-import { domain } from "../utels/constents/const";
 
 // icons (grouped)
 import { BsThreeDotsVertical, BsPersonCircle } from "react-icons/bs";
@@ -22,12 +21,12 @@ import { FaMouse, FaWpforms, FaChartPie, FaIcons } from "react-icons/fa";
 import { BsFillFileEarmarkPersonFill, BsCalendar2Range, BsCalendar2DateFill } from "react-icons/bs";
 import { FaTable } from "react-icons/fa";
 import { CgTapSingle } from "react-icons/cg";
-import { getUserData } from "../api/userApi";
+import { getUserData, logoutUser } from "../api/userApi";
+import { imageUrl, onImageError } from "../utels/image";
 
 function Sidebar() {
     const token = Cookies.get("token");
     const [user, setUser] = useState({});
-    const nav = useNavigate();
     const location = useLocation();
 
     // close the mobile drawer whenever the route changes
@@ -51,9 +50,14 @@ function Sidebar() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const logout = () => {
+    const logout = async () => {
+        try {
+            await logoutUser();
+        } catch (error) {
+            console.error(error);
+        }
         Cookies.remove("token");
-        nav("/login");
+        window.location.href = "/login";
     };
 
     const role = user?.role?.toLowerCase();
@@ -63,7 +67,7 @@ function Sidebar() {
         <aside className="sidebar">
             {token && (
                 <div className="acount">
-                    <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
+                    <img onError={onImageError} src={imageUrl(user?.avatar)} alt="" />
                     <div className="atext">
                         <h3>{user?.username}</h3>
                         <p>{user?.role}</p>
@@ -107,9 +111,9 @@ function Sidebar() {
                         <Item icon={<RiGlassesFill />} label="Dashboard" to="/dashbord" />
                         <Item icon={<IoLibrary />} label="My Courses" to="/mycorses" />
                         <Item icon={<PiExamFill />} label="My Quizzes" to="/myquiz" />
-                        <Item icon={<FaEdit />} label="Edit Courses" to="/mycorses" />
+                        {/* <Item icon={<FaEdit />} label="Edit Courses" to="/mycorses" />
                         <Item icon={<FaEdit />} label="Edit Lesson" to="/editlesson" />
-                        <Item icon={<MdAssignment />} label="Create Quiz" to="/mycorses" />
+                        <Item icon={<MdAssignment />} label="Create Quiz" to="/mycorses" /> */}
                         <Item icon={<FaCalculator />} label="Earnings" to="/erning" />
                         <Item icon={<FaUserGraduate />} label="Profile" to="/profileins" />
                         <Item icon={<FaPaypal />} label="Payout" to="/pay" />

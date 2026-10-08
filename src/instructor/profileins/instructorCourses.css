@@ -1,0 +1,120 @@
+/* ===== Courses an instructor added (instructor profile + public profile) ===== */
+.instructor-courses {
+    margin-top: 24px;
+    text-align: left;
+}
+.instructor-courses .ic-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+.instructor-courses .ic-title span {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 13px;
+}
+.instructor-courses .ic-empty {
+    margin: 0;
+    padding: 20px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 14px;
+}
+.instructor-courses .ic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+.instructor-courses .ic-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.instructor-courses .ic-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+.instructor-courses .ic-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--surface-2);
+}
+.instructor-courses .ic-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    padding: 14px 16px 16px;
+}
+.instructor-courses .ic-category {
+    align-self: flex-start;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.instructor-courses .ic-body h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+}
+.instructor-courses .ic-body p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+.instructor-courses .ic-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #f59e0b;
+    font-size: 15px;
+}
+.instructor-courses .ic-rating span {
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+}
+.instructor-courses .ic-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+.instructor-courses .ic-lessons {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--text-2);
+}
+.instructor-courses .ic-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+}

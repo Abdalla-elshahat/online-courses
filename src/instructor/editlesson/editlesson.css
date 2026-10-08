@@ -64,3 +64,133 @@
         width: 100%;
     }
 }
+
+/* ===== Lesson editor (create / edit) ===== */
+.editcorses .studentdashbord .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+}
+.editlesson .checkline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-2);
+    cursor: pointer;
+}
+.editlesson .checkline input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+.editlesson .lesson-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 20px 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, .1);
+    color: var(--danger);
+    font-size: 14px;
+}
+.editlesson .lesson-video {
+    position: relative;
+}
+.editlesson .lesson-video video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: #000;
+}
+.editlesson .lesson-video.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: var(--surface-2);
+    color: var(--muted);
+}
+.editlesson .aab .upload .filename {
+    flex: 1 1 160px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* shared upload progress bar (lesson editor + course editor) */
+.editcorses .upload-progress {
+    position: relative;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    overflow: hidden;
+}
+.editcorses .upload-progress-bar {
+    height: 100%;
+    background: var(--gradient);
+    transition: width .2s ease;
+}
+.editcorses .upload-progress span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ===== Course editor: real lesson / quiz rows ===== */
+.editcorses .bottomcltt .malomat .ganb .name {
+    cursor: pointer;
+}
+.editcorses .bottomcltt .malomat .row-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.editcorses .bottomcltt .malomat .row-actions button {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-2);
+    cursor: pointer;
+}
+.editcorses .bottomcltt .malomat .row-actions button.danger:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+.editcorses .bottomcltt .empty-row {
+    padding: 18px 20px;
+    font-size: 14px;
+    color: var(--muted);
+}
+.editcorses .bottomcltt .section-title {
+    padding: 14px 20px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--muted);
+}

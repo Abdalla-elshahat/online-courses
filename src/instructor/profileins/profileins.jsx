@@ -1,11 +1,9 @@
 import './profileins.css'
-import { IoMdStar } from "react-icons/io";
-import { IoStarHalfSharp } from "react-icons/io5";
-import { MdAddShoppingCart } from "react-icons/md";
-import { FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
+import InstructorCourses from './instructorCourses';
 function Profileins(){
     const token = Cookies.get("token");
     const [userData, setUserData] = useState(null);
@@ -35,7 +33,7 @@ function Profileins(){
             userData && (
                 <div className="serice courses profileins">
                 <div className="fok">
-                    <img src={`${domain}/uplouds/${userData.avatar}`}  alt="" />
+                    <img onError={onImageError} src={imageUrl(userData.avatar)}  alt="" />
                     <div className="in">
                         <h2 className='name'>{userData.username}</h2>
                         <p>{userData.description}</p>
@@ -44,110 +42,7 @@ function Profileins(){
                 <div className="tops">
                 <h2 className="serich profileinsh2">{userData.username}</h2>
                     </div>
-                 <div className="middels">
-                    <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/react.svg" alt="logo"/>
-                        <h2 className='corsh'>React</h2>
-                        <p>Learn the basic</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>    
-                        <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/vuejs.svg" alt="logo"/>
-                        <h2 className='corsh'>Vue.js</h2>
-                        <p>Quik Tips</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>    
-                        <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/angular.svg" alt="logo"/>
-                        <h2 className='corsh'>Angular</h2>
-                        <p>Back to Basics</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>    
-                        <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/javascript.svg" alt="logo"/>
-                        <h2 className='corsh'>Javascript</h2>
-                        <p>ES6 and Beyond</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>    
-                        <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/node.svg" alt="logo"/>
-                        <h2 className='corsh'>Node</h2>
-                        <p>ES6 and Beyond</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>    
-                        <div className="card cardcors">
-                        <div className="topcors">
-                        <img src="https://lema.frontted.com/assets/images/logos/gitlab.png" alt="logo"/>
-                        <h2 className='corsh'>Gitlab</h2>
-                        <p>Git Workflows</p>
-                        </div>
-                        <div className="bottomcors">
-                            <div className="taqem">
-                            <IoMdStar/><IoMdStar/><IoMdStar/><IoMdStar/><IoStarHalfSharp/> <span>3.7</span>
-                            </div>
-                            <span>(391 ratings)</span>
-                            <div className="buy">
-                                <span>$50</span>
-                                <button className='buycors'><MdAddShoppingCart/></button>
-                            </div>
-                        </div>
-                        </div>       
-                    </div>
+                <InstructorCourses userId={userData._id} title="My Courses" emptyText="You have not added a course yet." />
         </div>
             )
          }  

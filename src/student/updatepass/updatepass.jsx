@@ -73,7 +73,7 @@ function Updatpass() {
             <form className="up-card" onSubmit={Updatpass}>
                 <div className="up-icon"><FaLock /></div>
                 <h2>Update your password</h2>
-                <p className="up-sub">Enter your current password, then choose a new one (8–10 characters).</p>
+                <p className="up-sub">Enter your current password, then choose a new one (at least 8 characters).</p>
 
                 <PasswordField
                     id="opass"
@@ -127,7 +127,7 @@ function PasswordField({ id, label, value, onChange, show, toggle, autoComplete,
                     id={id}
                     placeholder="••••••••"
                     minLength={8}
-                    maxLength={10}
+                    maxLength={72}
                     value={value}
                     autoComplete={autoComplete}
                     onChange={(e) => onChange(e.target.value)}
