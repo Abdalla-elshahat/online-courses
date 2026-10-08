@@ -6,6 +6,7 @@ import { FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
 function Profileins(){
     const token = Cookies.get("token");
     const [userData, setUserData] = useState(null);
@@ -35,7 +36,7 @@ function Profileins(){
             userData && (
                 <div className="serice courses profileins">
                 <div className="fok">
-                    <img src={`${domain}/uplouds/${userData.avatar}`}  alt="" />
+                    <img onError={onImageError} src={imageUrl(userData.avatar)}  alt="" />
                     <div className="in">
                         <h2 className='name'>{userData.username}</h2>
                         <p>{userData.description}</p>

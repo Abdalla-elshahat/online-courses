@@ -5,6 +5,7 @@ import "./addfriends.css";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import Cookies from "js-cookie"; 
 import { domain } from "../../utels/constents/const";
+import { imageUrl, onImageError } from "../../utels/image";
 function AddFriends() {
   const token = Cookies.get("token");
   const [users, setUsers] = useState([]);
@@ -159,7 +160,7 @@ function AddFriends() {
             </button>
             <div className="user-info">
               <img
-               src={`${domain}/uplouds/${user.avatar}`} 
+               onError={onImageError} src={imageUrl(user.avatar)} 
                 alt={user.username}
                 className="user-avatar"
               />

@@ -11,6 +11,7 @@ import {programmingSkills} from "../../UI/forms/data.ts"
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const.jsx';
 import { safeParse } from "../../utels/safeJson";
+import { imageUrl, onImageError } from "../../utels/image";
 function Edit() {
   const token = Cookies.get("token");
   const nav = useNavigate();
@@ -135,7 +136,7 @@ function Edit() {
       setCountry(name.country || "");
       setDescription(name.description || "");
       setAvatar(name.avatar || null);
-      setPreview(`${domain}/uplouds/${name.avatar}`);
+      setPreview(imageUrl(name.avatar));
       setRole(name.role || "user");
       const parts = String(name.username).split(" ");
       setFirstname(parts[0] || "");

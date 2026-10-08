@@ -18,6 +18,7 @@ import "../profile.css";
 import "./followerpage.css";
 import { domain } from "../../../utels/constents/const";
 import { safeParse } from "../../../utels/safeJson";
+import { imageUrl, onImageError } from "../../../utels/image";
 function Profilefollower(){
     const {userid}=useParams();
     const token = Cookies.get("token");
@@ -56,12 +57,12 @@ function Profilefollower(){
             <div className="left">
 <div className="card">
     <div className="informa">
-    <img src={`${domain}/uplouds/${userData.avatar}`} alt="User Avatar" className="profile-avatar"    onClick={togglePopup}/>
+    <img onError={onImageError} src={imageUrl(userData.avatar)} alt="User Avatar" className="profile-avatar"    onClick={togglePopup}/>
     {isPopupOpen && (
                   <div className="popup">
                     <div className="popup-content">
                       <img
-                        src={`${domain}/uplouds/${userData.avatar}`}
+                        onError={onImageError} src={imageUrl(userData.avatar)}
                         alt="User Avatar"
                         className="popup-image"
                       />
@@ -194,7 +195,7 @@ function Profilefollower(){
                     </div>
                     <div className="meddilpro">
     <div className="card">
-        <img src={`${domain}/uplouds/${userData.avatar}`} alt="" />
+        <img onError={onImageError} src={imageUrl(userData.avatar)} alt="" />
         <div className="contenet">
             <h2 className="sherr">{userData.username}</h2>
             <p>{userData.description}</p>
@@ -208,12 +209,12 @@ function Profilefollower(){
 </div>
 <div className="bottompro">
 <div className="card">
-        <img src={`${domain}/uplouds/${userData.avatar}`} alt="" />
+        <img onError={onImageError} src={imageUrl(userData.avatar)} alt="" />
         <div className="contenet">
             <h2 className="sherr">{userData.username} <span>4 days ago</span></h2>
             <p>Rails 5 Bootstrap 4 Boilerplate Admin Dashboard on  <a href={userData.email} rel='#'>{userData.email}😉</a></p>
             <div className="cardin">
-                <img src={`${domain}/uplouds/${userData.avatar}`} alt="" />
+                <img onError={onImageError} src={imageUrl(userData.avatar)} alt="" />
                 <h2>Admin Dashboard Template</h2>
                 <span>Made with Rails 5 and Bootstrap 4</span>
                 <span className='link'><BsLink45Deg/></span>

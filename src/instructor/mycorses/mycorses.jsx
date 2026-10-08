@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
 function Mycorses() {
   const token = Cookies.get("token");
   const [courseData, setCourseData] = useState([]);
@@ -155,7 +156,7 @@ function Mycorses() {
       <div className="middels">
         {filteredcourses.map((course, index) => (
           <div key={course._id} className="card">
-            <img src={`${domain}/uplouds/${course.imgcourse}`} alt={course.title} />
+            <img onError={onImageError} src={imageUrl(course.imgcourse)} alt={course.title} />
             <div className="bob">
               <div className="fof">
               <h2>{course.title || "Untitled Course"}</h2>

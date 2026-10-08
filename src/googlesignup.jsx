@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { domain } from "./utels/constents/const";
 function GoogleSignUp() {
-  const nav = useNavigate();
   const [name, setname] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +23,7 @@ function GoogleSignUp() {
       if (response.ok) {
         const data = await response.json(); // Handle successful signup
         Cookies.set("token", data.token, { expires: 7 }); // Store token securely
-        nav("/");
+        window.location.href = "/"; // full reload so Navbar/Sidebar pick up the new token
       } else {
         const errorData = await response.json();
         console.error("Error during signup:", errorData);

@@ -12,6 +12,7 @@ import Notifactions from './notifcations/notfications';
 import Cookies from "js-cookie";
 import { domain } from '../utels/constents/const';
 import { logoutUser, getUserData } from '../api/userApi';
+import { imageUrl, onImageError } from "../utels/image";
 
 function Navbar() {
     const token = Cookies.get("token");
@@ -103,14 +104,14 @@ function Navbar() {
                                 </div>
                                 <div className="profile-wrapper">
                                     <button className="profile" onClick={() => setShowProfile(!showProfile)}>
-                                        <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
+                                        <img onError={onImageError} src={imageUrl(user?.avatar)} alt="" />
                                         <span className="proname">{user?.username}</span>
                                         <MdArrowDropDown />
                                     </button>
                                     {showProfile && (
                                         <div className="dropdown-card profileedit">
                                             <div className="pe-head">
-                                                <img src={`${domain}/uplouds/${user?.avatar}`} alt="" />
+                                                <img onError={onImageError} src={imageUrl(user?.avatar)} alt="" />
                                                 <div>
                                                     <h3>{user?.username}</h3>
                                                     <p>{user?.role === "user" ? "Student" : "Manager"}</p>

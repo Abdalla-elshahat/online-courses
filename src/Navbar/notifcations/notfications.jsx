@@ -1,11 +1,11 @@
 import "./notify.css";
 import { useEffect, useState } from "react";
-import { domain } from "../../utels/constents/const";
 
 import {
   getNotifications,
   handleFollowRequestApi,
 } from "../../api/notificationApi";
+import { imageUrl, onImageError } from "../../utels/image";
 
 function Notifications() {
   const [notifications, setNotifications] = useState([]);
@@ -63,7 +63,7 @@ function Notifications() {
           notifications.map((notif) => (
             <div className="notification-card" key={notif._id}>
               <img
-                src={`${domain}/uplouds/${notif.avatar}`}
+                onError={onImageError} src={imageUrl(notif.avatar)}
                 alt={notif.username}
               />
 

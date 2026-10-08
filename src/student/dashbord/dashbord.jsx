@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
 function Dash() {
   const token = Cookies.get("token");
   const [data,setdata]=useState([])
@@ -119,7 +120,7 @@ const [originalData, setOriginalData] = useState([
   return (
     <div className="card" key={e.id}>
       <div className="bakico b1">
-        <img src={`${domain}/uplouds/${e.imgcourse}`} alt="course" width={"50px"} height={"50px"}/>
+        <img onError={onImageError} src={imageUrl(e.imgcourse)} alt="course" width={"50px"} height={"50px"}/>
       </div>
       <h2 className="cardh2"><Link to={`/view/${e._id}`}>{e.title}</Link></h2>
       <p className="cardp">{e.description.substring(0,30)+"..."}</p>

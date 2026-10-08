@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"; 
 import { domain } from '../../utels/constents/const';
+import { imageUrl, onImageError } from "../../utels/image";
 function Cours() {
     const token = Cookies.get("token");
     const nav=useNavigate();
@@ -182,7 +183,7 @@ function Cours() {
                         courses.map((course, index) => (
                             <div className="card cardcors" key={index}>
                                 <div className="topcors">
-                                    <img src={`${domain}/uplouds/${course.imgcourse}`} alt="logo" />
+                                    <img onError={onImageError} src={imageUrl(course.imgcourse)} alt="logo" />
                 
                                     <p>{course.description.substring(0,30)+"..."}</p>
                                 </div>

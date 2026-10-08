@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 import "./view.css";
 import Cookies from "js-cookie"; 
 import { domain } from "../../utels/constents/const";
+import { imageUrl, onImageError } from "../../utels/image";
 const ViewCourse = () => {
   const token = Cookies.get("token");
   const { courseId } = useParams();
@@ -188,7 +189,7 @@ const ViewCourse = () => {
     <div className="view-course-container">
       <div className="course-details">
         <img
-          src={`${domain}/uplouds/${courseData.imgcourse}`}
+          onError={onImageError} src={imageUrl(courseData.imgcourse)}
           alt={courseData.title}
           className="course-image"
         />
@@ -242,7 +243,7 @@ const ViewCourse = () => {
         </div>
         {reviews.map((review, index) => (
           <div key={review._id} className="review">
-            <img src={`${domain}/uplouds/${review.avatar}`} alt={review.userName} className="review-avatar"/>
+            <img onError={onImageError} src={imageUrl(review.avatar)} alt={review.userName} className="review-avatar"/>
             <div className="review-content">
               <div className="left">
                 <span className="top">

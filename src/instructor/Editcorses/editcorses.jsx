@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Cookies from "js-cookie"; 
 import { domain } from "../../utels/constents/const";
+import { imageUrl, onImageError } from "../../utels/image";
 function Editcorses() {
     const token = Cookies.get("token");
   const { courseid } = useParams();
@@ -102,7 +103,7 @@ function Editcorses() {
         imgcourse: "",
       });
       if (breviousdata.imgcourse) {
-        setPreview(`${domain}/uplouds/${breviousdata.imgcourse}`);
+        setPreview(imageUrl(breviousdata.imgcourse));
       }
     }
   }, [breviousdata]);

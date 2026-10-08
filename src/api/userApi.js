@@ -2,10 +2,13 @@ import Cookies from "js-cookie";
 import { domain } from "../utels/constents/const";
 
 export const logoutUser = async () => {
+    // send the token so the server can revoke it
+    const token = Cookies.get("token");
     const response = await fetch(`${domain}/api/users/logout`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
     });
 

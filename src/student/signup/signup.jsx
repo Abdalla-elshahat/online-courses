@@ -46,7 +46,8 @@ function Sinup(){
             Cookies.set('token', data.user.token);
             setloading(false);
             setTimeout(()=>{
-              nav("/edit")
+              // full reload so Navbar/Sidebar pick up the new token
+              window.location.href = "/edit";
             },1000)
           } else {
             const errorData = await response.json();
@@ -80,7 +81,7 @@ function Sinup(){
                         <label htmlFor="pass">password:</label>
                         <div className="cooo">
                             <span><FaKey/></span>
-                            <input type={showPassword?'text':'password'}  placeholder='your pass' id='pass' minLength={6} maxLength={10}  value={password} onChange={(e)=>setpassword(e.target.value)}/>
+                            <input type={showPassword?'text':'password'}  placeholder='your pass' id='pass' minLength={8} maxLength={72}  value={password} onChange={(e)=>setpassword(e.target.value)}/>
                             <span
                                     onClick={() => setShowPassword(!showPassword)}
                                     style={{ cursor: "pointer" }}
