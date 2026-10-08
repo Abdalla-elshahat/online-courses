@@ -71,7 +71,8 @@ function App() {
             <Route path='/mycorses' element={<Mycorses />} />
             <Route path='/myquiz' element={<Myquiz />} />
             <Route path='/editcorses' element={<Editcorses />} />
-            <Route path='/editlesson' element={<Editelesson />} />
+            <Route path='/editlesson/:courseId' element={<Editelesson />} />
+            <Route path='/editlesson/:courseId/:lessonId' element={<Editelesson />} />
             <Route path='/createquiz/:courseId' element={<Createquiz />} />
             <Route path='/erning' element={<Erning />} />
             <Route path='/profileins' element={<Profileins />} />

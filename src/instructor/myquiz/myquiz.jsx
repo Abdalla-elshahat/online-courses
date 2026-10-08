@@ -109,7 +109,7 @@ function Myquiz() {
             </span>
             {activeMenu === index && (
               <div className="menu">
-                <p onClick={() => handleUpdate(quiz._id)} className="update">Update</p>
+                <p onClick={() => handleUpdate(quiz.courseId)} className="update">Open course</p>
                 <p onClick={() => handleDelete(quiz._id)} className="delete">Delete</p>
               </div>
             )}

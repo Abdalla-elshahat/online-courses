@@ -19,17 +19,19 @@ function Takequiz() {
   const submittedRef = useRef(false);
   const timerStartedRef = useRef(false);
 
-  // تحويل الدقائق إلى ثوانٍ
+  // timeLimit is stored in seconds
   useEffect(() => {
     if (quiz && Number(quiz.timeLimit) > 0) {
-      setTimeLeft(Number(quiz.timeLimit) * 60);
-      timerStartedRef.current = true;
+      setTimeLeft(Number(quiz.timeLimit));
     }
   }, [quiz]);
 
   useEffect(() => {
     if (submittedRef.current) return;
     if (timeLeft > 0) {
+      // marked here, not when the quiz loads: on that first render timeLeft is still 0,
+      // which would otherwise look like "time is up" and submit an empty quiz
+      timerStartedRef.current = true;
       const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
       return () => clearTimeout(timer);
     }
@@ -46,6 +48,15 @@ function Takequiz() {
       return;
     }
       try {
+        // one attempt per quiz: if it was already submitted, show the score instead
+        const scoreResponse = await fetch(`${domain}/api/quiz/quizzes/${quizid}/score`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (scoreResponse.ok) {
+          submittedRef.current = true;
+          nav(`/score/${quizid}`, { replace: true });
+          return;
+        }
         const response = await fetch(`${domain}/api/quiz/quizzes/${quizid}`, {
           method: "GET",
           headers: {

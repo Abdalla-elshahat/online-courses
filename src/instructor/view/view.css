@@ -325,3 +325,98 @@
         flex: 1;
     }
 }
+
+/* course video, cover image used as the poster until it plays */
+.view-course-container .course-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    background: #000;
+    object-fit: contain;
+}
+
+/* ===== Lessons playlist ===== */
+.view-course-container .lessons-section {
+    margin: 0;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+.view-course-container .lessons-section > h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.view-course-container .lessons-sub {
+    margin: 0 0 14px;
+    font-size: 13px;
+    color: var(--muted);
+}
+.view-course-container .lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+.view-course-container .lesson-item:hover {
+    background: var(--surface-2);
+}
+.view-course-container .lesson-item.active {
+    background: var(--primary-soft);
+}
+.view-course-container .lesson-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+.view-course-container .lesson-item.active .lesson-num {
+    background: var(--gradient);
+    color: #fff;
+}
+.view-course-container .lesson-title {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+.view-course-container .lesson-title small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    color: var(--muted);
+}
+.view-course-container .lesson-free {
+    flex-shrink: 0;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, .12);
+    color: var(--success);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+@media (max-width: 576px) {
+    .view-course-container .lessons-section {
+        padding: 16px;
+    }
+}

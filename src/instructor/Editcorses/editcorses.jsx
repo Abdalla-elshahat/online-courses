@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./editcorses.css";
-import { FaPlus, FaImage, FaTimes, FaExclamationCircle, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+import { FaPlus, FaImage, FaVideo, FaTimes, FaExclamationCircle, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 import { ImParagraphLeft } from "react-icons/im";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Cookies from "js-cookie"; 
 import { domain } from "../../utels/constents/const";
-import { imageUrl, onImageError } from "../../utels/image";
+import { imageUrl, videoUrl } from "../../utels/image";
+import { uploadWithProgress } from "../../utels/upload";
+import { MdEdit, MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
+import { deleteLesson, getCourseQuizzes, getLessons } from "../../api/courseApi";
 function Editcorses() {
     const token = Cookies.get("token");
   const { courseid } = useParams();
    const [preview, setPreview] = useState(null); // عرض الصورة
    const [image, setImage] = useState("");
+   const [video, setVideo] = useState(null); // new video (optional on edit)
+   const [videoPreview, setVideoPreview] = useState(null);
+   const [progress, setProgress] = useState(null);
    const [formData, setFormData] = useState({title: "",description: "",price: "",category: "",author: "",status: "",imgcourse: "",});
    const[breviousdata,setbreviousdata]=useState(null);
+   const [lessons, setLessons] = useState([]);
+   const [quizzes, setQuizzes] = useState([]);
    const nav=useNavigate();
   const handleInputChange = (e) => {
     setFormData({...formData,[e.target.name]: e.target.value});
@@ -24,6 +33,14 @@ function Editcorses() {
       setImage(file);
       setPreview(URL.createObjectURL(file));
     }
+  };
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setVideo(file);
+      setVideoPreview(URL.createObjectURL(file));
+    }
+    e.target.value = "";
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,16 +54,19 @@ function Editcorses() {
     if (image) {
       data.append("imgcourse", image);
     }
+    if (video) {
+      data.append("video", video);
+    }
     try {
-      const response = await fetch(`${domain}/api/courses/update/${courseid}`, {
-        method: "PATCH",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
-        body: data,
-      });
+      setProgress(0);
+      const response = await uploadWithProgress(
+        `${domain}/api/courses/update/${courseid}`,
+        "PATCH",
+        token,
+        data,
+        setProgress
+      );
       if (response.ok) {
-        const result = await response.json();
         toast.success("Course updated successfully!", {
         icon: <FaCheckCircle color="green" />,
         });
@@ -54,15 +74,16 @@ function Editcorses() {
           nav("/mycorses")
         },1000)
       } else {
-        const errorData = await response.json();
-        console.error("Error response:", errorData);
-        toast.error("Error updating course.", {
+        console.error("Error response:", response.data);
+        toast.error(response.data?.message || "Error updating course.", {
           icon: <FaExclamationCircle color="red" />,
       });
       }
     } catch (error) {
       console.error("Error updating course:", error);
       alert("Failed to update course.");
+    } finally {
+      setProgress(null);
     }
   };
   const getcoursesdata = async () => {
@@ -105,10 +126,35 @@ function Editcorses() {
       if (breviousdata.imgcourse) {
         setPreview(imageUrl(breviousdata.imgcourse));
       }
+      setVideoPreview(videoUrl(breviousdata.video));
     }
   }, [breviousdata]);
+  const loadLessons = () => {
+    getLessons(courseid).then(setLessons).catch((err) => toast.error(err.message));
+    getCourseQuizzes(courseid).then(setQuizzes);
+  };
+  const handleDeleteLesson = async (lesson) => {
+    const { isConfirmed } = await Swal.fire({
+      title: `Delete "${lesson.title}"?`,
+      text: "The lesson video will be removed too.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ef4444",
+      confirmButtonText: "Delete",
+    });
+    if (!isConfirmed) return;
+    try {
+      await deleteLesson(courseid, lesson._id);
+      toast.success("Lesson deleted", { icon: <FaCheckCircle color="green" /> });
+      loadLessons();
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
   useEffect(() => {
+    loadLessons();
     getcoursesdata();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -217,82 +263,88 @@ function Editcorses() {
   </div>
 )}
                           </div> 
+                     <div className="upload-container imgupload">
+                            <div className="upload">
+                              <label htmlFor="video">
+                                <FaVideo className="avatar-img" />
+                              </label>
+                              <span>{video ? video.name : "Replace intro video (optional)"}</span>
+                              <input
+                                type="file"
+                                id="video"
+                                accept="video/mp4,video/webm,video/ogg,video/quicktime"
+                                onChange={handleVideoChange}
+                                style={{ display: "none" }}
+                              />
+                            </div>
+                            {videoPreview && (
+  <div className="preview-container">
+    <video src={videoPreview} controls style={{ width: 260, maxWidth: "100%", borderRadius: 10, background: "#000" }} />
+    {video && (
+      <button type="button" className="remove-btn" onClick={() => {setVideo(null);setVideoPreview(videoUrl(breviousdata?.video));}}>
+        <FaTimes />
+      </button>
+    )}
+  </div>
+)}
+                          </div>
                 </div>
+                {progress !== null && <p>{progress < 100 ? `Uploading ${progress}%` : "Processing..."}</p>}
                 <span className="save">
-                  <input type="submit" value="Save Change" />
+                  <input type="submit" value={progress !== null ? "Uploading..." : "Save Change"} disabled={progress !== null} />
                 </span>
               </form>
             </div>
         
             <div className="card">
-<div className="toeditcors">
-    <span>
-        <h2>Lessons</h2>
-        <p>Manage Lessons</p>
-    </span>
-    <span className='new'>New <FaPlus/></span>
-</div>
-<div className="bottomcltt">
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Overview</span>
-</div>
-<span className='minute'>3:33</span>                                
-</div>   
-<div className="malomat">
-<div className="ganb"> 
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Asset Pipeline</span></div>
-<span className='minute'>3:33</span>                                
-</div>   
-
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Getting Started <span className='free'>Free</span></span>
-</div>
-<span className='minute'>6.55</span>                                
-</div>   
-<div className="malomat">
-<div className="ganb"><span className='number'><ImParagraphLeft/></span>
-<span className='name'>Advanced Workflows <span className='pro'>Pro</span></span>
-</div>
-<span className='minute'>3:33</span>                                
-</div>   
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Tips & Tricks<span className='pro'>Pro</span></span>
-</div>
-<span className='minute'>3:33</span>                                
-</div>   
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Final Quiz</span>
-</div>
-<span className='minute'><span className='quiz'>Quiz</span></span>                                
-</div> 
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Final Quiz</span>
-</div>
-<span className='minute'>33.3</span>                                
-</div> 
-<div className="malomat">
-<div className="ganb">
-<span className='number'><ImParagraphLeft/></span>
-<span className='name'>Final Quiz</span>
-</div>
-<span className='minute'>5.3</span>                                
-</div>     
-</div>
-</div>
+              <div className="toeditcors">
+                <span>
+                  <h2>Lessons</h2>
+                  <p>{lessons.length} lesson{lessons.length === 1 ? "" : "s"} · {quizzes.length} quiz{quizzes.length === 1 ? "" : "zes"}</p>
+                </span>
+                <span className="new" onClick={() => nav(`/editlesson/${courseid}`)}>New <FaPlus /></span>
+              </div>
+              <div className="bottomcltt">
+                {lessons.length === 0 && (
+                  <p className="empty-row">No lessons yet. Click “New” to upload the first lesson video.</p>
+                )}
+                {lessons.map((lesson) => (
+                  <div className="malomat" key={lesson._id}>
+                    <div className="ganb" onClick={() => nav(`/editlesson/${courseid}/${lesson._id}`)}>
+                      <span className="number">{lesson.order}</span>
+                      <span className="name">
+                        {lesson.title}
+                        <span className={lesson.isFree ? "free" : "pro"}>{lesson.isFree ? "Free" : "Pro"}</span>
+                      </span>
+                    </div>
+                    <span className="row-actions">
+                      <button type="button" title="Edit" onClick={() => nav(`/editlesson/${courseid}/${lesson._id}`)}><MdEdit /></button>
+                      <button type="button" title="Delete" className="danger" onClick={() => handleDeleteLesson(lesson)}><MdDelete /></button>
+                    </span>
+                  </div>
+                ))}
+                <p className="section-title">Quizzes</p>
+                {quizzes.length === 0 && <p className="empty-row">No quiz for this course yet.</p>}
+                {quizzes.map((quiz) => (
+                  <div className="malomat" key={quiz._id}>
+                    <div className="ganb">
+                      <span className="number"><ImParagraphLeft /></span>
+                      <span className="name">{quiz.title} <span className="quiz">Quiz</span></span>
+                    </div>
+                    <span className="minute">{quiz.questions?.length || 0} questions · {Math.round((quiz.timeLimit || 0) / 60)} min</span>
+                  </div>
+                ))}
+                <div className="malomat">
+                  <div className="ganb" onClick={() => nav(`/createquiz/${courseid}`)}>
+                    <span className="number"><FaPlus /></span>
+                    <span className="name">Create a quiz for this course</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 }

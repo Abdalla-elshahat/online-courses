@@ -237,3 +237,86 @@
     .middels{ grid-template-columns: 1fr; }
     .serice .bots{ flex-direction: column; text-align: center; padding: 20px; }
 }
+
+/* ===== Course store (Services page) ===== */
+.store .tops .serich .count{
+    margin-left: 8px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+.store .tops .sortdev{
+    flex-wrap: wrap;
+}
+.store .store-search{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--muted);
+}
+.store .store-search input{
+    width: 220px;
+    max-width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+.store .store-category{
+    align-self: flex-start;
+    margin-top: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.store .store-rating{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #f59e0b;
+}
+.store .store-rating span{
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+}
+.store .store-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+.store .store-footer .price{
+    margin-top: 0;
+}
+.store .store-buy{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+@media (max-width: 576px){
+    .store .store-search{ width: 100%; }
+    .store .store-search input{ width: 100%; }
+}

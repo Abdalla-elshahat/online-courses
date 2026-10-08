@@ -21,8 +21,8 @@ function Cours() {
     const [category, setCategory] = useState("");
     const [status, setStatus] = useState("All");
     const [favCourses, setFavCourses] = useState([]);
-    const [sort, setsort] = useState("title");
-    const [order, setorder] = useState("asc");
+    const sort = "title";
+    const order = "asc";
     if(!token){
         nav("/sinup");
     }
@@ -142,6 +142,7 @@ function Cours() {
       };
       useEffect(() => {
         fetchCourses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, category, status,limit]); 
 
     return (
@@ -183,7 +184,7 @@ function Cours() {
                         courses.map((course, index) => (
                             <div className="card cardcors" key={index}>
                                 <div className="topcors">
-                                    <img onError={onImageError} src={imageUrl(course.imgcourse)} alt="logo" />
+                                    <img onError={onImageError} src={imageUrl(course.imgcourse)} alt="logo" onClick={()=>handleView(course._id)} style={{cursor:"pointer"}} />
                 
                                     <p>{course.description.substring(0,30)+"..."}</p>
                                 </div>

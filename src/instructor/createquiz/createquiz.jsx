@@ -12,15 +12,20 @@ function Createquiz() {
     const { courseId } = useParams();
     const nav = useNavigate();
     const [courseData, setCourseData] = useState([]);
-    const [quizData, setQuizData] = useState({title: "",courseId:"", questions: [],category: "web development",timeLimit: 300,isPublished: false});
-    const [newQuestion, setNewQuestion] = useState({text: "",difficulty: "easy",
-answers: [
-            { text: "", isCorrect: false },
+    // timeLimit is edited in minutes here and sent to the API in seconds
+    const [quizData, setQuizData] = useState({title: "",courseId:"", questions: [],category: "web development",timeLimit: 10,isPublished: false});
+    // the first answer starts as the correct one, matching the "Correct Answer" dropdown default
+    const emptyQuestion = () => ({
+        text: "",
+        difficulty: "easy",
+        answers: [
+            { text: "", isCorrect: true },
             { text: "", isCorrect: false },
             { text: "", isCorrect: false },
             { text: "", isCorrect: false },
         ],
     });
+    const [newQuestion, setNewQuestion] = useState(emptyQuestion);
 
     const fetchCourseById = async (courseId) => {
         if (token) {
@@ -61,23 +66,30 @@ answers: [
     };
 
     const handleAddQuestion = () => {
+        if (!newQuestion.text.trim()) {
+            toast.error("Write the question first");
+            return;
+        }
+        if (newQuestion.answers.some((answer) => !answer.text.trim())) {
+            toast.error("Fill in all four answers");
+            return;
+        }
         setQuizData((prev) => ({
             ...prev,
             questions: [...prev.questions, newQuestion],
         }));
-        setNewQuestion({
-            text: "",
-            difficulty: "easy",
-            answers: [
-                { text: "", isCorrect: false },
-                { text: "", isCorrect: false },
-                { text: "", isCorrect: false },
-                { text: "", isCorrect: false },
-            ],
-        });
+        setNewQuestion(emptyQuestion());
     };
 
     const handleSaveQuiz = async () => {
+        if (quizData.questions.length === 0) {
+            toast.error("Add at least one question before saving");
+            return;
+        }
+        if (!(quizData.timeLimit >= 1)) {
+            toast.error("Quiz time must be at least 1 minute");
+            return;
+        }
         try {
             const response = await fetch(`${domain}/api/quiz/quizzes/${courseId}`, {
                 method: "POST",
@@ -86,8 +98,7 @@ answers: [
                     "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify({
-                    courseID:courseId,
-                    title: courseData.title,
+                    title: quizData.title.trim() || `${courseData.title} Quiz`,
                     questions: quizData.questions.map((question) => ({
                         text: question.text,
                         difficulty: question.difficulty,
@@ -99,7 +110,7 @@ answers: [
                             author:courseData.author,
                             category:courseData.category,
                             isPublished: true,
-                            timeLimit:quizData.timeLimit
+                            timeLimit: Math.round(quizData.timeLimit * 60)
                 }),
             });
             if (response.ok) {
@@ -110,7 +121,7 @@ answers: [
                         </span>
                       );
                       setTimeout(() => {
-                        nav("/mycorses");
+                        nav(`/editcorses/${courseId}`);
                       }, 1000);
                     } else {
                       const errorData = await response.json();
@@ -146,9 +157,18 @@ answers: [
         />
                 <div className="tops">
                     <h2 className="serich">{courseData.title}:: Quiz</h2>
-                    <span className='Goto' onClick={() => nav("/mycorses")}>Back to Course <FaArrowRight /></span>
+                    <span className='Goto' onClick={() => nav(`/editcorses/${courseId}`)}>Back to Course <FaArrowRight /></span>
                 </div>
                 <div className="card cardquiz">
+                    <label htmlFor='quiztitle'>Quiz Title:</label>
+                    <input
+                        type="text"
+                        id='quiztitle'
+                        maxLength={200}
+                        placeholder={courseData.title ? `${courseData.title} Quiz` : "Quiz title"}
+                        value={quizData.title}
+                        onChange={(e) => setQuizData({ ...quizData, title: e.target.value })}
+                    />
                     <label htmlFor='Question'>New Question:</label>
                     <input
                         type="text"
@@ -208,7 +228,7 @@ answers: [
                         <div key={index} className="toto">
                             <span className='tograp'>
                                 <span><ImParagraphJustify /></span>
-                                <p>Q: {question.text}</p>
+                                <p>Q{index + 1}: {question.text} <small>({question.answers.find((a) => a.isCorrect)?.text})</small></p>
                             </span>
                             <span className="delet" onClick={() =>
                                 setQuizData((prev) => ({
@@ -223,11 +243,11 @@ answers: [
                 </div>
                 <div className="endquiz">
                 <span>
-                    <label htmlFor="time">Quiz-Time-bymin</label>
-                    <input type="number" id='time' value={quizData.timeLimit} onChange={(e) => setQuizData({ ...quizData, timeLimit: Number(e.target.value) })} />
+                    <label htmlFor="time">Quiz time (minutes)</label>
+                    <input type="number" id='time' min="1" max="240" value={quizData.timeLimit} onChange={(e) => setQuizData({ ...quizData, timeLimit: Number(e.target.value) })} />
                 </span>
-                <button onClick={handleSaveQuiz} className="saveQuizButton">
-                    Save Quiz
+                <button onClick={handleSaveQuiz} className="saveQuizButton" disabled={quizData.questions.length === 0}>
+                    Save Quiz ({quizData.questions.length} question{quizData.questions.length === 1 ? "" : "s"})
                 </button>
                 </div>
             </div>

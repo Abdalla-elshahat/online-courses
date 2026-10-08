@@ -111,9 +111,9 @@ function Sidebar() {
                         <Item icon={<RiGlassesFill />} label="Dashboard" to="/dashbord" />
                         <Item icon={<IoLibrary />} label="My Courses" to="/mycorses" />
                         <Item icon={<PiExamFill />} label="My Quizzes" to="/myquiz" />
-                        <Item icon={<FaEdit />} label="Edit Courses" to="/mycorses" />
+                        {/* <Item icon={<FaEdit />} label="Edit Courses" to="/mycorses" />
                         <Item icon={<FaEdit />} label="Edit Lesson" to="/editlesson" />
-                        <Item icon={<MdAssignment />} label="Create Quiz" to="/mycorses" />
+                        <Item icon={<MdAssignment />} label="Create Quiz" to="/mycorses" /> */}
                         <Item icon={<FaCalculator />} label="Earnings" to="/erning" />
                         <Item icon={<FaUserGraduate />} label="Profile" to="/profileins" />
                         <Item icon={<FaPaypal />} label="Payout" to="/pay" />

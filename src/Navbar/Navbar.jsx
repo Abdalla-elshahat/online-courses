@@ -7,12 +7,15 @@ import { Link } from 'react-router-dom';
 import { IoSettingsOutline, IoMenuOutline, IoClose } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { CiLogin } from "react-icons/ci";
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Notifactions from './notifcations/notfications';
 import Cookies from "js-cookie";
 import { domain } from '../utels/constents/const';
 import { logoutUser, getUserData } from '../api/userApi';
+import { getNotifications, handleFollowRequestApi } from '../api/notificationApi';
 import { imageUrl, onImageError } from "../utels/image";
+
+const NOTIFICATIONS_POLL_MS = 30000;
 
 function Navbar() {
     const token = Cookies.get("token");
@@ -24,6 +27,29 @@ function Navbar() {
     const [rtl, setRtl] = useState(false);
     const [sidebarDark, setSidebarDark] = useState(false);
     const [navbarDark, setNavbarDark] = useState(false);
+    const [requests, setRequests] = useState([]);
+    const [requestsLoading, setRequestsLoading] = useState(false);
+    const [requestsError, setRequestsError] = useState("");
+
+    // pending follow requests; refreshed on a timer and when the tab regains focus
+    const loadRequests = useCallback(async () => {
+        if (!Cookies.get("token")) return;
+        setRequestsLoading(true);
+        try {
+            setRequests(await getNotifications());
+            setRequestsError("");
+        } catch (error) {
+            setRequestsError(error.message);
+        } finally {
+            setRequestsLoading(false);
+        }
+    }, []);
+
+    // accept / reject, then drop the request from the list
+    const handleRequestAction = async (requesterId, action) => {
+        await handleFollowRequestApi(requesterId, action);
+        setRequests((prev) => prev.filter((item) => item._id !== requesterId));
+    };
 
     const handleLogout = async (e) => {
         e.preventDefault();
@@ -40,6 +66,17 @@ function Navbar() {
         if (!token) return;
         getUserData().then(setUser).catch(console.error);
     }, [token]);
+
+    useEffect(() => {
+        if (!token) return;
+        loadRequests();
+        const timer = setInterval(loadRequests, NOTIFICATIONS_POLL_MS);
+        window.addEventListener("focus", loadRequests);
+        return () => {
+            clearInterval(timer);
+            window.removeEventListener("focus", loadRequests);
+        };
+    }, [token, loadRequests]);
 
     // close dropdowns when clicking outside
     useEffect(() => {
@@ -93,12 +130,27 @@ function Navbar() {
                         {token ? (
                             <>
                                 <div className="notif-wrapper">
-                                    <button className="icon-btn" onClick={() => setShowNotifications(!showNotifications)} aria-label="Notifications">
+                                    <button
+                                        className="icon-btn notif-btn"
+                                        onClick={() => {
+                                            if (!showNotifications) loadRequests();
+                                            setShowNotifications(!showNotifications);
+                                        }}
+                                        aria-label="Notifications"
+                                    >
                                         <BsAlarm />
+                                        {requests.length > 0 && (
+                                            <span className="notif-badge">{requests.length > 9 ? "9+" : requests.length}</span>
+                                        )}
                                     </button>
                                     {showNotifications && (
                                         <div className="dropdown-card alarmsetting">
-                                            <Notifactions />
+                                            <Notifactions
+                                                requests={requests}
+                                                loading={requestsLoading}
+                                                error={requestsError}
+                                                onAction={handleRequestAction}
+                                            />
                                         </div>
                                     )}
                                 </div>

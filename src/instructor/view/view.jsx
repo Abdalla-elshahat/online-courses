@@ -6,7 +6,9 @@ import { MdDelete } from "react-icons/md";
 import "./view.css";
 import Cookies from "js-cookie"; 
 import { domain } from "../../utels/constents/const";
-import { imageUrl, onImageError } from "../../utels/image";
+import { imageUrl, videoUrl, onImageError } from "../../utels/image";
+import { FaPlay } from "react-icons/fa";
+import { getLessons } from "../../api/courseApi";
 const ViewCourse = () => {
   const token = Cookies.get("token");
   const { courseId } = useParams();
@@ -21,6 +23,8 @@ const ViewCourse = () => {
   const [Reviewid, setReviewid] = useState(null);
   const [update, setupdate] = useState(""); // القائمة النشطة
   const [quiz,setquiz]=useState([]);
+  const [lessons, setLessons] = useState([]);
+  const [playing, setPlaying] = useState(null); // null = intro video, otherwise a lesson
   // const handlerating=(e)=>{
   //   e.perventDefault();
   //   setrating(e.target.value);
@@ -98,7 +102,7 @@ const ViewCourse = () => {
             comment: newComment,
           }),
         });
-        const data = await response.json();
+        await response.json();
         setNewComment(""); // Clear the input field
         setNewRating(5); // Reset the rating
         fetchReviews(courseId); // Refresh reviews
@@ -175,6 +179,9 @@ const ViewCourse = () => {
     fetchReviews(courseId);
     fetchQuizBycourseId(courseId);
     fetchUserData();
+    setPlaying(null);
+    getLessons(courseId).then(setLessons).catch(() => setLessons([]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseId]);
 
   if (loading) {
@@ -187,6 +194,18 @@ const ViewCourse = () => {
 
   return (
     <div className="view-course-container">
+      {(playing || courseData.video) && (
+        <video
+          key={playing ? playing._id : "intro"}
+          className="course-video"
+          src={videoUrl(playing ? playing.video : courseData.video)}
+          autoPlay={Boolean(playing)}
+          poster={imageUrl(courseData.imgcourse)}
+          controls
+          controlsList="nodownload"
+          preload="metadata"
+        />
+      )}
       <div className="course-details">
         <img
           onError={onImageError} src={imageUrl(courseData.imgcourse)}
@@ -207,13 +226,40 @@ const ViewCourse = () => {
           </p>
           {quiz&&quiz.map((e,index)=>{
             return(
-              <div key={e.id} className="quiz">
+              <div key={e._id} className="quiz">
               <p className="course-price">
             <strong>Quiz{index+1}</strong><Link to={`/takequiz/${e._id}`} className="link">{e.title}</Link></p>
                 </div>
             )
           })}
         </div>
+      </div>
+      <div className="lessons-section">
+        <h2>Course content</h2>
+        <p className="lessons-sub">
+          {playing ? `Now playing: ${playing.order}. ${playing.title}` : "Now playing: Introduction"} · {lessons.length} lesson{lessons.length === 1 ? "" : "s"}
+        </p>
+        {courseData.video && (
+          <div className={`lesson-item${playing ? "" : " active"}`} onClick={() => setPlaying(null)}>
+            <span className="lesson-num"><FaPlay /></span>
+            <span className="lesson-title">Introduction</span>
+          </div>
+        )}
+        {lessons.map((lesson) => (
+          <div
+            key={lesson._id}
+            className={`lesson-item${playing?._id === lesson._id ? " active" : ""}`}
+            onClick={() => setPlaying(lesson)}
+          >
+            <span className="lesson-num">{lesson.order}</span>
+            <span className="lesson-title">
+              {lesson.title}
+              {lesson.description && <small>{lesson.description}</small>}
+            </span>
+            {lesson.isFree && <span className="lesson-free">Free</span>}
+          </div>
+        ))}
+        {lessons.length === 0 && <p className="lessons-sub">No lessons have been added yet.</p>}
       </div>
       <div className="reviews-section">
         <h2>Reviews</h2>

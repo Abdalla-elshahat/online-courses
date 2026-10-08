@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUserPlus, FaUserTimes, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./addfriends.css";
@@ -10,13 +10,17 @@ function AddFriends() {
   const token = Cookies.get("token");
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-  const audioRef = useRef();
-  const playAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  };
-  // جلب جميع المستخدمين
+  const [busyId, setBusyId] = useState(null); // user whose follow button is waiting for the server
+
+  const setFollowStatus = (userId, followStatus) =>
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user._id === userId ? { ...user, followStatus } : user))
+    );
+
+  const notify = (icon, title) =>
+    Swal.fire({ toast: true, position: "top-end", icon, title, showConfirmButton: false, timer: 2500 });
+
+  // جلب جميع المستخدمين (the server says whether a request is already pending)
   const fetchUsers = async () => {
     try {
       const response = await fetch(`${domain}/api/users/non-followers`, {
@@ -26,106 +30,83 @@ function AddFriends() {
           Authorization: `Bearer ${token}`,
         },
       });
+      if (!response.ok) throw new Error("Failed to load users");
       const data = await response.json();
-      const updatedUsers = data.map((user) => ({
-        ...user,
-        followStatus: "none", // الحالة المبدئية (غير متابع)
-      }));
-      setUsers(updatedUsers);
+      setUsers(data.map((user) => ({ ...user, followStatus: user.followStatus || "none" })));
     } catch (error) {
       console.error("Error fetching users:", error);
     }
   };
+
+  // POST /sendfollow or PATCH /removefollow; resolves to { ok, message }
+  const callFollowApi = async (path, method, followId) => {
+    const response = await fetch(`${domain}/api/users/${path}`, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ follow_id: followId }),
+    });
+    let data = {};
+    try {
+      data = await response.json();
+    } catch {}
+    return { ok: response.ok, message: data.message || "" };
+  };
+
   // إرسال طلب متابعة
   const sendFollowRequest = async (followId) => {
+    setBusyId(followId);
     try {
-      const response = await fetch(`${domain}/api/users/sendfollow`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ follow_id: followId }),
-      });
-
-      if (response.ok) {
-        // playAudio(); 
-        setUsers((prevUsers) =>
-          prevUsers.map((user) =>
-            user._id === followId ? { ...user, followStatus: "pending" } : user
-          )
-        );
+      const { ok, message } = await callFollowApi("sendfollow", "POST", followId);
+      if (ok || /already sent/i.test(message)) {
+        setFollowStatus(followId, "pending");
+        notify("success", "تم إرسال طلب المتابعة");
+      } else if (/already following/i.test(message)) {
+        removeUserFromList(followId); // already a follower: does not belong in this list
+        notify("info", "أنت تتابع هذا المستخدم بالفعل");
       } else {
-        console.error("Failed to send follow request");
+        notify("error", message || "فشل إرسال طلب المتابعة");
       }
     } catch (error) {
       console.error("Error sending follow request:", error);
+      notify("error", "خطأ في الاتصال بالسيرفر");
+    } finally {
+      setBusyId(null);
     }
   };
-  const removeFollow = (followId) => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
+
+  // سحب طلب المتابعة بعد التأكيد
+  const removeFollow = async (followId) => {
+    const result = await Swal.fire({
+      title: "هل تريد سحب الدعوه",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "سحب",
+      cancelButtonText: "الغاء",
+      confirmButtonColor: "#ef4444",
+      reverseButtons: true,
     });
-  
-    swalWithBootstrapButtons.fire({
-        title: "هل تريد سحب الدعوه",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "سحب",
-        cancelButtonText: "الغاء",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons
-            .fire({
-              title: "تم السحب!",
-              text: "تم سحب المتابعة بنجاح.",
-              icon: "success",
-            })
-            .then(() => {
-              // Call the API to remove follow
-              const removeFollowAPI = async (followId) => {
-                try {
-                  const response = await fetch(`${domain}/api/users/removefollow`, {
-                    method: "PATCH",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({ follow_id: followId }),
-                  });
-  
-                  if (response.ok) {
-                    // playAudio(); 
-                    setUsers((prevUsers) =>
-                      prevUsers.map((user) =>
-                        user._id === followId ? { ...user, followStatus: "none" } : user
-                      )
-                    );
-                  } else {
-                    console.error("Failed to remove follow");
-                  }
-                } catch (error) {
-                  console.error("Error removing follow:", error);
-                }
-              };
-  
-              removeFollowAPI(followId);
-            });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire({
-            title: "تم الإلغاء",
-            text: "لم يتم سحب المتابعة.",
-            icon: "error",
-          });
-        }
-      });
+    if (!result.isConfirmed) return;
+
+    setBusyId(followId);
+    try {
+      const { ok, message } = await callFollowApi("removefollow", "PATCH", followId);
+      if (ok || /not following|no follow relationship/i.test(message)) {
+        setFollowStatus(followId, "none");
+        notify("success", "تم سحب طلب المتابعة");
+      } else {
+        notify("error", message || "فشل سحب طلب المتابعة");
+      }
+    } catch (error) {
+      console.error("Error removing follow:", error);
+      notify("error", "خطأ في الاتصال بالسيرفر");
+    } finally {
+      setBusyId(null);
+    }
   };
+
   const removeUserFromList = (userId) => {
     setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
   };
@@ -141,7 +122,6 @@ function AddFriends() {
   return (
     <div className="add-friends">
       <h2>Users List</h2>
-      {/* <audio ref={audioRef} src="./mixkit-correct-answer-tone-2870.wav" /> */}
       <input
         type="text"
         placeholder="Search users..."
@@ -170,11 +150,14 @@ function AddFriends() {
                   ? String(user.description).substring(0, 30) + "..."
                   : "--"}
               </p>
-              {user.followStatus === "none" && (
-                <button onClick={() => sendFollowRequest(user._id)} className="follow-btn"> <FaUserPlus /> Add</button>
-              )}
-              {user.followStatus === "pending" && (
-                <button onClick={() => removeFollow(user._id)} className="removee-btn"> <FaUserTimes /> Remove</button>
+              {user.followStatus === "pending" ? (
+                <button onClick={() => removeFollow(user._id)} className="removee-btn" disabled={busyId === user._id}>
+                  <FaUserTimes /> {busyId === user._id ? "..." : "Cancel request"}
+                </button>
+              ) : (
+                <button onClick={() => sendFollowRequest(user._id)} className="follow-btn" disabled={busyId === user._id}>
+                  <FaUserPlus /> {busyId === user._id ? "..." : "Follow"}
+                </button>
               )}
             </div>
           </div>

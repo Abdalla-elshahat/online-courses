@@ -19,6 +19,7 @@ import "./followerpage.css";
 import { domain } from "../../../utels/constents/const";
 import { safeParse } from "../../../utels/safeJson";
 import { imageUrl, onImageError } from "../../../utels/image";
+import InstructorCourses from "../../../instructor/profileins/instructorCourses";
 function Profilefollower(){
     const {userid}=useParams();
     const token = Cookies.get("token");
@@ -50,6 +51,7 @@ function Profilefollower(){
       if (!userData) {
         return <div>Loading...</div>;
       }
+      const isInstructor = ["manger", "admin"].includes(userData.role?.toLowerCase());
     return(
         <>
         <div className="profilee">
@@ -174,15 +176,15 @@ function Profilefollower(){
                         <div className="card">
                             <div className="bakico b1"><SlCalender/></div>
                             <div className="clop">
-                            <p className='cardp'>{userData.role==="manger"||"Admin"?"Courses Added":"Courses Taken"}</p>
-                            <h2 className="cardh2">{(userData.posts).length}</h2>
+                            <p className='cardp'>{isInstructor?"Courses Added":"Courses Taken"}</p>
+                            <h2 className="cardh2">{userData.posts?.length ?? 0}</h2>
                             </div>
                         </div>
                         <div className="card">
                         <div className="bakico b2"><IoMdLaptop/></div>
                             <div className="clop">
-                            <p className='cardp'>{userData.role==="manger"||"Admin"?"Quiz Added":"Quiz Taken"}</p> 
-                            <h2 className="cardh2">{userData.role==="manger"||"Admin"?(userData.quiz).length:(userData.quiztaken).length}</h2>
+                            <p className='cardp'>{isInstructor?"Quiz Added":"Quiz Taken"}</p> 
+                            <h2 className="cardh2">{isInstructor?(userData.quiz?.length ?? 0):(userData.quiztaken?.length ?? 0)}</h2>
                             </div>
                         </div>
                         <div className="card">
@@ -229,6 +231,9 @@ function Profilefollower(){
 </div>
 </div>
             </div>
+            {isInstructor && (
+              <InstructorCourses userId={userData._id} title={`Courses by ${userData.username}`} />
+            )}
             </div>
           
         </>

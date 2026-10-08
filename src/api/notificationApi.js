@@ -1,58 +1,35 @@
+import Cookies from "js-cookie";
 import { domain } from "../utels/constents/const";
 
 const BASE_URL = domain;
 
-export const getNotifications = async () => {
-    const res = await fetch(`${BASE_URL}/api/users/received-notifications`, {
-        method: "GET",
-        credentials: "include",
+// the API authenticates with the Bearer token, not cookies
+const send = async (path, method, body) => {
+    const res = await fetch(`${BASE_URL}${path}`, {
+        method,
         headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("token")}`,
         },
+        body: body ? JSON.stringify(body) : undefined,
     });
-
+    let data = {};
+    try {
+        data = await res.json();
+    } catch {}
     if (!res.ok) {
-        throw new Error("Failed to fetch notifications");
+        throw new Error(data.message || `Request failed (${res.status})`);
     }
-
-    return res.json();
+    return data;
 };
 
-export const handleFollowRequestApi = async (requesterId, action) => {
-    const res = await fetch(`${BASE_URL}/api/users/handlefollowrequest`, {
-        method: "PATCH",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            requester_id: requesterId,
-            action,
-        }),
-    });
+// pending follow requests sent to the current user: [{ _id, username, avatar }]
+export const getNotifications = async () =>
+    (await send("/api/users/received-notifications", "GET")).requests || [];
 
-    if (!res.ok) {
-        throw new Error("Failed to handle follow request");
-    }
+// action: "accept" | "reject"
+export const handleFollowRequestApi = (requesterId, action) =>
+    send("/api/users/handlefollowrequest", "PATCH", { requester_id: requesterId, action });
 
-    return res.json();
-};
-
-export const removeFollowApi = async (followId) => {
-    const res = await fetch(`${BASE_URL}/api/users/removefollow`, {
-        method: "PATCH",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            follow_id: followId,
-        }),
-    });
-
-    if (!res.ok) {
-        throw new Error("Failed to remove follow");
-    }
-
-    return res.json();
-};
+export const removeFollowApi = (followId) =>
+    send("/api/users/removefollow", "PATCH", { follow_id: followId });
